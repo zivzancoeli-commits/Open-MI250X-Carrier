@@ -1,0 +1,110 @@
+# Purpose
+
+Create a living Bill of Materials planning document for the open-source AMD Instinct MI250X OAM carrier-board effort using repository-supported engineering evidence only.
+
+This file is not a purchasable BOM, approved vendor list, schematic BOM, assembly BOM, or procurement release. The repository intentionally leaves quantities, approved manufacturers, approved part numbers, packages, voltage/current ratings, footprints, alternates, lifecycle status, and sourcing links unresolved until they are supported by readable repository documents or verified measurements. Sources: `18_Component_Research/README.md`; `15_Reverse_Engineering/07_Component_ID.md`; `17_System_Architecture/03_Minimal_Carrier_Requirements.md`.
+
+# Verified
+
+Only facts directly supported by repository documents are included here.
+
+| Topic | Verified repository fact | Sources |
+|---|---|---|
+| Evidence workflow | The repository tracks unknown behavior instead of assuming it, and component choices must wait for sourced evidence. | `README.md`; `AI_TASKS.md`; `18_Component_Research/README.md` |
+| Target module | AMD Instinct MI250X is the carrier target and is documented as an OCP Accelerator Module with two GCDs and 128 GB total memory. | `13_Reference_Docs/ROCm/Overview.md`; `15_Reverse_Engineering/07_Component_ID.md`; `17_System_Architecture/03_Minimal_Carrier_Requirements.md` |
+| Reference modules | AMD Instinct MI250 is documented with MI250X as an OCP Accelerator Module, and MI210 is documented as a standard PCIe 4.0 x16 card. | `13_Reference_Docs/ROCm/Overview.md`; `15_Reverse_Engineering/05_PCIe.md`; `15_Reverse_Engineering/07_Component_ID.md` |
+| Internal module context | GCDs and HBM2e are documented as MI200-family module context, not carrier-board purchase lines. | `13_Reference_Docs/ROCm/Overview.md`; `15_Reverse_Engineering/07_Component_ID.md` |
+| Component-confidence source | The component-identification document separates verified components, low-confidence references, and unknown component categories. | `15_Reverse_Engineering/07_Component_ID.md` |
+| Minimal carrier categories | The minimal carrier needs MI250X module support, an OAM mating interface, power delivery, host communication, reference clocks, cooling, mechanical support, and PCB implementation after requirements are verified. | `15_Reverse_Engineering/10_Minimal_Carrier.md`; `17_System_Architecture/03_Minimal_Carrier_Requirements.md` |
+| Optional component categories | Management MCU, EEPROM/FRU, sensors, fan controller, PCIe switch, PCIe retimer, and firmware flashing hardware remain optional or unknown until requirements prove they are needed. | `15_Reverse_Engineering/10_Minimal_Carrier.md`; `17_System_Architecture/03_Minimal_Carrier_Requirements.md`; `17_System_Architecture/02_System_Block_Diagram.md` |
+
+# Candidate Components
+
+This table includes only named, repository-supported components, references, or unresolved component categories. `Candidate` does not mean approved for schematic capture or procurement.
+
+| Component or category | Manufacturer | Part number | Status | Repository-supported information | Design position | Sources |
+|---|---|---|---|---|---|---|
+| AMD Instinct MI250X OAM module | AMD | MI250X | Verified | Target OAM accelerator module for the carrier-board effort. | Verified project target; procurement still requires normal sourcing, condition, and compatibility checks outside this evidence notebook. | `13_Reference_Docs/ROCm/Overview.md`; `15_Reverse_Engineering/07_Component_ID.md`; `17_System_Architecture/03_Minimal_Carrier_Requirements.md` |
+| AMD Instinct MI250 OAM module | AMD | MI250 | Verified reference | MI250 is documented with MI250X as an OCP Accelerator Module. | Reference context only; not a verified MI250X carrier BOM requirement. | `13_Reference_Docs/ROCm/Overview.md`; `15_Reverse_Engineering/07_Component_ID.md` |
+| AMD Instinct MI210 PCIe card | AMD | MI210 | Verified reference | MI210 is documented as a standard PCIe 4.0 x16 card. | Reference context only; it does not define MI250X OAM carrier pinout, connector, or signal-integrity requirements. | `13_Reference_Docs/ROCm/Overview.md`; `15_Reverse_Engineering/05_PCIe.md` |
+| Digital multiphase VRM controller | Monolithic Power Systems (MPS) | MP2975 | Candidate | `MP2975` is listed as a digital multiphase VRM controller, believed present on MI250X, not visually confirmed, with no public datasheet in the repository. | Investigate only; do not place in schematic or procurement BOM until visually confirmed or supported by a readable MI250X-specific source and datasheet. | `13_Reference_Docs/Component_Index.rtf`; `15_Reverse_Engineering/07_Component_ID.md`; `18_Component_Research/02_Power_Converters.md` |
+| Molex Mirror Mezz connector family | Molex | Unknown | Candidate | Mirror Mezz Datasheet, Brochure, and Product Guide are indexed, and Mirror Mezz is listed as a possible OAM/mezzanine interconnect reference. | Not confirmed as the MI250X OAM connector; exact connector part number, footprint, mating height, stack-up, pin count, and rating are unknown. | `13_Reference_Docs/Reference_Index.rtf`; `18_Component_Research/01_OAM_Connector.md`; `15_Reverse_Engineering/07_Component_ID.md` |
+| Samsung Flashbolt / Samsung HBM2E reference | Samsung | Unknown | Candidate reference | Samsung HBM2E reference is indexed and a SamsungFlashbolt PDF exists, but the PDF has invalid structure. | Reference-only; exact title, device, and carrier relevance are unverified. | `13_Reference_Docs/Reference_Index.rtf`; `13_Reference_Docs/Memory_HBM/README.md`; `15_Reverse_Engineering/07_Component_ID.md` |
+| Micron HBM2E reference | Micron | Unknown | Candidate reference | Micron HBM2E is indexed in the reference set. | Reference-only; no local readable component details or carrier relevance are present. | `13_Reference_Docs/Reference_Index.rtf`; `15_Reverse_Engineering/07_Component_ID.md` |
+| MI250X OAM mating connector | Unknown | Unknown | Unknown category | A minimal carrier must include the physical and electrical mating interface for the MI250X OAM module. | Do not buy or footprint until connector manufacturer, family, part number, pinout, mating height, stack-up, footprint, and current rating are verified. | `17_System_Architecture/03_Minimal_Carrier_Requirements.md`; `18_Component_Research/01_OAM_Connector.md`; `15_Reverse_Engineering/01_OAM_Pin_Mapping.md` |
+| Power converters / regulators / power stages | Unknown | Unknown | Unknown category | Power conversion and power stages are required research areas, but rail names, currents, sequencing, controller identities, and part numbers are not verified. | Do not select regulators or stages until rail, current, telemetry, sequencing, thermal, and protection requirements are sourced. | `18_Component_Research/02_Power_Converters.md`; `15_Reverse_Engineering/02_Power_Rails.md`; `15_Reverse_Engineering/07_Component_ID.md` |
+| Clock generator / oscillator / PLL / clock buffer | Unknown | Unknown | Unknown category | Clock components are named as research categories, but REFCLK source, frequency, topology, jitter, skew, and part numbers are undocumented. | Do not select clock components until REFCLK, reset-clock, PCIe, and topology requirements are verified. | `18_Component_Research/03_Clock_Generators.md`; `15_Reverse_Engineering/03_Clock_Tree.md`; `17_System_Architecture/03_Minimal_Carrier_Requirements.md` |
+| EEPROM / FRU EEPROM / firmware storage | Unknown | Unknown | Unknown category | EEPROM, FRU EEPROM, configuration storage, and firmware storage are listed as unresolved management categories. | Do not select storage devices or define contents until role, bus, address, ownership, and firmware relationship are verified. | `18_Component_Research/04_EEPROM_FRU.md`; `15_Reverse_Engineering/04_Management.md`; `17_System_Architecture/03_Minimal_Carrier_Requirements.md` |
+| Management MCU / BMC / PMBus device | Unknown | Unknown | Unknown category | Management MCU, BMC, PMBus devices, GPIO, telemetry, firmware, and sequencing ownership are undocumented. | Do not select controller parts until requirement, ownership, bus topology, GPIO, firmware role, power rail, and package are verified. | `18_Component_Research/05_Management_MCU.md`; `15_Reverse_Engineering/04_Management.md`; `18_Component_Research/02_Power_Converters.md` |
+| Temperature / voltage / current / fault sensors | Unknown | Unknown | Unknown category | Carrier-visible sensor requirements, locations, interfaces, telemetry path, and part numbers are undocumented. | Do not select sensors until monitoring requirements, placement, interface, accuracy, and ownership are verified. | `18_Component_Research/06_Temperature_Sensors.md`; `15_Reverse_Engineering/04_Management.md`; `18_Component_Research/02_Power_Converters.md` |
+| Fan / fan controller / fan header | Unknown | Unknown | Unknown category | Fan requirement, controller requirement, PWM, tachometer, fan headers, and cooling-control ownership are undocumented. | Do not select fan-control hardware until cooling method, fan interface, feedback, and ownership are verified. | `18_Component_Research/07_Fan_Control.md`; `15_Reverse_Engineering/04_Management.md`; `17_System_Architecture/03_Minimal_Carrier_Requirements.md` |
+| PCIe switch / retimer / redriver | Unknown | Unknown | Unknown category | PCIe switch, retimer, and redriver needs are not proven for one MI250X module. | Do not select signal-conditioning parts until topology, lane mapping, generation, loss budget, equalization, clocking, and management requirements are verified. | `18_Component_Research/08_PCIe_Retimers.md`; `15_Reverse_Engineering/05_PCIe.md`; `17_System_Architecture/03_Minimal_Carrier_Requirements.md` |
+| Carrier input-power connector / power-entry hardware | Unknown | Unknown | Unknown category | Carrier input-power connector, PSU topology, connector ratings, cable assembly, fusing, hot-swap, and current limiting are undocumented. | Do not select connector, fuse, cable, PSU interface, or busbar hardware until input voltage/current, protection, mechanical, and baseboard requirements are verified. | `18_Component_Research/09_Power_Connectors.md`; `18_Component_Research/02_Power_Converters.md`; `17_System_Architecture/03_Minimal_Carrier_Requirements.md` |
+| Heatsink / cold plate / liquid-cooling support hardware | Unknown | Unknown | Unknown category | Cooling method, thermal design power, cold-plate/heatsink geometry, mounting force, airflow/coolant requirements, reservoir/pump, and manifold needs are undocumented. | Do not select cooling hardware until thermal and mechanical evidence is recovered. | `18_Component_Research/07_Fan_Control.md`; `15_Reverse_Engineering/06_Mechanical.md`; `09_AI_Notes/07_Cooling.md` |
+| Carrier PCB / mounting hardware / retention | Unknown | Unknown | Unknown category | PCB stack-up, connector footprint, board outline, mounting pattern, standoff height, keepouts, and retention hardware are undocumented. | Do not release fabrication, footprints, 3D models, or mechanical hardware until connector and mechanical constraints are verified. | `15_Reverse_Engineering/06_Mechanical.md`; `15_Reverse_Engineering/10_Minimal_Carrier.md`; `17_System_Architecture/03_Minimal_Carrier_Requirements.md` |
+
+# Unknown
+
+- **Unknown:** Approved carrier BOM quantities, approved manufacturers, approved part numbers, packages, footprints, alternates, lifecycle status, sourcing links, and procurement criteria. Sources: `18_Component_Research/README.md`; `15_Reverse_Engineering/07_Component_ID.md`.
+- **Unknown:** Exact MI250X OAM connector manufacturer, connector family, part number, pinout, pitch, mating height, stack-up, footprint, current rating, and placement. Sources: `18_Component_Research/01_OAM_Connector.md`; `15_Reverse_Engineering/01_OAM_Pin_Mapping.md`; `17_System_Architecture/03_Minimal_Carrier_Requirements.md`.
+- **Unknown:** Required rail names, rail voltages, input voltage, current requirements, sequencing, enables, Power Good behavior, telemetry, regulator topology, power-stage devices, and protection. Sources: `18_Component_Research/02_Power_Converters.md`; `15_Reverse_Engineering/02_Power_Rails.md`.
+- **Unknown:** REFCLK source, clock topology, clock generator, oscillator, PLL, clock buffer, jitter, skew, and clock-routing requirements. Sources: `18_Component_Research/03_Clock_Generators.md`; `15_Reverse_Engineering/03_Clock_Tree.md`.
+- **Unknown:** EEPROM, FRU EEPROM, board metadata, configuration storage, firmware storage, contents, ownership, bus, address, write protect, and update process. Sources: `18_Component_Research/04_EEPROM_FRU.md`; `15_Reverse_Engineering/04_Management.md`.
+- **Unknown:** Management MCU, BMC, PMBus device, SMBus/I2C topology, GPIO list, firmware role, telemetry ownership, reset control, fan-control ownership, and sequencing ownership. Sources: `18_Component_Research/05_Management_MCU.md`; `15_Reverse_Engineering/04_Management.md`.
+- **Unknown:** Temperature, voltage, current, and fault sensor requirements, part numbers, locations, telemetry path, bus ownership, addresses, accuracy, limits, and validation role. Sources: `18_Component_Research/06_Temperature_Sensors.md`; `15_Reverse_Engineering/04_Management.md`.
+- **Unknown:** Fan quantity, fan size, fan voltage/current, fan header pinout, PWM, tachometer, airflow, coolant, pump, reservoir, manifold, thermal control policy, and cooling-control ownership. Sources: `18_Component_Research/07_Fan_Control.md`; `09_AI_Notes/07_Cooling.md`.
+- **Unknown:** PCIe generation, lane width, lane mapping, sidebands, switch need, retimer need, redriver need, signal-integrity rules, equalization, AC-coupling, loss budget, and Gen5 applicability. Sources: `18_Component_Research/08_PCIe_Retimers.md`; `15_Reverse_Engineering/05_PCIe.md`.
+- **Unknown:** Carrier input-power connector, PSU topology, connector ratings, input voltage/current, cable assemblies, wire gauge, fusing, hot-swap, current limiting, busbar need, and baseboard power architecture. Sources: `18_Component_Research/09_Power_Connectors.md`; `15_Reverse_Engineering/02_Power_Rails.md`.
+
+# Design Implications
+
+- Do not convert `Unknown` rows into purchase orders, schematic symbols, footprints, or approved alternates.
+- Do not invent part numbers, package names, connector ratings, current ratings, voltage ratings, rail values, clock frequencies, EEPROM contents, sensor locations, fan specifications, cooling requirements, or procurement alternates.
+- Treat `MP2975` and Molex Mirror Mezz as candidate research items only until direct MI250X evidence confirms them.
+- Treat MI210, MI250, GCD, and HBM2e entries as context, not carrier-board purchase lines.
+- Keep the BOM tied to the related component research documents because the purchasing decision for any part depends on connector, power, clock, EEPROM, management, sensor, fan, PCIe, power-entry, cooling, and mechanical evidence.
+- A professional procurement BOM is blocked until role, part number, interface, voltage/current constraints, footprint, mechanical constraints, lifecycle/availability, and acceptable alternates are verified for each required carrier component.
+
+# Future Research
+
+| Priority | Research task | Required output | Sources |
+|---|---|---|---|
+| High | Recover or extract missing integration specifications. | Connector Specification, Baseboard Specification, PCIe Routing Guide, REFCLK Guide, PMBus Controller Datasheet, VRM Datasheet, and OAM Thermal Guidelines. | `Wanted_Documents.md`; `18_Component_Research/01_OAM_Connector.md`; `18_Component_Research/02_Power_Converters.md`; `18_Component_Research/08_PCIe_Retimers.md` |
+| High | Confirm or reject named candidate parts. | Evidence-backed status for `MP2975`, Molex Mirror Mezz, Samsung HBM2E references, and Micron HBM2E references. | `13_Reference_Docs/Component_Index.rtf`; `13_Reference_Docs/Reference_Index.rtf`; `15_Reverse_Engineering/07_Component_ID.md` |
+| High | Identify required carrier components only after subsystem requirements are known. | Verified manufacturer, part number, footprint, package, interface, ratings, constraints, alternates, and BOM status for every required carrier component. | `18_Component_Research/README.md`; `17_System_Architecture/03_Minimal_Carrier_Requirements.md`; `17_System_Architecture/05_Component_Selection.md` |
+| Medium | Build procurement-ready BOM fields after evidence matures. | Quantity, manufacturer, part number, lifecycle, distributor/source, alternates, package, footprint, lead time, risk notes, and source citation for each line. | `15_Reverse_Engineering/07_Component_ID.md`; `09_AI_Notes/10_Design_Checklist.md`; `18_Component_Research/README.md` |
+| Medium | Link BOM validation to bring-up evidence. | Component-specific validation checks for power, clocks, reset, PCIe enumeration, management, EEPROM/FRU, telemetry, cooling, and ROCm detection. | `15_Reverse_Engineering/08_Bringup.md`; `09_AI_Notes/10_Design_Checklist.md`; `13_Reference_Docs/ROCm/Overview.md` |
+
+# Sources
+
+- `README.md` - States the public-evidence workflow and that undocumented behavior should be tracked rather than assumed.
+- `AI_TASKS.md` - Lists connector, power, clock, PCIe, EEPROM, management, thermal, fan, sensor, mechanical, and validation unknowns.
+- `Wanted_Documents.md` - Tracks missing connector, baseboard, PCIe, REFCLK, PMBus, VRM, thermal, photo, and related evidence.
+- `13_Reference_Docs/Component_Index.rtf` - Identifies `MP2975`, Monolithic Power Systems, digital multiphase VRM controller function, believed-present status, visual-confirmation gap, and missing public datasheet.
+- `13_Reference_Docs/Reference_Index.rtf` - Indexes OAM/OCP, Molex Mirror Mezz, cooling, firmware, memory, health, system-validation, MI250 acceptance, and GPU management references.
+- `13_Reference_Docs/Memory_HBM/README.md` - Records SamsungFlashbolt PDF as local HBM material and notes invalid PDF structure.
+- `13_Reference_Docs/ROCm/Overview.md` - Identifies MI210, MI250, MI250X, GCDs, HBM2e, and MI250/MI250X OAM software-visible context.
+- `09_AI_Notes/07_Cooling.md` - Summarizes cooling evidence and gaps, including missing thermal guidelines and unknown thermal design power.
+- `09_AI_Notes/10_Design_Checklist.md` - States schematic capture and PCB layout must wait for connector, PCIe/REFCLK, power, management, mechanical, baseboard, and high-speed constraints.
+- `15_Reverse_Engineering/01_OAM_Pin_Mapping.md` - Records OAM connector pinout and signal assignments as unknown.
+- `15_Reverse_Engineering/02_Power_Rails.md` - Main source for rails, sequencing, current, PMBus, VRM, telemetry, monitoring, and power unknowns.
+- `15_Reverse_Engineering/03_Clock_Tree.md` - Main source for REFCLK, clock source, clock buffer, oscillator, PLL, routing, jitter, skew, and clock unknowns.
+- `15_Reverse_Engineering/04_Management.md` - Main source for management MCU/BMC, SMBus, I2C, PMBus, EEPROM, FRU EEPROM, firmware, health monitoring, sensors, and fan-control unknowns.
+- `15_Reverse_Engineering/05_PCIe.md` - Main source for PCIe generation, lane width, lane mapping, REFCLK, reset, switch, retimer, and signal-integrity gaps.
+- `15_Reverse_Engineering/06_Mechanical.md` - Main source for cooling envelope, connector placement, dimensions, mounting, board outline, keepout, and mechanical evidence gaps.
+- `15_Reverse_Engineering/07_Component_ID.md` - Component-confidence table for verified, candidate, and unknown component categories.
+- `15_Reverse_Engineering/08_Bringup.md` - Records power, clocks, reset, management, EEPROM, firmware, PCIe, ROCm detection, and health-check bring-up gaps.
+- `15_Reverse_Engineering/10_Minimal_Carrier.md` - Defines minimum carrier requirement categories and optional hardware positions.
+- `17_System_Architecture/02_System_Block_Diagram.md` - Shows OAM connector, PCIe, optional switch/retimer, power, clock, management, EEPROM, sensors, fan, cooling, and future expansion blocks.
+- `17_System_Architecture/03_Minimal_Carrier_Requirements.md` - Main source for required, recommended, optional, unknown, and risk categories for the minimal carrier.
+- `17_System_Architecture/05_Component_Selection.md` - Contains empty candidate sections for clock generation, EEPROM, management MCU, temperature sensors, PCIe components, power components, and connectors.
+- `18_Component_Research/README.md` - Defines the component-research workflow and states that components should not enter schematic/BOM until role, part number, interface, and constraints are sourced.
+- `18_Component_Research/01_OAM_Connector.md` - Related research for OAM connector and Mirror Mezz limitations.
+- `18_Component_Research/02_Power_Converters.md` - Related research for power converter, MP2975, PMBus, regulator, current, telemetry, and power-entry unknowns.
+- `18_Component_Research/03_Clock_Generators.md` - Related research for REFCLK, clock generator, oscillator, PLL, clock buffer, jitter, skew, and fanout unknowns.
+- `18_Component_Research/04_EEPROM_FRU.md` - Related research for EEPROM, FRU EEPROM, configuration storage, board identification, bus, and firmware-storage unknowns.
+- `18_Component_Research/05_Management_MCU.md` - Related research for management MCU/BMC, PMBus/I2C/SMBus, GPIO, telemetry, firmware, fan control, and sequencing unknowns.
+- `18_Component_Research/06_Temperature_Sensors.md` - Related research for temperature, I2C sensor, board-temperature, junction-temperature, telemetry, voltage/current/fault sensor unknowns.
+- `18_Component_Research/07_Fan_Control.md` - Related research for fan, fan controller, PWM, tachometer, fan header, cooling method, and liquid-cooling support unknowns.
+- `18_Component_Research/08_PCIe_Retimers.md` - Related research for PCIe switch, retimer, redriver, signal integrity, Gen4/Gen5, equalization, REFCLK, and lane-mapping unknowns.
+- `18_Component_Research/09_Power_Connectors.md` - Related research for carrier input-power connector, PSU topology, cable assembly, connector rating, fusing, hot-swap, and power-entry unknowns.

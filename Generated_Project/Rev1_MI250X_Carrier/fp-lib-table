@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "MI250X-Carrier")(type "KiCad")(uri "${KIPRJMOD}/footprints")(options "")(descr "Prototype footprints — TODO"))
+)
