@@ -1,5 +1,7 @@
 # Mechanical
 
+> **2026-08-15:** Figure 2 / Figure 14 numbers are extracted in `Generated_Project/Rev2_MI250X_Carrier_ChassisEnvelope_v1/docs/oam_mechanical_envelope_v1.md` (102×165 mm PCB, 90×102 mm φ3.9 holes, 103×166 mm KOZ, 5 mm stack). Tables below were written before that pass and still say Unknown.
+
 # Purpose
 
 Create a mechanical engineering reference for the AMD Instinct MI250X OAM carrier-board effort using only repository-supported evidence. This notebook covers module dimensions, connector locations, mounting holes, PCB thickness, cooling envelope, weight, heatsink, keepouts, connector height, mechanical tolerances, photographs, drawings, and specifications.

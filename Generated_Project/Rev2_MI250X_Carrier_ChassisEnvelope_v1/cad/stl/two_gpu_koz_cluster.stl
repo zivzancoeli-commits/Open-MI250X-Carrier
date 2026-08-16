@@ -1,0 +1,86 @@
+solid envelope
+  facet normal 0 0 -1
+    outer loop
+      vertex 0.0000 0.0000 0.0000
+      vertex 206.0000 0.0000 0.0000
+      vertex 206.0000 166.0000 0.0000
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 0.0000 0.0000 0.0000
+      vertex 206.0000 166.0000 0.0000
+      vertex 0.0000 166.0000 0.0000
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 0.0000 0.0000 0.4000
+      vertex 0.0000 166.0000 0.4000
+      vertex 206.0000 166.0000 0.4000
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 0.0000 0.0000 0.4000
+      vertex 206.0000 166.0000 0.4000
+      vertex 206.0000 0.0000 0.4000
+    endloop
+  endfacet
+  facet normal 0 -1 0
+    outer loop
+      vertex 0.0000 0.0000 0.0000
+      vertex 0.0000 0.0000 0.4000
+      vertex 206.0000 0.0000 0.4000
+    endloop
+  endfacet
+  facet normal 0 -1 0
+    outer loop
+      vertex 0.0000 0.0000 0.0000
+      vertex 206.0000 0.0000 0.4000
+      vertex 206.0000 0.0000 0.0000
+    endloop
+  endfacet
+  facet normal 0 1 0
+    outer loop
+      vertex 0.0000 166.0000 0.0000
+      vertex 206.0000 166.0000 0.0000
+      vertex 206.0000 166.0000 0.4000
+    endloop
+  endfacet
+  facet normal 0 1 0
+    outer loop
+      vertex 0.0000 166.0000 0.0000
+      vertex 206.0000 166.0000 0.4000
+      vertex 0.0000 166.0000 0.4000
+    endloop
+  endfacet
+  facet normal -1 0 0
+    outer loop
+      vertex 0.0000 0.0000 0.0000
+      vertex 0.0000 166.0000 0.0000
+      vertex 0.0000 166.0000 0.4000
+    endloop
+  endfacet
+  facet normal -1 0 0
+    outer loop
+      vertex 0.0000 0.0000 0.0000
+      vertex 0.0000 166.0000 0.4000
+      vertex 0.0000 0.0000 0.4000
+    endloop
+  endfacet
+  facet normal 1 0 0
+    outer loop
+      vertex 206.0000 0.0000 0.0000
+      vertex 206.0000 0.0000 0.4000
+      vertex 206.0000 166.0000 0.4000
+    endloop
+  endfacet
+  facet normal 1 0 0
+    outer loop
+      vertex 206.0000 0.0000 0.0000
+      vertex 206.0000 166.0000 0.4000
+      vertex 206.0000 166.0000 0.0000
+    endloop
+  endfacet
+endsolid envelope

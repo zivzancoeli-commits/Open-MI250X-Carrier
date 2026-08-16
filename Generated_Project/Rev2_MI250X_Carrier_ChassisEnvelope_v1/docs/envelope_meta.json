@@ -1,0 +1,46 @@
+{
+  "tree": "Generated_Project/Rev2_MI250X_Carrier_ChassisEnvelope_v1",
+  "do_not_fabricate": true,
+  "oam_spec": "OCP Accelerator Module Design Specification v1.5",
+  "oam_sha256": "830729ce3018a466105f4f032aa8d236aa7e179ed031ca08139f1df4910c1824",
+  "connector_mpn": "218910-1115",
+  "production_pcb_untouched": true,
+  "ocp_signal_map": "BLOCKED",
+  "verified_mm": {
+    "oam_pcb": [
+      102.0,
+      165.0
+    ],
+    "koz": [
+      103.0,
+      166.0
+    ],
+    "hole_span": [
+      90.0,
+      102.0
+    ],
+    "hole_from_end": 31.5,
+    "hole_diameter": 3.9,
+    "connector_box": [
+      68.0,
+      22.0
+    ],
+    "connector_pitch": 102.0,
+    "stack_height": 5.0,
+    "host_eatx": [
+      330.2,
+      304.8
+    ],
+    "cooler_with_fan": [
+      150.0,
+      78.0,
+      165.0
+    ]
+  },
+  "unknown": [
+    "OEM air heatsink height (photos exist, not measured)",
+    "X11DPH-T CPU-to-CPU pitch",
+    "OCP v1.5 pinlist spreadsheet",
+    "AMD MI250X package / cold-plate ICD"
+  ]
+}

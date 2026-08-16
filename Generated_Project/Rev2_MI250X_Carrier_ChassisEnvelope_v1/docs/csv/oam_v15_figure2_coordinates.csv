@@ -1,0 +1,14 @@
+feature,x_mm,y_mm,d_or_size_mm,status,source
+pcb_origin_ll,0,0,,Verified,OCP v1.5 Figure 2 datum (this file)
+pcb_ur,102.0,165.0,,Verified,OCP v1.5 §5 / Figure 2 102 x 165
+koz,103.0,166.0,,Verified,OCP v1.5 §6.5.2 103 x 166
+corner_radius,,,2.0,Verified,OCP v1.5 Figure 2 4X R2
+notch_from_top,100.0,148.25,4.0x12.0,Verified,OCP v1.5 Figure 2 Detail A
+npth_m35_1,6.0,31.5,3.9,Verified,"OCP v1.5 Figure 2 4X φ3.9, 90 x 102, 31.5 from end"
+npth_m35_2,96.0,31.5,3.9,Verified,"OCP v1.5 Figure 2 4X φ3.9, 90 x 102, 31.5 from end"
+npth_m35_3,6.0,133.5,3.9,Verified,"OCP v1.5 Figure 2 4X φ3.9, 90 x 102, 31.5 from end"
+npth_m35_4,96.0,133.5,3.9,Verified,"OCP v1.5 Figure 2 4X φ3.9, 90 x 102, 31.5 from end"
+Conn0_center,51.0,31.5,68.0x22.0,Verified,OCP v1.5 Figure 2 68x22 box + 20.5/80; pitch 102 §6.1
+Conn1_center,51.0,133.5,68.0x22.0,Verified,OCP v1.5 Figure 2 68x22 box + 20.5/80; pitch 102 §6.1
+align_pin_1,51.0,5.5,3.0,Inferred,OCP v1.5 Figure 14 Ø5.7 at 6 mm from KOZ end minus 0.5 mm module inset
+align_pin_2,51.0,159.5,3.0,Inferred,OCP v1.5 Figure 14 Ø5.7 at 6 mm from KOZ end minus 0.5 mm module inset

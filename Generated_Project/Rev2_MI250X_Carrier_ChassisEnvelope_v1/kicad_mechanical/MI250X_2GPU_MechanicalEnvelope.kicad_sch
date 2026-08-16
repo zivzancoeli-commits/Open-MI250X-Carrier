@@ -1,0 +1,9 @@
+(kicad_sch (version 20250114) (generator chassis_envelope_v1)
+  (uuid 11111111-2222-3333-4444-555555555555)
+  (paper "A4")
+  (title_block
+    (title "MI250X 2-GPU mechanical envelope")
+    (comment 1 "DO NOT FABRICATE — OCP v1.5 pin map not assigned")
+  )
+  (lib_symbols)
+)

@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "OAM_Candidate")(type "KiCad")(uri "${KIPRJMOD}/OAM_Candidate.pretty")(options "")(descr "Molex 218910-1115 quarantine candidate — signals BLOCKED"))
+)

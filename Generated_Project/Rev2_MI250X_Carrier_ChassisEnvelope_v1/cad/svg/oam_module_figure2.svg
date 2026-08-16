@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 126.0 207.0" width="504" height="828">
+<title>OAM v1.5 Figure 2 envelope — not a fabrication drawing</title>
+<rect x="12.000" y="12.000" width="102.000" height="165.000" fill="#e8f0e4" fill-opacity="1.0" stroke="#1b5e20" stroke-width="0.6" />
+<text x="14.000" y="20.000" font-size="3.2" font-family="Helvetica,Arial,sans-serif">102 x 165 mm PCB  |  OCP v1.5 Fig 2  |  DO NOT FAB</text>
+<rect x="29.000" y="134.500" width="68.000" height="22.000" fill="#bbdefb" fill-opacity="1.0" stroke="#0d47a1" stroke-width="0.5" />
+<text x="31.000" y="142.500" font-size="3.2" font-family="Helvetica,Arial,sans-serif">Conn0  218910-1115  PIN A3 → +X</text>
+<rect x="29.000" y="32.500" width="68.000" height="22.000" fill="#bbdefb" fill-opacity="1.0" stroke="#0d47a1" stroke-width="0.5" />
+<text x="31.000" y="40.500" font-size="3.2" font-family="Helvetica,Arial,sans-serif">Conn1  218910-1115  PIN A3 → +X</text>
+<circle cx="18.000" cy="145.500" r="1.950" fill="none" stroke="#b71c1c" stroke-width="0.5"/>
+<circle cx="18.000" cy="145.500" r="4.000" fill="none" stroke="#ef9a9a" stroke-width="0.25"/>
+<circle cx="108.000" cy="145.500" r="1.950" fill="none" stroke="#b71c1c" stroke-width="0.5"/>
+<circle cx="108.000" cy="145.500" r="4.000" fill="none" stroke="#ef9a9a" stroke-width="0.25"/>
+<circle cx="18.000" cy="43.500" r="1.950" fill="none" stroke="#b71c1c" stroke-width="0.5"/>
+<circle cx="18.000" cy="43.500" r="4.000" fill="none" stroke="#ef9a9a" stroke-width="0.25"/>
+<circle cx="108.000" cy="43.500" r="1.950" fill="none" stroke="#b71c1c" stroke-width="0.5"/>
+<circle cx="108.000" cy="43.500" r="4.000" fill="none" stroke="#ef9a9a" stroke-width="0.25"/>
+<circle cx="63.000" cy="171.500" r="1.500" fill="none" stroke="#6a1b9a" stroke-width="0.4"/>
+<circle cx="63.000" cy="17.500" r="1.500" fill="none" stroke="#6a1b9a" stroke-width="0.4"/>
+<rect x="110.000" y="22.750" width="4.000" height="12.000" fill="#fff" fill-opacity="1.0" stroke="#333" stroke-width="0.4" />
+<text x="14.000" y="187.000" font-size="3.2" font-family="Helvetica,Arial,sans-serif">Holes 90 x 102 mm, 31.5 from ends, φ3.9  |  Conn pitch 102  |  notch 12 x 4</text>
+</svg>
