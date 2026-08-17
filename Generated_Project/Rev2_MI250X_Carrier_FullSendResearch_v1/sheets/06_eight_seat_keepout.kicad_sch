@@ -1,0 +1,20 @@
+(kicad_sch (version 20250114) (generator "fullsend_research_v1")
+	(generator_version "9.0")
+	(uuid "eb7b9a8c-73a8-4511-a789-7575935848cb")
+	(paper "A3")
+	(title_block
+		(title "8-seat keepout (not electrical)")
+		(date "2026-08-17")
+		(rev "FullSendResearch_v1")
+		(comment 1 "DO NOT FABRICATE. DO NOT ENERGIZE MI250X.")
+		(comment 2 "Documentation sheet - no invented nets")
+		(comment 3 "Pin names: OAM Pin map rev 1.0.xlsx — OCP generic, NOT AMD overlay")
+		(comment 4 "r2.0 maps UNUSABLE. P3V3=2 Conn0. Full-send cart is NOT a fab decision.")
+	)
+
+	(text "8-OAM / later chassis volume — NOT an 8-GPU electrical board.\n\nThis PCB has TWO electrical OAM seats. Unmapped AMD pads stay unmapped.\nDo not treat 4x2 KOZ tiling as a Universal Baseboard.\n\nVerified (OCP UBB Design Spec v1.5, retrieved via research pipeline):\n- UBB PCB: 417 mm wide x 585 mm long x 3.2 mm thick.\n- 8 OAM modules, 16 Mirror Mezz Pro connectors.\n- 4x 54V power connectors (Amphenol 10028917-001LF) + 2x 12V (can be repurposed).\n- OAM MODULE_ID[4:0] for 8x: OAM0=00000 ... OAM7=00111 (OCP table, not AMD).\n- Module-to-module numeric pitch is in the spec FIGURES (not OCR'd as millimetres\n  this run). Connector-to-connector pitch ON A MODULE is 102 mm (OAM v1.5 §6.1).\n\nInferred (do not drill from this):\n- 4x2 tiling of 103 x 166 mm KOZ = 412 x 332 mm floor. That is NOT the UBB drawing.\n- r2.0 UBB is 417 x 655 mm and uses r2.0 pinlists (P3V3=6) — UNUSABLE for MI250X.\n\nUnknown:\n- Public UBB schematic / gerber / AOM-MCM-Q pad overlay: NOT FOUND\n  (github.com/opencomputeproject/OCP-SVR-OAI-Open_Accelerator_Infrastructure is a\n  project page; no xlsx/gerber in the public tree retrieved this run).\n\nFirst PCB = 2-OAM. Weld chassis bays for later 8-OAM volume using the 417 x 585 mm\nUBB v1.5 envelope, not a fake 8-GPU netlist.\n"
+		(at 20.32 20.32 0)
+		(effects (font (size 1.5 1.5)) (justify left top))
+		(uuid "ed9ac1ab-4f7a-4436-a15f-8a05b305bc04")
+	)
+)
