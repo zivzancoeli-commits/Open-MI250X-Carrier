@@ -1,0 +1,42 @@
+Molex Supports OCP’s
+Open Standards
+OCP-compliant solutions enable a diverse set
+of compute accelerators within the data center.
+
+
+OPEN ACCELERATOR MODULE INFRASTRUCTURE
+The rapid evolution of artificial intelligence (AI) is producing an explosion of new
+types of hardware accelerators for machine learning (ML) and deep learning (DL).
+Common requirements such as flexibility, robustness, serviceability and configuration
+management as well as power and cooling make an open mezzanine module a smart
+design choice. Additional Open Accelerator Module (OAM) benefits include the ability
+to support multiple suppliers, also termed a multi-OAM, Universal Base Board (UBB).
+
+In support of the OAM infrastructure, the Molex Mirror Mezz 15x11 solution was                                                                        Mirror Mezz Connector
+specifically developed as the sole connector interface between the module and the
+base board. Molex Mirror Mezz Connectors offer superior signal integrity and density,
+allowing customers to achieve mechanical and electrical targets required by next-
+generation high-speed systems. In addition to signal contacts, the 15x11 Mirror Mezz
+Connector for OAM also transfers the necessary power to the modules, creating an
+all-in-one solution for mezzanine connectivity.
+
+
+FEATURES AND ADVANTAGES
+68.00 by 22.00mm after mating
+Up to 270 differential pairs
+56, 112 or 224Gbps
+1.0A per pin @ 1.5oz. Copper after derating
+90 Ohms +/- 5%
+Supports either 12V or 48V input                                                     Self-Mating Mirror Mezz Connector                   GSSG Pinout and Ball Grid Array Attachment
+
+Up to 200W (12V) or 500W (48V)
+
+
+
+
+www.molex.com
+
+
+Molex is a registered trademark of Molex, LLC in the United States of America and may be registered in other countries; all other trademarks listed herein belong to their respective owners
+Order No. 987652-2211 Rev. 1                                                        USA/0k/GF/2024.08                                                                          ©2024 Molex
+

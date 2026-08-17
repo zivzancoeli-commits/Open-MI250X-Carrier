@@ -55,3 +55,7 @@ Generated_Project/Rev2_MI250X_Carrier_BuyableFirstSystem_v1/
 ```
 
 Shopping list: `20_System_BOM/SHOPPING.md`. Pin map authority: `22_Pinmap_Research/` (OCP generic v1.0, 688 contacts, not r2.0).
+
+## Exhaustive public-source hunt (copied tree, 2026-08-17)
+
+Research only — **not fab-ready**. Findings: `Generated_Project/Rev2_MI250X_Carrier_ExhaustiveSourceHunt_v1/FINDINGS.md`.

@@ -1,0 +1,2865 @@
+## OCP Universal Baseboard (UBB) Design Specification v1.5
+
+Author: OCP OAI Workstreams
+
+### Contents
+
+##### 1. License 9
+
+##### 2. Acknowledgment 10
+
+##### 3. Introduction and Scope 11
+
+4. Universal Baseboard (OAI-UBB) High-level Description 13 
+5. Input and Output Interfaces 15 
+5.1. OAM Interconnect Interface 15 
+5.2. Host Fabric Interface 16 
+5.2.1. Host Interface: High-speed interface 16 
+5.2.2. Pin list 16 
+5.3. Scale-Out Interface 16 
+5.3.1. High-speed support 17 
+5.3.2. I2C 17 
+5.3.3. Pin list 17 
+5.4. Miscellaneous Signal Interface 17 
+5.4.1. Clock and I2C Signals 17 
+5.4.2. Board management 17 
+5.4.3. Power management 17 
+5.5. Input Power Interface 18 
+5.5.1. UBB System Power 18 
+5.5.2. 54V/48V based OAM power input 19 
+5.5.3. 12V based OAM Power input 20 
+5.5.4. OAM Excursion Power Support 20 
+5.6. 40V ~ 59.5V power layout guidance 21 
+6. UBB Electrical Specification 23 
+6.1. Board Architecture specification 23 
+6.1.1. System Clock Architecture 23 
+6.1.2. I2C architecture 23 
+6.1.3. Power control 24 
+6.1.4. Reset 25 
+6.1.5. Power Diagram 26 
+6.1.6. Strap pins 26 
+6.1.6.1. Module ID 26 
+6.1.6.2. Link_Config[4:0] 28 
+6.1.6.3. PE_BIF[1:0] 28 
+6.1.7. Debug interface 28 
+6.1.8. JTAG Interface 28 
+6.1.9. UART 30 
+6.1.10. Debug Header 30 
+6.1.11. UBB Power sequence 31 
+6.1.12. FRU 33 
+6.2. UBB Connectors 35 
+Page 2 
+Open Accelerator Infrastructure – Universal Baseboard Design Specification v1.5 
+6.2.1. UBB Connector pin list 35 
+6.2.1.1. QSFP-DD connector pin list 35 
+6.2.1.2. 54V power connector pin list 37 
+6.2.1.3. 12V power connector pin list 39 
+6.2.1.4. 12V power connector re-purpose for 54V 40 
+6.2.1.5. Host Interface Connector (HIF) pin list 40 
+6.2.1.6. OAM Debug connector pin list 49 
+6.3. PCB Stack-Up 51 
+6.4. CPLD 53 
+6.4.1. Block Diagram of UBB Primary CPLD 53 
+6.4.2. Primary I2C Online Programming Feature 55 
+6.4.3. Fan-out signal to 8 OAMs 55 
+6.4.4. Slave I2C address for HIB 55 
+6.4.5. Reserved PERST for Multi-host 58 
+6.5. Block Diagram of UBB Secondary CPLD 58 
+6.5.1. JTAG and debug present 59 
+6.5.2. OAM Test Pins 60 
+6.5.3. I2C Slave of Secondary CPLD 60 
+6.5.4. JTAG Multiplexer of OAM 61 
+6.5.5. CPLD Pin list 61 
+6.5.6. OAM Vref based IO Pin 69 
+6.6. Host retimer 71 
+6.7. SERDES PHY Retimer 71 
+6.8. High-Speed SI guidance 72 
+7. Interconnect Topology 73 
+7.1. Module ID 73 
+7.2. LINK_CONFIG ID 73 
+7.3. Combined Fully Connected and 6-port Hybrid Cube Mesh Topology 74 
+7.4. 8-port Hybrid Cube Mesh Topology 76 
+7.5. UBB Reference boards 77 
+7.6. UBB silkscreen 77 
+8. Mechanical Specification 79 
+8.1. Board dimension 79 
+8.2. Required Components 80 
+8.2.1. OAM Placement / Mirror Mezz Pro Connectors 80 
+8.2.2. I/O Connectors 82 
+8.2.3. Screw Mounting Holes 84 
+8.3. Recommended Components 87 
+8.3.1. Air Baffle Holes 87 
+8.3.2. UBB Handles 88 
+8.4. Assembly 90 
+Page 3 
+Open Accelerator Infrastructure – Universal Baseboard Design Specification v1.5 
+8.4.1. Screw Torque 90 
+8.4.2. Reference Bolster Plate 90 
+8.4.3. Mylar 91 
+9. Thermal and Cooling Specification 93 
+9.1. Environmental Conditions 93 
+9.2. Air Flow Direction 93 
+9.3. Keep Out Zone 94 
+9.4. Temperature Report 95 
+9.4.1. Temperature Sensors 95 
+9.5. Thermal Recommendation 96 
+9.5.1. Airflow Budget 96 
+9.5.2. Reference Heatsink Design 97 
+9.5.3. Reference Liquid Cooling Design 98 
+10. System Management 101 
+10.1. UBB I2C Topology 101 
+10.2. Sensors and Events 101 
+10.3. UBB FRU Format 105 
+11. 54V/48V Safety Requirement 111 
+11.1. Pollution Degrees 111 
+11.2. Determination of minimum clearances 112 
+11.3. Creepage and Clearance in Practice 112 
+12. Acronyms 113 
+
+##### 13. Revision History 114
+
+Page 4
+
+### Figures
+
+Figure 1 OAI as a disaggregated compute for AI in a Rack. 11 
+Figure 2 OAI building blocks 12 
+Figure 3 Example OAI System Building Blocks 13 
+Figure 4 Example UBB System Building Blocks 14 
+Figure 5 Universal Reference Base Board (UBB) 15 
+Figure 6 UBB Host and Expansion (scale-out) Interfaces 16 
+Figure 7 Input Power connectors Placement 18 
+Figure 8 OAI Reference UBB power Delivery Diagram 18 
+Figure Figure 9 Cmin calculation for OAM peak current 21 
+Figure 10 power and GND isolation 22 
+Figure 11 OAI Reference UBB clock diagram 23 
+Figure 12 I2C/SMBus Block Diagram 24 
+Figure 13 UBB Reset signals diagram 25 
+Figure 14 Power Control Block Diagram 26 
+Figure 15 Required MODULE_ID[4:0] assignments for baseboards with 8 interconnected modules 27 
+Figure 16 Module_ID[4:0] assignments when four only in two rows of two 27 
+Figure 17 JTAG diagram 29 
+Figure 18 UART Diagram 30 
+Figure 19 UBB reference board debug header 31 
+Figure 20 UBB Power-on sequence 32 
+Figure 21 UBB Power-down sequence 33 
+Figure 22 DC is off, BMC switches FRU1 access to BMC 34 
+Figure 23 When DC is on, BMC switches FRU1 access to OAM0 34 
+Figure 24 54V power connector 38 
+Figure 25 12V power connector pin list 39 
+Figure 26 Primary CPLD diagram 54 
+Figure 27 Secondary CPLD Diagram 59 
+Figure 28 Vref Signal Block Diagram 70 
+Figure 29 HIB Lane Retimer Topology 71 
+Figure 30 UBB Scale-Out Serdes PHY Topology (Example) 72 
+Figure 31 LINK_CONFIG ID 74 
+Figure 32 Combined FC/6-Port HCM Topology 75 
+Figure 33 Detail port mapping and routing guidance 75 
+Figure 34 Embedded HCM Topology 76 
+Figure 35 8-port Hybrid Cube Mesh Topology 76 
+Figure 36 8-port HCM topology routing guide 77 
+Figure 37 UBB silkscreen example 78 
+Figure 38 UBB board dimension 79 
+Figure 39 UBB board Top and side views 80 
+Figure 40 OAM Mirror Mezz Pro connector pin1 orientation_FC 81 
+Figure 41 OAM Mirror Mezz Pro connector pin1 orientation_HCM 82 
+Figure 42 UBB Front IOs 83 
+Figure 43 UBB high speed and power connectors to HIB 83 
+Figure 44 UBB high speed and power connectors coordinate 84 
+Figure 45 mounting holes 85 
+Figure 46 OAM through holes 86 
+Figure 47 OAM guide hole 86 
+Page 5 
+Open Accelerator Infrastructure – Universal Baseboard Design Specification v1.5 
+Figure 48 Mounting holes for bolster 87 
+Figure 49 Air Baffle mounting holes on the stiffener 88 
+Figure 50 Reference UBB handle 89 
+Figure 51 UBB assembly DWG 90 
+Figure 52 Bolster plate reference design 91 
+Figure 53 UBB mylar 91 
+Figure 54 Module Operation Ambient Temperature 93 
+Figure 55 UBB at different airflow directions 94 
+Figure 56 UBB heatsink recommended airflow area keep out 94 
+Figure 57 small heatsink keep out 95 
+Figure 58 Recommended Ambient Temperature Sensor Map 95 
+Figure 59 CFM per Watt definition for UBB 96 
+Figure 60 Thermal resistance and air pressure drop of UBB based on reference OAM Heatsink 97 
+Figure 61 Thermal resistance of single OAM Reference Heatsink 98 
+Figure 62 Reference Liquid Cooling Design for UBB. 1: Universal Base Board; 2: Host Interface Board; 3: Power 
+Distribution Board; 4: Liquid Cooling Module. The cooling components and OAMs in the figure are just for concept 
+demonstration and do not represent real solutions. 99 
+Figure 63 UBB I2C Topology 101 
+Figure 64 FRU diagram 105 
+Figure 65 FRU0 and FRU1 106 
+Page 6 
+
+### Tables
+
+Table 1 Universal Based Board (UBB) is a building block 14 
+Table 2 UBB input voltage range 19 
+Table 3 UBB(up to 700W OAM) input continuous current specifications 19 
+Table 4 UBB(up to 700W OAM) EDP support example 19 
+Table 5 UBB operation voltage range 20 
+Table 6 UBB input continuous current specifications 20 
+Table 7 UBB(up to 350w 12v based OAM) EDP support example 20 
+Table 8 Cmin requirement at 2x EDP 20us 21 
+Table 9 40V ~ 59.5V layout guidance 22 
+Table 10 MODULE_ID 28 
+Table 11 JTAG Truth Table 30 
+Table 12 UBB debug header pin definition 31 
+Table 13 UBB connector list 35 
+Table 14 QSFP-DD low-speed electrical specifications 36 
+Table 15 QSFP-DD connector 0~7 pin list 37 
+Table 16 P54V_0 Pin Definition 38 
+Table 17 P54V_1 Pin Definition 38 
+Table 18 P54V_2 Pin Definition 38 
+Table 19 P54V_3 Pin Definition 39 
+Table 20 P12V_0 power connector pin list 39 
+Table 21 P12V_1 power connector pin list 39 
+Table 22 HIF_0 connector pin list 41 
+Table 23 HIF_1 connector pin list 42 
+Table 24 HIF_2 connector pin list 44 
+Table 25 HIF_3 connector pin list 45 
+Table 26 HIF_4 connector pin list 47 
+Table 27 HIF_5 connector pin list 48 
+Table 28 HIF_6 connector pin list 48 
+Table 29 HIF_7 connector pin list 49 
+Table 30 OAM Debug connector pin list 50 
+Table 31 UBB reference Stack-Up 52 
+Table 32 UBB Impedance control 53 
+Table 33 Primary COLD I2C Programming Slave 55 
+Table 34 Primary CPLD Fan-out to OAMs 55 
+Table 35 Primary CPLD Slave I2C address for HIB 55 
+Table 36 Primary CPLD I2C slave register map 58 
+Table 37 JTAG debug present 60 
+Table 38 OAM test pins definition 60 
+Table 39 Secondary CPLD I2C Slave spec 61 
+Table 40 JTAG multiplexer of OAM 61 
+Table 41 JTAG multiplexer terminal Selection 61 
+Table 42 Primary CPLD pin list 66 
+Table 43 Secondary CPLD pin list 69 
+Table 44 OAM Vref Signal usage 70 
+Table 45 Mixed Voltage Support for LVCMOS and LVTTL I/O Types (copied from Lattice MachXO2 datasheet) 71 
+Table 46 UBB OAM module IDs 73 
+Table 47 LINK_CONFIG[4:0] Encoding Definitions 74 
+Page 7 
+Open Accelerator Infrastructure – Universal Baseboard Design Specification v1.5 
+Table 48 UBB IO connectors 82 
+Table 49 High speed and Power Conenctor 83 
+Table 50 Screw size and torque spec 90 
+Table 51 SEL Definition List 102 
+Table 52 Sensor name and Event table 104 
+Table 53 FRU content-standard IPMI 106 
+Table 54 UBB OAM Interconnect FRU 110 
+Table 55 Minimum creepage distances 111 
+Table 56 Altitude correction factors 112 
+Table 57 Acronyms 113 
+Table 58 Revision History 116 
+Page 8 
+
+### 1. License
+
+Contributions to this Specification are made under the terms and conditions set forth in Open Web Foundation Contributor License Agreement (“OWF CLA 1.0”) (“Contribution License”) by:
+
+OCP OAI Subgroup
+
+Usage of this Specification is governed by the terms and conditions set forth in the Open Web Foundation Final Specification Agreement (“OWFa 1.0”).
+
+Note: The following clarifications, which distinguish technology licensed in the Contribution License and/or Specification License from those technologies merely referenced (but not licensed), were accepted by the Incubation Committee of the OCP:
+
+None.
+
+NOTWITHSTANDING THE FOREGOING LICENSES, THIS SPECIFICATION IS PROVIDED BY OCP "AS IS" AND OCP EXPRESSLY DISCLAIMS ANY WARRANTIES (EXPRESS, IMPLIED, OR OTHERWISE), INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT, FITNESS FOR A PARTICULAR PURPOSE, OR TITLE, RELATED TO THE SPECIFICATION. NOTICE IS HEREBY GIVEN, THAT OTHER RIGHTS NOT GRANTED AS SET FORTH ABOVE, INCLUDING WITHOUT LIMITATION, RIGHTS OF THIRD PARTIES WHO DID NOT EXECUTE THE ABOVE LICENSES, MAY BE IMPLICATED BY THE IMPLEMENTATION OF OR COMPLIANCE WITH THIS SPECIFICATION. OCP IS NOT RESPONSIBLE FOR IDENTIFYING RIGHTS FOR WHICH A LICENSE MAY BE REQUIRED IN ORDER TO IMPLEMENT THIS SPECIFICATION. THE ENTIRE RISK AS TO IMPLEMENTING OR OTHERWISE USING THE SPECIFICATION IS ASSUMED BY YOU. IN NO EVENT WILL OCP BE LIABLE TO YOU FOR ANY MONETARY DAMAGES WITH RESPECT TO ANY CLAIMS RELATED TO, OR ARISING OUT OF YOUR USE OF THIS SPECIFICATION, INCLUDING BUT NOT LIMITED TO ANY LIABILITY FOR LOST PROFITS OR ANY CONSEQUENTIAL, INCIDENTAL, INDIRECT, SPECIAL OR PUNITIVE DAMAGES OF ANY CHARACTER FROM ANY CAUSES OF ACTION OF ANY KIND WITH RESPECT TO THIS SPECIFICATION, WHETHER BASED ON BREACH OF CONTRACT, TORT (INCLUDING NEGLIGENCE), OR OTHERWISE, AND EVEN IF OCP HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Page 9
+
+### 2. Acknowledgment
+
+We want to acknowledge all the OCP OAI Workstream members for their contributions to this specification: The incredible collaboration between customers, accelerator manufacturers, system developers, and industry partners shows how Open Compute develops industry-standard form factors and specifications that benefit all its members. We would especially like to thank Google, H3C, Inspur, Intel, Meta, and Wiwynn for their extra efforts in putting this specification together.
+
+Page 10
+
+### 3. Introduction and Scope
+
+Open Accelerator Infrastructure (OAI) is an initiative within the OCP Server Project to define a modular, interoperable architecture for systems targeting Machine Learning, Deep Learning, and High-Performance Computing workloads. Beginning with the OCP Accelerator Modules (OAI-OAM), OAI defines the logical and physical attributes of all the basic building blocks of an accelerator system design. A standard way to connect this Open Accelerator Infrastructure to a CPU Box in a rack is shown in Figure1.
+
+Figure 1 OAI as a disaggregated compute for AI in a Rack. The Universal Baseboard (UBB) specification is the next step in defining a complete solution for this accelerator infrastructure, leveraging the progress in defining the OAM module and carrying forward the goals of openness and modularity. The Open Accelerator Infrastructure will be composed of these base building blocks:
+
+● OAI Power Distribution (OAI-PDB): The translation between Rack Power to UBB module power needs. 
+● OAI Host Interface (OAI-HIB): The HIB provides the interface links between the UBB and head node(s). 
+● OAI Security, Control, and Management (OAI-SCM): This module provides OAI management, power sequencing, and security. 
+● OAI Universal Baseboard (OAI-UBB): The UBB Baseboard supports 8 OAM modules in various fabric and interconnects topologies. 
+● OCP Accelerator Module (OAI-OAM): Specification 1.0 defines the mezzanine module accelerator. 
+● OAI Expansion (Scale-out) Beyond UBB (OAI-Expansion): Specifications describe connections between multiple OAI systems in the same rack or across different racks. 
+● OAI-Tray: The tray provides mechanical support to adapt various UBBs to both 19” and 21” Chassis and Racks 
+● OAI-Chassis: This chapter discusses both air-cooled and liquid-cooled implementations. Specifications for each component will cover logic, power, mechanical, connector interfaces, and thermal infrastructure definitions to ensure interoperability between all the OAI elements. These elements and their interactions are represented in figure2. Page 11 
+
+Figure 2 OAI building blocks The figure below shows an example system from Inspur as a composite of various OAI building blocks.
+
+Figure 3 Example OAI System Building Blocks
+
+Page 12
+
+### 4. Universal Baseboard (OAI-UBB) High-level Description
+
+The Universal Baseboard is modular and flexible in supporting current and future OAM modules and providing maximum 
+design flexibility for conceivable system designs. The UBB supports 8 OAM modules, but the board has been engineered 
+to help comprehensive options of interconnecting fabrics and topologies, power domains, TDP’s, cooling solutions, and 
+scale-out options. While the board is optimized for a few standard configurations and released OAM modules, great care 
+was taken to accommodate future trends and customer needs. 
+The Universal Based Board (UBB) is a building block that supports: 
+
+| OAM Support | Various interconnect topologies for the 8 OAMs ● Air or liquid cooling ● OAM powered by 12V nominal up to 350W (*) ● OAM powered by 54V/48V nominal up to 700W (*) ● One x16 host interface per OAM ● |
+| --- | --- |
+| Interface to Interface Board) | HIB (Host 8 x16 connectors for host interface connections (one per OAM) ● Each Host Interface up to x16 lanes (for example, PCIe ● Gen4) Support for PCIe Gen5 and other future host interfaces ● Power: 12V, 54V, 12V standby, etc. ● Sideband signals: I2C, Reset, Reference clocks, JTAG, Power ● management, et al. |
+| Scale-out Capabilities | QSFP-DD connectors for scale-out interconnect** ● Exposed from UBB to the exterior of the UBB Tray/System Chassis ● |
+| Electrical Interoperability | The current UBB reference design supports SERDES links up to 32 ● Gbps NRZ and up to 112 Gbps PAM4 Two Micro USB connectors are exposed from the UBB to the ● exterior of the chassis for debugging (UART to USB) |
+| Mechanical Interoperability | PCB dimensions: 417mm wide x 585mm long ● Supports both 19” and 21” rack chassis infrastructures ● Defined mounting hole sizes and locations ● |
+
+Table 1 Universal Based Board (UBB) is a building block
+
+Note: 
+* Different UBB designs may have different power support. Check UBB providers for specific product spec. 
+**Number of QSFP-DD connectors is flexible, based on different UBB designs. 
+Figure 2 shows the major physical features of the UBB board. In red, you can see power delivery connections to the OAM 
+module. In yellow, you can follow the Host interface, clock, and SCM signals to the OAM module, and in green, you can 
+see scale-out (SERDES) interconnect from the OAM module to external connectors. 
+
+Page 13
+
+Figure 4 Example UBB System Building Blocks
+
+Figure 5 Universal Reference Base Board (UBB)
+
+Page 14
+
+### 5. Input and Output Interfaces
+
+The UBB board is the carrier board that houses the 8 OAM modules, and it defines five primary interfaces to other 
+boards in a complete system design: 
+1 OAM Interface: Interface to the Open Accelerator Modules 
+2 Host Fabric interface: Required interface to host(s) via PCIe or other fabric. The interface fabric is routed to the 
+Host Interface Board where it connects to either a host node integrated within the same chassis or a 
+disaggregated host node. 
+3 Scale-out interface: Optional interface allows multiple UBB boards to connect through QSFP-DD connectors to 
+external switches or node-to-node. 
+4 Miscellaneous Signal Interface: SMBus, USB, Clocks, sideband signals provided by the Host Interface board. 
+5 Input Power Interface – 54V/48V, 12V, and 3.3V Aux inputs to the UBB. 
+
+#### 5.1. OAM Interconnect Interface
+
+As outlined in the OAM design specification, each OAM has up to eight x16 interconnect links. Each OAM to OAM 
+connection can support different interconnect topologies based on how many links are supported by the specific OAM 
+populated on the UBB. 
+Please refer to Section 7 for more details on the supported UBB interconnect topologies and OAM Design Specification 
+for pin-out and accelerator module information. 
+
+Figure 6 UBB Host and Expansion (scale-out) Interfaces
+
+#### 5.2. Host Fabric Interface
+
+This section describes the host interface to the HIB board, including supported fabrics and speeds.
+
+Page 15
+
+5.2.1. Host Interface: High-speed interface
+
+There are eight x16 SerDes links dedicated for host interface connections. Each OAM module on the UBB routes an x16 
+link to a dedicated ExaMAX connector (shown in Figure 3) which connects to the Host Interface Board. 
+Different implementations of the Host Interface Board provide customized topologies that allow the UBB to interface to a 
+single host node or multiple hosts in various configurations. System designs can also support either integrated head 
+nodes in the same chassis as the UBB or disaggregated head nodes, which cable to a separate UBB chassis within the 
+rack. 
+The specification supports industry-standard host protocols such as PCIe Gen5, CXL, Infinity Fabric, and other alternate 
+protocols. The UBB has space allocated for re-timers that may be needed to support specific protocols or configurations 
+needed with different OAM and system designs. 
+
+5.2.2. Pin list
+
+A detailed pinout is in section 6.2.1
+
+#### 5.3. Scale-Out Interface
+
+The UBB uses QFSP-DD connectors to scale-out topologies that connect multiple UBB boards through high-speed cables. 
+The number of QSFP-DD connectors varies based on different designs. 
+
+5.3.1. High-speed support
+
+The QSFP-DD connectors are exposed on the exterior of the UBB tray and system chassis to allow connections to other 
+UBB systems. The QSFP-DD links can be through passive or active copper cables. 
+OAI UBB reference board supports SerDes data rates up to 112Gbps PAM4. In addition, to support future configurations, 
+space for re-timers has been allocated on the UBB board while SI studies against the various system and cable 
+configurations. 
+
+5.3.2. I2C An I2C interface is included on each QSFP-DD connector to enable cable re-driver tuning and FRU access.
+
+5.3.3. Pin list
+
+Refer to section 6.2.1
+
+#### 5.4. Miscellaneous Signal Interface
+
+The UBB also receives necessary ancillary signals from the host interface board that defines security, control, and board management.
+
+5.4.1. Clock and I2C Signals
+
+The UBB receives its primary clock, AUX clock, downstream clock from the HIB. Please refer to section 6.1.1 for details.
+
+5.4.2. Board management
+
+There are I2C, JTAG, UART for UBB management.
+
+● I2C is used to read OAM information, status, and UBB FRU. Page 16 
+
+● The host node controls OAM Reset through HIB CPLD to UBB CPLD. 
+● JTAG is for debugging and FW upgrades. 
+● UART is used for OAM debug. 
+
+5.4.3. Power management
+
+There are PWREN, PWROK, PWRBRK#, thermtrip# signals for power management.
+
+● PWREN: UBB power ready assert OAM power enable. 
+● PWROK: Indicates OAM power is stable and asserts PWROK to CPLD 
+● PWRBRK#: There are two sources to trigger PWRBRK#. One is from BMC, and the other is from PSU alert 
+● Thermtrip#: it indicates OAM silicon has reached an elevated temperature. OAM will power off itself when thermtrip# is triggered. UBB may or may not shut down the entire board. It depends on the different system design requirements. 
+● UBB Power Ready (UBB_PWR_READY): Assert UBB_PWR_READY to notice BMC on HIB when all UBB powers are ready. 
+
+#### 5.5. Input Power Interface
+
+The UBB supports two OAM power types: 54V/48V OAM modules with TDPs up to 700W and 12V OAMs with TDPs up to 350W. A group of connectors supplies DC Power for the UBB on the edge of the board.
+
+Figure 7 Input Power connectors Placement
+
+There are four dedicated 54V/48V connectors delivering power from the HIB to the UBB. In addition, two connectors provide 12V power to the OAMs and other UBB components from the host interface board (HIB). One of the 12V power sources is used to power PCIe Retimers, SerDes Retimers, and the 3.3 voltage converter to the QSFP-DD connectors. 3.3V Auxiliary is used to power the CPLDs and other board management components during the DC power off stage. UBB is designed to support different rack infrastructures and form factors and interface to different system-specific HIB and PDB implementations that support bus bar or discrete power supply solutions. A typical implement is below:
+
+Page 17
+
+Figure 8 OAI Reference UBB power Delivery Diagram
+
+5.5.1. UBB System Power
+
+UBB is part of the OAI system infrastructure, which supports two distinct power architectures. 
+One is centralized power in the rack with a busbar, often energized by an in-rack power shelf with several 54V/48V PSUs. 
+The other method utilizes PSUs integrated into the individual OAI system chassis itself. The PSU’s input is from an AC 
+supply, and its output is 54V or 12V. For example, 54V 3000W Platinum PSUs with 3+3 redundancy is one known OAI 
+system implementation. 
+Please refer to Section 6.2 for the power connector pin list. 
+
+5.5.2. 54V/48V based OAM power input
+
+Each OAM has an isolated source from 54v/48v through a dedicated hot-swap controller(OAI-PDB power distributed 
+board). The system provider who designs the OAI system shall implement bulk capacitors to support OAM 54V/48V 
+power rails to support OAM EDP. The implementation shall be at the HIB power connectors' side. Please refer to section 
+5.5.4 for detailed excursion power support. 
+The following table summarizes the voltage range UBB supports. 
+
+Minimum Nominal Maximum Operating voltage 40.0V 48.0/54.0V 59.5V Table 2 UBB input voltage range
+
+The recommended range includes DC level, noise, and other transients. The input rails must remain within 40 to 59.5v.
+
+Page 18
+
+Although specific UBB has a particular OAM TDP support target based on design, UBB could support up to 700W TDP OAM. The continuous current specification for nominal input voltages between 48.0V and 54.0V can use linear interpolation to approximate.
+
+| Specification | Voltage(nominal) | Maximum | Value Moving Average |
+| --- | --- | --- | --- |
+| Input 54V | 54.0V | 103.7A | continuous |
+| Input 48V | 48.0V | 116.7A | continuous |
+| Total baseboard | power 48.0V to | 54.0V 5600W | continuous |
+
+Specification Voltage(nominal) Maximum Value Moving Average Input 54V 54.0V 103.7A continuous Input 48V 48.0V 116.7A continuous Total baseboard power 48.0V to 54.0V 5600W continuous Table 3 UBB(up to 700W OAM) input continuous current specifications UBB system provider shall check with OAM vendor to get detailed excursion support requirements and apply design accordingly. OAI UBB reference boards support OAM’s excursion design power (EDP) of 1.6x TDP (700W based on 48/54V) for a 2ms duration.
+
+| Voltage | EDP | Current | * Duration |
+| --- | --- | --- | --- |
+| | 2x TDP | 200%*103.7A(or | 116.7A) <= 20us |
+| 54V or | 1.6x | TDP 160%*103.7A(or | 116.7A) <= 2ms |
+| 48V | 1.5x | TDP 150%* 103.7A(or | 116.7A) <= 5ms |
+| | 1.2x | TDP 120%*103.7A(or | 116.7A) <= 10ms |
+| | 1.1x | TDP 110%*103.7A(or | 116.7A) <= 20ms |
+
+Table 4 UBB(up to 700W OAM) EDP support example
+
+5.5.3. 12V based OAM Power input
+
+The 12V input to the UBB could support an EDP of 1.5x for a 5ms duration. The UBB shall provide an isolated 12V rail to 
+each OAM through dedicated E-fuses on the boards. These E-fuses have over current protection and prevent OAM 
+modules from being damaged or affected by over current failures. 
+The 12V pin assignment is in the UBB spec package. 
+The following table summarizes the voltage range UBB supports. 
+
+Minimum Nominal Maximum Operating voltage 11.0V 12.2V (11.6V~12.8V) 13.2V Table 5 UBB operation voltage range
+
+Input electrical design peak specifications are based on nominal voltages, with the continuous current specifications shown below. Linear interpolation can be used to approximate the continuous current specification for nominal input voltages 12V.
+
+| Specification | Voltage(nominal) | Maximum | Value Moving Average |
+| --- | --- | --- | --- |
+| Input 12V | 12.2V | 230A | continuous |
+| Total baseboard | power 12.2V | 2800W | continuous |
+
+Table 6 UBB input continuous current specifications
+
+UBB system provider shall check with OAM vendor to get detailed excursion support requirements and apply design accordingly. OAI UBB reference boards support OAM’s excursion design power (EDP) of 1.6x TDP(350w) based on 12V for a 2ms duration.
+
+| Voltage | EDP | Current | * Duration |
+| --- | --- | --- | --- |
+| | 2x TDP | 200%*230A | <= 20us |
+| 12V | 1.6x | TDP 160%*230A | <= 2ms |
+
+Page 19
+
+| | 1.5x | TDP 150%* | *230A <= 5ms |
+| --- | --- | --- | --- |
+| | 1.2x | TDP 120%**230A | <= 10ms |
+| | 1.1x | TDP 110%**230A | <= 20ms |
+
+Table 7 UBB(up to 350w 12v based OAM) EDP support example
+
+5.5.4. OAM Excursion Power Support
+
+This section describes the 12V/54V power design guide based on the UBB reference system. The figure below for reference is based on the peak current requirement to calculate Cmin capacitance for the microsecond(uS).
+
+Figure 9 Cmin calculation for OAM peak current
+
+● Cmin: Min buffer cap size assuming PSU(s) has 0uF output capacitance and 0uF on the baseboard power rail. 
+● Pmax: the max system power due to CPU Pmax virus condition. 
+● Popp: the PSU minimum OPP power level, and it is always set above system power budget corresponding with CPU’s Pmax.app 
+● Tmax: the throttle time delay after the system power exceeds the pre-defined power threshold. 
+● V1 and V2: The PSU output voltage levels at the beginning and the end of the Pmax time interval (Tmax) The table is an example for 54V/12V power at 2x EDP 20us calculation result based on reference UBB design. The 54V OAM 700W EDP with 20us duration is about 66uF of Cmin, and the 12V OAM 350W EDP with 20us duration is about 699uF of Cmin. The designer should trade off your PCB space and cost to provide a VR/Cap solution for peak power requirements. 
+
+Table 8 Cmin requirement at 2x EDP 20us
+
+Page 20
+
+#### 5.6. 40V ~ 59.5V power layout guidance
+
+Manufacturing defects can result in shorts or faults across large voltage differentials. This risk needs to address due to 
+the high voltages on the UBB. 
+Industry safety standards (IEC CDV 62368) require additional safeguards (i.e., creepage/ clearance distances, access 
+restrictions, et al.) for systems with voltages that exceed 60V. Voltage differentials of less than 60Vdc are classified as 
+ES1 voltage sources. While ES1 systems do not require explicit safety safeguards, the guidelines below will minimize the 
+risk of a fault that could cause high energy dissipation or fire. 
+
+| Layout Recommendations Controller / Fuse | before Hot Swap Minimum spacing between conductors with high potential differences >40V |
+| --- | --- |
+| Internal Layer | 25 mils (0.64mm) |
+| External Layer | 120 mils (3.0mm) |
+| Z-Axis | 17 mils (0.43mm) spacing or 3-ply prepreg |
+| Layout Recommendations Controller / Fuse | after Hot Swap Minimum spacing between conductors with high potential differences >40V |
+| Internal Layer | 25 mils (0.64mm) |
+| External Layer | 60 mils (1.5mm) |
+| Z-Axis | 3 mils (0.076mm) |
+
+Table 9 40V ~ 59.5V layout guidance
+
+Exceptions may be necessary due to the inherent spacing of components and should use DFMEA to evaluate thoroughly 
+on a case-by-case basis. 
+Good power and ground isolation for an external layer on the UBB are below. 
+
+Figure 10 power and GND isolation
+
+Page 21
+
+### 6. UBB Electrical Specification
+
+This chapter describes details of the UBB electrical design.
+
+#### 6.1. Board Architecture specification
+
+The OAI- UBB boards will share a standard hardware architecture definition for various design areas such as Clock 
+distribution, Power Sequence Control, Telemetry, I2C, and GPIO assignments. The standard hardware specification 
+intends to have a single Firmware and Software definition that can cover all different designs and to re-use the hardware 
+solutions as much as possible across the other products. 
+The typical hardware architecture components include the following definitions. 
+∙ Power Delivery 
+∙ Clock Distribution 
+∙ I2C Interconnectivity 
+∙ Power and Reset control 
+∙ Power and Reset Sequence 
+∙ GPIO definition 
+
+6.1.1. System Clock Architecture
+
+Host to HIB will run in SRIS mode. HIB to UBB will be standard clock mode. SRIS also supports Spread-Spectrum Clocking (SSC) for EMC/ EMI.
+
+Figure 11 OAI Reference UBB clock diagram
+
+6.1.2. I2C architecture
+
+There are 5 I2C buses to take bus traffic, as illustrated in the diagram below. 
+Bus1 is for 12V HSC sensor polling. 
+Bus2 is for OAM sensor information and FW update. PCA9555 IO expander with GPIO control is also on this bus. 
+
+Page 22
+
+Bus3 connects SERDES clock gen/ clk buffer as well as retimers. 
+Bus4 is for scaling out PHY FW update and sensors. 
+Bus5 is for UBB sensor readings and UBB CPLD FW update. 
+There’s 2 FRU EEPROM on the UBB board. FRU 0 is dedicated to BMC, and FRU 1 is shared with BMC and OAM #0. Refer 
+to section 10.6 for detail. 
+Below is how the UBB I2C pull-up resistor calculate. Each board designer has to calculate the pull-up time they need. 
+The minimum resistance calculation as 
+
+Rp(min)=(Vcc-VOL(max))/IOL Vccis the bus voltage, VOL(max) is the maximum voltage that can read as logic-low, and the maximum current that the pins can sink when at or below VOL. The maximum resistance calculation as:
+
+Rp(max)=tƬ/(0.8473xCb) tƬ is the maximum allowed rise time of the bus, and Cbis the total bus capacitance.
+
+Figure 12 I2C/SMBus Block Diagram
+
+6.1.3. Power control
+
+The UBB provides 12V and 54V/48V to 8x OAMs. The 12V is from the HIB power connector (P12V_1 and P12V_2) through eFuse (ex: MP5023) control. And the 54V/48V power is directly connected from the HIB power connector (P54_0, P54_1, P54_2, and P54_3).
+
+Page 23
+
+The management device of HIB controls all voltage power on/off through the I2C bus to CPLD. The UBB provides the 12V power over 2400W (8x 300W) and 54V/48V over 5600W (8x700W). Therefore, CPLD will control all OAM power enabled to do the time slot for series power-on. The duration of the time slot will update in the next version.
+
+6.1.4. Reset
+
+The following figure shows the UBB reset diagram from the HIB management device (ex, BMC) to the UBB device via 
+CPLD. The I2C bus of the HIB setting to CPLD can control all device reset. UBB onboard device includes OAM, OAM uplink 
+serdes retimer, and OAM scale-out serdes PHY retimer. 
+Below is each signal naming function: 
+OAM_PERST_[7:0]#: OAM up-link serdes reset signal from HIB via CPLD at the OAI system or host power-on reset. 
+OAM_WARMRST_[7:0]#: OAM warm reset signal from HIB via CPLD at the OAI system reboot or after firmware update. 
+RETIMER_PERST_[7:0]_A/B#: OAM up-link serdes Retimer-A/B device reset signal from HIB via CPLD. 
+SERDES_RESET_[7:0]#: OAM expansion serdes PHY retimer device reset signal from HIB via CPLD. 
+
+Figure 13 UBB Reset signals diagram
+
+Page 24
+
+6.1.5. Power Diagram
+
+Figure 14 Power Control Block Diagram
+
+6.1.6. Strap pins
+
+6.1.6.1. Module ID 
+The following figure shows the MODULE_ID[4:0] strapping for physical orientation of modules when 8 interconnected 
+Accelerators used. 
+
+Page 25
+
+Figure 15 Required MODULE_ID[4:0] assignments for baseboards with 8 interconnected modules
+
+Detail port to port assignment is based on system placement and routing length. Module to module interconnect may 
+decrease to 4 ports if the module only supports 4. Module to module interconnect link may only utilize 8 lanes if the 
+module defines 8 lanes per link. 
+The following Figure shows the required MODULE_ID[4:0] assignments when only 4 modules are connected as two rows 
+of two. 
+
+Figure 16 Module_ID[4:0] assignments when four only in two rows of two
+
+MODULE_ID can be used as the I2C address strap pins if needed.
+
+OAM Module ID OAM0 00000 OAM1 00001
+
+Page 26
+
+Open Accelerator Infrastructure – Universal Baseboard Design Specification v1.5 
+OAM2 00010 
+OAM3 00011 
+OAM4 00100 
+OAM5 00101 
+OAM6 00110 
+OAM7 00111 
+Table 10 MODULE_ID 
+
+6.1.6.2. Link_Config[4:0] 
+The 5 link configuration strapping bits are pulled up on modules that use them. These bits are strapped to the ground 
+on the baseboard to select logic 0 or left floating to select logic 1. Some OAMs use these LINK_CONFIG[4:0] strapping 
+bits to determine the interconnect topology for the links between modules and determine the protocol of the “P” Link. 
+Refer to Chapter 7.2 for details. 
+6.1.6.3. PE_BIF[1:0] 
+x16 Host Interface Bifurcation Configuration. This module output informs the host if it needs to bifurcate the PCIe 
+interface to the module. 
+
+00 = one x16 PCIe host interface 
+01 = bifurcation into two x8 PCIe host interfaces 
+10 = bifurcation into four x4 PCIe host interfaces 
+11 = reserved 
+
+6.1.7. Debug interface 
+There are two OAM debug interfaces on UBB, one is JTAG, and the other is the UART interface. UART supports both 
+micro USB local access and BMC’s remote debugging feature. BMC can access 8 OAM UART output at a time. 
+There is also one debug header on UBB to support OAM debug through the dongle. 
+Below are JTAG, UART, and debug header diagrams. 
+
+##### 6.1.8. JTAG Interface
+
+Page 27
+
+Figure 17 JTAG diagram
+
+JTAG Truth Table:
+
+MUX_A:
+
+SELECTION DESCRIPTION REMARK LOW PRI CPLD FW UPDATE HIGH GO TO SEC CPLD Default
+
+MUX_B:
+
+SELECTION DESCRIPTION REMARK LOW UPDATE SEC CPLD HIGH OAM JTAG CHAIN Default
+
+MUX_C:
+
+SELECTION DESCRIPTION REMARK LOW UPDATE BY HEADER HIGH UPDATE BY BMC Default
+
+MUX_D:
+
+SELECTION DESCRIPTION REMARK LOW UPDATE BY HEADER HIGH UPDATE BY BMC Default Table 11 JTAG Truth Table
+
+Page 28
+
+6.1.9. UART 
+There are two interfaces, micro USB and BMC, for OAM UART access through USB Mux. The USB Hub illustrate below. 
+Micro USB takes priority if it is plugged. BMC be notified once a micro USB connector is plugged through USB_Mux_Sel 
+signals on HIF_5 connector N8, O8 pins. 
+BMC console can see 8 OAM UART at a time. 
+
+Figure 18 UART Diagram
+
+6.1.10.Debug Header
+
+A debug header is combined with proprietary debug interfaces from different OAM vendors by using OAM test pins. The debug header is optional in UBB spec. The one used in the OAI UBB reference design is Molex 501190-4017 with pin definition below:
+
+Figure 19 UBB reference board debug header
+
+Page 29
+
+| 2 | OAM_TEST_0 | NC | 1 |
+| --- | --- | --- | --- |
+| 4 | OAM_TEST_1 | NC | 3 |
+| 6 | OAM_TEST_2 | NC | 5 |
+| 8 | OAM_TEST_3 | NC | 7 |
+| 10 | OAM_TEST_4 | NC | 9 |
+| 12 | OAM_TEST_5 | NC | 11 |
+| 14 | OAM_TEST_6 | GND | 13 |
+| 16 | OAM_TEST_7 | GND | 15 |
+| 18 | OAM_TEST_8 | GND | 17 |
+| 20 | OAM_TEST_9 | GND | 19 |
+| 22 | OAM_TEST_10 | GND | 21 |
+| 24 | OAM_TEST_11 | JTAG_HOOK0 | 23 |
+| 26 | OAM_TEST_12 | JTAG_HOOK6 | 25 |
+| 28 | OAM_TEST_13 | JTAG_HOOK7 | 27 |
+| 30 | OAM_TEST_14 | GND | 29 |
+| 32 | GND | JTAG_TCK | 31 |
+| 34 | NC | JTAG_TDO | 33 |
+| 36 | VREF | JTAG_TRST | 35 |
+| 38 | NC | JTAG_TDI | 37 |
+| 40 | DEBUG_PRESENT _N | JTAG_TMS | 39 |
+
+Table 12 UBB debug header pin definition
+
+6.1.11. UBB Power sequence
+
+UBB board power sequence diagrams are below.
+
+Page 30
+
+Figure 20 UBB Power-on sequence
+
+Page 31
+
+Figure 21 UBB Power-down sequence
+
+Notes: 1. All voltages on the UBB must be within specification before MODULE_ENABLE is asserted. 2. HOST/PHY_RETIMER_VR depends on the system provider’s design to be in the UBB design or not. 3. The MODULE_ENABLE is the UBB power good indication signal. 4. As the voltage planes on the UBB ramp up, the reference clocks from the UBB will begin to run. 5. After all the voltages on the module are within specification, the module asserts MODULE_PWRGD to the UBB. 6. At least 100ms after MODULE_PWRGD assertion, the UBB will de-assert the PCIe reset signal(PERST#) to the module. 7. The optional WARMRST# signal de-asserts simultaneously or later than the PERST# signal is de-asserted. 8. Using clock buffer enables the pin to control reference clock disable earlier than P3V3_VR_EN. 9. Clock buffer enables pins to connect to CPLD. 10. After MODULE_ENABLE de-asserted, if Module_PWRGD doesn’t de-asserted in 100ms, shut down all power. 11. UBB_PWR_ON_N is monitored by CPLD on HIB
+
+6.1.12. FRU Please refer to section 10.3 for detailed FRU format. BMC controls MUX selection via BMC GPIO:
+
+● When DC is off, BMC switches FRU1 access to BMC. 
+
+Page 32
+
+Open Accelerator Infrastructure – Universal Baseboard Design Specification v1.5 ● When DC is on, BMC switches FRU1 access to OAM0
+
+Figure 22 DC is off, BMC switches FRU1 access to BMC
+
+Figure 23 When DC is on, BMC switches FRU1 access to OAM0
+
+Case 1: DC off 
+1. BMC switches MUX to BMC access. 
+2. If FRU0 is changed, copy FRU0 to FRU1 
+Case 2: DC on 
+1. BMC switches MUX to OAM #0. 
+2. OAM #0 to update link topology by FRU1. 
+Page 33 
+
+Case 3: OAM reset 
+1. User send OAM to reset command to BMC 
+2. BMC pulls down OAM reset and then switches MUX to BMC. 
+3. If FRU0 is changed, copy FRU0 to FRU1. 
+4. Switch MUX to OAM #0, and then release OAM reset signal. 
+Case 4: User update FRU0 
+1. User updated FRU0 via BMC OOB interface. 
+2. BMC stores these changes in FRU0 and waits for events of DC off or OAM reset. 
+3. DC off: use “Case 1: DC off” above to update FRU1. 
+4. OAM reset: use “Case 3: OAM reset” above to update FRU1. 
+
+#### 6.2. UBB Connectors
+
+UBB has 8 6x8 high-density connectors, 16 OAM Mezz connectors, 8 OSFP-DD connectors for scale-out, 4 mechanical guide pins, 4 54V power connectors, 2 12V power connectors (can be repurposed for 54V power delivery, see 6.2.1.4), 2 micro USB UART ports. Details are in the table below.
+
+Table 13 UBB connector list
+
+Note: For 12V Connector, the last 5 digits changes are based on system design requirements.
+
+6.2.11. UBB Connector pin list
+
+This chapter describes connectors including Host Interface, 12V power, 54V power, QSFP-DD, debug header.
+
+6.2.11.1. QSFP-DD connector pin list 
+Each QSFP-DD Tx and Rx is AC-coupled 100 ohm differential lines that shout be terminated with 100 ohms differentially 
+at the Host ASIC(SerDes). The AC coupling is inside the QSFP-DD module and not required on the Host board. 
+The QSFP-DD low-speed electrical specifications are in the below table. This specification ensures compatibility between 
+host bus masters and the I2C interface. 
+
+Page 34
+
+Parameter Symbol Min Max Unit Condition
+
+SCL and SDA VOL 0 0.4 V
+
+IOL(max)=3mA for fast mode, 20ma for Fast-mode plus
+
+SCL and SDA
+
+VIL -0.3 Vcc*0.3 V
+
+VIH VCC*0.7 Vcc+0.5 V
+
+InitMode, ResetL and ModSelL
+
+VIL -0.3 0.8 V
+
+VIH 2 VCC+0.3 V
+
+IntL
+
+VOL 0 0.4 V IOL=2.0mA
+
+VOH VCC-0.5 VCC+0.3 V
+
+10k ohms pull-up to Host Vcc
+
+ModPrsL
+
+VOL 0 0.4 V IOL=2.0mA
+
+VOH VCC-0.5 VCC+0.3 V
+
+ModPrsL can be implemented as a short-circuit to GND on the module Table 14 QSFP-DD low-speed electrical specifications
+
+For detailed QSFP-DD information, please refer to “QSFP-DD Hardware Specification for QSFP DOUBLE DENSITY 8X PLUGGABLE TRANSCEIVER – Rev 5.0.”
+
+QSFP-DD Connector 0~7 pin list (Input, Output are based on UBB side) All signals direction below are based on the UBB side
+
+Signal UBB Direction POV
+
+##### Description Voltage Total Diff Pins
+
+Total 
+Single 
+Pins 
+GND GND GND GND 24 
+Vcc1 PWR +3.3V Power supply 3.3V 1 
+Vcc2 PWR 3.3V Power Supply 3.3V 1 
+VccTx PWR +3.3V Power supply 
+transmitter 
+
+3.3V 1
+
+VccTx1 PWR 3.3V Power Supply 3.3V 1 VccRx PWR +3.3V Power Supply Receiver 3.3V 1
+
+VccRx1 PWR 3.3V Power Supply 3.3V 
+PETp/n 
+[8:1] 
+
+Output PCIe or equivalent link Transmit differential pairs. OAM module Transmit, QSFP-DD connector Receive.
+
+16 16
+
+Page 35
+
+| PERp/n [8:1] | Input | PCIe or equivalent Receive differential OAM module Receive, QSFP-DD connector | link pairs. Transmit. | 16 | 16 |
+| --- | --- | --- | --- | --- | --- |
+| I2C_SLV_ D | Bi-directional | Slave I2C data | 3.3V | | 1 |
+| I2C_SLV_ CLK | Output | Slave I2C clock | 3.3V | | 1 |
+| RESETL | Output | QSFP-DD Module | Reset 3.3V | | 1 |
+| INTL | Input | QSFP-DD Module | Interrupt 3.3V | | 1 |
+| MODSELL | Output | QSFP-DD Module | Select 3.3V | | 1 |
+| MODPRSL | Input | QSFP-DD Module inform OAM cable not. | Present for 3.3V insert or | | 1 |
+| INITMODE | Output | Initialization mode; QSFP applications, InitMode pad is LPMODE | In legacy 3.3V the called | | 1 |
+
+Table 15 QSFP-DD connector 0~7 pin list
+
+6.2.11.2. 54V power connector pin list Base on temperature rise under 30˚C, 18Amp per contact (POS).
+
+Figure 24 54V power connector
+
+54V power derating
+
+Page 36
+
+• The thermal test for the vertical connector, the Max T-rise, is around 12°C, 20A. P54V_0 Pin Definition:
+
+POS 1 & 2 54V_1 54V_0 POS 3 & 4 GND GND Table 16 P54V_0 Pin Definition
+
+P54V_1 Pin Definition:
+
+POS 1 & 2 54V_2 54V_3 POS 3 & 4 GND GND Table 17 P54V_1 Pin Definition
+
+P54V_2 Pin Definition:
+
+POS 1 & 2 54V_4 54V_5 POS 3 & 4 GND GND Table 18 P54V_2 Pin Definition
+
+P54V_3 Pin Definition:
+
+POS 1 & 2 54V_7 54V_6 POS 3 & 4 GND GND Table 19 P54V_3 Pin Definition
+
+6.2.11.3. 12V power connector pin list Based on temperature rise under 30˚C, 10Amp per contact (POS).
+
+Page 37
+
+| Open | Accelerator | | | | Infrastructure | | | | | – | Universal | | | | Baseboard | | | | | | Design | | | Specification | | | | | v1.5 | | | | | | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | | | | | | | | | | | | | | | Figure 25 12V power connector pin list | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | | P12V_ | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | | | 0 | | | | PIN | | 1 | | | | | | PIN | | 2 | | | | | | | PIN | 3 | | | | | | PIN | | 4 | | | | | PIN | 5 | | |
+| | | CONN | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | | | | | | COLM | | | COLM | | | COLM | | | | | COLM | | | | | COLMN | | | COLMN | | | | COLM | | | | COLM | | | COLM | | | COLM | | |
+| | | | | | | N A | | | N | B | | N | A | | | | N | | B | | | A | | | B | | | | N | A | | | N | B | | N | | A | N | B | |
+| | | | | | | P12V_ | | | P12V_ | | | P12V_ | | | | | P12V_ | | | | | P12V_ | | | P12V_ | | | | P12V_ | | | | P12V_ | | | P12V_ | | | P12V_ | | |
+| | | POS3 | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | | | | | | VR1 | | | VR1 | | | VR1 | | | | | VR1 | | | | | UBB | | | UBB | | | | VR0 | | | | VR0 | | | VR0 | | | VR0 | | |
+| | | | | | | P12V_ | | | P12V_ | | | | | | | | | | | | | P12V_ | | | | | | | | | | | | | | P12V_ | | | P12V_ | | |
+| | | POS2 | | | | | | | | | | GND | | | | | GND | | | | | | | | GND | | | | GND | | | | GND | | | | | | | | |
+| | | | | | | VR1 | | | VR1 | | | | | | | | | | | | | UBB | | | | | | | | | | | | | | VR0 | | | VR0 | | |
+| | | POS1 | | | | GND | | | GND | | | GND | | | | | GND | | | | | GND | | | GND | | | | GND | | | | GND | | | GND | | | GND | | |
+| | | | | | | | | | | | | | | | Table 20 P12V_0 power connector pin list | | | | | | | | | | | | | | | | | | | | | | | | | | |
+
+P12V_ 1 CONN
+
+PIN 1 PIN 2 PIN 3 PIN 4 PIN 5
+
+COLMN A COLMN B COLMN A COLMN B COLM N A
+
+COLM 
+N B 
+COLMN A COLMN B COLMN A COLMN B 
+
+POS3 P12V_VR 2
+
+P12V_VR 2
+
+P12V_VR 2
+
+P12V_VR 
+2 
+GND GND 
+P12V_VR 
+3 
+
+P12V_VR 3
+
+P12V_VR 3
+
+P12V_VR 3
+
+POS2 P12V_VR 2
+
+P12V_VR 
+2 
+GND GND GND GND GND GND 
+P12V_VR 
+3 
+
+P12V_VR 3 POS1 GND GND GND GND GND GND GND GND GND GND Table 21 P12V_1 power connector pin list
+
+##### 6.2.11.4. 12V power connector re-purpose for 54V
+
+12V power connector (JX410-xxxxx) also can be used for 54V applications to support more than 700W OAM. ODM should notice creepage and clearance design (see 11.3 in detail) for this connector. Please refer to the suggestion pin list below:
+
+P12V CONN
+
+PIN 1 PIN 2 PIN 3 PIN 4 PIN 5
+
+COLMN A COLMN B COLMN A COLMN B COLMN A COLMN B COLMN A COLMN B COLMN A COLMN B POS3 P54V P54V P54V P54V NC NC GND GND GND GND POS2 P54V P54V P54V P54V NC NC GND GND GND GND
+
+Page 38
+
+POS1 P54V P54V P54V P54V NC NC GND GND GND GND
+
+6.2.11.5. Host Interface Connector (HIF) pin list 
+This chapter describes the Host Interface connector (HIF). There are 8 connectors. The signal direction of HIF0~7 in the 
+table below is based on the UBB side. Detailed pin map is in UBB spec package available on OAI WiKi: 
+https://www.opencompute.org/wiki/Server/OAI 
+HIF_0 connector (host interface can be opencapi or others) 
+High-Speed Connector: (used when it is PCIe interface. For other interfaces, refer to other future section to be provided) 
+Signal UBB 
+Direction 
+POV 
+
+| | Signal | UBB | | Description | Voltage Required | | or | | Total | | | Total | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | Direction | | | | Optional | | | | Diff | | Single | | | | | | | |
+| | | POV | | | | | | | | Pins | | | Pins | | | | | | |
+| | GND | | | GND | | Required | | | | | | | 68 | | | | | | |
+| | P3V3_AUX | Power | | 3.3V AUX Power | 3.3V | Required | | | | | | | 4 | | | | | | |
+| | | input | | for UBB board | | | | | | | | | | | | | | | |
+| | PETp/n | Output | | PCIe or equivalent | | Required | | | | 32 | | | 32 | | | | | | |
+| | [15:0] | | | host | | | | | | | | | | | | | | | |
+
+Output PCIe or equivalent host link Transmit differential pairs. Module Transmit, Host Receive.
+
+Required 32 32
+
+PERp/n [15:0]
+
+Input PCIe or equivalent host link Receive differential pairs. Module Receive, Host Transmit.
+
+3.3V Required 1
+
+UBB_DETEC T_LOOP
+
+UBB board PRSNT pin. Pull down this pin with a 100ohm resistor on the HIB side.
+
+Table 22 HIF_0 connector pin list (*) Note: UBB_DETECT_LOOP on HIF_0 and HIF_7 are the same signal. This pin is to inform HIB BMC when UBB is detected. Connect this pin on the UBB side.
+
+HIF_1 connector (host interface can be opencapi or others) 
+High-Speed Connector: (used when it is PCIe interface. For other interfaces, refer to other future section to be provided) 
+Signal UBB 
+Direction 
+POV 
+
+Description Voltage Required or Optional Total Diff Pins
+
+Total Single Pins GND GND Required 64
+
+Page 39
+
+| PETp/n [15:0] | Output | PCIe or equivalent link Transmit differential pairs. Module Transmit, Receive. | host Host | Required | 32 | 32 |
+| --- | --- | --- | --- | --- | --- | --- |
+| PERp/n [15:0] | Input | PCIe or equivalent link Receive differential pairs. Module Receive, Host Transmit. | host | Required | 32 | 32 |
+| UART_SEL _0 | Input | UART SEL pin | 3.3V | Required | | 1 |
+| UART_SEL _1 | Input | UART SEL pin | 3.3V | Required | | 1 |
+| UART_SEL _2 | Input | UART SEL pin | 3.3V | Required | | 1 |
+| UART_MU X_EN_N | Input | UART MUX enable | pin 3.3V | Required | | 1 |
+| BMC_MDC /MDIO | Bi-directional | MDC/MDIO signal. | | Required | | 2 |
+
+Table 23 HIF_1 connector pin list
+
+HIF_2 connector (host interface can be opencapi or others) 
+High-Speed Connector: (used when it is PCIe interface. For other interfaces, refer to other future section to be provided) 
+Signal UBB 
+Direction 
+POV 
+
+Description Voltage Required or Optional
+
+Total Diff Pins
+
+Total Single Pins GND GND Required 64 PETp/n [15:0]
+
+Required 32 32
+
+Output PCIe or equivalent host link Transmit differential pairs. Module Transmit, Host Receive.
+
+Page 40
+
+| PERp/n [15:0] | Input | PCIe or equivalent host link Receive differential pairs. Module Receive, Host Transmit. | | Required | 32 | 32 |
+| --- | --- | --- | --- | --- | --- | --- |
+| CLK_100M_ OAM_DP/N | Input | PCIe Reference Clock 100MHz PCIe Gen 4 | for OAM. compliant. | Required | 1 | 2 |
+| CLK_100M_ RETIMER_D P/N | Input | PCIe Reference Clock 100MHz PCIe Gen 4 | for retimer. compliant. | Required | 1 | 2 |
+| CLK_100M_ OAM_AUX _DP/N | Input | PCIe Reference Clock 100MHz PCIe Gen 4 | for Aux. compliant. | Required | 1 | 2 |
+| I2C_EFUSE_ FRU_AUX_ SDA | Bi-directional | I2C for each 12V EFUSE | 3.3V | Required | 0 | 2 |
+| I2C_OAM_ SLAVE_AUX _SDA/SCL | Bi-directional | I2C for each OAM | 3.3V | Required | 0 | 2 |
+| I2C_GEN_B UFFER_AUX _SDA | Bi-directional | I2C for each clock Gen | and Buffer 3.3V | Required | 0 | 2 |
+| I2C_CPLD_T EMP_AUX_ SDA | Bi-directional | I2C for each temperature CPLD. | sensor and 3.3V | Required | 0 | 2 |
+| I2C_CPLD_F W_AUX_SD A | Bi-directional | I2C for each CPLD FW | update. 3.3V | Required | 0 | 2 |
+| UART_TX D | Output | Serial Port Transmit | 3.3V | Required | 0 | 1 |
+| UART_RX D | Input | Serial Port Receive | 3.3V | Required | 0 | 1 |
+| JTAG_MUX _EN_N | Input | JTAG MUX enable pin | 3.3V | Required | 0 | 2 |
+| JTAG_MUX _SEL | Input | JTAG MUX SEL pin | 3.3V | Required | 0 | 2 |
+| BMC_JTAG _SELECT_[3 :0] | Input | JTAG SEL to CPLD pin | 3.3V | Required | 0 | 4 |
+| UBB_PWR_ ON_N | Input | Power on to UBB board, | low active 3.3V | Required | 0 | 1 |
+| I2C_OAM_ SLAVE_AUX _ALERT_N | Output | Slave I2C alert indication | 3.3V | Required | 0 | 1 |
+
+Page 41
+
+| I2C_EFUSE_ FRU_AUX_ ALERT_N | Output | I2C ALERT for each | 12V eFuse. 3.3V | Required | 0 | 1 |
+| --- | --- | --- | --- | --- | --- | --- |
+| I2C_CPLD_T EMP_AUX_ ALERT_N | Output | 2C ALERT for each sensor. | temperature 3.3V | Required | 0 | 1 |
+| CPLD_PRI_ FW_UPDAT E_EN_N | Input | Enable PRI CPLD FW | update. 3.3V | Required | 0 | 1 |
+| CPLD_SEC_ FW_UPDAT E_EN_N | Input | Enable SEC CPLD FW | update. 3.3V | Required | 0 | 1 |
+
+Table 24 HIF_2 connector pin list
+
+HIF_3 connector (host interface can be opencapi or others) 
+High-Speed Connector: (used when it is PCIe interface. For other interfaces, refer to other future section to be provided) 
+Signal UBB 
+Direction 
+POV 
+
+Description Voltage Required or Optional
+
+Total Diff Pins
+
+Total Single Pins GND GND Required 64 PETp/n [15:0]
+
+Required 32 32
+
+Output PCIe or equivalent host link Transmit differential pairs. Module Transmit, Host Receive.
+
+Required 32 32
+
+PERp/n [15:0]
+
+Input PCIe or equivalent host link Receive differential pairs. Module Receive, Host Transmit.
+
+Bi-directional RSVD GPIO between BMC and CPLD 3.3V Option 15
+
+RSV_BMC_ PRI_CPLD[1 5:1]
+
+Output RSVD for PCIe interface Option 8 8
+
+RSV_PETp/ 
+n 
+[3:0] 
+
+Input RSVD for PCIe interface Option 8 8
+
+RSV_PERp/ 
+n 
+[3:0] 
+
+Output UBB power ready to HIB BMC 3.3V Required 0 1
+
+UBB_PWR_ READY
+
+Table 25 HIF_3 connector pin list
+
+Page 42
+
+HIF_4 connector (host interface can be opencapi or others) 
+High-Speed Connector: (used when it is PCIe interface. For other interfaces, refer to other future section to be provided) 
+Signal UBB 
+Direction 
+POV 
+
+Description Voltage Required or Optional
+
+Total Diff Pins
+
+Required 32 32
+
+Required 32 32
+
+PERp/n [15:0]
+
+WARMRST #
+
+3.3V Required 1
+
+JTAG_TMS Input Low Voltage ASIC/GPU JTAG Test Mode Select
+
+| GND | | GND Required 64 |
+| --- | --- | --- |
+| JTAG_TMS | Output Input Input Input | PCIe or equivalent host link Transmit differential pairs. Module Transmit, Host Receive. PCIe or equivalent host link Receive differential pairs. Module Receive, Host Transmit. Warm Reset 3.3V Option 4 Low Voltage ASIC/GPU JTAG Test Mode Select |
+| JTAG_TDI | Input | JTAG master data output 3.3V Required 1 |
+| JTAG_TCK | Input | ARM JTAG clock output 3.3V Required 1 |
+| JTAG_TDO | Output | JTAG master data input 3.3V Required 1 |
+| JTAG_TRST | Input Input | JTAG master reset output 3.3V Required 1 RSVD SW to UBB CPLD sideband signal for PERESET_N RSVD GPIO between BMC and CPLD 3.3V Option 4 |
+| FRU_SEL | Input | Level shift IC enable pin 3.3V Required 1 |
+
+Total Single Pins PETp/n [15:0]
+
+3.3V Option 4
+
+SW[3:0]_P E_RESET_N
+
+RSV_BMC_ SEC_CPLD[ 3:0]
+
+Bi direction al
+
+Page 43
+
+3.3V Required 1
+
+OAM_PW RBRK_N
+
+Input Emergency power reduction. CEM Compliant Power Brake
+
+3.3V Required 2
+
+UBB_FRU[ 1:0]_WP
+
+Input Signal for BMC to control UBB FRU write-protect function
+
+Table 26 HIF_4 connector pin list
+
+HIF_5 connector (host interface can be opencapi or others) 
+High-Speed Connector: (used when it is PCIe interface. For other interfaces, refer to other future section to be provided) 
+Signal UBB 
+Direction 
+POV 
+
+Description Voltage Required or Optional
+
+Total Diff Pins
+
+Total Single Pins GND GND Required 64 PETp/n [15:0]
+
+Required 32 32
+
+Output PCIe or equivalent host link Transmit differential pairs. Module Transmit, Host Receive.
+
+Required 32 32
+
+PERp/n [15:0]
+
+Input PCIe or equivalent host link Receive differential pairs. Module Receive, Host Transmit.
+
+| USB_MUX | | Input | For USB Mux | selection | | 3.3V Optional | | 0 | | | 2 | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| _SEL_[1:0] | | | | | | | | | | | | |
+| SGPIO_CLK | | Bi-directional | SGPIO signal | for UBB CPLD | to BMC | Optional | | 0 | | | 4 | |
+| /LOAD/DI | | | | | | | | | | | | |
+
+N/DOUT
+
+Input For NVSW clock Optional 1 2
+
+CLK_100M _NVSW_D P/N
+
+Bi-directional USB signal Optional 2 4
+
+USB_DP/M _DN[1:0]
+
+Table 27 HIF_5 connector pin list
+
+Page 44
+
+HIF_6 connector (host interface can be opencapi or others) 
+High-Speed Connector: (used when it is PCIe interface. For other interfaces, refer to other future section to be provided) 
+Signal UBB 
+Direction 
+POV 
+
+Description Voltage Required or Optional
+
+Total Diff Pins
+
+Total Single Pins GND GND Required 64 PETp/n [15:0]
+
+Output PCIe or equivalent host link Transmit differential pairs. Module Transmit, Host Receive.
+
+Required 32 32
+
+PERp/n [15:0]
+
+Input PCIe or equivalent host link Receive differential pairs. Module Receive, Host Transmit.
+
+Required 32 32
+
+Table 28 HIF_6 connector pin list
+
+HIF_7 connector (host interface can be opencapi or others) 
+High-Speed Connector: (used when it is PCIe interface. For other interfaces, refer to other future section to be provided) 
+Signal UBB 
+Direction 
+POV 
+
+Description Voltage Required or Optional
+
+Total Diff Pins
+
+Total Single Pins GND GND Required 64 PETp/n [15:0]
+
+Output PCIe or equivalent host link Transmit differential pairs. Module Transmit, Host Receive.
+
+Required 32 32
+
+PERp/n [15:0]
+
+Input PCIe or equivalent host link Receive differential pairs. Module Receive, Host Transmit.
+
+Required 32 32
+
+UBB_DETE CT_LOOP (*)
+
+UBB board PRSNT pin. Connect directly with UBB_DETECT_LOOP pin on HIF_7 on UBB. Pull up with 4.7k ohm resistor on HIB side and connect to BMC with a level shift.
+
+3.3V Required 1
+
+Table 29 HIF_7 connector pin list *Note: UBB_DETECT_LOOP is the same signal as it is defined in HIF_0. Connect these two pins on the UBB side.
+
+6.2.11.6. OAM Debug connector pin list Molex 501190-4017 is selected, total pin count is 40pin Current – Maximum per contact is 1A
+
+Page 45
+
+Voltage – Maximum is 50V AC (RMS)/DC All signals direction are based on the UBB side
+
+| | Signal | | | | UBB | | | | Description | Voltage | | Required | | or | Pin Assignment | | | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | | | | Direction | | | | | | | | Optional | | | | | Single |
+| | | | | | POV | | | | | | | | | | | | | Pins |
+| | GND | | | | | | | GND | | | | | Required | 13,15,17,19,21,29,32 | | | | 7 |
+| | JTAG_T | | | | Input | | | Low Voltage | ASIC/GPU | Vref(OAM) | | | Required | | 39 | | | 1 |
+| | MS | | | | | | | JTAG Test | Mode Select | | | | | | | | | |
+| | JTAG_T | | | | Input | | | JTAG master | data output | Vref(OAM) | | | Required | | 37 | | | 1 |
+| | DI | | | | | | | | | | | | | | | | | |
+| | JTAG_T | | | | Input | | | ARM JTAG | clock output | Vref(OAM) | | | Required | | 31 | | | 1 |
+| | CK | | | | | | | | | | | | | | | | | |
+| | JTAG_T | | | | Output | | | JTAG master | data input | Vref(OAM) | | | Required | | 33 | | | 1 |
+| | DO | | | | | | | | | | | | | | | | | |
+| | JTAG_TRST | | | | Input | | | JTAG master | reset output | Vref(OAM) | | | Required | | 35 | | | 1 |
+| | DEBUG_PR | | | | Input | | | Present | of debug | 3.3V | | | Required | | 40 | | | 1 |
+| | ESENT_N | | | | | | | connector | | | | | | | | | | |
+| | P1V8 | | (*) | | Power | | | Power for | debug | Vref(OAM) | | | Required | | 36 | | | 1 |
+| | | | | | input | | | connector | | | | | | | | | | |
+| | Hook[0] | | | | Output | | | Debug | signals | 3.3V | | | Required | | 23 | | | 1 |
+| | Hook[6,7] | | | | Output | | | Debug | signals | Vref(OAM) | | | Required | | 25,27 | | | 2 |
+| | OAM_TEST | | | | Input/ | | | Debug | signals | Vref(OAM) | | | Required | 2,4,6,8,10,12,14,16,1 | | | | 15 |
+| | [0-14] | | | | Output | | | | | | | | | 8,20,22,24,26,28,30 | | | | |
+| | NC | | | | | | | | | | | | | 1,3,5,7,9,11,34,38 | | | | 8 |
+
+NC 1,3,5,7,9,11,34,38 8 Table 30 OAM Debug connector pin list *Note: This power pin is for debugging connectors. ODM should design the using voltage based on its debug tool.
+
+#### 6.3. PCB Stack-Up
+
+This section describes the OAM UBB reference board stack-up and requirements. The OAI UBB reference boards use a 22 PCB stack-up with 800G low loss material. To support high TDP OAM(54V/48V up to 700W, 12V up to 300w) and high interconnect speed(up to 112Gbps PAM4), the PCB stack-up adheres to the following requirements:
+
+● PCB with up to two 2oz layers to meet the required copper density 
+● 85 & 90 Ohms differential traces in internal signal layers as needed. 
+● 45 & 50 Ohms or single-ended traces as required (Depending on the chip vendor's design guide) 
+● PCB material depends on the maximum trace length of topology design and meets the vendor’s channel loss criteria. 
+● Back Drilling for signals on Layer 16, 14, 9, 5, and 3 to remove stubs from SerDes and PCI-e Gen5 via transitions. Limit back drilling to 1mm from the top layer to help press-fit contact. 
+
+Page 46
+
+UBB reference board uses the below stack up. Each vendor must fine-tune the width/spacing design based on the material target and impedance control table below.
+
+Layer Plane Description Copper (OZ) Thickness (mil) 
+Solder mask 0.5 
+L1 Top Signal/PWR 0.5oz + plating 1.9 
+PrePreg 2.6 
+L2 GND1 Ground 1.0 1.2 
+Core (1/1) 4 
+L3 IN1 Signal/PWR 1.0 1.2 
+PrePreg 5 
+L4 GND2 Ground 1.0 1.2 
+Core (1/1) 4 
+L5 IN2 Signal/PWR 1.0 1.2 
+PrePreg 5 
+L6 GND3 Ground 1.0 1.2 
+Core (1/1) 4 
+L7 IN3 Signal/PWR 1.0 1.2 
+PrePreg 5 
+L8 GND4 Ground 1.0 1.2 
+Core (1/1) 4 
+L9 IN4 Signal/PWR 1.0 1.2 
+PrePreg 5 
+L10 GND5 Ground 1.0 1.2 
+Core (1/2) 4 
+L11 VCC1 Power 2.0 2.4 
+PrePreg 12 
+L12 VCC2 Power 2.0 2.4 
+Core (1/2) 4 
+L13 GND6 Ground 1.0 1.2 
+PrePreg 5 
+L14 IN5 Signal/PWR 1.0 1.2 
+Core (1/1) 4 
+L15 GND7 Ground 1.0 1.2 
+PrePreg 5 
+L16 IN6 Signal/PWR 1.0 1.2 
+Core (1/1) 4 
+L17 GND8 Ground 1.0 1.2 
+PrePreg 5 
+L18 IN7 Signal/PWR 1.0 1.2 
+Core (1/1) 4 
+L19 GND9 Ground 1.0 1.2 
+PrePreg 5 
+L20 IN8 Signal/PWR 1.0 1.2 
+Core (1/1) 4 
+
+L21 GND1 
+0 
+Ground 1.0 1.2 
+
+Page 47
+
+PrePreg 2.6 L22 BOT Signal/PWR 0.5oz + plating 1.9 Solder Mask 0.5 Total 128.4 mil (with +/- 10% tolerance)
+
+Table 31 UBB reference Stack-Up
+
+| Trace Width (mil) | Air Gap Spacing (mil) | Impedance Type | Layer | Impedance Target (ohm) | Tolerance (+/- %) |
+| --- | --- | --- | --- | --- | --- |
+| 6.0 | | Single-Ende d | 1,22 | 45 | 10% |
+| 5.3 | | Single-Ende d | 1,22 | 50 | 10% |
+| 5.3 | 5.6 | Differential | 1,22 | 85 | 10% |
+| 4.8 | 6.1 | Differential | 1,22 | 90 | 10% |
+| 5.8 | | Single-Ende d | 3,5,7,9,14,16,18,20 | 45 | 10% |
+| 5.0 | | Single-Ende d | 3,5,7,9,14,16,18,20 | 50 | 10% |
+| 5.7 | 5.2 | Differential | 3,5,7,9,14,16,18,20 | 85 | 10% |
+| 5.0 | 5.8 | Differential | 3,5,7,9,14,16,18,20 | 90 | 10% |
+
+Table 32 UBB Impedance control
+
+#### 6.4. CPLD
+
+6.4.1. Block Diagram of UBB Primary CPLD
+
+The primary CPLD is working for UBB control without testing and debug signal function
+
+Page 48
+
+Figure 26 Primary CPLD diagram
+
+The above is a block diagram of UBB primary CPLD with features below : 
+1. Primary CPLD I2C online programming feature. 
+2. Fan-out signal to 8 OAMs: 
+● OAM PERST from host PCI-E 
+● OAM Warm Reset from host 
+● OAM power brake from host interface board (HIB) 
+
+Page 49
+
+Open Accelerator Infrastructure – Universal Baseboard Design Specification v1.5 
+3. Power sequence, power control state machine. 
+4. Slave I2C address for HIB. 
+5. OAM FW recovery 
+6. CPLD FW update via JTAG 
+7. Reserved PERST for multi-host 
+
+6.4.2. Primary I2C Online Programming Feature
+
+Users can program the CPLD through BMC after the CPLD enters the user mode. 
+Specification of the I2C Programming Slave is as follows. 
+
+| I2C Slave Address | 7Bit[0x30] |
+| --- | --- |
+| I2C Bus Performance | 400KHz |
+| I2C Port | PT18C(SCL) PT18D(SDA) |
+| Port Hysteresis | 450mV |
+
+Table 33 Primary COLD I2C Programming Slave
+
+6.4.3. Fan-out signal to 8 OAMs
+
+CPLD receives the PERST, Warm_RST, and PWRBRK signals from the host interface board, and then fan out 8-way to the outputs to the 8 OAMs, shown below.
+
+| Module | Input | Fan Out |
+| --- | --- | --- |
+| OAM_PERST | HOST_PERST_N | OAM[7:0]_PERST_N |
+| OAM_Warm_Reset | OAM_WARM_RST_N | OAM[7:0]_WARMRST_N |
+| OAM_Power_Break | OAM_PWRBRK_N | OAM[7:0]_PWRBRK_N |
+
+Table 34 Primary CPLD Fan-out to OAMs
+
+6.4.4. Slave I2C address for HIB
+
+The UBB primary CPLD has an I2C slave to provide the BMC read/write. The UBB primary CPLD has an I2C slave to give the BMC read/write. The specification of the I2C slave is as follows.
+
+| I2C Slave Address | 7Bit[0x4F] |
+| --- | --- |
+| I2C Bus Performance | 400KHz |
+| I2C Port | PR3C(SCL) PR3D(SDA) |
+| Port Hysteresis | 450mV |
+
+Table 35 Primary CPLD Slave I2C address for HIB
+
+The Register Map of the I2C Slave
+
+##### Add. Bit Signal Name R/W Def. Note
+
+Page 50
+
+| | 7 | 1'b0 | RO | - | |
+| --- | --- | --- | --- | --- | --- |
+| | 6 | JTAG_HOOK0 | RO | - | |
+| | 5 | BOARD_ID_[1:0] | RO | - | |
+| 0x09 | 4 | | RO | - | |
+| | 3 | SKU_ID_[1:0] | RO | - | |
+| | 2 | | RO | - | |
+| | 1 | OAM_PCA9548_RESET_N | R/W | - | |
+| | 0 | VR_PCA9548_RESET_N | R/W | - | |
+
+7 FM_QSFP7_OAM6_MODPRS_N RO -
+
+6 FM_QSFP6_OAM6_MODPRS_N RO -
+
+Indicate QSFP_DD cable is plugged or not. Need to add a level shift between the QSFP-DD connector and CPLD.
+
+| 5 | FM_QSFP5_OAM5_MODPRS_N | | | | RO | | - | Need to add a level shift between the |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | | | | | | | QSFP-DD connector and CPLD. |
+| 4 | FM_QSFP4_OAM5_MODPRS_N | | | | RO | | - | |
+
+0x08
+
+3 FM_QSFP3_OAM2_MODPRS_N RO -
+
+2 FM_QSFP2_OAM2_MODPRS_N RO -
+
+1 FM_QSFP1_OAM1_MODPRS_N RO -
+
+0 FM_QSFP0_OAM1_MODPRS_N RO -
+
+7 OAM7_FW_RECOVERY_N R/W - Reserved for future.
+
+6 OAM6_FW_RECOVERY_N R/W -
+
+5 OAM5_FW_RECOVERY_N R/W -
+
+4 OAM4_FW_RECOVERY_N R/W -
+
+0x07
+
+3 OAM3_FW_RECOVERY_N R/W -
+
+2 OAM2_FW_RECOVERY_N R/W -
+
+1 OAM1_FW_RECOVERY_N R/W -
+
+0 OAM0_FW_RECOVERY_N R/W -
+
+7 PHY7_RST_N R/W - Reserved for future.
+
+6 PHY6_RST_N R/W -
+
+5 PHY5_RST_N R/W -
+
+0x06
+
+4 PHY4_RST_N R/W -
+
+3 PHY3_RST_N R/W -
+
+2 PHY2_RST_N R/W -
+
+Page 51
+
+1 PHY1_RST_N R/W -
+
+0 PHY0_RST_N R/W -
+
+| | 7 | OAM_PE7_BIF[1:0] | RO | - | These pin inicate each OAM PCIe |
+| --- | --- | --- | --- | --- | --- |
+| | 6 | | | | bifurcation. |
+| | 5 | OAM_PE6_BIF[1:0] | RO | - | It should add a level shift between OAM and CPLD. |
+| 0x05 | 4 | | | | On the OAM side, the voltage level is VREF. |
+| | 3 | OAM_PE5_BIF[1:0] | RO | - | |
+| | 2 | | | | |
+| | 1 | OAM_PE4_BIF[1:0] | RO | - | |
+| | 0 | | | | |
+
+7
+
+6
+
+OAM_PE3_BIF[1:0] RO - These pin inicate each OAM PCIe bifurcation. It should add a level shift between OAM and CPLD. On the OAM side, the voltage level is VREF.
+
+5
+
+OAM_PE2_BIF[1:0] RO -
+
+4
+
+0x04
+
+3
+
+OAM_PE1_BIF[1:0] RO -
+
+2
+
+1
+
+OAM_PE0_BIF[1:0] RO -
+
+0
+
+7 OAM7_PLINK_CAP RO Lo
+
+Indicate port module capability support.
+
+6 OAM6_PLINK_CAP RO Lo
+
+5 OAM5_PLINK_CAP RO Lo
+
+4 OAM4_PLINK_CAP RO Lo
+
+0x03
+
+3 OAM3_PLINK_CAP RO Lo
+
+2 OAM2_PLINK_CAP RO Lo
+
+1 OAM1_PLINK_CAP RO Lo
+
+0 OAM0_PLINK_CAP RO Lo
+
+7 OAM7_PRESENT_N RO Hi
+
+OAM module present pin.
+
+6 OAM6_PRESENT_N RO Hi
+
+0x02
+
+5 OAM5_PRESENT_N RO Hi
+
+4 OAM4_PRESENT_N RO Hi
+
+Page 52
+
+3 OAM3_PRESENT_N RO Hi
+
+2 OAM2_PRESENT_N RO Hi
+
+1 OAM1_PRESENT_N RO Hi
+
+0 OAM0_PRESENT_N RO Hi
+
+| | 7 | OAM7_THERMTRIP_N | RO | Hi | These pins indicate that each OAM has a |
+| --- | --- | --- | --- | --- | --- |
+| | 6 | OAM6_THERMTRIP_N | RO | Hi | catastrophic thermal event. Active low and latched by module until |
+| | 5 | OAM5_THERMTRIP_N | RO | Hi | power recycled. |
+| 0x01 | 4 | OAM4_THERMTRIP_N | RO | Hi | |
+| | 3 | OAM3_THERMTRIP_N | RO | Hi | |
+| | 2 | OAM2_THERMTRIP_N | RO | Hi | |
+| | 1 | OAM1_THERMTRIP_N | RO | Hi | |
+| | 0 | OAM0_THERMTRIP_N | RO | Hi | |
+
+7
+
+Current CPLD Revision.
+
+6
+
+5
+
+4
+
+0x00
+
+CPLD_REVISION[7:0] RO
+
+8'h0 
+0 
+3 
+
+2
+
+1
+
+0
+
+Table 36 Primary CPLD I2C slave register map
+
+6.4.5. Reserved PERST for Multi-host
+
+Reserved "SW[3:0]_PE_RESET_N" signals for future.
+
+#### 6.5. Block Diagram of UBB Secondary CPLD
+
+The UBB on-board secondary CPLD provides the following debug function.
+
+● The CPLD connects with both High and low-voltage JTAG connections for OAM internal debug and ROM flash. 
+● The management device (ex BMC) supports remote debugging through the JTAG interface. 
+● UBB on-board implements a JTAG connector to CPLD for all OAM or individual OAM debug. Page 53 
+
+Open Accelerator Infrastructure – Universal Baseboard Design Specification v1.5 ● All testing pins of OAM have connected to CPLD. It is reserved for flexible debug for other OAM signal usage.
+
+Figure 27 Secondary CPLD Diagram
+
+The above is the block diagram of the UBB secondary CPLD with features: 
+1. JTAG and debug present. 
+2. OAM test pins 
+3. I2C Slave. 
+4. JTAG multiplexer of OAM. 
+
+6.5.1. JTAG and debug present
+
+This module is 1 to 8 buffer gate structures. 
+Receive an input signal and then fan out 8-way to the output. 
+
+Input Fan Out
+
+Debug_Present_N OAM[7:0]_DEBUG_PORT_PRSNT_N
+
+Table 37 JTAG debug present
+
+Page 54
+
+6.5.2. OAM Test Pins
+
+OAM test pins go to CPLD and gather to debug header for debugging purposes. Below is a pin list of these 14 test pins. Signal Module Direction POV
+
+Description Voltage Required or Optional
+
+OAM_TEST0 Output Test pin Vref Optional 
+OAM_TEST1 Output Test pin Vref Optional 
+OAM_TEST2 Output Test pin Vref Optional 
+OAM_TEST3 Output Test pin Vref Optional 
+OAM_TEST4 Output Test pin Vref Optional 
+OAM_TEST5 Input/Out 
+put 
+
+Test pin Vref Optional
+
+Test pin Vref Optional
+
+OAM_TEST6 Input/Out put
+
+OAM_TEST7 Input Test pin Vref Optional OAM_TEST8 Output Test pin Vref Optional OAM_TEST9 Output Test pin Vref Optional OAM_TEST10 Output Test pin Vref Optional OAM_TEST11 Input Test pin Vref Optional OAM_TEST12 Output Test pin Vref Optional OAM_TEST13 Output Test pin Vref Optional OAM_TEST14 Output Test pin Vref Optional Table 38 OAM test pins definition
+
+6.5.3. I2C Slave of Secondary CPLD
+
+The UBB secondary CPLD has a user I2C slave which is a 3.3V base to provide BMC read/write path to CPLD. 
+The specification of the user I2C slave is as follows. 
+
+| I2C Slave Address | 7Bit[0x34] |
+| --- | --- |
+| I2C Bus Performance | 400KHz |
+| I2C Port | PT20C(SCL) PT20D(SDA) |
+| Port Hysteresis | 450mV |
+
+Table 39 Secondary CPLD I2C Slave spec
+
+6.5.4. JTAG Multiplexer of OAM
+
+This module provides BMC control the multiplexer for connecting which OAM.
+
+| Source Selection | |
+| --- | --- |
+| DBG_PRSNT_N | Result |
+| 1'b1 | BMC_JTAG |
+| 1'b0 | DBG_JTAG |
+
+Table 40 JTAG multiplexer of OAM
+
+Page 55
+
+| | | SEL[3:0] | | | | Result | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | 4'hF | | | | Connect | to OAM7_H_JTAG | | | | | | |
+| | | 4'hE | | | | Connect | to OAM6_H_JTAG | | | | | | |
+| | | 4'hD | | | | Connect | to OAM5_H_JTAG | | | | | | |
+| | | 4'hC | | | | Connect | to OAM4_H_JTAG | | | | | | |
+| | | 4'hB | | | | Connect | to OAM3_H_JTAG | | | | | | |
+| | | 4'hA | | | | Connect | to OAM2_H_JTAG | | | | | | |
+| | | 4'h9 | | | | Connect | to OAM1_H_JTAG | | | | | | |
+| | | 4'h8 | | | | Connect | to OAM0_H_JTAG | | | | | | |
+| | | 4'h7 | | | | Connect | to OAM7_L_JTAG | | | | | | |
+| | | 4'h6 | | | | Connect | to OAM6_L_JTAG | | | | | | |
+| | | 4'h5 | | | | Connect | to OAM5_L_JTAG | | | | | | |
+| | | 4'h4 | | | | Connect | to OAM4_L_JTAG | | | | | | |
+| | | 4'h3 | | | | Connect | to OAM3_L_JTAG | | | | | | |
+| | | 4'h2 | | | | Connect | to OAM2_L_JTAG | | | | | | |
+| | | 4'h1 | | | | Connect | to OAM1_L_JTAG | | | | | | |
+| | | 4'h0 | | | | Connect | to OAM0_L_JTAG | | | | | | |
+
+Terminal Selection Table 41 JTAG multiplexer terminal Selection
+
+6.5.5. CPLD Pin list
+
+This section tabulates all the CPLD pin lists, including Primary and secondary CPLDs. 
+A primary CPLD pin list 
+Signal UBB 
+Direction 
+POV 
+
+| | Signal | | | | UBB | | Description | | Voltage Required | | Total | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | | | Direction | | | | | or | | Singl | | |
+| | | | | | POV | | | | Optional | | | e | |
+| | | | | | | | | | | | Pins | | |
+| | VCC_3V3_PRI | | Power | | | | Vcc core power | of primary | 3.3V Required | | | 9 | |
+| | | | input | | | | CPLD | | | | | | |
+| | VCCIO1_PRI | | Power | | | | Vccio power | of primary CPLD | 3.3V Required | | 14 | | |
+| | | | input | | | | | | | | | | |
+| | VCCIO2_PRI | | Power | | | | Vccio power | of primary CPLD 1.2~3.3V* | Required | | | 2 | |
+| | | | input | | | | | | | | | | |
+
+Page 56
+
+| OAM[7:0]_PE_BIF_0 | Input | x16 Host Interface Configuration. This output informs needs to bifurcate interface to the 00 = one x16 PCIe interface 01 = bifurcation PCIe host interfaces 10 = bifurcation PCIe host interfaces 11 = reserved" Tied to GND on logic 0, leave open module for logic the baseboard | Bifurcation module the host if it the PCIe module. Vref(OAM) host into two x8 into four x4 module for on 1; pull up on | Required | 8 |
+| --- | --- | --- | --- | --- | --- |
+| OAM[7:0]_PE_BIF_1 | Input | x16 Host Interface Configuration. This output informs needs to bifurcate interface to the 00 = one x16 PCIe interface 01 = bifurcation PCIe host interfaces 10 = bifurcation PCIe host interfaces 11 = reserved" Tied to GND on logic 0, leave open module for logic the baseboard | Bifurcation module the host if it the PCIe module. host Vref(OAM) into two x8 into four x4 module for on 1; pull up on | Required | 8 |
+| OAM[7:0]_PLINK_CAP | Input | "P" Port Module support: '0' = PCIe only support '1' = Alternate protocol supported The host system alternate host link by pulling up LINK_CONFIG[0], Module informs protocol support link via this pin. only supports PCIe this signal is grounded module. | Capability requests an protocol and the Vref(OAM) the design of on the "P" If the module as host, on the | Required | 8 |
+| OAM[7:0]_PRESENT_N | Input | Module present GND on module | pin. Tied to GND side | Required | 8 |
+| RETMR[7:0]_PERST_N | Output | Host retimer PERST | 3.3V | Required | 8 |
+| FM_QSFP_OAM_MODPRS_N | Output | QSFP-DD Connector Present | Module Vref(OAM) | Option | 8 |
+
+Page 57
+
+| CPLD_FW_TCK | Output | JTAG Test Clock | of CPLD 3.3V | Required | 1 |
+| --- | --- | --- | --- | --- | --- |
+| CPLD_FW_TDI | Output | JTAG Test Input | of CPLD 3.3V | Required | 1 |
+| CPLD_FW_TDO | Input | JTAG Test Output | of CPLD 3.3V | Required | 1 |
+| CPLD_FW_TMS | Output | JTAG Test Mode CPLD | Select of 3.3V | Required | 1 |
+| I2C_CPLD_SCL | Input | Slave I2C clock | 3.3V | Required | 2 |
+| I2C_CPLD_SDA | IO | Slave I2C data | 3.3V | Required | 2 |
+| JTAG_HOOK0 | Output | Debug pin | 3.3V | Required | 1 |
+| UBB_PWR_ON_N | Input | System power on | enable 3.3V | Required | 1 |
+| CLKS_DEV_EN | Output | CLK Buffer and CKPWRGD | CLK gen 3.3V | Required | 3 |
+| CLKS_OE_N | Output | CLK Buffer and output enable | CLK gen 3.3V | Required | 3 |
+| BOARD_ID | Input | Board ID of UBB | 3.3V | Required | 2 |
+| SKU_ID | Input | SKU ID of UBB | 3.3V | Required | 2 |
+| RSV_BMC_PRI_CPLD[15:1] | IO | RSVD | 3.3V | Option | 15 |
+| OAM[7:0]_THERMTRIP_N | Input | Catastrophic thermal for module components. Active low and Module logic. Released the UBB power module input voltages | event 3.3V latched by the when cycles the | Required | 8 |
+| OAM[7:0]_PWRBRK_N | Output | Emergency power CEM Compliant | reduction. 3.3V Power Brake | Required | 8 |
+| OAM_PWRBRK_N | Input | BMC to CPLD GPU power reduction | Emergency 3.3V | Required | 1 |
+| HOST[3:0]_WARM_RST_N | Input | BMC to CPLD Warm | reset 3.3V | Required | 4 |
+| HOST_PERST_N | Input | BMC to CPLD PERST | 3.3V | Required | 1 |
+| I2C_CPLD_AUX_ALERT_N | Input | Temperature Sensor | Alert 3.3V | Required | 1 |
+| FM_P12V_[7:0]_EN_R | Output | Efuse enable pin | 3.3V | Required | 8 |
+| OAM[7:0]_HOST_PWRGD | Output | Host power good. Active high when P12V1/P12V2, P3V3 are stable and within specifications. This considered the Enable” signal for module. | 3.3V P48V, voltages is “Power the | Required | 8 |
+| OAM[7:0]_MODULE_PWRGD | Input | Module power Active high when has completed sequence and is PERST# de-assertion | good. 3.3V the module its power-up ready for | Required | 8 |
+| PWRGD_P12V_[7:0]_PG | Input | Efuse PWRGOOD | pin 3.3V | Required | 8 |
+| PWRGD_PHY_RETIMER_[3:0] | Input | VR IC PWRGOOD | pin 3.3V | Required | 4 |
+| PWRGD_HOST_RETIMER_[3:0] | Input | VR IC PWRGOOD | pin 3.3V | Required | 4 |
+| PWRGD_P3V3_OAM | Input | VR IC PWRGOOD | pin 3.3V | Required | 1 |
+| PWRGD_P3V3_QSFPDD | Input | VR IC PWRGOOD | pin 3.3V | Required | 1 |
+| VR_PHY_RETIMER_EN | Output | VR IC enable pin | 3.3V | Required | 1 |
+| VR_HOST_RETIMER_EN | Output | VR IC enable pin | 3.3V | Required | 1 |
+
+Page 58
+
+| FM_VR_P3V3_OAM_EN | Output | VR IC enable pin | 3.3V | Required | 1 |
+| --- | --- | --- | --- | --- | --- |
+| FM_VR_P3V3_QSFPDD_EN | Output | VR IC enable pin | 3.3V | Required | 1 |
+| OAM[7:0]_WARMRST_N | Output | Warm Reset | Vref(OAM) | Option | 8 |
+| OAM[7:0]_PERST_N | Output | CEM Compliant | PCIe Reset 3.3V | Required | 8 |
+| OAM_PCA9548_RESET_N | Output | I2C Switch Reset | 3.3V | Required | 1 |
+| VR_PCA9548_RESET_N | Output | I2C Switch Reset | 3.3V | Required | 1 |
+| SW[0:3]_PE_RESET_N | Input | RSVD from SW sideband signal PERESET_N | to UBB CPLD 3.3V for | Option | 4 |
+| OAM[0:7]_FW_RECOVERY_N | Input | On board manageability recovery mode 1: Normal operation 0: Firmware Recovery mode | boot 3.3V boot | Required | 8 |
+| CLK_50M_CPLD1 | Input | Clock input pin | 3.3V | Option | 1 |
+| PRI_CPLD_DONE | Input | Programming pin | (Reserved.) 3.3V | Option | 1 |
+| PRI_CPLD_INITN | Input | Programming pin | (Reserved.) 3.3V | Option | 1 |
+| PRI_CPLD_JTAGEN | Input | Programming pin | (Reserved.) 3.3V | Option | 1 |
+| PRI_CPLD_PROGRAM | Input | Programming pin | (Reserved.) 3.3V | Option | 1 |
+| PRI_CPLD_SN | Input | Programming pin, instead of the HWRST. | Usage 3.3V | Required | 1 |
+| PHY[0:3]_RSTB_N | Output | PHY retimer reset | Vref (PHY) | Required | 4 |
+| SGPIO | IO | SGPIO interface BMC & UBB CPLD | between 3.3V | Option | 4 |
+
+Table 42 Primary CPLD pin list
+
+The secondary CPLD pin list Signal UBB Direction POV
+
+Description Voltage Required or Optional
+
+Total 
+Single 
+Pins 
+JTAG_OAM_HV_TCK[7:0] Output High Voltage JTAG Test Clock 3.3V Required 8 
+JTAG_OAM_HV_TDI[7:0] Output High Voltage JTAG Test Input 3.3V Required 8 
+JTAG_OAM_HV_TDO[7:0] Input High Voltage JTAG Test 
+Output 
+
+3.3V Required 8
+
+3.3V Required 8
+
+JTAG_OAM_HV_TMS[7:0] Output High Voltage JTAG Test Mode Select
+
+| JTAG_OAM_HV_TRST[7:0] | | | | | Output | | | | | High Voltage JTAG | Test Reset | | | 3.3V | | | | Required | | | | | 8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| JTAG_OAM_LV_TCK | | [7:0] | | | Output | | | | | Low Voltage JTAG | Test Clock | | Vref(OA | | | | | Required | | | | | 8 |
+| | | | | | | | | | | | | | | M) | | | | | | | | | |
+| JTAG_OAM_LV_TDI[7:0] | | | | | Output | | | | | Low Voltage JTAG | Test Input | | Vref(OA | | | | | Required | | | | | 8 |
+| | | | | | | | | | | | | | | M) | | | | | | | | | |
+| JTAG_OAM_LV_TDO[7:0] | | | | | Input | | | | | Low Voltage JTAG | Test | | Vref(OA | | | | | Required | | | | | 8 |
+| | | | | | | | | | | Output | | | | M) | | | | | | | | | |
+| JTAG_OAM_LV_TMS[7:0] | | | | | Output | | | | | Low Voltage JTAG | Test Mode | | Vref(OA | | | | | Required | | | | | 8 |
+| | | | | | | | | | | Select | | | | M) | | | | | | | | | |
+| JTAG_OAM_LV_TRST | | | [7:0] | | Output | | | | | Low Voltage JTAG | Test Reset | | Vref(OA | | | | | Required | | | | | 8 |
+| | | | | | | | | | | | | | | M) | | | | | | | | | |
+
+Page 59
+
+| OAM_DEBUG_PORT_PRSNT_N[ 7:0] | Output | Presence signal port in the motherboard. Notifies logic in the debug access used by the motherboard debug connector. port on baseboard when logic-low | for debug GND the module is being Debug present | Required | 8 |
+| --- | --- | --- | --- | --- | --- |
+| VCC_3V3_SEC | Power input | Vcc core power secondary CPLD | of 3.3V | Required | 8 |
+| VCCIO1_SEC | Power input | Vccio power of CPLD | secondary 3.3V | Required | 5 |
+| VCCIO2_SEC | Power input | Vccio power of CPLD | secondary 1.2~3.3 V* | Required | 12 |
+| CPLD_FW_TCK | Output | JTAG Test Clock | of CPLD 3.3V | Required | 1 |
+| CPLD_FW_TDI | Output | JTAG Test Input | of CPLD 3.3V | Required | 1 |
+| CPLD_FW_TDO | Input | JTAG Test Output | of CPLD 3.3V | Required | 1 |
+| CPLD_FW_TMS | Output | JTAG Test Mode CPLD | Select of 3.3V | Required | 1 |
+| JTAG_TCK | Output | JTAG Test Clock | of CPLD Vref(OA M) | Required | 1 |
+| JTAG_TDI | Output | JTAG Test Input | of CPLD Vref(OA M) | Required | 1 |
+| JTAG_TDO | Input | JTAG Test Output | of CPLD Vref(OA M) | Required | 1 |
+| JTAG_TMS | Output | JTAG Test Mode CPLD | Select of Vref(OA M) | Required | 1 |
+| JTAG_TRST | Output | JTAG Test Reset | of CPLD Vref(OA M) | Required | 1 |
+| JTAG_BMC_OAM_TDO | Output | OAM Debug from | BMC 3.3V | Required | 1 |
+| JTAG_BMC_OAM_TDI | Input | OAM Debug from | BMC 3.3V | Required | 1 |
+| JTAG_BMC_OAM_TMS | Output | OAM Debug from | BMC 3.3V | Required | 1 |
+| JTAG_BMC_OAM_TRST | Output | OAM Debug from | BMC 3.3V | Required | 1 |
+| JTAG_BMC_OAM_TCK | Output | OAM Debug from | BMC 3.3V | Required | 1 |
+| OAM0_TEST[14:0] | IO | OAM0 test pin | Vref(OA M) | Option | 15 |
+| OAM1_TEST[14:0] | IO | OAM1 test pin | Vref(OA M) | Option | 15 |
+| OAM2_TEST[14:0] | IO | OAM2 test pin | Vref(OA M) | Option | 15 |
+| OAM3_TEST[14:0] | IO | OAM3 test pin | Vref(OA M) | Option | 15 |
+| OAM4_TEST[14:0] | IO | OAM4 test pin | Vref(OA M) | Option | 15 |
+| OAM5_TEST[14:0] | IO | OAM5 test pin | Vref(OA M) | Option | 15 |
+| OAM6_TEST[14:0] | IO | OAM6 test pin | Vref(OA M) | Option | 15 |
+| OAM7_TEST[14:0] | IO | OAM7 test pin | Vref(OA M) | Option | 15 |
+
+Page 60
+
+| DEBUG_OAM_TEST_[14:0] | IO | OAM for JTAG | test pin Vref(OA M) | Option | 15 |
+| --- | --- | --- | --- | --- | --- |
+| RSV_BMC_SEC_CPLD[3:0] | IO | RSVD | 3.3V | Option | 4 |
+| DEBUG_PRESENT_N | Input | Debug port PRSNT | pin 3.3V | Required | 1 |
+| I2C_CPLD_TEMP_AUX_SCL | Input | Slave I2C clock | 3.3V | Required | 1 |
+| I2C_CPLD_TEMP_AUX_SDA | IO | Slave I2C data | 3.3V | Required | 1 |
+| BMC_JTAG_SELECT_[0:3] | Input | BMC JTAG Select | pin 3.3V | Option | 4 |
+| JTAG_HOOK6 | Input | Debug pin | Vref(OA M) | Required | 1 |
+| JTAG_HOOK7 | Output | Debug pin | Vref(OA M) | Required | 1 |
+| SEC_CPLD_PROGRAM | Input | Programming pin (Reserved.) | 3.3V | Option | 1 |
+| SEC_CPLD_SN | Input | Programming pin (Reserved.) | 3.3V | Option | 1 |
+
+Table 43 Secondary CPLD pin list
+
+Note: *UBB designer should check OAM SPEC for Vref power rail (OAI UBB reference design selected 1.5V as VCCIO power to support 1.2V~3.3V OAM Vref). OAM Vref output is 1.2V~3.3V, all the CPLD VCCIO2_PRI(SEC) IO pins output to OAM must be an open drain.
+
+6.5.6. OAM Vref based IO Pin
+
+The table below shows OAM Vref based miscellaneous signal list. The level shift devices and open-drain output are for 
+reference only. 
+All miscellaneous signal power sources have to connect to their OAM Vref output per the block diagram illustrated. For 
+open-drain I/O connects to the OAM Vref signal, the pull-up resistors' power is connected from its OAM Vref. For a level 
+shift device with two power sources, the high voltage power source comes from UBB power, and the low voltage power 
+source comes from its OAM Vref power. The level shift component (ex: NXP NTS0104) must act as a power isolation 
+device between OAM Vref and CPLD, High-Density connector, QSFP-DD connector. 
+
+OAM Miscellaneous Vref signals Signal Direction I/O Type UBB Connection Device
+
+Connecto r
+
+VREF
+
+Power Output
+
+| | | WARMRST# | | Input | | | | | PRI_CPLD | GPIO.OD | | w/ | PU | Conn0 | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | | | | | | | | 0: 100ohm | | | | | | | | | |
+| | | MODULE_ID | | Input | | | Internal | 47K | PU | | | | | Conn0 | | | | |
+| | | | | | | | | | 1: Floating | | | | | | | | | |
+| | | | | | | | | | 0: 100ohm | | | | | | | | | |
+| | | LINK_CONFIG[4:0] | | Input | | | Internal | 47K | PU | | | | | Conn1 | | | | |
+| | | | | | | | | | 1: Floating | | | | | | | | | |
+
+Power OAM Output (1.2V ~ 3.3V) Conn0
+
+PE_BIF[1:0] Output
+
+0: 1K ohm PD 
+1: 10K ohm PU 
+100K ohm PU Conn1 
+
+PLINK_CAP Output
+
+0: 1K ohm PD 
+1: 10K ohm PU 
+100K ohm PU Conn1 
+
+Page 61
+
+| I2C_D | | | | I/O | | | I/OD | | PCA9617A w/PU | | Conn0 | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| I2C_CLK | | | | Output | | | OD | | PCA9617A w/PU | | Conn0 | |
+| JTAG0_TRST | | | | Input | | | | | SEC_CPLD GPIO.OD | w/PU | Conn0 | |
+| JTAG0_TMS | | | | Input | | | | | SEC_CPLD GPIO.OD | w/PU | Conn0 | |
+| JTAG0_TCK | | | | Input | | | | | SEC_CPLD GPIO.OD | w/PU | Conn0 | |
+| JTAG0_TDO | | | | Output | | | Push-Pull | | SEC_CPLD GPIO | Input | Conn0 | |
+| JTAG0_TDI | | | | Input | | | | | SEC_CPLD GPIO.OD | w/PU | Conn0 | |
+| CONN1_INITMODE | | | | Output | | | Push-Pull | | QSFP via level | shift device | Conn1 | |
+| CONN1_INT# | | | | Input | | | | | QSFP via level | shift device | Conn1 | |
+| CONN1_MODPRS# | | | | Input | | | | | QSFP via level | shift device | Conn1 | |
+| CONN1_MODSEL# | | | | Output | | | Push-Pull | | QSFP via level | shift device | Conn1 | |
+| CONN1_RESET# | | | | Output | | | Push-Pull | | QSFP via level | shift device | Conn1 | |
+| CONN1_GREEN_LED | | | | Output | | | Push-Pull | | LED via FET | | Conn1 | |
+| CONN1_YELLOW_LED | | | | Output | | | Push-Pull | | LED via FET | | Conn1 | |
+| CONN2_INITMODE | | | | Output | | | Push-Pull | | QSFP via level | shift device | Conn1 | |
+| CONN2_INT# | | | | Input | | | | | QSFP via level | shift device | Conn1 | |
+| CONN2_MODPRS# | | | | Input | | | | | QSFP via level | shift device | Conn1 | |
+| CONN2_MODSEL# | | | | Output | | | Push-Pull | | QSFP via level | shift device | Conn1 | |
+| CONN2_RESET# | | | | Output | | | Push-Pull | | QSFP via level | shift device | Conn1 | |
+| CONN2_GREEN_LED | | | | Output | | | Push-Pull | | LED via FET.G | | Conn1 | |
+| CONN2_YELLOW_LED | | | | Output | | | Push-Pull | | LED via FET.G | | Conn1 | |
+
+DEBUG_PORT_PRSNT #
+
+Input SEC_CPLD GPIO.OD Conn1 TEST[0:4] Input SEC_CPLD GPIO.OD Conn0 TEST[5:9] I/O Push-Pull (I/O)
+
+SEC_CPLD GPIO.OD w/PU or level shift device
+
+Conn0
+
+TEST[10:14] I/O Push-Pull (I/O)
+
+SEC_CPLD GPIO.OD w/PU or level shift device
+
+Conn1 TEST_MODE# Input DIP_SW w/PU Conn0 Table 44 OAM Vref Signal usage
+
+Page 62
+
+Figure 28 Vref Signal Block Diagram The table below shows the CPLD Vccio power source and input/output pin power level from Lattice MachXO2 for reference. The Vccio power source must be connected from UBB VR power output, not from the OAM Vref output. The CPLD Vccio 1.5V supports OAM Inputs I/O voltage wider rang (1.2V ~ 3.3V). The Outputs I/O should be set to open-drain for a broader range Vref.
+
+Table 45 Mixed Voltage Support for LVCMOS and LVTTL I/O Types (copied from Lattice MachXO2 datasheet)
+
+#### 6.6. Host retimer
+
+System design decides whether host retimers need for their UBB design. OAI reference UBBs implemented eight of the 16x lane retimer device (ex: PCIe G5, 32GT/s) to near the ExaMAX connector. Each 16x lane retimer supports a standard clock between HIB and retimer and retimer to OAM (refer to 6.1.1). The upstream of the retimer lane is the HIB lane root port. The retimer topology is in the figure below.
+
+Page 63
+
+Figure 29 HIB Lane Retimer Topology
+
+#### 6.7. SERDES PHY Retimer
+
+System design decides whether PHY retimers need for their UBB design. In UBB reference boards, PHY retimers are near QSFP-DD connectors, which supports max passive QSFP-DD cable length up to 2 meters for UBB expansion/ scale-out. The PHY retimer connection is in the figure below. There is also MDC/MDIO interface designed from HIF_0 connector to each Serdes PHY for configuration.
+
+Figure 30 UBB Scale-Out Serdes PHY Topology (Example)
+
+Page 64
+
+OAI system designers must check serdes PHY supplier for FW support to enable specific link speed with OAMs.
+
+#### 6.8. High-Speed SI guidance
+
+This guidance recommends routing rule & fan-out pattern design of Mirror Mezz Pro connector to have high-speed SI 
+performance. It also shows measurement data, including test procedure & environment settings with test fixtures for 
+reference. Please refer to UBB v1.5 SI guidance in Wiki for detail: 
+https://www.opencompute.org/wiki/Server/OAI 
+
+Page 65
+
+### 7. Interconnect Topology
+
+Universal baseboard supports 8 OAMs and can support different topologies described in OAM Design specification section 9. This section describes two references interconnect topologies used in UBB reference boards.
+
+#### 7.4. Module ID
+
+There are 5 module ID pins defined in the OAM specification. UBB sets these pins based on the below figure: reference to Section6 for details.
+
+OAM Module ID 
+OAM0 00000 
+OAM1 00001 
+OAM2 00010 
+OAM3 00011 
+OAM4 00100 
+OAM5 00101 
+OAM6 00110 
+OAM7 00111 
+Table 46 UBB OAM module IDs 
+
+#### 7.5. LINK_CONFIG ID
+
+Link_config ID pins are defined in OCP Accelerator Module Design Specification section 9.3. The 5 link configuration strapping bits are pulled up on modules that use them. These bits are strapped to the ground on the UBB baseboard to select logic 0 or left floating on the baseboard to select logic 1. Some accelerators use these LINK_CONFIG[4:0] strapping bits to determine the interconnect topology for the links between modules and determine the protocol of the “P” Link. UBB should set the Link_Config ID based on the table defined in OAM spec.
+
+| LINK_CONFIG[4:0] | Definition |
+| --- | --- |
+| 00000 | Reserved for OAM. Test use by OAM Vendor. |
+| xxxx0 (except | for 00000) Indicates the “P” link is PCIe |
+| 01000 | 6 link HCM, 4 link HCM, and two 3 link fully connected quads as connected |
+| 00110 | 7 x16 fully connected |
+| 01010 | 6 x 16 link Chordal Ring (Almost Fully Connected) as connected |
+| 01011 | 6 x 16 link Chordal Ring (Almost Fully Connected) using alternate host interface protocol as connected |
+| 01100 | 8 link HCM |
+| xxxx1 (except | for 11111) Indicates the “P” link is an alternate protocol other than PCIe |
+| 10000 | Combined FC/6-Port HCM |
+| 11111 | Indicates an alternate means for identifying the link interconnect topology and configuration is used |
+
+Table 47 LINK_CONFIG[4:0] Encoding Definitions *This table is referenced from OAM Design Specification, and Encodings are not listed in the figure below.
+
+Page 66
+
+The following figure shows the OAM ID and Configure ID connection. OAM ID has its MODULE_ID[4:0] connection to identify its module ID number. The configure ID has to connect to all OAM LINK_CONFIG[4:0] and BMC.
+
+Figure 31 LINK_CONFIG ID
+
+#### 7.6. Combined Fully Connected and 6-port Hybrid Cube Mesh Topology
+
+For fully connect with expansion consideration, the UBB link is routed as X8( 1 st X8 of each port, 1L-7L), leaving 2 nd X8 of each SerDes port for expansion or embedding other topology. Here is 8 port HCM UBB reference board 7X8 fully connected topology combined with 6X8 hybrid cube mesh topology (X8 FC + X8 6 port HCM):
+
+Figure 32 Combined FC/6-Port HCM Topology
+
+Page 67
+
+Port 1,4,6,7 has a total of 16 lanes, and Port 2,3,5 has a total of 8 lanes in Figure 32: o Fully connected: 7 x8 links using port 1-7 first X8(1L-7L); o 2 nd half of port 1s(1H) are connected to QSFP-DD for expansion (scale-out); o 6 port HCM: all 6 ports are in connector 1 only. X16 link for port 4/6, X8 link(5L) for port 5, and 2 nd half of port 7(7H)
+
+Below figure shows the detailed port mapping and routing guide:
+
+Figure 33 Detail port mapping and routing guidance
+
+Port 4/6(both 4L/6L and 4H/6H), port 5L, 7H are used for 6X8 HCM. This is how it’s embedded to this combined topology:
+
+Page 68
+
+Figure 34 Embedded HCM Topology
+
+#### 7.7. 8-port Hybrid Cube Mesh Topology
+
+The Figure below shows an 8 port HCM(Hybrid Cube Mesh) topology of 8 modules in a UBB. Please follow port mapping to design OAM to be able to fit in the universal OAM baseboard. Port 4/6 connects through QSFP-DD cables for a single 8 module system. These QSFP-DD cables are also used for expansion (scale-out).
+
+Figure 35 8-port Hybrid Cube Mesh Topology
+
+● links HCM using links: 1, 2, 3, 4, 5, 6, 7 
+● SerDes Port 2, 3, 4, 5, 6, 7 are x8 lanes 
+● SerDes Port 1 is 2 x8 lanes 
+● 1L –Lower 8-bit, 1H –Upper 8-bit 
+● Links: 4, 6 (OAM #1, #2, #5, and #6) are used for scale-out, can be connected through QSFP-DD cables. Page 69 
+
+And here is the routing suggestion: total 4 layers, two layers for TX, two layers for RX. Port 4/6 are connected through cables.
+
+Figure 36 8-port HCM topology routing guide
+
+#### 7.8. UBB Reference boards
+
+System providers Inspur, HyveDesignSolutions, ZT systems/Inventec designed the first two UBB v1.0 reference boards: combined FC(Full connected) + 6 link HCM and 8 links HCM (Hybrid Cube Mesh). Refer to the Mechanical portion in chapter8 for a detailed Mezz orientation definition.
+
+#### 7.9. UBB silkscreen
+
+OAM silkscreen shall follow module ID naming as OAM0, OAM1, OAM2, et al. Scale-out QSFP-DD connector silkscreen shall follow Qdd_0, Qdd_1, Qdd_2, et al.
+
+Page 70
+
+Figure 37 UBB silkscreen example
+
+Page 71
+
+### 8. Mechanical Specification
+
+#### 8.4. Board dimension
+
+Board dimension is limited to 585mm x 417mm x 3.2mm (L x W x T). The handle design and interface for the UBB assembly are not defined in this specification and may be customized as needed. The board's outline is fixed as shown in the drawings and may not be altered or customized.
+
+Figure 38 UBB board dimension
+
+Page 72
+
+Figure 39 UBB board Top and side views
+
+#### 8.5. Required Components
+
+8.5.1. OAM Placement / Mirror Mezz Pro Connectors
+
+There are two different topologies with different connector orientations. The figures below highlight connector numbers and pin 1 locations to distinguish the two architectures.
+
+Page 73
+
+FC (Fully connected)
+
+Figure 40 OAM Mirror Mezz Pro connector pin1 orientation_FC
+
+Page 74
+
+HCM (Hybrid Cube Mesh) connection
+
+Figure 41 OAM Mirror Mezz Pro connector pin1 orientation_HCM
+
+8.5.2. I/O Connectors
+
+Multi-system scale-out with QSFP-DD connectors. Two Micro USB connectors are also exposed from the UBB to the exterior of the chassis for debugging
+
+| | Item | | Vendors | Model number | Descriptions |
+| --- | --- | --- | --- | --- | --- |
+| | 1 | | Amphenol | UE36-A1070-3000T | QSFP-DD Connector |
+| | 2 | | Amphenol | UE36-B16221-06A5A | QSFP-DD Cage |
+| | 3 | | Molex | 105017-0001 | Micro USB Connector |
+
+Table 48 UBB IO connectors
+
+Page 75
+
+Figure 42 UBB Front IOs
+
+High speed and Power Connector
+
+Item Vendors Model number Descriptions Qty
+
+1 Amphenol 10131762-101LF High Density Connector 8
+
+2 Amphenol 10037909-101LF Guide Pin 4
+
+3 Amphenol 10028917-001LF 54V Connector 4
+
+4 Amphenol JX410-xxxxx 12V Connector 2
+
+Table 49 High speed and Power Connector
+
+Figure 43 UBB high speed and power connectors to HIB
+
+Page 76
+
+Figure 44 UBB high speed and power connectors coordinate
+
+Page 77
+
+8.5.3. Screw Mounting Holes
+
+This chapter defines the screw hole sizes and locations. 3D files are on the OCP-OAI wiki.
+
+Mounting holes to UBB tray : There are 15 screw mounting holes to fix UBB to the UBB tray.
+
+Figure 45 mounting holes
+
+Through holes for OAMs:
+
+There are 32 through holes for OAMs screwing down to bolster.
+
+Page 78
+
+Figure 46 OAM through holes
+
+OAM guide hole (SMT Nut): SMT nut illustrated below is soldered to UBB at the 5.7mm diameter holes specified in Figure 38 above.
+
+Figure 47 OAM guide hole
+
+Mounting holes for bolster:
+
+There are 2 guide holes to align UBB and bolster first, then 8 mounting holes used for fastening UBB with bolster.
+
+Page 79
+
+Figure 48 Mounting holes for bolster
+
+#### 8.6. Recommended Components
+
+8.6.1. Air Baffle Holes
+
+Page 80
+
+Figure 49 Air Baffle mounting holes on the stiffener
+
+Hole sizes and locations are recommended and can customize for individual needs. The designs are available as part of the 3D package; an air baffle in the system is highly recommended.
+
+8.6.2. UBB Handles
+
+Southco handle (PN: P8-99-236)
+
+Page 81
+
+Figure 50 Reference UBB handle
+
+UBB handles are intended for ease of assembly of the baseboard into the system. It is not intended to be used to lift the chassis in its entirety. The system design highly recommends having these handles, and the actual size and type may customize accordingly.
+
+Page 82
+
+#### 8.7. Assembly
+
+Figure 51 UBB assembly DWG
+
+8.7.1. Screw Torque
+
+Table 50 Screw size and torque spec
+
+8.7.2. Reference Bolster Plate
+
+OAM module, handle with UBB board can be mounted to bolster via mounting screws. 
+thickness: 4 mm 
+material: Aluminum alloy 
+Mounting standoff: #6-32, M3.5 and M4 threaded 
+
+Page 83
+
+Figure 52 Bolster plate reference design
+
+8.7.3. Mylar
+
+Mylar insulators located between the top and bottom bolster and UBB surface
+
+Page 84
+
+thickness: 0.25 mm(include adhesive) material: PC1870A/EFR85(reference)
+
+Figure 53 UBB mylar
+
+Page 85
+
+### 9. Thermal and Cooling Specification
+
+##### 9.4. Environmental Conditions
+
+To meet the thermal reliability requirement, the cooling solution should dissipate heat from the components when the components on UBB are operating at their thermal design power. OAM and UBB should be able to work in the following environmental conditions without any throttling or thermal issues:
+
+● Ambient temperature: 5°C to 35 °C 
+● Board surface approach temperature: 10°C to 55 °C 
+● Altitude: sea level to 3000 ft, without temperature derating 
+● Relative Humidity: 20% to 90% Cold boot temperature: the module should be able to boot and operate at an initial temperature of 10°C In addition, the UBB should remain unaffected at a non-operational storage temperature range of -20°C to 85°C. 
+
+Figure 54 Module Operation Ambient Temperature
+
+##### 9.5. Air Flow Direction
+
+The UBB operates in two different airflow directions, which are: 1. QSFP connectors to OAMs to High-Density Connectors 2. High-Density Connectors to OAMs to QSFP Connectors
+
+Page 86
+
+If the UBB is in airflow direction 1, the downstream components behind UBB might become thermally critical; if the UBB is in airflow direction 2, the QSFP connectors might become thermally critical.
+
+Figure 55 UBB at different airflow directions
+
+##### 9.6. Keep Out Zone
+
+The heatsink manufacturing process such as diecasting and punching may have the tolerance lower than 0.3mm for contour, so for the stack-up tolerance, it is recommended that to keep things out from the heatsink boundary at least 1mm away and to prevent placing anything higher than the OAM to keep the heatsink In/Outlet flow area fluently.
+
+Figure 56 UBB heatsink recommended airflow area keep out
+
+Page 87
+
+Extrude w/ push pin heatsink for small chips, and the tolerance will be about +-0.3mm. It is recommended to follow the 1mm keep out, and the height limit needs to make sure everything under the heatsink is lower than the OAM height, preventing to cover the area over heatsink for better assembly space and cooling.
+
+Figure 57 small heatsink keep out
+
+#### 9.7. Temperature Report
+
+9.7.1. Temperature Sensors
+
+The local ambient sensor on UBB board for Air cooling control or protecting shutdown, there is 6 sensors location for reference to monitoring the upstream and downstream flow, may base on the system requirement to choose the sensor location and quantity, sensors need to support both UBB downstream and upstream placement. And main inlet temperature sensor requirement is better to keep accuracy at ±3°C. The encountered accuracy is generally better than this. This inlet sensor should locate at the front end of the UBB board.
+
+Figure 58 Recommended Ambient Temperature Sensor Map
+
+If any sensitivity components cannot feedback themselves, they will need an extra sensor nearby to ensure the location can reflect the needs of the area of the system they want to protect. They shall be placed as required to provide adequate protection for each major section of the system, such as re-timer, QSFP-DD, and try to avoid power trace or something hot nearby. If the heat source cannot be avoided, the sensor must be inserted vertically. The temperature sensor reading needs to be carefully calibrated for the operating temperature range specified in section 9.1 at different stress conditions. It’s recommended to use a ‘standing’ type temperature sensor instead of a surface-mounted type, and keep a significant distance from heat sources, to avoid impact from adjacent heating.
+
+Page 88
+
+##### 9.8. Thermal Recommendation
+
+##### 9.8.1. Airflow Budget
+
+It is recommended that the UBB module (contains 8*OAM and other onboard hardware like retimer/switch, PHY, etc.) operates with full performance should be at or lower than airflow/power ratio of 0.158 CFM/W with an ambient temperature of 35°C at sea level. It is equivalent to an inlet/outlet air temperature increase of 20.2°F/11.2°C. To keep downstream airflow meet 55°C standard PCIe spec. Maximum inlet/ outlet temperature rise of UBB shall not be more significant than 20°C at 35°C sea level.
+
+● For operation at altitude, the same air temperature difference of 20.2°F/11.2°C or higher is recommended. 
+● Airflow (CFM) is defined as the total airflow supplied cross UBB. 
+● Power (Watts) is defined as the max total power of all components on the UBB, on the same plane as the UBB (upstream/downstream components) 
+
+Figure 59 CFM per Watt definition for UBB
+
+Page 89
+
+##### 9.8.2. Reference Heatsink Design
+
+Figure 60 Thermal resistance and air pressure drop of UBB based on reference OAM Heatsink
+
+Based on the OAM reference heatsink, the thermal resistance of the rear row OAM Tcase and the airflow pressure drop across the UBB is shown in Figure 9-7,9-8. The thermal resistance is calculated based on the case temperature of the rear row (downstream) OAM, single OAM power, UBB total airflow rate, and approach air temperature to the UBB front row.
+
+When the heatsink design is fixed, the target Rca data can combine with the basic thermal capacitance calculation to estimate the heatsink outlet temperature at the front row. May use this temperature outlet as rear row heatsinks inlet local ambient, and the Tcase and OAM Power input could refer to the chipset spec, and these parameters may find out the reference flow rate which system needed as the following equations.
+
+Or
+
+We recommend supplying airflow higher than 460CFM through the UBB to support the cooling of 400W OAMs at 35°C and sea level. The cooling performance of the OAM reference heatsinks will start saturating beyond 500CFM (125CFM per heatsink). The performance of air-cooled heatsinks will become a limiting factor for higher approach air temperature or higher OAM power.
+
+Page 90
+
+Figure 61 Thermal resistance of single OAM Reference Heatsink
+
+##### 9.8.3. Reference Liquid Cooling Design
+
+Liquid cooling design specifications and guidance for OAM and OAI systems are also under-development. A high-level introduction is provided in this section. The current liquid cooling solution considers using direct liquid-cooled cold plates for OAM modules. It is a complete OAI chassis-level design for operating cold plates. The goals of liquid cooling design: Different OAM products and the same liquid cooling solution can use in the same system; the same OAM product and same liquid cooling solution can use in multiple systems. The specifications are for standardization and design guidelines to expedite product development and deployment with minimized redesign efforts. The liquid cooling solution in this specification aims at supporting OAM power up to 700W. The liquid cooling design specification and guidance will consist of:
+
+● OAM cold plate 
+● Liquid cooling module 
+● Cold plate loop and fluid distribution 
+● Connectors 
+● System assembly 
+● Coolant requirement and hardware material 
+● Operating conditions 
+
+Page 91
+
+● Validation and Maintenance
+
+At the OAM level, a universal interface between OAM and the cold plate will be defined. Particularly for bare-die products, a mechanical lid adapter will be introduced to establish a thermal conduction path between components on the PCB (including package) and the cold plate. The lid adapter defines a universal interface for cold plates, allowing different cold plates to be mounted on different OAM products. In the case of a lidded-die package, a universal interface for cold plates is also defined, including mechanical stiffeners.
+
+Cooling module introduction: The liquid-cooling module considers a design including all the liquid cooling components as one fully integrated unit, including OAM cold plates, cold plate loop and connections, fluid distribution, and auxiliary components, if any. The entire cooling module is assembled and tested before assembling in a server chassis. This design improves reliability, minimizes leakage impact and damage in server chassis, improves serviceability, and enables ease of operation. Derivative reference design solutions supporting 2 or 4 assemblies will also be provided.
+
+A reference liquid cooling design for UBB is demonstrated in Figure 62. Cold plates cover the OAMs, and the remaining components on UBB can be either air-cooled or liquid-cooled with extra coolant loops. The coolant supply to the UBB is divided into 4 parallel loops, and each loop is assembled with two cold plates. The connectors interfacing with external coolant loops can be routed to different locations on the chassis to match the rack level manifold design.
+
+Figure 62 Reference Liquid Cooling Design for UBB. 1: Universal Base Board; 2: Host Interface Board; 3: Power Distribution Board; 4: Liquid Cooling Module. The cooling components and OAMs in the figure are just for concept demonstration and do not represent real solutions. Page 92
+
+Page 93
+
+### 10. System Management
+
+##### 10.4. UBB I2C Topology
+
+Figure 63 UBB I2C Topology
+
+##### 10.5.Sensors and Events
+
+SEL Definition List
+
+| | Term | | | | Full Name |
+| --- | --- | --- | --- | --- | --- |
+| | LNC | | | | Lower non-recoverable |
+| | LC | | | | Lower Critical (Critical low) |
+| | LNC | | | | Lower Non-Critical |
+| | UNC | | | | Upper Non-critical |
+| | UC | | | | Upper Critical |
+| | UNR | | | | Upper non-Recoverable |
+| | A | | | | Assertion |
+| | D | | | | De-assertion |
+| | S | | | | Settable (Threshold sensor only) |
+| | R | | | | Readable |
+
+Table 51 SEL Definition List
+
+Page 94
+
+Threshold – 01h
+
+Degree C 01h
+
+** Define by 
+OAM 
+vendor. 
+
+9h: Upper critical going high (A, D, S, R)2h: Lower critical going low (A, D, S, R)
+
+A=2204 D=2204 R=1212 
+OAM_TEMP_0 
+OAM_TEMP_1 
+OAM_TEMP_2 
+OAM_TEMP_3 
+OAM_TEMP_4 
+OAM_TEMP_5 
+OAM_TEMP_6 
+OAM_TEMP_7 
+
+Threshold – 01h
+
+9h: Upper critical going high (A, D, S, R)
+
+Watts 06h
+
+** Define by 
+OAM 
+vendor. 
+
+A=200 D=2200 R=1010
+
+| OAM_ PWR_3 | | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| OAM_ PWR_4 | | | | | | | | |
+| OAM_ PWR_5 | | | | | | | | |
+| OAM_ PWR_6 | | | | | | | | |
+| OAM_ PWR_7 | | | | | | | | |
+| OAM_PRSNT_0 | | | | 0x80 CPLD | Discrete | – 0h: Device | Absent | Unspecified |
+
+OAM_ PWR_0 
+OAM_ PWR_1 
+OAM_ PWR_2 
+
+0x80 CPLD Discrete – 08h
+
+0h: Device Absent 
+1h: Device Presnet 
+
+Unspecified 00h
+
+ 
+
+OAM_PRSNT_0 
+OAM_PRSNT_1 
+OAM_PRSNT_2 
+OAM_PRSNT_3 
+OAM_PRSNT_4 
+OAM_PRSNT_5 
+OAM_PRSNT_6 
+OAM_PRSNT_7 
+
+0x80 CPLD Discrete – 03h
+
+0h: State Deasserted 
+1h: State Asserted 
+
+Discrete 00h
+
+OAM_THERMTRIP_0 
+OAM_THERMTRIP_1 
+OAM_THERMTRIP_2 
+OAM_THERMTRIP_3 
+
+ 
+
+Page 95
+
+| OAM_THERMTRIP_4 | | | | |
+| --- | --- | --- | --- | --- |
+| OAM_THERMTRIP_5 | | | | |
+| OAM_THERMTRIP_6 | | | | |
+| OAM_THERMTRIP_7 | | | | |
+| HSC_P12V_VIN_0 | | | 0x80 HSC | Threshold 9h: Upper critical going high (A, D, Volt |
+
+0x80 HSC Threshold – 01h
+
+9h: Upper critical going high (A, D, S, R)
+
+Volt 04h
+
+2h: Lower critical going low (A, D, S, R)
+
+HSC_P12V_VIN_0 
+HSC_P12V_VIN_1 
+HSC_P12V_VIN_2 
+HSC_P12V_VIN_3 
+HSC_P12V_VIN_4 
+HSC_P12V_VIN_5 
+HSC_P12V_VIN_6 
+HSC_P12V_VIN_7 
+A=2204 D=2204 R=1212 
+
+0x80 HSC Threshold – 01h
+
+9h: Upper critical going high (A, D, S, R)
+
+Volt 04h
+
+2h: Lower critical going low (A, D, S, R)
+
+HSC_P12V_VOUT_0 
+HSC_P12V_VOUT_1 
+HSC_P12V_VOUT_2 
+HSC_P12V_VOUT_3 
+HSC_P12V_VOUT_4 
+HSC_P12V_VOUT_5 
+HSC_P12V_VOUT_6 
+HSC_P12V_VOUT_7 
+A=2204 D=2204 R=1212 
+
+0x80 HSC Threshold – 01h
+
+9h: Upper critical going high (A, D, S, R)
+
+Amps 05h
+
+A=200 D=2200 R=1010
+
+| HSC_P12V_IOUT_3 | | | | |
+| --- | --- | --- | --- | --- |
+| HSC_P12V_IOUT_4 | | | | |
+| HSC_P12V_IOUT_5 | | | | |
+| HSC_P12V_IOUT_6 | | | | |
+| HSC_P12V_IOUT_7 | | | | |
+
+HSC_P12V_IOUT_0 
+HSC_P12V_IOUT_1 
+HSC_P12V_IOUT_2 
+Page 96 
+
+0x80 HSC Threshold – 01h
+
+9h: Upper critical going high (A, D, S, R)
+
+Watts 06h
+
+A=200 D=2200 R=1010
+
+| HSC_P12V_PIN_3 | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- |
+| HSC_P12V_PIN_4 | | | | | | |
+| HSC_P12V_PIN_5 | | | | | | |
+| HSC_P12V_PIN_6 | | | | | | |
+| HSC_P12V_PIN_7 | | | | | | |
+| HSC_P12V_STS_0 | 0x80 | HSC Sensor | | 1h: | Power Supply Failure | detected Unspecified |
+| | | Specific | - | (A, | | |
+| HSC_P12V_STS_1 | | | | | | ooh |
+| | | 6Fh | | | | |
+| | | | | D, | R). | |
+| HSC_P12V_STS_2 | | | | | | |
+| HSC_P12V_STS_3 | | | | | | |
+
+HSC_P12V_PIN_0 
+HSC_P12V_PIN_1 
+HSC_P12V_PIN_2 
+HSC_P12V_STS_0 
+HSC_P12V_STS_1 
+HSC_P12V_STS_2 
+HSC_P12V_STS_3 
+HSC_P12V_STS_4 
+HSC_P12V_STS_5 
+HSC_P12V_STS_6 
+HSC_P12V_STS_7 
+
+2h: Predictive Failure (A, D, R)
+
+A=0006 D=0006 R=0006
+
+| HSC_P12V_STS_6 | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- |
+| HSC_P12V_STS_7 | | | | | | |
+| TEMP_INLET_0 | 0x90 | Threshold | | 9h: | Upper critical going | high (A, D, Degree C |
+| | | – 01h | | S, R) | | |
+| TEMP_INLET_1 | 0x92 | | | | | 01h |
+| TEMP_OUTLET_0 | | | | | | |
+
+TEMP_OUTLET_1
+
+2h: Lower critical going low (A, D, S, R)
+
+A=2204 D=2204 R=1212
+
+Page 97
+
+Table 52 Sensor name and Event table
+
+Page 98
+
+##### 10.6.UBB FRU Format
+
+There’s 2 FRU EEPROM on the UBB board. FRU 0 is dedicated to BMC, and FRU 1 is shared with BMC and OAM #0. See 
+the next section for the FRU access mechanism. 
+FRU 0 and FRU1 are identical, containing both IPMI standard FRU format and UBB OAM Interconnect FRU. See below 2 
+pictures for the relationship of FRU 0 and FRU 1. 
+
+Figure 64 FRU diagram
+
+Page 99
+
+Figure 65 FRU0 and FRU1
+
+IPMI standard FRU format: (offset 2000h) ODM defines the IPMI standard FRU value.
+
+| Field Name | Value |
+| --- | --- |
+| Board Mfg. Date | Example: “Fri Oct 11 05:58:00 2019” |
+| Board Mfg. | Example: “HyveDesingSolutions” “ZT Systems” “Inspur” |
+| Board Product | “OAI-UBB” |
+| Board Serial | Defined by ODM. |
+| Board Part Number | Defined by ODM. |
+| Board Custom Info 1 for UBB | type String type of following: “3/4/6 Links HCM” “8 Links HCM” “FC” “FC+6 Links HCM” |
+| Board Custom Info 2 for version | Example: “v1.00” |
+
+Table 53 FRU content-standard IPMI
+
+UBB OAM Interconnect FRU format: (offset 0h)
+
+Description
+
+Address (Hex)
+
+Page 100
+
+| 000 | UBB Type | Refer to OAM LINK_CONFIG | Ex. Spec 8’bxxx01000 – 3/4/6 Links HCM 8’bxxx01010 – FC + 4/6 Links HCM 8’bxxx01100 – 8 Links HCM 8’bxxx0xxxx0 – Reserved |
+| --- | --- | --- | --- |
+| 001 | UBB Spec Version | Supported UBB Version | Spec 8’bxx |
+| 002 | UBB SerDes | width OAM SerDes interconnect bus width | 8’b00 – 2 bits 8’b01 – 4 bits 8’b10 – 8 bits 8’b11 – 16 bits |
+| 003 | Number of section | OAM For example, the number of OAM OAM#0 to OAM#1 on 010h to 01Fh, consisting of 16 | total sections, data, is bytes. |
+| 004 – | 00E | RESERVED | |
+| 00F | Zero-checksum | Zero-checksum header, offset total 15 bytes. | for 0h to Eh, |
+| 010 | OAM#0 to OAM#1: SerDes Ports Mapping 1 | OAM#0 to OAM#1 Port Mapping bits) | SerDes Ex. If OAM#0 SerDes port 1 and 5 (lower 8 connect to OAM#1, then the setting is 8’b00010001 |
+| 011 | OAM#0 to OAM#1: SerDes Ports Mapping 2 | OAM#0 to OAM#1 Port Mapping bits) | SerDes Ex. If OAM#0 SerDes port 2 and 4 (upper 8 connect to OAM#1, then the setting is 8’b00001010 |
+| 012 | OAM#0 to OAM#1: Lane Reversal | OAM#0 SerDes 1 lane reversal in 8 bits) | Tx Ports Ex. If OAM#0 SerDes ports 3 and 5 x8 (lower are lane reversal, then the setting is 8’b00010100 |
+| 013 | OAM#0 to OAM#1: Lane Reversal | OAM#0 SerDes 2 lane reversal in 8 bits) | Tx Ports Ex. If OAM#0 SerDes ports 1 and 7 x8 (upper are lane reversal, then the setting is 8’b01000001 |
+| 014 | OAM#0 to OAM#1: Polarity Inversion | OAM#0 SerDes 1 polarity inversion (lower 8 bits) | Tx Ports Ex. If OAM#0 SerDes port 3 and 5 in x8 are polarity inversion, then the setting is 8’b00010100 |
+| 015 | OAM#0 to OAM#1: Polarity Inversion | OAM#0 SerDes 2 polarity inversion (upper 8 bits) | Tx Ports Ex. If OAM#0 SerDes port 1 and 7 in x8 are polarity inversion, then the setting is 8’b01000001 |
+| 016 | OAM#0 to OAM#1: Shortest PCB length | OAM#0 Tx to trace shortest trace | OAM#1 Rx Ex. 0.5 inches stepping. If the length trace length is 2.5inches, then the setting is 8’b0000101 (5) |
+| 017 | OAM#0 to OAM#1: Longest PCB length | OAM#0 Tx to trace longest trace | OAM#1 Rx Ex. 0.5 inches stepping. If the length trace length is 16.5inches, then the setting is 8’b00100001 (33) |
+| 018 – | 01E OAM#0 to OAM#1: | RESERVED | |
+| 01F | Zero-checksum | Zero-checksum section, for example to 01Eh, total | for OAM 010h 15 bytes. |
+| 020 – | 02F OAM#0 to OAM#2 | Refer to OAM#0 OAM#1 description | to |
+
+Page 101
+
+| 030 – | 03F OAM#0 to OAM#3 | Refer to OAM#0 OAM#1 description | to |
+| --- | --- | --- | --- |
+| 040 – | 04F OAM#0 to OAM#4 | Refer to OAM#0 OAM#1 description | to |
+| 050 – | 05F OAM#0 to OAM#5 | Refer to OAM#0 OAM#1 description | to |
+| 060 – | 06F OAM#0 to OAM#6 | Refer to OAM#0 OAM#1 description | to |
+| 070 – | 07F OAM#0 to OAM#7 | Refer to OAM#0 OAM#1 description | to |
+| 080 – | 08F OAM#0 to QDD | Refer to OAM#0 OAM#1 description | to |
+| 090 – | 10F OAM#1 to OAM#0 7 & QDD | – Refer to OAM#0 OAM#1 description | to |
+| 110 – | 18F OAM#2 to OAM#0 7 & QDD | – Refer to OAM#0 OAM#1 description | to |
+| 190 – | 20F OAM#3 to OAM#0 7 & QDD | – Refer to OAM#0 OAM#1 description | to |
+| 210 – | 28F OAM#4 to OAM#0 7 & QDD | – Refer to OAM#0 OAM#1 description | to |
+| 290 – | 30F OAM#5 to OAM#0 7 & QDD | – Refer to OAM#0 OAM#1 description | to |
+| 310 – | 38F OAM#6 to OAM#0 7 & QDD | – Refer to OAM#0 OAM#1 description | to |
+| 390 – | 40F OAM#7 to OAM#0 7 & QDD | – Refer to OAM#0 OAM#1 description | to |
+| 410 | QDD_0** to Connection | OAM# QDD to OAM# 1 (lower 8 bits) | Connection Ex. If QDD connect to OAM#5, then the setting is 8’b00010000 |
+| 411 | QDD_0** to Connection | OAM# QDD to OAM# 2 (upper 8 bits) | Connection Ex. If QDD connect to OAM#5, then the setting is 8’b00010000 |
+| 412 | QDD_0 to OAM# SerDes Ports Mapping 1 | QDD to OAM Mapping (lower | SerDes Port Ex. If QDD connect to OAM SerDes 8 bits) port 2, then the setting is 8’b00000010 |
+| 413 | QDD_0 to OAM# SerDes Ports Mapping 2 | QDD to OAM Mapping (upper | SerDes Port Ex. If QDD connect to OAM SerDes 8 bits) port 4, then the setting is 8’b00001000 |
+| 414 | QDD_0 Lane 1 | Reversal QDD Tx port lane in x8 (lower 8 | reversal Ex. If QDD Tx port is lane reversal, bits) then the setting is 8’b00000001 |
+| 415 | QDD_0 Lane 2 | Reversal QDD Tx port lane in x8 (upper 8 | reversal Ex. If QDD Tx port is lane reversal, bits) then the setting is 8’b00000001 |
+| 416 | QDD_0 Polarity Inversion 1 | QDD Tx port polarity inversion in x8 bits) | Ex. If QDD Tx port is polarity (lower 8 inversion, then the setting is 8’b00000001 |
+| 417 | QDD_0 Polarity Inversion 2 | QDD Tx port polarity inversion in x8 bits) | Ex. If QDD Tx port is polarity (upper 8 inversion, then the setting is 8’b00000001 |
+| 418 | QDD_0 Tx shortest PCB trace length | QDD Tx shortest length | PCB trace Ex. 0.5 inches stepping. If the trace length is 2.5inches, then the setting is 8’b0000101 (5) |
+
+Page 102
+
+| 419 | QDD_0 Tx longest PCB trace length | QDD Tx longest length | PCB trace Ex. 0.5 inches stepping. If the trace length is 16.5inches, then the setting is 8’b00100001 (33) |
+| --- | --- | --- | --- |
+| 41A -41E | QDD_0 to OAM# | RESERVED | |
+| 41F | Zero-checksum | Zero-checksum section, for example, to 41Eh, total | for QDD 410h 15 bytes. |
+| 420 – | 42F QDD_1 to OAM# | Refer to QDD_0 description | to OAM# |
+| 430 – | 43F QDD_2 to OAM# | Refer to QDD_0 description | to OAM# |
+| 440 – | 44F QDD_3 to OAM# | Refer to QDD_0 description | to OAM# |
+| 450 – | 45F QDD_4 to OAM# | Refer to QDD_0 description | to OAM# |
+| 460 – | 46F QDD_5 to OAM# | Refer to QDD_0 description | to OAM# |
+| 470 – | 47F QDD_6 to OAM# | Refer to QDD_0 description | to OAM# |
+| 480 – | 48F QDD_7 to OAM# | Refer to QDD_0 description | to OAM# |
+| 490 – | 7FF RESERVED | RESERVED | |
+
+**QDD_0 (QDD1_1), QDD_1(QDD1_2), QDD_2 (QDD2_1), QDD_3 (QDD2_2), QDD_4 (QDD5_1), QDD_5(QDD5_2), QDD_6 (QDD6_1), QDD_7 (QDD6_2)
+
+Table 54 UBB OAM Interconnect FRU
+
+Page 103
+
+### 11. 54V/48V Safety Requirement
+
+##### 11.4.Pollution Degrees
+
+Pollution degrees are classified as follows:
+
+● Pollution degree 1. No pollution or only dry, non-conductive pollution occurs. Pollution has no influence (example: sealed or potted products). 
+● Pollution degree 2. Usually, only non-conductive pollution occurs. Occasionally a temporary conductivity caused by condensation must be expected (example: product used in a typical office environment). 
+• Pollution degree 3. Conductive pollution occurs, or dry, non-conductive pollution occurs that becomes conductive due to expected condensation (example: products used in heavy industrial environments that are typically exposed to pollution such as dust). 
+
+| | | CREEPAGE | | | DISTANCES | | in mm | | | | | | | | | | | | | | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | RMS | | Working | | 1 | | | | | | | | 2 | | | | | | | | 3 | | | | | |
+| | | Voltage | | up | to | Material | | Group | | | | | | | | | | | | | | | | | | | |
+| | | and | | including | | I | | II | | | III | | | I | | II | | III | | | | I | | II | | III | |
+| | | V | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | | 10 | | | | 0.025 | | 0.04 | | | 0.08 | | | 0.4 | | 0.4 | | 0.4 | | | | 1.0 | | 1.0 | | 1.0 | |
+| | | 12.5 | | | | 0.025 | | 0.04 | | | 0.09 | | | 0.42 | | 0.42 | | 0.42 | | | | 1.05 | | 1.05 | | 1.05 | |
+| | | 16 | | | | 0.025 | | 0.04 | | | 0.1 | | | 0.45 | | 0.45 | | 0.45 | | | | 1.1 | | 1.1 | | 1.1 | |
+| | | 20 | | | | 0.025 | | 0.04 | | | 0.11 | | | 0.48 | | 0.48 | | 0.48 | | | | 1.2 | | 1.2 | | 1.2 | |
+| | | 25 | | | | 0.025 | | 0.04 | | | 0.125 | | | 0.5 | | 0.5 | | 0.5 | | | | 1.25 | | 1.25 | | 1.25 | |
+| | | 32 | | | | 0.025 | | 0.04 | | | 0.14 | | | 0.53 | | 0.53 | | 0.53 | | | | 1.3 | | 1.3 | | 1.3 | |
+| | | 40 | | | | 0.025 | | 0.04 | | | 0.16 | | | 0.56 | | 0.56 | | 0.8 | | | | 1.1 | | 1.6 | | 1.8 | |
+| | | 50 | | | | 0.025 | | 0.04 | | | 0.18 | | | 0.6 | | 0.6 | | 0.85 | | | | 1.2 | | 1.7 | | 1.9 | |
+| | | 63 | | | | 0.04 | | 0.063 | | | 0.2 | | | 0.63 | | 0.9 | | 1.25 | | | | 1.6 | | 1.8 | | 2.0 | |
+| | | | | | | | | | | Table 55 Minimum creepage distances | | | | | | | | | | | | | | | | | |
+
+##### 11.5.Determination of minimum clearances
+
+For equipment operating more than 2000m above sea level, the minimum clearances should multiply by the factor given in IEC 60664-1.
+
+| Altitude (M) | Normal barometric (kPa) | pressure Multiplication factor for clearances |
+| --- | --- | --- |
+| 2000 | 80.0 | 1.00 |
+| 3000 | 70.0 | 1.14 |
+| 4000 | 62.0 | 1.29 |
+| 5000 | 54.0 | 1.48 |
+
+Page 104
+
+6000 47.0 1.70 Table 56 Altitude correction factors
+
+##### 11.6.Creepage and Clearance in Practice
+
+Per OAM spec v1.0, the environmental requirements are operating altitude with no de-ratings 
+3048m (10000feet)- recommended as this is a Facebook spec and standard for Telco operation. 
+The clearance distance is about 2.58mm (2.0mm x 1.29) as below condition: 
+Pollution degree 3 and 63V: 2.0mm 
+Altitude 4000meter correction factor: 1.29 
+Please check your SAFETY certification vendor for testing if the clearance can’t meet pollution distance and altitude 
+factory. 
+
+### 12. Acronyms
+
+Acronym Definition 
+ASIC Application Specific Integrated Circuit 
+OAM OCP Accelerator Module 
+BGA Ball Grid Array 
+Page 105 
+
+| BMC | Baseboard Management Controller |
+| --- | --- |
+| TDP | Thermal Design Power |
+| EDP | Excursion Design Power |
+| GPU | Graphic Processing Unit |
+| MPN | Manufacturing Part Number |
+| DXF | Drawing eXchange Format |
+| PCBA | Printed Circuit Board Assembly |
+
+Table 57 Acronyms
+
+### 13. Revision History
+
+| Revision | | | Date | Notes | |
+| --- | --- | --- | --- | --- | --- |
+| v0.1 | | | 6/27/2019 | First draft. | |
+| v0.42 | | | 10/23/2019 | First draft to | OCP community. |
+
+1. Update OAM power support, QSFP-DD description (Chapter 4, 5, 5.3) 
+2. Add UBB behavior when OAM Thermal Trip (Chapter 5.4.3) 
+3. Add UBB Power Ready “UBB_PWR_READY” description (Chapter 5.4.3) 
+
+v1.0 6/28/2020
+
+Page 106
+
+4. Update OAM support power. 54V/12V power input and add power design guide (Chapter 5.5, 5.5.2, 5.5.3, 5.5.4) 
+5. Update System Clock Architecture description: Host to HIB in SRIS mode. HIB to UBB is a common clock mode (Chapter 6.1.1) 
+6. Update I2C architecture/Topology with host retimer and PHY/SERDES retimer (Chapter 6.1.2) 
+7. Correct “SW board” typo to “HIB” (Chapter 6.1.4, 7.2) 
+8. Power Control Block Diagram update: revise retimer VR wording from specific voltage value to Retimer_VR-0~3 (Chapter 6.1.5) 
+9. Update Module ID, Link_Config[4:0] based on OAM1.1 spec. (Chapter 6.1.6.1, 6.1.6.2) 
+10. update default JTAG MUX setting in JTAG Truth Table (Chapter 6.1.8 ) 
+11. Update UART description (Chapter 6.1.9) 
+12. Update debug header to optional (Chapter 6.1.10) 
+13. Update UBB power on sequence: add P3V3_STBY, HOST_RETIMER_VR_EN, HOST_RETIMER_PWRGD, PHY_RETIMER_VR_EN, PHY_RETIMER_PWRGD . Modify retimer/PHY VR_EN, sequence and add notes (Chapter 6.1.11) 
+14. Add UBB power-down sequence, also to revise UBB_PWRGD” to “MODULE_ENABLE” (Chapter 6.1.11) 
+15. Update 12V power connector vendor PN in UBB connector list. (Chapter 6.2) 
+16. Update HIF, QSFP-DD, OAM debug connector voltage level based on UBB standpoint. (Chapter 6.2.1) 
+17. Update high-density connector pin list: HIF0-7: add SGPIO, PHY MDC/MDIO. Add 100Mhz clk. Add one more USB for UART. Add USB mux select. Remove EEPROM_WP in HIF4. Add UBB power-ready pin. Correct some typo. (Chapter 6.2.1) 
+18. Update QSFP-DD, HIF0-7, Debug connector pin definition. Modify pin direction based on UBB standpoint. Add HIF pin map info. (Chapter 6.2.1.4) 
+19. Update primary CPLD block diag: add sequence, Reset, SGPIO (Chapter 6.4.1) 
+20. Correct CPLD “Truth Table” wording to “Primary CPLD Fan-out to OAMs” (Chapter 6.4.3) 
+21. Update I2C Slave register Map (Chapter 6.4.4) 
+22. Update primary CPLD pin list: add SGPIO, host retimer/PHY retimer reset, host retimer/PHY retimer power enable/power good. (Chapter 6.5.5) 
+23. Update CPLD IO bank 1.5V to support 1.2v-3.3V OAM vref, and the CPLD 1.5V level output in open-drain design (Chapter 6.5.5) 
+24. Add OAM Vref Based IO Pin chapter (Chapter 6.5.6) 
+25. Add host retimer section (Chapter 6.6) 
+26. Add SERDES PHY retimer section (Chapter 6.7) 
+27. Add High-Speed SI guidance (Chapter 6.8) 
+28. Drawings update, sync with OAM v1.1 (Chapter 7) 
+29. Add UBB silkscreen (Chapter 7.6) 
+
+Page 107
+
+30. Update mechanical mounting holes, Grounding pads per OAM spec. Update bolster, SMT nuts, and add detailed ME drawings. (Chapter 8.2, 8.3, 8.4 ) 
+31. Add UBB connectors coordinate (Chapter 8.2.2) 
+32. Update Thermal airflow budget (Chapter 9.5.1) 
+33. Update Reference Liquid Cooling (Chapter 9.5.3) 
+34. Update UBB I2C topology address: add FRU, host retimer, add 100MHz OAM clk buffer, correct and modify it to match i2c diag (Chapter 10.1) 
+35. Update UBB OAM FRU (Chapter 10.3) 
+36. Correct Figures and Tables Index 
+37. Modify table 13 for connectors type. 
+38. Delete words “(Input, Output are based on OAM UBB side)” in section 6.2.1.1. 
+39. Modify table 15 for changing I2C_SLV_CLK UBB direction POV from input to output. 
+40. Modify figure 24 for correcting connector drawing 
+41. Modify figure 25 for correcting connector drawing. 
+42. Modify table 20, connector position order to align connector spec. 
+43. Modify table 21, connector position order to align connector spec. 
+44. Add section 6.2.1.4 12V power connector re-purpose for 54V 
+45. Modify table 30 for correcting wording XDP to debug, correcting hook[6,7]’s voltage, add a note for signal P1V8. 
+
+v1.1 01/30/2021
+
+46. Update section 6.1.11 UBB power sequence. Figure 20 UBB Power on the sequence and Figure 21 UBB power-down sequence. And its notes. 
+47. Update section 6.2.1.5 Host Interface Connector (HIF) pin list. Table 24 HIF_2_connector pin list for power-on behavior alignment modification. 
+48. Add notes for 12V connector vendor part number. 
+
+v1.5 10/23/2021 
+49. Update with v1.5 spec to support 112G-PAM4 and 700W TDP 
+50. Add 54V connector test result 
+51. Modify power sequence (UBB_PWR_ON_N) 
+52. Update OAM power off sequence to support graceful power 
+down 
+
+Table 58 Revision History
+
+Page 108
+
