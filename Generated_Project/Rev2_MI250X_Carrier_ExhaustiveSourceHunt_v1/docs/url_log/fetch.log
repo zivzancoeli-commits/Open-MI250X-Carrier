@@ -1,0 +1,19 @@
+200|application/pdf|34595|0.14s|dcdc9dbbebbd084e||https://www.farnell.com/datasheets/3919676.pdf -> Farnell_Molex_2189101115.pdf
+0||0|45.07s||TimeoutError: The read operation timed out|https://www.molex.com/en-us/products/part-detail/2189101115 -> Molex_2189101115_part.html
+0||0|45.04s||TimeoutError: The read operation timed out|https://www.molex.com/pdm_docs/ps/2189100001-PS.pdf -> Molex_2189100001-PS.pdf
+0||0|45.07s||TimeoutError: The read operation timed out|https://www.molex.com/pdm_docs/ps/2189100001-PS-000.pdf -> Molex_2189100001-PS-000.pdf
+0||0|45.06s||TimeoutError: The read operation timed out|https://www.molex.com/pdm_docs/ps/PS-218910-0001.pdf -> Molex_PS-218910-0001.pdf
+0||0|45.06s||TimeoutError: The read operation timed out|https://www.molex.com/pdm_docs/sd/2189101115.pdf -> Molex_2189101115_sd_pdm.pdf
+0||0|45.07s||TimeoutError: The read operation timed out|https://www.molex.com/pdm_docs/sd/2189101115-SD.pdf -> Molex_2189101115-SD.pdf
+0||0|45.08s||TimeoutError: The read operation timed out|https://www.molex.com/pdm_docs/sd/2189101115-SD-000.pdf -> Molex_2189101115-SD-000.pdf
+0||0|45.02s||TimeoutError: The read operation timed out|https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/218/218910/2189101115.pdf -> Molex_2189101115_salesdrawing.pdf
+0||0|45.07s||TimeoutError: The read operation timed out|https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/3dcadmodelspdf/218/218910/2189101115.pdf -> Molex_2189101115_3dcad.pdf
+0||0|45.05s||TimeoutError: The read operation timed out|https://www.molex.com/content/dam/molex/molex-dot-com/en_us/pdf/datasheets/987652-0673.pdf -> Molex_987652-0673.pdf
+0||0|45.05s||TimeoutError: The read operation timed out|https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/pdf/datasheets/987652-0673.pdf -> Molex_987652-0673_alt.pdf
+200|application/pdf|1335124|0.08s|7dc0eb8469378ae9||https://www.content.molex.com/dxresources/1b7b/1b7b49e5-2def-4843-a9ed-656713e84952.pdf -> Molex_Mirror_Mezz_overview.pdf
+200|application/pdf|326192|0.03s|009ac7df512eba1c||https://www.content.molex.com/dxresources/3d6e/3d6e8b6f-430d-49cd-b843-a6374232eb3c.pdf -> Molex_Mirror_Mezz_15x11_OCP.pdf
+200|application/pdf|318701|0.03s|20acc69d08cf207e||https://www.content.molex.com/dxresources/7f7b/7f7b6bdf-bb6d-4339-b836-185ec7a3b999.pdf -> Molex_Supports_OCP_Open_Standards.pdf
+200|application/pdf|1448968|0.3s|6eb69152a2550a17||https://www.content.molex.com/dxresources/b3b7/b3b7bc64-a2fc-4845-90bd-f1efb35a3ffb.pdf -> Molex_Mirror_Mezz_15x11_OCP_connectors.pdf
+403|text/html; charset=UTF-8|5900|0.04s||Forbidden|https://www.digikey.com/en/products/detail/molex/2189101115/16695784 -> DigiKey_2189101115.html
+200|text/html|13895|0.16s|b1d7c8e5f80e9590||https://www.mouser.com/ProductDetail/Molex/218910-1115 -> Mouser_218910-1115.html
+403|text/html|234|0.06s||Forbidden|https://www.newark.com/molex/2189101115/connector-mezz-15pos-11row/dp/88AH6546 -> Newark_2189101115.html

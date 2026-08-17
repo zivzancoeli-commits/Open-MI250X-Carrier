@@ -1,0 +1,1049 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="AMD Instinct MI250 acceptance criteria — prerequisites, health checks, system validation, and performance benchmarks for CDNA 2 OAM GPU platforms." name="description" />
+<meta content="MI250, AMD Instinct, CDNA 2, OAM, ROCm, xGMI, Infinity Fabric, system acceptance, validation, benchmarks, HBM2e" name="keywords" />
+
+    <title>AMD Instinct MI250 / MI250X &#8212; AMD Instinct Customer Acceptance Guide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=24396f60" />
+    <link rel="stylesheet" type="text/css" href="../_static/rocm_header.css?v=e999025a" />
+    <link rel="stylesheet" type="text/css" href="../_static/rocm_footer.css?v=7095035a" />
+    <link rel="stylesheet" type="text/css" href="../_static/fonts.css?v=fcff5274" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script async="async" src="../_static/code_word_breaks.js?v=327952c4"></script>
+    <script async="async" src="../_static/renameVersionLinks.js?v=929fe5e4"></script>
+    <script async="async" src="../_static/rdcMisc.js?v=01f88d96"></script>
+    <script async="async" src="../_static/theme_mode_captions.js?v=15f4ec5d"></script>
+    <script defer="defer" src="../_static/search.js?v=90a4452c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'gpus/mi250';</script>
+    <script async="async" src="https://download.amd.com/js/analytics/analyticsinit.js"></script>
+    <link rel="canonical" href="https://instinct.docs.amd.com/projects/system-acceptance/en/latest/gpus/mi250.html" />
+    <link rel="icon" href="https://www.amd.com/content/dam/code/images/favicon/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AMD Instinct MI210" href="mi210.html" />
+    <link rel="prev" title="AMD Instinct MI300A" href="mi300a.html" />
+    <meta name="google-site-verification" content="vo35SZt_GASsTHAEmdww7AYKPCvZyzLvOXBl8guBME4" />
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+
+    <header class="common-header" >
+        <nav class="navbar navbar-expand-xl">
+            <div class="container-fluid main-nav rocm-header">
+                <div class="header-logo">
+                    <div class="header-logo-title">
+                        
+                            <button class="navbar-toggler collapsed" id="nav-icon" data-tracking-information="mainMenuToggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        
+                        <a class="navbar-brand" href="https://www.amd.com/">
+                            <img src="../_static/images/amd-header-logo.svg" alt="AMD Logo" title="AMD Logo" width="90" class="d-inline-block align-text-top hover-opacity"/>
+                        </a>
+                        <div class="vr mx-40 my-25"></div>
+                        
+        
+    
+    <a class="klavika-font hover-opacity" href="https://instinct.docs.amd.com">GPU Systems and Infrastructure</a>
+                    </div>
+                    
+                </div>
+                <div class="icon-nav text-center d-flex ms-auto"></div>
+            </div>
+        </nav>
+        
+        <nav class="navbar navbar-expand-xl second-level-nav">
+            <div class="container-fluid main-nav">
+                <div class="navbar-nav-container collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav nav-mega me-auto mb-2 mb-lg-0 col-xl-10">
+                        
+                            <li class="nav-item">
+                                
+                                    <a class="nav-link top-level header-menu-links" href="https://github.com/ROCm/ROCm/discussions" id="navcommunity" role="button" aria-expanded="false" target="_blank" >
+                                        Community
+                                    </a>
+                                
+                            </li>
+                        
+                            <li class="nav-item">
+                                
+                                    <a class="nav-link top-level header-menu-links" href="https://rocm.blogs.amd.com/" id="navblogs" role="button" aria-expanded="false" target="_blank" >
+                                        Blogs
+                                    </a>
+                                
+                            </li>
+                        
+                            <li class="nav-item">
+                                
+                                    <a class="nav-link top-level header-menu-links" href="https://rocm.docs.amd.com" id="navrocm&#8482-docs" role="button" aria-expanded="false" target="_blank" >
+                                        ROCm&#8482 docs
+                                    </a>
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+    </header>
+
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+
+<a class="navbar-brand logo" href="https://instinct.docs.amd.com">
+    <p>Systems and Infrastructure</p>
+</a></div>
+          
+        
+      </div>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AMD Instinct Customer Acceptance Guide</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mi355x.html">AMD Instinct MI355X</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mi350x.html">AMD Instinct MI350X</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mi325x.html">AMD Instinct MI325X</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mi300x.html">AMD Instinct MI300X</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mi300a.html">AMD Instinct MI300A</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">AMD Instinct MI250 / MI250X</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mi210.html">AMD Instinct MI210</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mi100.html">AMD Instinct MI100</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">System Configuration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../common/prerequisites.html">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/bios-settings.html">BIOS Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/kernel-parameters.html">Kernel Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/system-setup.html">System Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/health-checks.html">Basic system health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/os-tuning.html">OS Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/system-validation.html">System Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/rccl-benchmarking.html">RCCL Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/workload-validation.html">Workload Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/firmware-updates.html">Firmware Updates</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cluster Networking</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../network/nic-installation.html">NIC Driver Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/configuration.html">Network Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/topology-mapping.html">Topology Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/rdma-benchmarking.html">RDMA and RCCL Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/validation.html">Network and Cluster Validation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/rocm-techsupport.html">Collect logs using the ROCm Tech Support utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/related-documentation.html">Related documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/notices.html">Notices</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+
+  <div id="ethical-ad-placement"
+       class="flat"
+       data-ea-publisher="readthedocs"
+       data-ea-type="readthedocs-sidebar"
+       data-ea-manual="true">
+  </div>
+</div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-angle-right"></span>
+  </label></div>
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">AMD...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/gpus/mi250.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AMD Instinct MI250 / MI250X</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-requirements">System requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-system-support">Operating system support</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-identification">GPU identification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bios-settings">BIOS settings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nbio-link-clock-frequency">NBIO link clock frequency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nps-memory-configuration">NPS memory configuration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-criteria">Acceptance criteria</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-acceptance-process">System acceptance process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-validation">Prerequisites validation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-health-checks">Basic health checks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-validation">System validation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-benchmarks">Performance benchmarks</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="amd-instinct-mi250-mi250x">
+<h1>AMD Instinct MI250 / MI250X<a class="headerlink" href="#amd-instinct-mi250-mi250x" title="Link to this heading">#</a></h1>
+<p>The AMD Instinct™ MI250 is a data-center OAM-form-factor GPU. This document provides MI250-specific prerequisites, health checks, validation steps, and performance acceptance criteria. It also applies to the AMD Instinct™ MI250X, which shares the same CDNA 2 (gfx90a) OAM platform and acceptance criteria; MI250X-specific differences are noted inline.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The AMD Instinct MI250 brings the second-generation CDNA architecture to an OCP Accelerator Module (OAM) form factor purpose-built for HPC and large-scale AI training. Each MI250 packages two Graphics Compute Dies (GCDs) under a single OAM, each GCD presenting 110 CUs with Matrix Core technology and 64 GB of HBM2e memory at up to 1.6 TB/s, for a combined 128 GB and 3.2 TB/s per OAM. The two GCDs on an OAM are linked by a high-bandwidth on-package AMD Infinity Fabric™ interconnect, and each OAM exposes additional xGMI ports for direct GPU-to-GPU connectivity across a 4-OAM all-to-all mesh. A typical qualified configuration hosts 4 MI250 OAMs (8 GCDs total) per node.</p>
+<p>The MI250 is built on the CDNA 2 architecture (gfx90a) in an OCP Accelerator Module (OAM) form factor. Each MI250 OAM hosts two Graphics Compute Dies (GCDs), each enumerated as an independent GPU by ROCm tools, with 128 GB of HBM2e memory per OAM (64 GB per GCD). GPUs are connected to each other and to the host CPUs through AMD Infinity Fabric™ (xGMI).</p>
+<p>The MI250X is the higher-performance variant of the same CDNA 2 (gfx90a) OAM platform and is validated using the criteria in this document. It powers exascale-class supercomputers such as Frontier and LUMI. MI250X reference deployments commonly use an 8-OAM (16-GCD) node topology; scale the per-node GCD counts in the commands below accordingly (for example, <code class="docutils literal notranslate"><span class="pre">-g</span> <span class="pre">16</span></code> for RCCL and <code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">-n</span> <span class="pre">16</span></code> for BabelStream on an 8-OAM node). MI250X also shares the MI250 PCI vendor:device ID (<code class="docutils literal notranslate"><span class="pre">1002:740c</span></code>).</p>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://www.amd.com/en/products/accelerators/instinct/mi200/mi250.html">MI250 Product Page</a></strong></p></li>
+<li><p><strong><a class="reference external" href="https://www.amd.com/en/products/accelerators/instinct/mi200/mi250x.html">MI250X Product Page</a></strong></p></li>
+<li><p><strong><a class="reference external" href="https://instinct.docs.amd.com/latest/gpu-arch/mi250.html">MI200 Series Microarchitecture</a></strong></p></li>
+<li><p><strong><a class="reference external" href="https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/instinct-mi200-datasheet.pdf">MI200 Series Data Sheet</a></strong></p></li>
+</ul>
+</section>
+<section id="system-requirements">
+<h2>System requirements<a class="headerlink" href="#system-requirements" title="Link to this heading">#</a></h2>
+<section id="operating-system-support">
+<h3>Operating system support<a class="headerlink" href="#operating-system-support" title="Link to this heading">#</a></h3>
+<p>For the most up-to-date information on supported operating systems and distributions, refer to the official ROCm documentation:</p>
+<p><a class="reference external" href="https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html#supported-distributions">ROCm System Requirements - Supported Distributions</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://rocm.docs.amd.com">ROCm docs</a> is the single source of truth for supported versions, distribution compatibility, and required dependencies for the ROCm toolkit.</p>
+</div>
+<p>For general NUMA and OS-level tuning that applies to all AMD Instinct hosts, see <a class="reference internal" href="../common/os-tuning.html"><span class="std std-doc">OS tuning</span></a>. MI250-specific BIOS settings are in the <a class="reference internal" href="#bios-settings">BIOS settings</a> section below.</p>
+</section>
+<section id="gpu-identification">
+<h3>GPU identification<a class="headerlink" href="#gpu-identification" title="Link to this heading">#</a></h3>
+<p>All MI250 GCDs (PCI vendor:device <code class="docutils literal notranslate"><span class="pre">1002:740c</span></code>) should appear in <code class="docutils literal notranslate"><span class="pre">lspci</span></code> output. On a fully populated 4-OAM MI250 platform you should see 8 GCD entries (2 per OAM):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>lspci<span class="w"> </span>-d<span class="w"> </span><span class="m">1002</span>:740c
+</pre></div>
+</div>
+<p>Expected output example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0000</span>:11:00.0<span class="w"> </span>Display<span class="w"> </span>controller:<span class="w"> </span>Advanced<span class="w"> </span>Micro<span class="w"> </span>Devices,<span class="w"> </span>Inc.<span class="w"> </span><span class="o">[</span>AMD/ATI<span class="o">]</span><span class="w"> </span>Aldebaran<span class="w"> </span><span class="o">(</span>rev<span class="w"> </span><span class="m">01</span><span class="o">)</span>
+<span class="m">0000</span>:14:00.0<span class="w"> </span>Display<span class="w"> </span>controller:<span class="w"> </span>Advanced<span class="w"> </span>Micro<span class="w"> </span>Devices,<span class="w"> </span>Inc.<span class="w"> </span><span class="o">[</span>AMD/ATI<span class="o">]</span><span class="w"> </span>Aldebaran<span class="w"> </span><span class="o">(</span>rev<span class="w"> </span><span class="m">01</span><span class="o">)</span>
+<span class="m">0000</span>:32:00.0<span class="w"> </span>Display<span class="w"> </span>controller:<span class="w"> </span>Advanced<span class="w"> </span>Micro<span class="w"> </span>Devices,<span class="w"> </span>Inc.<span class="w"> </span><span class="o">[</span>AMD/ATI<span class="o">]</span><span class="w"> </span>Aldebaran<span class="w"> </span><span class="o">(</span>rev<span class="w"> </span><span class="m">01</span><span class="o">)</span>
+<span class="m">0000</span>:35:00.0<span class="w"> </span>Display<span class="w"> </span>controller:<span class="w"> </span>Advanced<span class="w"> </span>Micro<span class="w"> </span>Devices,<span class="w"> </span>Inc.<span class="w"> </span><span class="o">[</span>AMD/ATI<span class="o">]</span><span class="w"> </span>Aldebaran<span class="w"> </span><span class="o">(</span>rev<span class="w"> </span><span class="m">01</span><span class="o">)</span>
+<span class="m">0000</span>:8e:00.0<span class="w"> </span>Display<span class="w"> </span>controller:<span class="w"> </span>Advanced<span class="w"> </span>Micro<span class="w"> </span>Devices,<span class="w"> </span>Inc.<span class="w"> </span><span class="o">[</span>AMD/ATI<span class="o">]</span><span class="w"> </span>Aldebaran<span class="w"> </span><span class="o">(</span>rev<span class="w"> </span><span class="m">01</span><span class="o">)</span>
+<span class="m">0000</span>:93:00.0<span class="w"> </span>Display<span class="w"> </span>controller:<span class="w"> </span>Advanced<span class="w"> </span>Micro<span class="w"> </span>Devices,<span class="w"> </span>Inc.<span class="w"> </span><span class="o">[</span>AMD/ATI<span class="o">]</span><span class="w"> </span>Aldebaran<span class="w"> </span><span class="o">(</span>rev<span class="w"> </span><span class="m">01</span><span class="o">)</span>
+<span class="m">0000</span>:ae:00.0<span class="w"> </span>Display<span class="w"> </span>controller:<span class="w"> </span>Advanced<span class="w"> </span>Micro<span class="w"> </span>Devices,<span class="w"> </span>Inc.<span class="w"> </span><span class="o">[</span>AMD/ATI<span class="o">]</span><span class="w"> </span>Aldebaran<span class="w"> </span><span class="o">(</span>rev<span class="w"> </span><span class="m">01</span><span class="o">)</span>
+<span class="m">0000</span>:b3:00.0<span class="w"> </span>Display<span class="w"> </span>controller:<span class="w"> </span>Advanced<span class="w"> </span>Micro<span class="w"> </span>Devices,<span class="w"> </span>Inc.<span class="w"> </span><span class="o">[</span>AMD/ATI<span class="o">]</span><span class="w"> </span>Aldebaran<span class="w"> </span><span class="o">(</span>rev<span class="w"> </span><span class="m">01</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>The 8 GCDs are paired by OAM (e.g. <code class="docutils literal notranslate"><span class="pre">11</span></code>+<code class="docutils literal notranslate"><span class="pre">14</span></code> are the two GCDs on one OAM, <code class="docutils literal notranslate"><span class="pre">32</span></code>+<code class="docutils literal notranslate"><span class="pre">35</span></code> on the next, and so on). Same-OAM GCD pairs are connected by a high-bandwidth on-package link, while cross-OAM connectivity uses external xGMI ports in a 4-OAM all-to-all mesh.</p>
+</section>
+</section>
+<section id="bios-settings">
+<h2>BIOS settings<a class="headerlink" href="#bios-settings" title="Link to this heading">#</a></h2>
+<p>For maximum MI250 GPU performance on systems with AMD EPYC™ 7003-series processors (codename “Milan”) and AMI System BIOS, the following BIOS settings have been validated. These settings should be set as default values in the system BIOS. Analogous settings for other non-AMI BIOS providers can be configured similarly. On systems with Intel processors, some settings may not apply.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The BIOS setting locations and names may vary by hardware and BIOS vendor. Consult your system documentation for details.</p>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>BIOS setting location</p></th>
+<th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Advanced / PCI subsystem settings</p></td>
+<td><p>Above 4G decoding</p></td>
+<td><p>Enabled</p></td>
+<td><p>GPU large BAR support.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Advanced / PCI subsystem settings</p></td>
+<td><p>SR-IOV support</p></td>
+<td><p>Disabled</p></td>
+<td><p>Disable single root IO virtualization.</p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / CPU common options</p></td>
+<td><p>Global C-state control</p></td>
+<td><p>Auto</p></td>
+<td><p>Global C-states.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / CPU common options</p></td>
+<td><p>CCD/Core/Thread enablement</p></td>
+<td><p>Accept</p></td>
+<td><p>May be necessary to enable the SMT control menu.</p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / CPU common options / performance</p></td>
+<td><p>SMT control</p></td>
+<td><p>Disable</p></td>
+<td><p>Set to Auto if the primary application is not compute-bound.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / DF common options / memory addressing</p></td>
+<td><p>NUMA nodes per socket</p></td>
+<td><p>NPS 1, 2, or 4</p></td>
+<td><p>See <a class="reference internal" href="#nps-memory-configuration">NPS memory configuration</a> below.</p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / DF common options / memory addressing</p></td>
+<td><p>Memory interleaving</p></td>
+<td><p>Auto</p></td>
+<td><p>Depends on NPS setting.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / DF common options / link</p></td>
+<td><p>4-link xGMI max speed</p></td>
+<td><p>18 Gbps</p></td>
+<td><p>Set to highest rate supported by the CPU.</p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / NBIO common options</p></td>
+<td><p>IOMMU</p></td>
+<td><p>Disabled</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / NBIO common options</p></td>
+<td><p>PCIe ten bit tag support</p></td>
+<td><p>Auto</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / NBIO common options</p></td>
+<td><p>Preferred IO</p></td>
+<td><p>Bus</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / NBIO common options</p></td>
+<td><p>Preferred IO bus</p></td>
+<td><p>Use <code class="docutils literal notranslate"><span class="pre">lspci</span></code> to find PCIe device ID</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / NBIO common options</p></td>
+<td><p>Enhanced Preferred IO mode</p></td>
+<td><p>Enabled</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / NBIO common options / SMU common options</p></td>
+<td><p>Determinism control</p></td>
+<td><p>Manual</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / NBIO common options / SMU common options</p></td>
+<td><p>Determinism slider</p></td>
+<td><p>Power</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / NBIO common options / SMU common options</p></td>
+<td><p>cTDP control</p></td>
+<td><p>Manual</p></td>
+<td><p>Set cTDP to the maximum supported by the installed CPU.</p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / NBIO common options / SMU common options</p></td>
+<td><p>cTDP</p></td>
+<td><p>280</p></td>
+<td><p>Value in watts.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / NBIO common options / SMU common options</p></td>
+<td><p>Package power limit control</p></td>
+<td><p>Manual</p></td>
+<td><p>Set to the maximum supported by the installed CPU.</p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / NBIO common options / SMU common options</p></td>
+<td><p>Package power limit</p></td>
+<td><p>280</p></td>
+<td><p>Value in watts.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / NBIO common options / SMU common options</p></td>
+<td><p>xGMI link width control</p></td>
+<td><p>Manual</p></td>
+<td><p>Set AMD CPU xGMI width to 16 bits.</p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / NBIO common options / SMU common options</p></td>
+<td><p>xGMI force link width</p></td>
+<td><p>2</p></td>
+<td><p>0: x2 / 1: x8 / 2: x16</p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / NBIO common options / SMU common options</p></td>
+<td><p>xGMI force link width control</p></td>
+<td><p>Force</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / NBIO common options / SMU common options</p></td>
+<td><p>APBDIS</p></td>
+<td><p>1</p></td>
+<td><p>Disable DF P-states.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / NBIO common options / SMU common options</p></td>
+<td><p>DF C-states</p></td>
+<td><p>Enabled</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / NBIO common options / SMU common options</p></td>
+<td><p>Fixed SOC P-state</p></td>
+<td><p>P0</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / UMC common options / DDR4 common options</p></td>
+<td><p>Enforce POR</p></td>
+<td><p>Accept</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / UMC common options / DDR4 common options / Enforce POR</p></td>
+<td><p>Overclock</p></td>
+<td><p>Enabled</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / UMC common options / DDR4 common options / Enforce POR</p></td>
+<td><p>Memory clock speed</p></td>
+<td><p>1600 MHz</p></td>
+<td><p>Set to max speed if using 3200 MHz DIMMs.</p></td>
+</tr>
+<tr class="row-even"><td><p>AMD CBS / UMC common options / DDR4 common options / DRAM controller configuration / DRAM power options</p></td>
+<td><p>Power down enable</p></td>
+<td><p>Disabled</p></td>
+<td><p>RAM power down.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AMD CBS / security</p></td>
+<td><p>TSME</p></td>
+<td><p>Disabled</p></td>
+<td><p>Memory encryption.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="nbio-link-clock-frequency">
+<h3>NBIO link clock frequency<a class="headerlink" href="#nbio-link-clock-frequency" title="Link to this heading">#</a></h3>
+<p>The NBIOs (4× per AMD EPYC™ processor) are the serializers/deserializers (SerDes) that convert and prepare I/O signals for the processor’s 128 external I/O interface lanes (32 per NBIO). The NBIO link clock frequency (LCLK) controls the speed of the internal bus connecting NBIO silicon to the data fabric. All data between the processor and PCIe lanes flows through the data fabric at this frequency, so it must be forced to the maximum for optimal PCIe performance.</p>
+<p>For AMD EPYC™ 7003-series processors, configuring all NBIOs to <strong>Enhanced Preferred I/O</strong> mode (see BIOS table above) is sufficient to enable the highest LCLK frequency. The AMD-IOPM-UTIL utility required for EPYC 7002 (MI100) is not needed on EPYC 7003 systems.</p>
+</section>
+<section id="nps-memory-configuration">
+<h3>NPS memory configuration<a class="headerlink" href="#nps-memory-configuration" title="Link to this heading">#</a></h3>
+<p>For the number of NUMA nodes per socket (NPS), follow the guidance of the <a class="reference external" href="https://docs.amd.com/v/u/en-US/high-performance-computing-tuning-guide-amd-epyc7003-series-processors">HPC Tuning Guide for AMD EPYC™ 7003 Series Processors</a> for the optimal host configuration. For most HPC workloads, NPS4 is the recommended value.</p>
+</section>
+</section>
+<section id="acceptance-criteria">
+<h2>Acceptance criteria<a class="headerlink" href="#acceptance-criteria" title="Link to this heading">#</a></h2>
+<p>The MI250 system acceptance process validates that the platform is correctly configured, stable, and performing to expectations. Follow the sequence: Prerequisites → Basic Health Checks → System Validation → Performance Benchmarks.</p>
+<section id="system-acceptance-process">
+<h3>System acceptance process<a class="headerlink" href="#system-acceptance-process" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong><a class="reference internal" href="#prerequisites-validation">Prerequisites validation</a></strong> - Ensure all system requirements and dependencies are met</p></li>
+<li><p><strong><a class="reference internal" href="#basic-health-checks">Basic health checks</a></strong> - Verify hardware detection and basic system health</p></li>
+<li><p><strong><a class="reference internal" href="#system-validation">System validation</a></strong> - Conduct comprehensive stress testing and qualification</p></li>
+<li><p><strong><a class="reference internal" href="#performance-benchmarks">Performance benchmarks</a></strong> - Validate compute, memory, and interconnect performance</p></li>
+</ol>
+<p>The system is accepted when all criteria below are successfully validated.</p>
+</section>
+<section id="prerequisites-validation">
+<h3>Prerequisites validation<a class="headerlink" href="#prerequisites-validation" title="Link to this heading">#</a></h3>
+<p>Ensure all system requirements are met before proceeding with validation. See the <a class="reference internal" href="../common/prerequisites.html"><span class="std std-doc">Prerequisites documentation</span></a> and <a class="reference internal" href="../common/system-setup.html"><span class="std std-doc">System setup</span></a> for more details.</p>
+<ul class="simple">
+<li><p>✅ Supported operating system version installed</p></li>
+<li><p>✅ Compatible ROCm version installed (verify: <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/opt/rocm/.info/version</span></code>); see the <a class="reference external" href="https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html">ROCm System Requirements</a> for the current supported version matrix</p></li>
+<li><p>✅ BIOS configured per <a class="reference internal" href="#bios-settings">MI250 BIOS settings</a> (EPYC 7003-specific table above)</p></li>
+<li><p>✅ Required kernel parameters present: <code class="docutils literal notranslate"><span class="pre">pci=realloc=off</span> <span class="pre">iommu=pt</span></code></p></li>
+<li><p>✅ Minimum 1T system memory available</p></li>
+<li><p>✅ Latest applicable firmware applied consistently across nodes</p></li>
+<li><p>✅ ROCm Validation Suite (RVS) installed</p></li>
+</ul>
+</section>
+<section id="basic-health-checks">
+<h3>Basic health checks<a class="headerlink" href="#basic-health-checks" title="Link to this heading">#</a></h3>
+<p>These checks ensure fundamental system health and proper GPU detection. For detailed procedures, see <a class="reference internal" href="../common/health-checks.html"><span class="std std-doc">Health Checks</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test</p></th>
+<th class="head"><p>Command</p></th>
+<th class="head"><p>Pass/Fail criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../common/health-checks.html#check-os-distribution"><span class="std std-ref">Check OS distribution</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/os-release</span></code></p></td>
+<td><p><strong>Pass</strong>: OS version listed in compatibility matrix<br><strong>Fail</strong>: Otherwise</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../common/health-checks.html#check-kernel-boot-arguments"><span class="std std-ref">Check kernel boot arguments</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/proc/cmdline</span></code></p></td>
+<td><p><strong>Pass</strong>: Contains <code class="docutils literal notranslate"><span class="pre">pci=realloc=off</span> <span class="pre">iommu=pt</span></code><br><strong>Fail</strong>: Otherwise</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../common/health-checks.html#check-for-driver-errors"><span class="std std-ref">Check for driver errors</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dmesg</span> <span class="pre">-T</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">amdgpu</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">error</span></code></p></td>
+<td><p><strong>Pass</strong>: Null<br><strong>Fail</strong>: Errors reported</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../common/health-checks.html#check-for-available-system-memory"><span class="std std-ref">Check available memory</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">lsmem</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">&quot;Total</span> <span class="pre">online</span> <span class="pre">memory&quot;</span></code></p></td>
+<td><p><strong>Pass</strong>: ≥ 1T<br><strong>Fail</strong>: Less than 1T</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../common/health-checks.html#check-gpu-presence"><span class="std std-ref">Check GPU presence</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">lspci</span> <span class="pre">-d</span> <span class="pre">1002:740c</span></code></p></td>
+<td><p><strong>Pass</strong>: 8 MI250 GCDs found<br><strong>Fail</strong>: Otherwise</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../common/health-checks.html#check-gpu-pcie-bus-link-speed-and-width"><span class="std std-ref">Check GPU link speed and width</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">lspci</span> <span class="pre">-d</span> <span class="pre">1002:740c</span> <span class="pre">-vvv</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-e</span> <span class="pre">DevSta</span> <span class="pre">-e</span> <span class="pre">LnkSta</span></code></p></td>
+<td><p><strong>Pass</strong>: Speed PCIe Gen 4 (16 GT/s), width <code class="docutils literal notranslate"><span class="pre">x16</span></code>, no <code class="docutils literal notranslate"><span class="pre">FatalErr+</span></code><br><strong>Fail</strong>: Otherwise</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../common/health-checks.html#monitor-utilization-metrics"><span class="std std-ref">Monitor utilization metrics</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">amd-smi</span> <span class="pre">monitor</span> <span class="pre">-putm</span></code></p></td>
+<td><p><strong>Pass</strong>: Idle metrics as specified<br><strong>Fail</strong>: Otherwise</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../common/health-checks.html#check-system-kernel-logs"><span class="std std-ref">Check system kernel logs for errors</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dmesg</span> <span class="pre">-T</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">'error|warn|fail|exception'</span></code></p></td>
+<td><p><strong>Pass</strong>: Null<br><strong>Fail</strong>: Otherwise</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="system-validation">
+<h3>System validation<a class="headerlink" href="#system-validation" title="Link to this heading">#</a></h3>
+<p>Comprehensive validation ensures system stability under load. For detailed procedures, see <a class="reference internal" href="../common/system-validation.html"><span class="std std-doc">System Validation</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test</p></th>
+<th class="head"><p>Command</p></th>
+<th class="head"><p>Pass/Fail criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../common/system-validation.html#gpu-properties"><span class="std std-ref">Compute/GPU properties</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rvs</span> <span class="pre">-c</span> <span class="pre">${RVS_CONF}/gpup_single.conf</span></code></p></td>
+<td><p><strong>Pass</strong>: All GCDs listed with no errors<br><strong>Fail</strong>: Missing GCDs or errors</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../common/system-validation.html#gpu-stress-test"><span class="std std-ref">GPU stress test (GST)</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rvs</span> <span class="pre">-c</span> <span class="pre">${RVS_CONF}/MI250/gst_single.conf</span></code></p></td>
+<td><p><strong>Pass</strong>: <code class="docutils literal notranslate"><span class="pre">met:</span> <span class="pre">TRUE</span></code> in logs<br><strong>Fail</strong>: Target GFLOP/s not met</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../common/system-validation.html#input-energy-delay-product"><span class="std std-ref">Input energy delay product (IET)</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rvs</span> <span class="pre">-c</span> <span class="pre">${RVS_CONF}/MI250/iet_single.conf</span></code></p></td>
+<td><p><strong>Pass</strong>: <code class="docutils literal notranslate"><span class="pre">met:</span> <span class="pre">TRUE</span></code> for all actions<br><strong>Fail</strong>: Otherwise</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../common/system-validation.html#mem"><span class="std std-ref">Memory test (MEM)</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rvs</span> <span class="pre">-c</span> <span class="pre">${RVS_CONF}/mem.conf</span> <span class="pre">-l</span> <span class="pre">mem.txt</span></code></p></td>
+<td><p><strong>Pass</strong>: All tests passed; bandwidth ≥ 1050 GB/s per GCD<br><strong>Fail</strong>: Any test failed or low bandwidth</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../common/system-validation.html#pcie-bandwidth-benchmark"><span class="std std-ref">PCIe bandwidth benchmark (PEBB)</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rvs</span> <span class="pre">-c</span> <span class="pre">${RVS_CONF}/MI250/pebb_single.conf</span></code></p></td>
+<td><p><strong>Pass</strong>: All distances and bandwidths displayed<br><strong>Fail</strong>: Missing data</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../common/system-validation.html#pcie-qualification-tool"><span class="std std-ref">PCIe qualification tool (PEQT)</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rvs</span> <span class="pre">-c</span> <span class="pre">${RVS_CONF}/peqt_single.conf</span></code></p></td>
+<td><p><strong>Pass</strong>: All actions true<br><strong>Fail</strong>: Otherwise</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../common/system-validation.html#p2p-benchmark-and-qualification-tool"><span class="std std-ref">P2P benchmark and qualification tool (PBQT)</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rvs</span> <span class="pre">-c</span> <span class="pre">${RVS_CONF}/pbqt_single.conf</span></code></p></td>
+<td><p><strong>Pass</strong>: <code class="docutils literal notranslate"><span class="pre">peers:true</span></code> lines and non-zero throughput across all xGMI peers<br><strong>Fail</strong>: Otherwise</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="performance-benchmarks">
+<h3>Performance benchmarks<a class="headerlink" href="#performance-benchmarks" title="Link to this heading">#</a></h3>
+<p>Performance validation ensures the system meets MI250 specifications. For detailed procedures, see <a class="reference internal" href="../common/system-validation.html#performance-benchmarking"><span class="std std-ref">Performance Benchmarking</span></a>.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><a class="reference internal" href="../common/system-validation.html#transferbench"><span class="std std-ref">TransferBench all-to-all</span></a></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Command: <code class="docutils literal notranslate"><span class="pre">TransferBench</span> <span class="pre">a2a</span></code></div>
+<p class="sd-card-text"><strong>Pass:</strong> ≥ 800 GB/s aggregate</p>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><strong>Fail:</strong> otherwise</p>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><a class="reference internal" href="../common/system-validation.html#transferbench"><span class="std std-ref">TransferBench peer-to-peer</span></a></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Command: <code class="docutils literal notranslate"><span class="pre">TransferBench</span> <span class="pre">p2p</span></code></div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Test</p></th>
+<th class="head"><p class="sd-card-text">Pass criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">UniDir</p></td>
+<td><p class="sd-card-text">≥ 30 GB/s</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">BiDir</p></td>
+<td><p class="sd-card-text">≥ 55 GB/s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><strong>Fail:</strong> otherwise</p>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><a class="reference internal" href="../common/system-validation.html#rccl-allreduce"><span class="std std-ref">RCCL Allreduce</span></a></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Command: <code class="docutils literal notranslate"><span class="pre">build/all_reduce_perf</span> <span class="pre">-b</span> <span class="pre">8</span> <span class="pre">-e</span> <span class="pre">8G</span> <span class="pre">-f</span> <span class="pre">2</span> <span class="pre">-g</span> <span class="pre">8</span></code></div>
+<p class="sd-card-text"><strong>Pass:</strong> ≥ 125 GB/s busbw (peak, at 8 GiB message size)</p>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><strong>Fail:</strong> otherwise</p>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><a class="reference internal" href="../common/system-validation.html#rocblas-gemm-benchmarks"><span class="std std-ref">rocBLAS FP32</span></a></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Command: <code class="docutils literal notranslate"><span class="pre">rocblas-bench</span></code> (see code block below)</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rocblas-bench<span class="w"> </span>-f<span class="w"> </span>gemm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-r<span class="w"> </span>s<span class="w"> </span>-m<span class="w"> </span><span class="m">4000</span><span class="w"> </span>-n<span class="w"> </span><span class="m">4000</span><span class="w"> </span>-k<span class="w"> </span><span class="m">4000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--lda<span class="w"> </span><span class="m">4000</span><span class="w"> </span>--ldb<span class="w"> </span><span class="m">4000</span><span class="w"> </span>--ldc<span class="w"> </span><span class="m">4000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--transposeA<span class="w"> </span>N<span class="w"> </span>--transposeB<span class="w"> </span>T
+</pre></div>
+</div>
+<p class="sd-card-text"><strong>Pass:</strong> ≥ 30 TFLOPS per GCD</p>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><strong>Fail:</strong> otherwise</p>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><a class="reference internal" href="../common/system-validation.html#babelstream"><span class="std std-ref">BabelStream</span></a></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Command: <code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">-n</span> <span class="pre">8</span> <span class="pre">wrapper.sh</span></code></div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Kernel</p></th>
+<th class="head"><p class="sd-card-text">Threshold (MB/s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">Copy</p></td>
+<td><p class="sd-card-text">≥ 1,200,000</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">Mul</p></td>
+<td><p class="sd-card-text">≥ 1,200,000</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">Add</p></td>
+<td><p class="sd-card-text">≥ 1,100,000</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">Triad</p></td>
+<td><p class="sd-card-text">≥ 1,100,000</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">Dot</p></td>
+<td><p class="sd-card-text">≥ 1,200,000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><strong>Fail:</strong> otherwise</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="mi300a.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AMD Instinct MI300A</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="mi210.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AMD Instinct MI210</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-requirements">System requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-system-support">Operating system support</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-identification">GPU identification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bios-settings">BIOS settings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nbio-link-clock-frequency">NBIO link clock frequency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nps-memory-configuration">NPS memory configuration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-criteria">Acceptance criteria</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-acceptance-process">System acceptance process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-validation">Prerequisites validation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-health-checks">Basic health checks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-validation">System validation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-benchmarks">Performance benchmarks</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <p>
+  </p>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+<footer class="rocm-footer">
+    <div class="container-lg">
+        <section class="bottom-menu menu py-45">
+            <div class="row d-flex align-items-center">
+                <div class="col-12 text-center">
+                    <ul>
+                        <li><a href="https://www.amd.com/en/corporate/copyright" target="_blank">Terms and Conditions</a></li>
+                        
+                        <li><a href="https://www.amd.com/en/corporate/privacy" target="_blank">Privacy</a></li>
+                        <li><a href="https://www.amd.com/en/corporate/trademarks" target="_blank">Trademarks</a></li>
+                        <li><a href="https://www.amd.com/content/dam/amd/en/documents/corporate/cr/supply-chain-transparency.pdf" target="_blank">Supply Chain Transparency</a></li>
+                        <li><a href="https://www.amd.com/en/corporate/competition" target="_blank">Fair and Open Competition</a></li>
+                        <li><a href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf" target="_blank">UK Tax Strategy</a></li>
+                        <li><a href="https://www.amd.com/en/corporate/cookies" target="_blank">Cookie Policy</a></li>
+                        <!-- OneTrust Cookies Settings button start -->
+                        <li><a href="#cookie-settings" id="ot-sdk-btn" class="ot-sdk-show-settings">Cookie Settings</a></li>
+                        <!-- OneTrust Cookies Settings button end -->
+                    </ul>
+                </div>
+            </div>
+            <div class="row d-flex align-items-center">
+                <div class="col-12 text-center">
+                    <div>
+                        <span class="copyright">© 2026 Advanced Micro Devices, Inc</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</footer>
+
+<!-- <div id="rdc-watermark-container">
+    <img id="rdc-watermark" src="../_static/images/alpha-watermark.svg" alt="DRAFT watermark"/>
+</div> -->
+  </body>
+</html>

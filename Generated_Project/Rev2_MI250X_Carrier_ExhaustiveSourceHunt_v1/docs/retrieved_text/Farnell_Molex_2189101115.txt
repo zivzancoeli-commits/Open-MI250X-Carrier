@@ -1,0 +1,68 @@
+                                                     This document was generated on 01/05/2023
+                        PLEASE CHECK WWW.MOLEX.COM FOR LATEST PART INFORMATION
+Part Number:           2189101115
+Status:                Active
+Overview:              Mirror Mezz and Mirror Mezz Pro Connectors
+Description:           Mirror Mezz Pro Hermaphroditic Connector, 2.50mm Connector Height, BGA-Attach
+                       Mounting, 15 Pair, 11 Row, 688 Circuits, 0.76µm Gold (Au) Plating
+
+ Documents:
+ Drawing (PDF)                                       Datasheet (PDF)
+ Product Specification 2189100001-PS-000 (PDF)       RoHS Certificate of Compliance (PDF)
+
+ General                                                                                                           Series image - Reference only
+ Product Family                                    PCB Headers
+ Series                                            218910                                                   EU ELV
+ Application                                       Board-to-Board                                           Not Relevant
+ Component Type                                    PCB Header
+ Overview                                          Mirror Mezz and Mirror Mezz Pro Connectors               EU RoHS                 China RoHS
+ Product Name                                      Mirror Mezz Pro                                          Compliant
+ Taxonomy                                          Board-to-Board Connectors                                REACH SVHC
+ UPC                                               195842664340                                             Not Contained Per -
+                                                                                                            D(2022)4187-DC (10
+ Physical                                                                                                   June 2022)
+ Breakaway                                         No                                                       Halogen-Free
+ Circuits (Loaded)                                 688                                                      Status
+ Circuits (maximum)                                688                                                      Low-Halogen
+ Color - Resin                                     Gray (Dark)                                              For more information, please visit Contact US
+ Durability (mating cycles max)                    100
+ First Mate / Last Break                           No                                                       China ROHS            Green Image
+ Glow-Wire Capable                                 No                                                       ELV                   Not Relevant
+ Guide to Mating Part                              Yes                                                      RoHS Phthalates       Not Contained
+ Keying to Mating Part                             None
+ Lock to Mating Part                               No
+ Mated Height                                      5.00mm                                                     Search Parts in this Series
+ Material - Metal                                  High Performance Alloy (HPA)                               218910 Series
+ Material - Plating Mating                         Gold
+ Material - Plating Termination                    BGA Solder
+ Material - Resin                                  High Temperature Thermoplastic                             Mates With
+ Net Weight                                        5.410/g                                                    Mirror Mezzanine Pro Hermaphroditic
+ Number of Rows                                    11                                                         Connector 2189101115
+ Orientation                                       Vertical
+ PCB Locator                                       Yes
+ PCB Retention                                     Yes
+ Packaging Type                                    Embossed Tape on Reel
+ Pitch - Mating Interface                          1.50mm, 4.00mm
+ Plating min - Mating                              0.762µm
+ Polarized to Mating Part                          Yes
+ Polarized to PCB                                  Yes
+ Shrouded                                          Yes
+ Stackable                                         Yes
+ Temperature Range - Operating                     -55° to +105°C
+ Termination Interface: Style                      Surface Mount
+
+ Electrical
+ Current - Maximum per Contact                     0.75A (1 Oz Cu Trace), 1.0A (1.5 Oz Cu Trace), 1.2A (2
+                                                   Oz Cu Trace)
+ Voltage - Maximum                                 30V AC (RMS)/DC
+
+ Material Info
+Reference - Drawing Numbers
+Product Specification             2189100001-PS-000
+Sales Drawing                     2189101115-SD-000
+
+
+
+                                   This document was generated on 01/05/2023
+                    PLEASE CHECK WWW.MOLEX.COM FOR LATEST PART INFORMATION
+

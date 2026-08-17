@@ -1,0 +1,26 @@
+200|application/pdf|1011276|https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/instinct-mi200-datasheet.pdf -> AMD_instinct-mi200-datasheet.pdf
+200|text/html|182391|https://www.amd.com/en/products/accelerators/instinct/mi200/mi250x.html -> AMD_MI250X_product.html
+200|text/html; charset=utf-8|63148|https://instinct.docs.amd.com/projects/system-acceptance/en/latest/gpus/mi250.html -> AMD_system_acceptance_mi250.html
+200|text/html; charset=utf-8|43437|https://instinct.docs.amd.com/latest/gpu-arch/mi250.html -> AMD_gpu_arch_mi250.html
+404|text/html; charset=utf-8|41995|https://rocm.docs.amd.com/en/latest/conceptual/gpu-arch/mi250.html -> ROCm_mi250.html
+404|text/html|146099|https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/white-papers/amd-cdna2-white-paper.pdf -> AMD_cdna2_whitepaper.pdf
+403|text/html|426|https://www.supermicro.com/datasheet/datasheet_H12_UniversalGPU.pdf -> SuperMicro_H12_UniversalGPU.pdf
+403|text/html|425|https://www.supermicro.com/manuals/superserver/4U/MNL-2507.pdf -> SuperMicro_MNL-2507.pdf
+403|text/html|437|https://www.supermicro.com/en/products/system/datasheet/as-4124gq-tnmi -> SuperMicro_AS-4124GQ-TNMI.html
+200|application/pdf|481914|https://download.gigabyte.com/FileList/DataSheet/G492-HA0_datasheet_v1.0.pdf?v=129fb2ffe0516214804c84cee6152fbd -> Gigabyte_G492-HA0_datasheet.pdf
+200|application/pdf|909573|https://i-wave.com/wp-content/uploads/0124-MCIO.pdf -> iwave_MCIO_host_adapter.pdf
+200|text/html;charset=UTF-8|45784|https://www.ti.com/tool/CEM2SLIMSAS-EVM -> TI_CEM2SLIMSAS-EVM.html
+200|text/html; charset=utf-8|118083|https://c-payne.com/products/pcie-slimsas-host-adapter-x16-to-2-8i-straight-aic -> CPayne_SlimSAS_x16.html
+200|text/html; charset=UTF-8|558099|https://www.microsatacables.com/pcie-x16-gen4-with-redriver-to-slimsas-8i-dual-port-aic -> SLM1773.html
+200|text/html; charset=utf-8|33671|https://www.wiredzone.com/shop/product/10026107-supermicro-cbl-mcio-1278s5fyb1-cable-kit-for-gpu-mi-200-11129 -> Wiredzone_CBL-MCIO.html
+200|text/html; charset=utf-8|259164|https://github.com/opencomputeproject/OCP-SVR-OAI-Open_Accelerator_Infrastructure -> GitHub_OCP-SVR-OAI.html
+200|text/html; charset=utf-8|3489|https://ocp-all.groups.io/g/OCP-OAI/topic/ocp_oai_june_updates/83416097 -> GroupsIO_OCP_OAI_june.html
+200|text/html; charset=utf-8|434014|https://forum.level1techs.com/t/someone-needs-to-figure-out-how-to-adapt-mi250-gpus-to-pcie/250596 -> Level1Techs_MI250.html
+200|text/html; charset=UTF-8|97158|https://engineering.fb.com/2019/03/14/data-center-engineering/accelerator-modules/ -> Facebook_OAM_2019.html
+200|text/html; charset=utf-8|126396|https://www.itcreations.com/product/150032 -> ITCreations_MI250_OAM.html
+403|text/html; charset=UTF-8|5525|https://alinc.com/sps-pca-mi250x-oam-mcm-spl-accelerator-p41933-001 -> HPE_P41933.html
+200|text/html; charset=UTF-8|166272|https://www.servethehome.com/amd-mi250x-and-toplogies-explained-at-hc34-hpe-gigabyte-supermicro/ -> STH_MI250X_HC34.html
+200|text/html; charset=UTF-8|334767|https://sendcutsend.com/services/hardware/ -> SendCutSend_hardware.html
+403|text/html; charset=UTF-8|5595|https://www.amphenol-cs.com/product-series/airmax.html -> Amphenol_AirMax.html
+403|text/html; charset=UTF-8|61397|https://www.studocu.com/tw/document/university-of-taipei/learning-and-materials-design/product-specification-document-psd-2189101115-sd-for-molex/150171610 -> Studocu_2189101115_SD.html
+200|application/pdf|2980981|https://146a55aca6f00848c565-a7635525d40ac1c70300198708936b4e.ssl.cf1.rackcdn.com/images/18a84b960d9b11bb2fbc9a4d59f09fc01086d9b7.pdf -> OCP_OAI_lightning_2019.pdf
