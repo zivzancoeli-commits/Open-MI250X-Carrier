@@ -9,4 +9,3 @@ This folder is **research only**. It does not modify production KiCad.
 **Do not import r2.0 pinlists.** MI250X is OAM v1.x (688 contacts). The retrieved v1.0 map has **2× P3V3** on Conn0, matching OAM Design Spec v1.5 Table 4.
 
 A 2-OAM named-net stub (not fab-ready) that consumes this map lives in `Generated_Project/Rev2_MI250X_Carrier_BuyableFirstSystem_v1/`. Shopping list: `20_System_BOM/SHOPPING.md`.
-
