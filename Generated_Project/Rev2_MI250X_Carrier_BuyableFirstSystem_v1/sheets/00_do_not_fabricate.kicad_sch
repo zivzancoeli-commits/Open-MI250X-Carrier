@@ -1,0 +1,33 @@
+(kicad_sch (version 20250114) (generator "buyable_first_system_v1")
+	(uuid "87d87e35-6137-4248-8442-774149467400")
+	(paper "A3")
+	(title_block
+		(title "DO NOT FABRICATE")
+		(date "2026-08-17")
+		(rev "BuyableFirstSystem_v1")
+		(comment 1 "DO NOT FABRICATE. DO NOT ENERGIZE MI250X.")
+		(comment 2 "Documentation sheet — no invented nets")
+		(comment 3 "Pin names: OAM Pin map rev 1.0.xlsx — OCP generic, NOT AMD overlay")
+		(comment 4 "r2.0 maps UNUSABLE. P3V3=2 Conn0.")
+	)
+
+	(text (at 20.32 20.32 0)
+		(effects (font (size 1.5 1.5)) (justify left top))
+		(uuid "fb2a20c4-aa28-402a-b6ee-2d6301b60722")
+		"GATE LIST — all must be closed before fabrication or applying power to an MI250X.
+
+1. 48V source identified AND harnessed to P48V pads (not Dell D3000E-S1 12V CRPS).
+2. Molex 218910-1115 voltage rating vs P48V (Farnell sheet 30 V max vs OCP 44–59.5 V) resolved.
+3. Connector gender/stack: hermaphroditic 2189101115 mates with itself, 5 mm stack — geometry OK;
+   still confirm PIN A3 orientation on a plot before tape-out.
+4. Cooling exists (OEM air HS or documented liquid). Do not clamp a custom cold plate on bare die.
+   Chassis must leave replaceable cooling. Air-heatsink height is still Unknown.
+5. AMD overlay unknowns listed (TEST*, dual-GCD PCIe, SMBus map, P12V2 need, xGMI S1–S7).
+6. Dual NH-U14S DX-3647 vs X11DPH-T socket pitch: Unknown. Do not freeze sheet metal on placeholders.
+7. PCIe path: Gen3 host, no verified CEM adapter, no retimer BOM. Enumeration not closed.
+8. HOST_PWRGD sequencing vs P48V/P12V1/P3V3 in-spec — implement only from OCP + AMD overlay.
+
+Until then this KiCad tree is a mapping artifact, not a board you send to a fab.
+"
+	)
+)

@@ -1,0 +1,81 @@
+(kicad_sch (version 20250114) (generator "buyable_first_system_v1")
+	(uuid "c174053e-01b3-4589-8a0b-4b992c59ea47")
+	(paper "A3")
+	(title_block
+		(title "Unmapped / AMD-unknown pads")
+		(date "2026-08-17")
+		(rev "BuyableFirstSystem_v1")
+		(comment 1 "DO NOT FABRICATE. DO NOT ENERGIZE MI250X.")
+		(comment 2 "Documentation sheet — no invented nets")
+		(comment 3 "Pin names: OAM Pin map rev 1.0.xlsx — OCP generic, NOT AMD overlay")
+		(comment 4 "r2.0 maps UNUSABLE. P3V3=2 Conn0.")
+	)
+
+	(text (at 20.32 20.32 0)
+		(effects (font (size 1.5 1.5)) (justify left top))
+		(uuid "54a806d9-39b0-47f9-95d7-8acb0259baf2")
+		"Pads explicitly UNMAPPED on this stub (no net, no copper).
+They are named in the v1.0 generic map but are reserved, do-not-use, or TEST pins
+whose AMD MI250X function is Unknown. Do not invent pullups or straps.
+
+Conn0 C4    TEST_MODE#
+Conn0 F1    RFU
+Conn0 F2    RFU
+Conn0 F26   TEST0
+Conn0 F29   TEST1
+Conn0 F30   TEST2
+Conn0 F33   TEST3
+Conn0 F34   TEST4
+Conn0 F37   TEST5
+Conn0 F38   TEST6
+Conn0 F41   TEST7
+Conn0 F42   TEST8
+Conn0 F49   TEST9
+Conn0 F5    RFU
+Conn0 F50   RFU
+Conn0 H58   DO_NOT_USE
+Conn0 J60   DO_NOT_USE
+Conn0 K58   DO_NOT_USE
+Conn0 L60   DO_NOT_USE
+Conn1 A7    RFU
+Conn1 A8    RFU
+Conn1 B5    RFU
+Conn1 B6    RFU
+Conn1 C3    RFU
+Conn1 C4    RFU
+Conn1 C59   RFU
+Conn1 C60   RFU
+Conn1 C7    RFU
+Conn1 C8    RFU
+Conn1 E31   RFU
+Conn1 E32   RFU
+Conn1 E39   RFU
+Conn1 E40   RFU
+Conn1 F13   TEST10
+Conn1 F14   TEST11
+Conn1 F17   TEST12
+Conn1 F18   TEST13
+Conn1 F21   TEST14
+Conn1 F22   RFU
+Conn1 F29   RFU
+Conn1 F30   RFU
+Conn1 F33   RFU
+Conn1 F34   RFU
+Conn1 F37   RFU
+Conn1 F38   RFU
+Conn1 F41   RFU
+Conn1 F42   RFU
+Conn1 F45   RFU
+Conn1 G3    RFU
+Conn1 G31   RFU
+Conn1 G32   RFU
+Conn1 G4    RFU
+Conn1 G7    RFU
+Conn1 G8    RFU
+Conn1 H5    RFU
+Conn1 H6    RFU
+Conn1 J3    RFU
+Conn1 J4    RFU
+Conn1 J64   RFU"
+	)
+)

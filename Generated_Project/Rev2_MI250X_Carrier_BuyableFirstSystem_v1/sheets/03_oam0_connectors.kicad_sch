@@ -1,0 +1,146 @@
+(kicad_sch (version 20250114) (generator "buyable_first_system_v1")
+	(uuid "0a7ecad7-6c60-40a4-9417-d52959e444f8")
+	(paper "A3")
+	(title_block
+		(title "OAM0 connectors")
+		(date "2026-08-17")
+		(rev "BuyableFirstSystem_v1")
+		(comment 1 "DO NOT FABRICATE. DO NOT ENERGIZE MI250X.")
+		(comment 2 "Documentation sheet — no invented nets")
+		(comment 3 "Pin names: OAM Pin map rev 1.0.xlsx — OCP generic, NOT AMD overlay")
+		(comment 4 "r2.0 maps UNUSABLE. P3V3=2 Conn0.")
+	)
+
+	(text (at 20.32 20.32 0)
+		(effects (font (size 1.5 1.5)) (justify left top))
+		(uuid "a8ece1ce-ef1e-4e8a-9c93-af3e5870f691")
+		"OAM0 connector instances.
+
+Footprint: Molex 218910-1115 candidate (geometry). Hermaphroditic — mates with itself
+(Farnell 2189101115: Mates With 2189101115; mated height 5.00 mm).
+
+Pad nets are assigned on the PCB from the v1.0 CSV. Schematic shows hierarchical
+ports for the stub (power / clock / reset / PCIe / mgmt). SerDes S1–S7 are named
+on the PCB and left unrouted.
+
+MODULE_ID[4:0]: OCP pin list says weak PU on module; 1k to GND on baseboard for 0,
+leave open for 1. This stub does NOT place those resistors — population is a later
+step after AMD overlay. Default (all open) is all-1s.
+
+LINK_CONFIG[4:0]: same OCP rule; leave open this stub (AMD topology unknown).
+"
+	)
+
+	(hierarchical_label (at 25.4 150 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "f431eb6a-6ffc-41e8-a12f-460f053a30ad")
+		(shape bidirectional)
+		"P48V"
+	)
+
+	(hierarchical_label (at 25.4 155.08 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "18bd6847-7ee1-4ac2-8f34-6dfee49cea98")
+		(shape bidirectional)
+		"P12V1"
+	)
+
+	(hierarchical_label (at 25.4 160.16000000000003 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "01a8464a-8633-4b7a-ad4d-eae6c3475679")
+		(shape bidirectional)
+		"P12V2"
+	)
+
+	(hierarchical_label (at 25.4 165.24000000000004 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "567eb510-5a8c-408d-9f2d-56b679369e9e")
+		(shape bidirectional)
+		"P3V3"
+	)
+
+	(hierarchical_label (at 25.4 170.32000000000005 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "1f820463-44c9-4d0e-bb0f-3e13dc9c3c51")
+		(shape bidirectional)
+		"GND"
+	)
+
+	(hierarchical_label (at 25.4 175.40000000000006 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "d1181649-ad25-4b75-a015-50391265eb9c")
+		(shape bidirectional)
+		"OAM0_PVREF"
+	)
+
+	(hierarchical_label (at 25.4 180.48000000000008 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "168109c4-ce00-4176-b1c2-8087cfc57655")
+		(shape bidirectional)
+		"OAM0_PE_REFCLKP"
+	)
+
+	(hierarchical_label (at 25.4 185.5600000000001 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "7c803d63-6daa-41f3-9120-15186e7bb5df")
+		(shape bidirectional)
+		"OAM0_PE_REFCLKN"
+	)
+
+	(hierarchical_label (at 25.4 190.6400000000001 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "dbe4eae3-a279-4d4e-9a84-1308a1523345")
+		(shape bidirectional)
+		"OAM0_PERST#"
+	)
+
+	(hierarchical_label (at 25.4 195.7200000000001 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "7198b2df-65df-46f2-a882-6f95de65a75d")
+		(shape bidirectional)
+		"OAM0_HOST_PWRGD"
+	)
+
+	(hierarchical_label (at 25.4 200.80000000000013 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "4d54bfba-230a-4147-93d0-721579da3348")
+		(shape bidirectional)
+		"OAM0_MODULE_PWRGD"
+	)
+
+	(hierarchical_label (at 25.4 205.88000000000014 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "07195642-7060-4e86-b089-fa64a9ff114f")
+		(shape bidirectional)
+		"OAM0_WARMRST#"
+	)
+
+	(hierarchical_label (at 25.4 210.96000000000015 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "9bb29cc7-0f1c-492f-92a8-7beffa711884")
+		(shape bidirectional)
+		"OAM0_PWRBRK#"
+	)
+
+	(hierarchical_label (at 25.4 216.04000000000016 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "4782ccc0-500d-40ed-bd82-880ad0271d1b")
+		(shape bidirectional)
+		"OAM0_PRSNT0#"
+	)
+
+	(hierarchical_label (at 25.4 221.12000000000018 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "02179d19-bd15-4fce-b01b-2f0fbdf75855")
+		(shape bidirectional)
+		"OAM0_SMBus_SLV_D"
+	)
+
+	(hierarchical_label (at 25.4 226.2000000000002 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "05de18d9-1e1b-4ec7-ac35-74d863184500")
+		(shape bidirectional)
+		"OAM0_SMBus_SLV_CLK"
+	)
+
+)
