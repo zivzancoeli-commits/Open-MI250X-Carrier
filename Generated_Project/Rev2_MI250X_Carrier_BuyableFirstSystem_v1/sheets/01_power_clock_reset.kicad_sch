@@ -1,0 +1,241 @@
+(kicad_sch (version 20250114) (generator "buyable_first_system_v1")
+	(uuid "59be72ab-90fd-4cde-9346-c956a7776704")
+	(paper "A3")
+	(title_block
+		(title "Power / clock / reset stub")
+		(date "2026-08-17")
+		(rev "BuyableFirstSystem_v1")
+		(comment 1 "DO NOT FABRICATE. DO NOT ENERGIZE MI250X.")
+		(comment 2 "Documentation sheet — no invented nets")
+		(comment 3 "Pin names: OAM Pin map rev 1.0.xlsx — OCP generic, NOT AMD overlay")
+		(comment 4 "r2.0 maps UNUSABLE. P3V3=2 Conn0.")
+	)
+
+	(lib_symbols
+(symbol "power:P48V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+	(property "Reference" "#PWR" (at 0 -3.81 0) (effects (font (size 1.27 1.27)) hide))
+	(property "Value" "P48V" (at 0 3.556 0) (effects (font (size 1.27 1.27))))
+	(symbol "P48V_0_1"
+		(pin power_in line (at 0 0 90) (length 0) (name "P48V" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+	)
+)
+(symbol "power:P12V1" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+	(property "Reference" "#PWR" (at 0 -3.81 0) (effects (font (size 1.27 1.27)) hide))
+	(property "Value" "P12V1" (at 0 3.556 0) (effects (font (size 1.27 1.27))))
+	(symbol "P12V1_0_1"
+		(pin power_in line (at 0 0 90) (length 0) (name "P12V1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+	)
+)
+(symbol "power:P12V2" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+	(property "Reference" "#PWR" (at 0 -3.81 0) (effects (font (size 1.27 1.27)) hide))
+	(property "Value" "P12V2" (at 0 3.556 0) (effects (font (size 1.27 1.27))))
+	(symbol "P12V2_0_1"
+		(pin power_in line (at 0 0 90) (length 0) (name "P12V2" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+	)
+)
+(symbol "power:+3V3" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+	(property "Reference" "#PWR" (at 0 -3.81 0) (effects (font (size 1.27 1.27)) hide))
+	(property "Value" "+3V3" (at 0 3.556 0) (effects (font (size 1.27 1.27))))
+	(symbol "+3V3_0_1"
+		(pin power_in line (at 0 0 90) (length 0) (name "+3V3" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+	)
+)
+(symbol "power:GND" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+	(property "Reference" "#PWR" (at 0 -3.81 0) (effects (font (size 1.27 1.27)) hide))
+	(property "Value" "GND" (at 0 -3.81 0) (effects (font (size 1.27 1.27))))
+	(symbol "GND_0_1"
+		(pin power_in line (at 0 0 270) (length 0) (name "GND" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+	)
+)
+	)
+
+	(text (at 20.32 20.32 0)
+		(effects (font (size 1.5 1.5)) (justify left top))
+		(uuid "9d3b5612-94ad-4b1e-bb47-86cbb3413e15")
+		"PURPOSE: Named power / clock / reset stubs from OAM v1.0 pin map + pin list.
+
+SHARED RAILS (OCP names, both OAMs):
+- P48V  Conn0 16 pads  44–59.5 V  up to 700 W class (pin list). MI250X 500/560 W (AMD datasheet).
+- P12V1 Conn0 5 pads   12 V infrastructure up to 50 W. Required.
+- P12V2 Conn0 27 pads  12 V main for 12V-based OAM up to 300 W. Required for P12V-based OAM.
+        Whether MI250X needs P12V2 powered is AMD-unknown. Do NOT short to P12V1 unless documented.
+- P3V3  Conn0 C1,C2    3.3 V up to 5 W. Required. 2 pins — matches v1.5 Table 4; r2.0 has 6.
+- GND   Conn0 334 pads
+- PVREF Conn0 G1,G2    MODULE OUTPUT 1.5–3.3 V, max 0.5 A. NEVER drive from carrier. Per-OAM nets.
+
+CLOCK / RESET (Conn0 unless noted):
+- PE_REFCLKP/N  F45/F46   100 MHz PCIe refclk INPUT to module. Stub only — no clock-gen IC invented.
+- PERST#        D1        CEM-compliant PCIe reset, 3.3 V input.
+- WARMRST#      D2        Vref. Pin list: NC for standard PCIe.
+- HOST_PWRGD    H1        3.3 V input. Pin list: Power Enable when P48V/P12V/P3V3 are in spec.
+- MODULE_PWRGD  H2        3.3 V output. Ready for PERST# deassert.
+- PWRBRK#       C3        3.3 V input, CEM power brake.
+- PRSNT0#       J4        Module present, 1k to GND on module. Weak PU on baseboard.
+- PRSNT1#       Conn1 C63
+
+DO NOT: invent VRMs, mix 12 V CRPS into P48V, drive PVREF, pour P48V copper until
+Molex 30 V datasheet vs OCP 48 V use is resolved, or attach a guessed clock chip.
+"
+	)
+
+
+	(symbol (lib_id "power:P48V") (at 30.48 160 0) (unit 1)
+		(in_bom yes) (on_board yes) (dnp no)
+		(uuid "d6a67122-129e-4742-9768-1a13e0007521")
+		(property "Reference" "#PWRP48V" (at 30.48 155 0)
+			(effects (font (size 1.27 1.27)) hide) (uuid "1a800cb3-6233-40fb-8f8a-3fc7e089fcec"))
+		(property "Value" "P48V" (at 30.48 165 0)
+			(effects (font (size 1.27 1.27))) (uuid "945bf4b6-5b50-4f87-9f99-d154d8d48708"))
+		(pin "1" (uuid "6ab42198-5e8e-4464-bb17-6fe753b891c8"))
+	)
+	(label (at 30.48 165.1 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "a06c20f0-69be-4cfc-9473-908ce734ce00")
+		"P48V"
+	)
+
+	(symbol (lib_id "power:P12V1") (at 55.879999999999995 160 0) (unit 1)
+		(in_bom yes) (on_board yes) (dnp no)
+		(uuid "ca42e006-baed-4e19-8e80-d51294ad81fc")
+		(property "Reference" "#PWRP12V1" (at 55.879999999999995 155 0)
+			(effects (font (size 1.27 1.27)) hide) (uuid "40cc6ad9-6e98-42f6-b862-9961dc997b68"))
+		(property "Value" "P12V1" (at 55.879999999999995 165 0)
+			(effects (font (size 1.27 1.27))) (uuid "6ce449ea-a712-428a-8a71-03cbc4fcbe78"))
+		(pin "1" (uuid "fde1a043-5e94-4f79-8aab-0935641cd439"))
+	)
+	(label (at 55.879999999999995 165.1 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "9696732d-250b-498c-aa8f-12ca12069cb5")
+		"P12V1"
+	)
+
+	(symbol (lib_id "power:P12V2") (at 81.28 160 0) (unit 1)
+		(in_bom yes) (on_board yes) (dnp no)
+		(uuid "132f1ffb-2343-40dd-adb4-95342aea07e5")
+		(property "Reference" "#PWRP12V2" (at 81.28 155 0)
+			(effects (font (size 1.27 1.27)) hide) (uuid "038405de-db21-4a35-9cd9-6635d0c2f954"))
+		(property "Value" "P12V2" (at 81.28 165 0)
+			(effects (font (size 1.27 1.27))) (uuid "08d16170-c045-421b-8f8f-0e8936e32328"))
+		(pin "1" (uuid "d79858f4-495a-42ab-bc16-3728ab8e01ae"))
+	)
+	(label (at 81.28 165.1 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "0bb4889c-3b21-4002-bf62-51e7e8f42289")
+		"P12V2"
+	)
+
+	(symbol (lib_id "power:+3V3") (at 106.68 160 0) (unit 1)
+		(in_bom yes) (on_board yes) (dnp no)
+		(uuid "750674a4-bd11-4aee-ac1a-f0b49216cfd9")
+		(property "Reference" "#PWR3V3" (at 106.68 155 0)
+			(effects (font (size 1.27 1.27)) hide) (uuid "111a4f72-918b-44cf-b7c6-75128bd64ef2"))
+		(property "Value" "+3V3" (at 106.68 165 0)
+			(effects (font (size 1.27 1.27))) (uuid "285f2192-560d-4bd4-a48d-42086a4d8496"))
+		(pin "1" (uuid "29c73a17-016f-43ec-8e42-7b798053e4d4"))
+	)
+	(label (at 106.68 165.1 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "4c4da468-b371-44fb-9624-1fd23ec19271")
+		"P3V3"
+	)
+
+	(symbol (lib_id "power:GND") (at 132.08 160 0) (unit 1)
+		(in_bom yes) (on_board yes) (dnp no)
+		(uuid "4c2ed406-02ed-42b5-808e-431eb8c916b8")
+		(property "Reference" "#PWRGND" (at 132.08 155 0)
+			(effects (font (size 1.27 1.27)) hide) (uuid "ba27c7a7-fee5-43bb-9474-4484e0776a4e"))
+		(property "Value" "GND" (at 132.08 165 0)
+			(effects (font (size 1.27 1.27))) (uuid "a1ba0b93-795c-4784-bc21-c863305c8956"))
+		(pin "1" (uuid "a1de35d4-9b08-4c46-9941-6a26c5902866"))
+	)
+	(label (at 132.08 165.1 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "cedf874b-4fe1-43db-932b-c4fe5291748e")
+		"GND"
+	)
+
+	(hierarchical_label (at 30.48 190 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "b052d09a-aa5b-4b0c-a6eb-1ba7be822156")
+		(shape bidirectional)
+		"OAM0_PE_REFCLKP"
+	)
+
+	(hierarchical_label (at 30.48 195.08 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "d5da744d-a411-4448-b999-8e5d0bf2bd9f")
+		(shape bidirectional)
+		"OAM0_PE_REFCLKN"
+	)
+
+	(hierarchical_label (at 30.48 200.16000000000003 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "524bf67c-45b6-4274-9524-159a844a9c79")
+		(shape bidirectional)
+		"OAM0_PERST#"
+	)
+
+	(hierarchical_label (at 30.48 205.24000000000004 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "198d59de-fe09-43dc-b050-a43d01f1c982")
+		(shape bidirectional)
+		"OAM0_HOST_PWRGD"
+	)
+
+	(hierarchical_label (at 30.48 210.32000000000005 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "c7b9b26b-69b5-464b-b97d-add1cabfb303")
+		(shape bidirectional)
+		"OAM0_MODULE_PWRGD"
+	)
+
+	(hierarchical_label (at 30.48 215.40000000000006 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "6c9225be-ff98-4e27-9aef-4f01d9e58b18")
+		(shape bidirectional)
+		"OAM0_PVREF"
+	)
+
+	(hierarchical_label (at 30.48 220.48000000000008 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "599464be-fc28-45ad-ba94-dfd2f956d566")
+		(shape bidirectional)
+		"OAM1_PE_REFCLKP"
+	)
+
+	(hierarchical_label (at 30.48 225.5600000000001 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "88100c4a-bfef-4b49-ad41-9a4e32edae78")
+		(shape bidirectional)
+		"OAM1_PE_REFCLKN"
+	)
+
+	(hierarchical_label (at 30.48 230.6400000000001 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "5007e90d-4331-4f7b-8249-ba5c6f4a20f8")
+		(shape bidirectional)
+		"OAM1_PERST#"
+	)
+
+	(hierarchical_label (at 30.48 235.7200000000001 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "ba7d1797-8655-4a0d-a5b0-4da9bc49528a")
+		(shape bidirectional)
+		"OAM1_HOST_PWRGD"
+	)
+
+	(hierarchical_label (at 30.48 240.80000000000013 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "7854663c-f946-4174-8116-b2b6267b3590")
+		(shape bidirectional)
+		"OAM1_MODULE_PWRGD"
+	)
+
+	(hierarchical_label (at 30.48 245.88000000000014 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "46ddda82-1b2b-4ebd-893c-25256fa86576")
+		(shape bidirectional)
+		"OAM1_PVREF"
+	)
+
+)

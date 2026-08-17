@@ -1,0 +1,120 @@
+row,signal,direction,description,voltage,recommendation,diff_pairs,se_pins,connector
+3,OCP Signal  name,Mezz Module Direction POV,OCP Signal Description,Voltage,OAM Baseboard implemention Recommendation,Total Diff Pair,Total SE pins,Conn0 or 1
+4,P48V,Power Input,44V-59.5V main voltage for high power applications. Up to 700W when Vin=>44V. Module should be able to operate at 40V to 44V but at lower power.,44V-59.5V,Required for 48V based OAM. System should trigger power brake or power reduction to throttle OAMs when Vin <44v.,,16,Conn0
+5,P12V1,Power Input,12V mandatory Board Infrastructure Power. Up to 50W,12V,Required,,5,Conn0
+6,P12V2,Power Input,"12V main Power for low power applications. Up to 300W. For 12V motherboard/module designs, P12V1 and P12V2 can be shorted together for up to 350W  combined power",12V,Required for P12V based OAM,,27,Conn0
+7,P3V3,Power Input,3.3V Main Power. Up to 5W,3.3V,Required,,2,Conn0
+8,PVREF,Power Output,Low voltage output for GPU/ASIC sideband I/O reference on motherboard components.  Module should provision maximum 0.5A to be provided to motherboard. Vref  can be any value between 1.5V to 3.3V set as per GPU/ASIC sideband I/O voltage. Each OAM supplier will specify the actual Vref. ,Vref,Required,,2,Conn0
+9,PETp/n [15:0],Output,"PCIe or equivalent host link Transmit differential pairs. Module Transmit, Host Receive. Note: AC coupling caps must be placed on the motherboard side. ",,Required,16,,Conn0
+10,PERp/n [15:0],Input,"PCIe or equivalent host link Receive differential pairs. Module Receive, Host Transmit. Note: AC coupling caps must be placed on the motherboard side. ",,Required,16,,Conn0
+11,SERDES_1Tp/n [15:0],Output,SerDes link 1 Transmit differential pairs. AC caps must be placed on Module/die (if required),,Required,16,,Conn0
+12,SERDES_1Rp/n [15:0],Input,SerDes link 1 Receive differential pairs.,,Required,16,,Conn0
+13,SERDES_2Tp/n [15:0],Output,SerDes link 2 Transmit differential pairs. AC caps must be placed on Module/die (if required),,Required,16,,Conn0
+14,SERDES_2Rp/n [15:0],Input,SerDes link 2 Receive differential pairs.,,Required,16,,Conn0
+15,SERDES_3Tp/n[15:0],Output,SerDes link 3 Transmit differential pairs. AC caps must be placed on Module/die (if required),,Required,16,,Conn0
+16,SERDES_3Rp/n [15:0],Input,SerDes link 3 Receive differential pairs. ,,Required,16,,Conn0
+17,SERDES_4Tp/n[15:0],Output,SerDes link 4Transmit differential pairs. AC caps must be placed on Module/die (if required),,Required,16,,Conn1
+18,SERDES_4Rp/n [15:0],Input,SerDes link 4 Receive differential pairs.,,Required,16,,Conn1
+19,SERDES_5Tp/n [15:0],Output,SerDes link 5 Transmit differential pairs. AC caps must be placed on Module/die (if required),,Required,16,,Conn1
+20,SERDES_5Rp/n [15:0],Input,SerDes link 5 Receive differential pairs.,,Required,16,,Conn1
+21,SERDES_6Tp/n [15:0],Output,SerDes link 6 Transmit differential pairs. AC caps must be placed on Module/die (if required),,Required,16,,Conn1
+22,SERDES_6Rp/n [15:0],Input,SerDes link 6 Receive differential pairs.,,Required,16,,Conn1
+23,SERDES_7Tp/n [15:0],Output,SerDes Reserved Link Transmit differential pairs. Interconnect requirements defined by Module and System integrator. AC caps must be placed on the Motherboard (if Required),,Required,16,,Conn1
+24,SERDES_7Rp/n [15:0],Input,SerDes Reserved Link Receive differential pairs. Interconnect requirements defined by Module and System integrator. AC caps must be placed on the Motherboard (if Required),,Required,16,,Conn1
+25,PE_REFCLKp/n,Input,PCIe Reference Clock. 100MHz PCIe Gen 5 compliant. ,,Required,1,,Conn0
+26,AUX_100M_REFCLKp/n,Input, 100MHz PCIe Gen 5 compliant Auxiliary Reference Clock.,,Required,1,,Conn1
+27,AUX_156M_REFCLKp/n,Input,156.25MHz Auxiliary Reference Clock ,,Required. Check with OAM product specification for compliance requirement.,1,,Conn1
+28,DWN_REFCLKp/n,Output,Downstream Reference Clock. Vendor specific.,,NC if not used,1,,Conn1
+29,PERST#,Input,CEM Compliant PCIe Reset,3.3V,Required,,1,Conn0
+30,WARMRST#,Input,Warm Reset,Vref,NC for standard PCIe based system. Connect to Warmrst# from host for non-PCIe standard.,,1,Conn0
+31,DWN_PERST#,Output,Down device PCIe Reset. Vendor specific.,3.3V,NC if no down stream from OAM.,,1,Conn1
+32,HOST_PWRGD,Input,"Host power good. Active high when P48V, P12V1/P12V2, P3V3 voltages are stable and within specifications. This is considered the “Power Enable” signal for the module.",3.3V,Required,,1,Conn0
+33,MODULE_PWRGD,Output,Module power good. Active high when the module has completed its own power up sequence and is ready for PERST# de-assertion,3.3V,Required,,1,Conn0
+34,PWRBRK#,Input,Emergency power reduction. CEM Compliant Power Break,3.3V,Required,,1,Conn0
+35,PWRRDT#[1:0],Input,"Power Reduction GPIO to instruct Oam to go certain stage to reduce power
+11 - default state L0, normal power
+10 - L1, 1st level power reduction. 
+01 - L2, 2nd level power reduction. 
+00 - L3, max power reduction. 
+Details defined by specific OAM product specification. ",3.3V,Required,,2,Conn1
+36,THERMTRIP#,Output,Catastrophic thermal event for module components. Active low and latched by the Module logic. Released until motherboard power cycles the module input voltages,3.3V,Required,,1,Conn1
+37,MODULE_ID[4:0],Input,"Module node identifier (e.g. Module #0, #1,…#n). Module has weak PU to drive to 1 by default. ",,"Required.  Tied to GND through 1K resistor on baseboard for logic 0, leave open for logic 1",,5,Conn0
+38,LINK_CONFIG[4:0],Input,Mezz Module Host Interface/SerDes Link Configuration and topology. See link config table for details. Module has weak PU to Vref to drive high by default. ,,"Required. Tied to GND through 1K resistor on baseboard for logic 0, leave open for logic 1",,5,Conn1
+39,PE_BIF[1:0],Output,"x16 Host Interface Bifurcation Configuration. 
+00 = one x16 PCIe host interface
+01 = bifurcation into two x8 PCIe host interfaces
+10 = bifurcation into four x4 PCIe host interfaces
+11 = reserved
+Vref based when drive to high. ",,Required. Add level shift. ,,2,Conn1
+40,PLINK_CAP,Output,"""P"" Port Module Capability support:
+ '0' = PCIe only support
+'1' = Alternate protocol supported
+The host system requests an alternate host link protocol by pulling up LINK_CONFIG[0] and the Module informs the system of protocol support on the ""P"" link via this pin. If the module only supports PCIe as host, this signal is PD on the module.",Vref,Required. Add level shift. ,,1,Conn1
+41,SMBus_SLV_D,Bi-directional,Slave SMBus data. ,3.3V,Required. PU on baseboard and connect to BMC,,1,Conn0
+42,SMBus_SLV_CLK,Input,Slave SMBus clock,3.3V,Required. PU on baseboard and connect to BMC,,1,Conn0
+43,SLV_ALERT#,Output,Slave  alert indication. ,3.3V,Required. PU on baseboard and connect to BMC,,1,Conn0
+44,I2C_D,Bi-directional,Master I2C/SMBus data . PU on OAM. ,Vref,Required. Add level shift to 3.3V. OAM0 will need DEMUX to connect to baseboard FRU with BMC. ,,1,Conn0
+45,I2C _CLK,Output,Master I2C/SMBus clock.  PU on OAM. ,Vref,Required. Add level shift to 3.3V. OAM0 will need DEMUX to connect to baseboard FRU with BMC. ,,1,Conn0
+46,UART_TXD,Output,Serial Port Transmit,3.3V,Required. Suggest to connect to UART2usb bridge(the bridge usb port connects to BMC usb),,1,Conn0
+47,UART_RXD,Input,Serial Port Receive,3.3V,Required. Suggest to connect to UART2usb bridge(the bridge usb port connects to BMC usb),,1,Conn0
+48,JTAG0_TRST,Input,Low Voltage ASIC/GPU JTAG Test Reset,Vref,Required,,1,Conn0
+49,JTAG0_TMS,Input,Low Voltage ASIC/GPU JTAG Test Mode Select,Vref,Required,,1,Conn0
+50,JTAG0_TCK,Input,Low Voltage ASIC/GPU JTAG Test Clock,Vref,Required,,1,Conn0
+51,JTAG0_TDO,Output,Low Voltage ASIC/GPU JTAG Test Output,Vref,Required,,1,Conn0
+52,JTAG0 _TDI,Input,Low Voltage ASIC/GPU JTAG Test Input,Vref,Required,,1,Conn0
+53,JTAG1 _TRST,Input,High Voltage JTAG Test Reset,3.3V,Optional,,1,Conn1
+54,JTAG1 _TMS,Input,High Voltage JTAG Test Mode Select,3.3V,Optional,,1,Conn1
+55,JTAG1 _TCK,Input,High Voltage JTAG Test Clock,3.3V,Optional,,1,Conn1
+56,JTAG1 _TDO,Output,High Voltage JTAG Test Output,3.3V,Optional,,1,Conn1
+57,JTAG1 _TDI,Input,High Voltage JTAG Test Input,3.3V,Optional,,1,Conn1
+58,CONN1_INITMODE,Output,QSFP-DD Connector 1 Module Initialization mode,Vref,add level shift and connect to QSFP-DD conn if any expansion,,1,Conn1
+59,CONN1_INT#,Input,QSFP-DD Connector 1 Module Interrupt,Vref,add level shift and connect to QSFP-DD conn if any expansion,,1,Conn1
+60,CONN1_MODPRS#,Input,QSFP-DD Connector 1 Module Present,Vref,add level shift and connect to QSFP-DD conn if any expansion,,1,Conn1
+61,CONN1_MODSEL#,Output,QSFP-DD Connector 1 Module Select,Vref,add level shift and connect to QSFP-DD conn if any expansion,,1,Conn1
+62,CONN1_RESET#,Output,QSFP-DD Connector 1 Module Reset,Vref,add level shift and connect to QSFP-DD conn if any expansion,,1,Conn1
+63,CONN1_GREEN_LED,Output,QSFP-DD Connector 1 GREEN STATUS LED,Vref,add level shift and connect to QSFP-DD conn if any expansion. NC if not used. ,,1,Conn1
+64,CONN1_YELLOW_LED,Output,QSFP-DD Connector 1 YELLOW STATUS LED,Vref,add level shift and connect to QSFP-DD conn if any expansion. NC if not used. ,,1,Conn1
+65,CONN2_INITMODE,Output,QSFP-DD Connector 2 Module Initialization mode,Vref,add level shift and connect to QSFP-DD conn if any expansion,,1,Conn1
+66,CONN2_INT#,Input,QSFP-DD Connector 2 Module Interrupt,Vref,add level shift and connect to QSFP-DD conn if any expansion,,1,Conn1
+67,CONN2_MODPRS#,Input,QSFP-DD Connector 2 Module Present,Vref,add level shift and connect to QSFP-DD conn if any expansion,,1,Conn1
+68,CONN2_MODSEL#,Output,QSFP-DD Connector 2 Module Select,Vref,add level shift and connect to QSFP-DD conn if any expansion,,1,Conn1
+69,CONN2_RESET#,Output,QSFP-DD Connector 2 Module Reset,Vref,add level shift and connect to QSFP-DD conn if any expansion,,1,Conn1
+70,CONN2_GREEN_LED,Output,QSFP-DD Connector 2 GREEN STATUS LED,Vref,add level shift and connect to QSFP-DD conn if any expansion. NC if not used. ,,1,Conn1
+71,CONN2_YELLOW_LED,Output,QSFP-DD Connector 2 YELLOW STATUS LED,Vref,add level shift and connect to QSFP-DD conn if any expansion. NC if not used. ,,1,Conn1
+72,PRSNT0#,Output,Module present pin connector 0. Tied to GND through 1K resistor on module side.,,Weak PU on baseboard side. ,,1,Conn0
+73,PRSNT1#,Output,Module present pin connector 1. Tied to GND through 1K resistor on module side,,Weak PU on baseboard side. ,,1,Conn1
+74,SCALE_DEBUG_EN,Output,At-scale debug enable on the module. Isolates any motherboard JTAG debug path when logic High,3.3V,Required,,1,Conn1
+75,DEBUG_PORT_PRSNT#,Input,Presence signal for debug port in baseboard. Notifies logic in the module the debug access is being used by the baseboard debug connector. Debug port on baseboard present when logic low. ,Vref?,Strong PU on baseboard side. ,,1,Conn1
+76,MNGMT_LINK0Tp/n,Output,Vendor specific module to module management link port 0 transmit,,Required for some accelerators. Check with accelerator vendor.,1,,Conn1
+77,MNGMT_LINK0Rp/n,Input,Vendor specific module to module management link port 0 receive,,Required for some accelerators. Check with accelerator vendor.,1,,Conn1
+78,MNGMT_LINK1Tp/n,Output,Vendor specific module to module management link port 1 transmit,,Required for some accelerators. Check with accelerator vendor.,1,,Conn1
+79,MNGMT_LINK1Rp/n,Input,Vendor specific module to module management link port 1 receive,,Required for some accelerators. Check with accelerator vendor.,1,,Conn1
+80,TEST0,Input,,Vref,Demux all 8 OAMs' test pin,,1,Conn0
+81,TEST1,Input,,Vref,Demux all 8 OAMs' test pin,,,Conn0
+82,TEST2,Input,,Vref,Demux all 8 OAMs' test pin,,,Conn0
+83,TEST3,Input,,Vref,Demux all 8 OAMs' test pin,,,Conn0
+84,TEST4,Input,,Vref,Demux all 8 OAMs' test pin,,4,Conn0
+85,TEST5,I/O,,Vref,Demux all 8 OAMs' test pin,,1,Conn0
+86,TEST6,I/O,,Vref,Demux all 8 OAMs' test pin,,1,Conn0
+87,TEST7,Output,,Vref,Demux all 8 OAMs' test pin,,1,Conn0
+88,TEST8,Input,,Vref,Demux all 8 OAMs' test pin,,1,Conn0
+89,TEST9,Input,,Vref,Demux all 8 OAMs' test pin,,1,Conn0
+90,TEST10,Input,,Vref,Demux all 8 OAMs' test pin,,1,Conn1
+91,TEST11,Output,,Vref,Demux all 8 OAMs' test pin,,1,Conn1
+92,TEST12,Input,,Vref,Demux all 8 OAMs' test pin,,1,Conn1
+93,TEST13,Input,,Vref,Demux all 8 OAMs' test pin,,1,Conn1
+94,TEST14,Input,,Vref,Demux all 8 OAMs' test pin,,1,Conn1
+95,MANF_MODE#,Input,"Manufacturing Mode
+1: Normal operation
+0: Module enter into manufacturing mode",3.3V,Tie all OAMs MANF_MODE# together and connect to a jumper,,1,Conn0
+96,FW_RECOVERY#,Input,"On board manageability boot recovery mode
+1: Normal operation
+0: Firmware Recovery boot mode",3.3V,Tie all FW_recovery# together and connect to a jumper,,1,Conn0
+97,TEST_MODE#,Input,"Compliance Test Mode
+1: Normal operation
+0: ASIC/GPU enter into electrical compliance mode",Vref,Tie all Test_mode# together and connect to a jumper,,1,Conn0
+98,RFU,,Reserved for future use,,,,4,Conn0
+99,RFU,,Reserved for future use,,,,23,Conn1
+100,Sub Total,,,,,264,83,
+102,Total pin locations,,,,,611,,
+103,Total in diff pairs,,,,,305.5,,
