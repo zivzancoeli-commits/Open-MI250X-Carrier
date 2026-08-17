@@ -3,6 +3,8 @@
 ## Purpose
 This project collects public evidence needed to design a minimal open-source carrier board for surplus AMD Instinct MI250X OAM modules. It is organized as a reverse-engineering knowledge base: public documentation is collected first, facts are extracted into notes, and unknown or proprietary behavior is tracked instead of assumed.
 
+Agent standing rules: [AGENTS.md](AGENTS.md). Do not invent pins. Do not send in-repo KiCad to PCBWay. Do not energize OAMs. Host / desk / SendCutSend sheet are OK to buy; wait on Molex 2189101115 60 V / skip-pin.
+
 ## Workflow
 - Collect public links and local reference copies in [02_AMD_Docs](02_AMD_Docs/) and [13_Reference_Docs](13_Reference_Docs/).
 - Extract design-relevant facts into [09_AI_Notes](09_AI_Notes/), separating verified information from questions.

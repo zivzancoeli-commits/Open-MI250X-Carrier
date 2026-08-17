@@ -1,0 +1,98 @@
+[
+  {
+    "url": "https://sendcutsend.com/materials/mild-steel/",
+    "http": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "curl_err": "",
+    "ok_process": true,
+    "key": "scs_mild_steel"
+  },
+  {
+    "url": "https://sendcutsend.com/services/hardware/",
+    "http": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "curl_err": "",
+    "ok_process": true,
+    "key": "scs_hardware"
+  },
+  {
+    "url": "https://sendcutsend.com/",
+    "http": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "curl_err": "",
+    "ok_process": true,
+    "key": "scs_home"
+  },
+  {
+    "url": "https://sendcutsend.com/guidelines/laser-cutting/",
+    "http": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "curl_err": "",
+    "ok_process": true,
+    "key": "scs_guidelines"
+  },
+  {
+    "url": "https://www.farnell.com/datasheets/3919676.pdf",
+    "http": 200,
+    "content_type": "application/pdf",
+    "curl_err": "",
+    "ok_process": true,
+    "key": "farnell_2189101115_pdf"
+  },
+  {
+    "url": "https://www.newegg.com/supermicro-mbd-x11dph-t-o-2nd-generation-intel-xeon-scalable-processors-intel-xeon-scalable-proces/p/1B4-005W-001B0",
+    "http": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "curl_err": "",
+    "ok_process": true,
+    "key": "newegg_x11dph_t"
+  },
+  {
+    "url": "https://www.ebay.co.uk/p/24064262136",
+    "http": 200,
+    "content_type": "text/html;charset=UTF-8",
+    "curl_err": "",
+    "ok_process": true,
+    "key": "ebay_snphvy68c"
+  },
+  {
+    "url": "https://store.supermicro.com/us_en/32gb-ddr4-2933-mem-dr432l-sl01-er29.html",
+    "http": 403,
+    "content_type": "text/html",
+    "curl_err": "",
+    "ok_process": true,
+    "key": "supermicro_dram"
+  },
+  {
+    "url": "https://noctua.at/en/nh-u14s-dx-3647",
+    "http": 429,
+    "content_type": "text/html; charset=utf-8",
+    "curl_err": "",
+    "ok_process": true,
+    "key": "noctua_dx3647"
+  },
+  {
+    "url": "https://www.itcreations.com/product/132053",
+    "http": 200,
+    "content_type": "text/html; charset=utf-8",
+    "curl_err": "",
+    "ok_process": true,
+    "key": "itcreations_d3000"
+  },
+  {
+    "url": "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250x.html",
+    "http": 200,
+    "content_type": "text/html",
+    "curl_err": "",
+    "ok_process": true,
+    "key": "amd_mi250x"
+  },
+  {
+    "url": "https://www.pcbway.com/",
+    "http": 200,
+    "content_type": "text/html; charset=utf-8",
+    "curl_err": "",
+    "ok_process": true,
+    "key": "pcbway_home"
+  }
+]
