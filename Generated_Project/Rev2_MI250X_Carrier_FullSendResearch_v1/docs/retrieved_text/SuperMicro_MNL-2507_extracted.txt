@@ -1,0 +1,3777 @@
+USER’S MANUAL Revision 1.0a
+
+## A+ Server AS -4124GQ-TNMI
+
+The information in this User’s Manual has been carefully reviewed and is believed to be accurate. The vendor assumes no responsibility for any inaccuracies that may be contained in this document, and makes no commitment to update or to keep current the information in this manual, or to notify any person or organization of the updates. Please Note: For the most up-to-date version of this manual, please see our website at www.supermicro.com.
+
+Super Micro Computer, Inc. ("Supermicro") reserves the right to make changes to the product described in this manual at any time and without notice. This product, including software and documentation, is the property of Supermicro and/ or its licensors, and is supplied only under a license. Any use or reproduction of this product is not allowed, except as expressly permitted by the terms of said license.
+
+IN NO EVENT WILL Super Micro Computer, Inc. BE LIABLE FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, SPECULATIVE OR CONSEQUENTIAL DAMAGES ARISING FROM THE USE OR INABILITY TO USE THIS PRODUCT OR DOCUMENTATION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN PARTICULAR, SUPER MICRO COMPUTER, INC. SHALL NOT HAVE LIABILITY FOR ANY HARDWARE, SOFTWARE, OR DATA STORED OR USED WITH THE PRODUCT, INCLUDING THE COSTS OF REPAIRING, REPLACING, INTEGRATING, INSTALLING OR RECOVERING SUCH HARDWARE, SOFTWARE, OR DATA.
+
+Any disputes arising between manufacturer and customer shall be governed by the laws of Santa Clara County in the State of California, USA. The State of California, County of Santa Clara shall be the exclusive venue for the resolution of any such disputes. Supermicro's total liability for all claims will not exceed the price paid for the hardware product.
+
+FCC Statement: This equipment has been tested and found to comply with the limits for a Class A or Class B digital device pursuant to Part 15 of the FCC Rules. These limits are designed to provide reasonable protection against harmful interference when the equipment is operated in industrial environment for Class A device or in residential environment for Class B device. This equipment generates, uses, and can radiate radio frequency energy and, if not installed and used in accordance with the manufacturer’s instruction manual, may cause harmful interference with radio communications. Operation of this equipment in a residential area is likely to cause harmful interference, in which case you will be required to correct the interference at your own expense.
+
+California Best Management Practices Regulations for Perchlorate Materials: This Perchlorate warning applies only to products containing CR (Manganese Dioxide) Lithium coin cells. “Perchlorate Material-special handling may apply. See www.dtsc.ca.gov/hazardouswaste/perchlorate”.
+
+WARNING: This product can expose you to chemicals including lead, known to the State of California to cause cancer and birth defects or other reproductive harm. For more information, go to www.P65Warnings.ca.gov.
+
+!
+
+The products sold by Supermicro are not intended for and will not be used in life support systems, medical equipment, 
+nuclear facilities or systems, aircraft, aircraft devices, aircraft/emergency communication devices or other critical 
+systems whose failure to perform be reasonably expected to result in significant injury or loss of life or catastrophic 
+property damage. Accordingly, Supermicro disclaims any and all liability, and should buyer use or sell such products 
+for use in such ultra-hazardous applications, it does so entirely at its own risk. Furthermore, buyer agrees to fully 
+indemnify, defend and hold Supermicro harmless for and against any and all claims, demands, actions, litigation, and 
+proceedings of any kind arising out of or related to such ultra-hazardous use or sale. 
+Manual Revision 1.0a 
+Release Date: April 05, 2024 
+Unless you request and receive written permission from Super Micro Computer, Inc., you may not copy any part of this 
+document. Information in this document is subject to change without notice. Other products and companies referred 
+to herein are trademarks or registered trademarks of their respective companies or mark holders. 
+Copyright © 2024 by Super Micro Computer, Inc. 
+All rights reserved. 
+Printed in the United States of America 
+
+Preface
+
+#### Preface
+
+##### About this Manual
+
+This manual is written for professional system integrators and PC technicians. It provides information for the installation and use of the A+ Server AS -4124GQ-TNMI. Installation and maintenance should be performed by certified service technicians only. Please refer to the server specifications page on our website for updates on supported memory, processors and operating systems (http://www.supermicro.com).
+
+##### Notes
+
+For your system to work properly, please follow the links below to download all necessary drivers/utilities and the user’s manual for your server.
+
+• Supermicro product manuals: http://www.supermicro.com/support/manuals/ 
+• Product drivers and utilities: https://www.supermicro.com/wdl 
+• Product safety info: http://www.supermicro.com/about/policies/safety_information.cfm If you have any questions, please contact our support team at: 
+support@supermicro.com 
+This manual may be periodically updated without notice. Please check the Supermicro website 
+for possible updates to the manual revision level. 
+
+##### Secure Data Deletion
+
+A secure data deletion tool designed to fully erase all data from storage devices can be found on our website: https://www.supermicro.com/about/policies/disclaimer.cfm?url=/wdl/utility/ Lot9_Secure_Data_Deletion_Utility/
+
+##### Warnings
+
+Special attention should be given to the following symbols used in this manual.
+
+Warning! Indicates high voltage may be encountered when performing a procedure.
+
+Warning! Indicates important information given to prevent equipment/property damage or personal injury.
+
+#### Contents
+
+Chapter 1 Introduction 
+1.1 Overview ... 8 
+1.2 Unpacking the System ... 10 
+1.3 System Features ... 11 
+1.4 Chassis Features ... 12 
+Control Panel ... 12 
+Front Features ... 13 
+Rear Features (4U Configuration) ... 14 
+Rear Features (Optional 5U Configuration) ... 15 
+1.5 1U Add-on Module ... 16 
+1.6 GPU Baseboard ... 17 
+1.7 System Architecture ... 18 
+Block Diagrams ... 18 
+Board Locations ... 20 
+1.8 Motherboard Layout ... 22 
+Quick Reference Table ... 23 
+1.9 Where to Get Replacement Components ... 25 
+1.10 Returning Merchandise for Service ... 25 
+Chapter 2 Server Installation 
+2.1 Overview ... 26 
+2.2 Preparing for Setup ... 26 
+Choosing a Setup Location ... 26 
+Rack Precautions ... 26 
+Server Precautions ... 27 
+Rack Mounting Considerations ... 27 
+Ambient Operating Temperature ... 27 
+Airflow ... 27 
+Mechanical Loading ... 28 
+Circuit Overloading ... 28 
+Reliable Ground ... 28 
+2.3 Rack Mounting ... 29 
+Identifying the Inner Rails ... 29 
+Installing the Inner Rails ... 30 
+
+Preface
+
+Installing the Outer Rails onto the Rack ... 31 
+Installing the Server onto the Rack ... 32 
+Removing the Chassis from the Rack ... 33 
+Chapter 3 Maintenance and Component Installation 
+3.1 Removing Power ... 34 
+3.2 Accessing the System ... 35 
+3.3 Motherboard Components ... 38 
+Processor and Heatsink Installation ... 38 
+Memory Installation ... 47 
+Memory Support ... 47 
+DIMM Module Population Sequence ... 48 
+DIMM Installation ... 49 
+DIMM Removal ... 49 
+Motherboard Battery ... 50 
+3.4 Chassis Components ... 51 
+Storage Drives ... 51 
+Drive Carrier Indicators ... 51 
+Removing/Installing Drives ... 52 
+Hot-Swap for NVMe Drives ... 54 
+Checking the Temperature of an NVMe Drive ... 55 
+Storage Tray ... 56 
+Replacing Individual AMD Instinct MI250 OAM ... 57 
+Replacing Universal Baseboard ... 58 
+5U System ... 59 
+Installing Expansion Cards in the 4U/5U System ... 60 
+Installing Extra Expansion Cards in the 5U System ... 61 
+System Fans ... 63 
+Overheating ... 64 
+Air Shroud ... 65 
+GPU Air Shroud ... 66 
+Power Supply ... 67 
+Chapter 4 Motherboard Connections 
+4.1 Headers and Connectors ... 68 
+4.2 Jumpers ... 70 
+4.3 LED Indicators ... 72 
+
+Chapter 5 Software 
+5.1 OS Installation ... 73 
+Installing the Windows OS for a RAID System ... 73 
+Installing Windows to a Non-RAID System ... 73 
+5.2 Driver Installation ... 74 
+5.3 SuperDoctor ® 5 ... 75 
+5.4 BMC ... 76 
+BMC ADMIN User Password ... 76 
+Chapter 6 UEFI BIOS 
+6.1 Introduction ... 77 
+Starting the Setup Utility ... 77 
+6.2 Main Setup ... 78 
+6.3 Advanced ... 80 
+6.4 IPMI ... 102 
+6.5 Event Logs ... 104 
+6.6 Security Settings ... 106 
+6.7 Boot Settings ... 110 
+6.8 Save & Exit ... 112 
+Appendix A Standardized Warning Statements for AC Systems 
+Appendix B System Specifications 
+
+Preface
+
+##### Contacting Supermicro
+
+Headquarters 
+Address: Super Micro Computer, Inc. 
+980 Rock Ave. 
+San Jose, CA 95131 U.S.A. 
+Tel: +1 (408) 503-8000 
+Fax: +1 (408) 503-8008 
+Email: marketing@supermicro.com (General Information) 
+Sales-USA@supermicro.com (Sales Inquiries) 
+Government_Sales-USA@supermicro.com (Gov. Sales Inquiries) 
+support@supermicro.com (Technical Support) 
+RMA@supermicro.com (RMA Support) 
+Webmaster@supermicro.com (Webmaster) 
+Website: www.supermicro.com 
+Europe 
+Address: Super Micro Computer B.V. 
+Het Sterrenbeeld 28, 5215 ML 
+'s-Hertogenbosch, The Netherlands 
+Tel: +31 (0) 73-6400390 
+Fax: +31 (0) 73-6416525 
+Email: Sales_Europe@supermicro.com (Sales Inquiries) 
+Support_Europe@supermicro.com (Technical Support) 
+RMA_Europe@supermicro.com (RMA Support) 
+Website: www.supermicro.nl 
+Asia-Pacific 
+Address: Super Micro Computer, Inc. 
+3F, No. 150, Jian 1st Rd. 
+Zhonghe Dist., New Taipei City 235 
+Taiwan (R.O.C) 
+Tel: +886-(2) 8226-3990 
+Fax: +886-(2) 8226-3992 
+Email: Sales-Asia@supermicro.com.tw (Sales Inquiries) 
+Support@supermicro.com.tw (Technical Support) 
+RMA@supermicro.com.tw (RMA Support) 
+Website: www.supermicro.com.tw 
+
+#### Chapter 1
+
+#### Introduction
+
+##### 1.1 Overview
+
+This chapter provides a brief outline of the functions and features of the A+ Server AS -4124GQ-TNMI. The AS -4124GQ-TNMI is a system based on the Universal GPU Server design. Flexible Open Accelerator Modules (OAM), a robust air-cooling system, and high-speed interconnects ensure the AS -4124GQ-TNMI can meet the demands of HPC, AI computing, and data center infrastructure. In addition to the H12DGQ-NT6 motherboard and CSE-458GTS-R000NDP chassis, parts included with the system are listed below. 4U Configuration Main Parts List Description Part Number Quantity
+
+Power Distribution Board PDB-PT458G-48 1 
+Busbars SKT-1521H-0000-MLX 4 
+Power Cable CBL-CDAT-0680-55 1 
+Power Cable CBL-PWEX-1141B-82 1 
+SAS/SATA/NVMe Backplane BPN-SAS3-LB16A-N10 1 
+Riser Cards RSC-G-66G5S 2 
+Riser Cards RSC-GR-66G5S 2 
+Riser Card Power Cables CBL-PWEX-1114-30 3 
+Riser Card Power Cables CBL-PWEX-1114-20 1 
+Five Internal Counter-Rotating Fans FAN-0219L4-1 5 
+3000 W Titanium Level (96%+) Redundant Power Supply Modules PWS-3K06G-2R 4 
+4U Plastic Air Shroud MCP-310-45801-0B 1 
+AMD Vapor Chamber Heatsink SNK-P1043V 2 
+
+| | | Optional Parts List for MI250 GPU Kit |
+| --- | --- | --- |
+| Description AMD MI250 Open Accelerator Modules (OAM) Universal Baseboard GPU Air Shroud for AMD MI250 Stiffener Bracket for AMD MI250 UBB Sheet-metal tray for MI250 UBB assembly MCIO cable for UBB MCIO cable for UBB Power Cable for UBB | | Part Number Quantity GPU-AMDMI250-OAM-0029H 4 AOM-MCM-Q-P 1 MCP-310-45802-0B 1 MCP-240-45801-0N 1 MCP-240-45809-0N 1 CBL-MCIO-1278S5FYB1 1 CBL-MCIO-1278S5FYB2 1 CBL-PWEX-1280 2 |
+| | | |
+| | | Optional Parts List for 5U AIOM Kit |
+| Description AIOM Adapter NCSI Cable Sideband Cable SlimSAS LP Cable SlimSAS LP Cable | | Part Number Quantity AOM-AIOM-2X8-P 2 CBL-PWEX-1099-34 1 CBL-CDAT-1060-30 2 CBL-SAST-1245LP-85 2 CBL-SAST-1242LP-85 2 |
+| | | |
+| | | Optional Parts List for 5U PCIe Kit |
+| Description Riser Card MCIO Cable MCIO Cable Power Cable for Riser Card | | Part Number Quantity RSC-G-6G5 2 CBL-MCIO-1208L5-J 2 CBL-MCIO-1208L5-X 2 CBL-PWEX-0973-30 2 |
+| | | |
+| | Optional Parts List for 5U Air Shroud and Heatsink | |
+| Description 5U Plastic Air Shroud 1U height module kit AMD SP3 Sockets Passive Heatsink | | Part Number Quantity MCP-310-45804-0B 1 MCP-460-45801-0N 1 SNK-P0063P 2 |
+
+Note: The following safety models associated with the AS -4124GQ-TNMI have been certified as compliant with CSA or UL models: 458G-Q30H12, 458G-30, and 458G-GPU.
+
+##### 1.2 Unpacking the System
+
+Inspect the box in which the server was shipped and note if it was damaged in any way. If any equipment appears damaged, file a damage claim with the carrier who delivered it. Refer to Section 1.10 for Returned Merchandise Authorization (RMA) instructions. Decide on a suitable location for the rack unit that will hold the server. It should be situated in a clean, dust-free area that is well ventilated. Avoid areas where heat, electrical noise and electromagnetic fields are generated. It will also require a grounded AC power outlet nearby. Be sure to read the precautions and considerations noted in Appendix A.
+
+##### 1.3 System Features
+
+The following table provides you with an overview of the main features of the A+ Server AS -4124GQ-TNMI.
+
+System Features
+
+Motherboard
+
+H12DGQ-NT6
+
+Chassis
+
+CSE-458GTS-R000NDP
+
+CPU
+
+Dual AMD EPYC 7002/7003 processor in SP3 sockets
+
+Management Chipset
+
+ASPEED A2600 BMC/IPMI management controller with enhanced security
+
+Memory
+
+Up to 8 TB 3DS ECC DDR4-3200 SDRAM memory in 32 slots
+
+Storage Drives
+
+Ten 2.5" SAS3/SATA3/NVMe4 Drive Bays
+
+Expansion Slots
+
+Eight PCIe 4.0 x16 LP (via PLX switch) or Eight PCIe 4.0 x16 LP (via PLX switch) + Two PCIe 4.0 x16 from CPUs on the extra 1U add-on module or Eight PCIe 4.0 x16 LP (via PLX switch) + Two AIOM from CPUs on the extra 1U add-on module
+
+Power
+
+Four 3000 W 80Plus Titanium modules with PMBus with Smart Power throttling
+
+Cooling
+
+Five internal counter-rotating fans
+
+Input/Output
+
+One VGA header One COM header Two USB 3.1 ports One dedicated BMC LAN
+
+Security
+
+One TPM 2.0 header
+
+Form Factor
+
+4U: (HxWxD), 6.9 x 18.9 x 34.3 inch (17.5 x 48.0 x 87.1 cm)
+
+##### 1.4 Chassis Features
+
+Control Panel
+
+1
+
+2
+
+3
+
+4
+
+5 
+6 
+7 
+8 
+
+Figure 1-1. Control Panel
+
+##### Control Panel Features Item Feature Description
+
+| | Control Panel Features |
+| --- | --- |
+| Item Feature 1 Power button 2 Reset Button 3 Power LED 4 Drive LED 5 Network LED 1 6 Network LED 2 7 Information LED 8 Power Fail LED | Description The main power switch applies or removes primary power from the power supply to the node but maintains standby power. Press the button with an object (such as a paper clip) to reset the system. Indicates power is being supplied to the system power supply units. This LED is illuminated when the system is operating normally. Indicates disk drive activity. Indicates network activity on LAN1 when flashing (if onboard LAN is supported) Indicates network activity on LAN2 when flashing (if onboard LAN is supported) Alerts operator to several states, as noted in the table below. Indicates a power supply module has failed. |
+
+##### Information LED
+
+##### Status Description
+
+Continuously on and red An overheat condition has occurred. (This may be caused by cable congestion.) 
+Blinking red (1 Hz) Fan failure, check for an inoperative fan. 
+Blinking red (0.25 Hz) Power failure, check for a non-operational power supply. 
+Solid blue Local UID has been activated. Use this function to locate the server in a rack mount 
+environment. 
+Blinking blue Remote UID is on. Use this function to identify the server from a remote location. 
+
+Figure 1-2. Chassis Front View
+
+Front Features
+
+In addition to the control panel, the chassis front offers access to the SAS3/SATA3/NVMe4 drives and a pull-out service tag.
+
+##### Front System Features Item Feature Description
+
+1 Control Panel Described in previous section 
+2 Hybrid NVMe Drives Ten hot-swappable SAS3/SATA3/NVMe4 drives 
+3 Service Tag Pull-out service tag with BMC password label 
+
+Figure 1-3. Service Tag Location
+
+Service Tag
+
+1
+
+2
+
+3
+
+Figure 1-4. Chassis Rear View
+
+Rear Features (4U Configuration)
+
+The illustration below shows the features included on the rear of the chassis.
+
+##### Rear System Features Item Feature Description
+
+1 Expansion Slots Eight PCIe 4.0 x16 LP (via PLX switch for IB EDR) 
+2 Power Supply Modules 3000 W Titanium Level (96%+) redundant power supply modules 
+3 PSU LED Indicator Power supply LED. Amber indicates off and green indicates on. 
+4 PSU Release Handle Power supply handle to unlock and remove power supply. 
+1 
+
+2
+
+3 4
+
+Rear Features (Optional 5U Configuration)
+
+The illustration below shows the features included on the rear of the 5U chassis. The 5U configuration requires a 1U add-on module and can support an extra two AIOM slots or an extra two PCIe slots.
+
+Figure 1-5. Chassis Rear View
+
+1
+
+2
+
+4 3
+
+##### Rear System Features Item Feature Description
+
+1 Expansion Slots Eight PCIe 4.0 x16 LP (via PLX switch for IB EDR) 
+2 Power Supply Modules 3000 W Titanium Level (96%+) redundant power supply modules 
+3 PSU LED Indicator Power supply LED. Amber indicates off and green indicates on. 
+4 PSU Release Handle Power supply handle to unlock and remove power supply. 
+5 VGA Port Rear VGA port 
+6 COM Port Rear COM port 
+7 USB Ports Two rear USB 3.1 Gen 1 ports 
+8 LAN Port Dedicated IPMI LAN port 
+9 Power Button Power on button 
+10 UID Button Unit identification (UID) Button 
+11 AIOM Slots Two extra AIOMs from CPUs (with optional AIOM kit) 
+12 PCIe Slots Two PCIe 4.0 x16 from CPUs (with optional PCIe kit) 
+11 
+
+12 12
+
+9 8 7 6 5
+
+10
+
+##### 1.5 1U Add-on Module
+
+An optional kit is available to transform the 4U AS -4124GQ-TNMI into a 5U system. The kit contains a 5U rear wall, a 1U front dummy bracket, a 1U front storage base, two side walls, and a bracket that sits on top of the fan cover. The 5U system can be further configured to support either two additonal AIOM slots or two additional PCIe slots. Separate kits are required to support the AIOM or PCIe slots. See 5U System for a description of the modification procedure.
+
+##### 1.6 GPU Baseboard
+
+The GPU baseboard is located at the front of the chassis below the ten storage drives. It is composed of a univeral baseboard (UBB) and four AMD Instinct™ MI250 GPUs in the OAM form factor. MI250 is optional part of GPU SKU in the Supermicro system.
+
+Figure 1-6. GPU Baseboard
+
+Universal Baseboard
+
+MI250 with cooling system
+
+##### 1.7 System Architecture
+
+Block Diagrams
+
+Figure 1-7. Motherboard Block Diagram
+
+S UPERMICR
+
+BLOCK DIAGRAM
+
+H12DGQ-NT6
+
+CPU1 USB1 HS [3:2]
+
+CPU0 G0 [15:0]
+
+CPU0 G2 [15:0]
+
+CPU0 G0 [15:0]
+
+CPU0 G2 [15:0]
+
+CPU1 G1 [0:15]
+
+PEX88096
+
+PCIe SW
+
+CPU0 USB2 [3:2]
+
+CPLD
+
+S P I
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+1
+
+WAFL0
+
+NVME1/2
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+4
+
+US3
+
+IPMI LAN RJ45
+
+JP1_S1A
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+4
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+4
+
+PCIe SW
+
+S l i m
+
+S
+
+A
+
+S x
+
+4 *
+
+1
+
+UBB BOARD
+
+xGMI0
+
+SPI
+
+VGA/COM1
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+4
+
+BMC AST2600
+
+CPU0
+
+TPM
+
+xGMI0 AMD SP3
+
+PCIe SW
+
+J42
+
+PEX88096
+
+BMC ROM 64MB
+
+NIC1/2 
+COM1 USB3.0 
+Type A*2 
+AMD MI200 
+
+UBB1/2
+
+VGA
+
+CPU0 P3 [15:0]
+
+CPU0 P1 [3:0]
+
+NVME1/2/3/4
+
+US4
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+4
+
+PCIe SW xGMI1
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+4
+
+PEX88096 (SATA)
+
+xGMI2
+
+UBB1/2
+
+CPU0 P2 [15:0]
+
+PHY RTL8211F
+
+AMD SP3
+
+BIOS ROM 32MB
+
+xGMI2
+
+US2
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+4
+
+CPU1 P2 [15:0]
+
+US1
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+1
+
+NVME1/2
+
+CPU1 P3 [15:0]
+
+DDR4
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+2
+
+UBB1/2
+
+PEX88096
+
+WAFL1
+
+NIC1/2 UBB1/2 NIC1/2
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+1
+
+CPU1
+
+xGMI1
+
+NVME1/2
+
+LPC
+
+NIC1/2
+
+GMII
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+4
+
+NAND-FLASH 256MB
+
+WAFL1
+
+JP1_S1A/S1B
+
+S l i m
+
+S
+
+A
+
+S x
+
+4 *
+
+2
+
+CPU1 P0 [7:0] (SATA)
+
+CPU0 G1 [15:0]
+
+CPU0 G3 [15:0]
+
+CPU1 USB1 SS [3:2]
+
+For PCIex16 or AIOM
+
+CPU0 G3 [15:0]
+
+F
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+E1/E2 F1/F2 G1/G2
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+H1/H2
+
+E
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+H
+
+G
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+H
+
+F1/F2 H1/H2
+
+F
+
+G
+
+E
+
+G1/G2
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+E1/E2 D1/D2
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+D D D R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+A1/A2
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+B1/B2
+
+C
+
+A
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+C1/C2
+
+B
+
+C1/C2
+
+C
+
+A1/A2
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+MB
+
+A
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+D D D R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+B1/B2
+
+D
+
+D
+
+R
+
+4
+
+D
+
+I
+
+M
+
+M
+
+D1/D2
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+2
+
+S l i m
+
+S
+
+A
+
+S x
+
+8 *
+
+2
+
+For PCIex16 or AIOM
+
+NCSI Conn.
+
+Figure 1-8. System Block Diagram for 4U Configuration
+
+Figure 1-9. System Block Diagram for 5U Configuration
+
+Figure 1-10. Board Locations of the 4U System
+
+AMD MI250 GPU Baseboard
+
+Front Rear
+
+Motherboard
+
+Board Locations
+
+Riser Card
+
+| | | | | GPU and MCIO Location | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| UBB | UBB MCIO Location | | GPU Tool | | IPMI | | | 4U GPU PCI Bus | | 5U GPU PCI Bus | |
+| GPU0 | | A | GPU2 | | GPU1 | | | 31:00.00 | | 32:00.00 | |
+| GPU0 | | B | GPU3 | | GPU2 | | | 34:00.00 | | 35:00.00 | |
+| GPU1 | | C | GPU0 | | GPU3 | | | 11:00.00 | | 11:00.00 | |
+| GPU1 | | D | GPU1 | | GPU4 | | | 14:00.00 | | 14:00.00 | |
+| GPU2 | | E | GPU6 | | GPU5 | | | AE:00.00 | | AE:00.00 | |
+| GPU2 | | F | GPU7 | | GPU6 | | | B3:00.00 | | B3:00.00 | |
+| GPU3 | | G | GPU4 | | GPU7 | | | 8E:00.00 | | 8E:00.00 | |
+| GPU3 | | H | GPU5 | | GPU8 | | | 93:00.00 | | 93:00.00 | |
+
+Figure 1-11. GPU and MCIO Location
+
+##### 1.8 Motherboard Layout
+
+Below is a layout of the H12DGQ-NT6 with jumper, connector and LED locations shown. See the table on the following page for descriptions. For detailed descriptions, pinout information
+
+and jumper settings, refer to Chapter 4.
+
+US1_A_NIC2 
+US1_B_NIC2 
+US2_A_NIC2 
+US2_B_NIC2 
+US1_NVME2 
+US4_NVME1 
+US3_A_NIC2 
+US3_B_NIC2 
+US4_A_NIC2 
+US4_B_NIC2 
+US3_NVME1 
+US3_A_NIC1 
+US3_B_NIC1 
+US4_A_NIC1 
+US4_B_NIC1 
+US1_A_NIC1 
+US1_B_NIC1 
+US2_A_NIC1 
+US2_B_NIC2 
+US1_NVME1 
+
+FAN3 & FAN Power
+
+FAN2+FAN Power
+
+FAN4 & FAN Power
+
+FAN1+FAN Power
+
+P0-SATA0~3
+
+US2_NVME1
+
+FAN5 & FAN Power
+
+P2-SATA0-3
+
+C A
+
+JPWR3
+
+P2-SATA4-7
+
+JPF1
+
+CPU2 CPU1
+
+LED6
+
+JRSC-PWR1
+
+P2-DIMMA1~D2
+
+JRSC-PWR2
+
+P1-DIMME1~H2
+
+P2-DIMME1~H2
+
+P1-DIMMA1~D2
+
+JCPU1_A_AIOM1
+
+H12DGQ-NT6
+
+BAR CODE REV:1.10
+
+BAR CODE
+
+MAC CODE
+
+REV:1.XX DESIGNED IN USA
+
+| | | JCPU1_B_AIOM1 |
+| --- | --- | --- |
+| | | |
+| | | 1 |
+| | | JCPU1_RSC_PWR1 |
+| | | |
+
+JCPLD1
+
+JUSB_PWR
+
+JCPU2_RSC_PWR1
+
+JCPU2_B_AIOM1
+
+JCPU2_A_AIOM1 
+1 
+2 
+3 
+JIPMB1 
+
+A C
+
+3 3
+
+J B T 1
+
+N C S I
+
+J W D 1
+
+C O M
+
+V G A
+
+J P B 1
+
+BMC Password Label
+
+Figure 1-12. Motherboard Layout
+
+Quick Reference Table Jumper Description Default Setting
+
+JBT1 CMOS Clear Open (Normal) JWD1 Watch Dog Timer Enable Pins 1-2 (Reset to System) JUSB_PWR USB Power Selection Pins 1-2 (Normal 5V)
+
+LED Description Status
+
+LEDM1 BMC Heartbeat LED
+
+Green: Blinking (BMC Normal) Green: Fast blinking (BMC Initializing) UID_LED1 UID LED Solid blue: UID switched to ON, unit identified LED6 Front Panel Power LED Solid green: Power on
+
+Connector Description
+
+JIPMB1 4-pin external I 2C header (for an IPMI Card) 
+JTPM1 Trusted Platform Module (TPM) / Port 80 connector 
+CPU1_AIOMSB1 CPU1 AIOM sideband 
+CPU2_AIOMSB1 CPU2 AIOM sideband 
+Battery (BT1) Onboard CMOS battery socket 
+JRSC_PWR1 
+JRSC_PWR2 
+JRSC_PWR3 
+JRSC_PWR4 
+
+Power connector for riser 1~4
+
+VGA Rear VGA port 
+COM Rear COM port 
+JUSB1 Rear USB 3.1 GEN1 ports USB0/USB1 
+IPMI_LAN Dedicated IPMI LAN port 
+PWR_SW1 Power on button 
+JUIDB1 UID button 
+JCPU1_A_AIOM1 + 
+JCPU1_B_AIOM1 
+
+Processor 1 PCIe 4.0 x16
+
+JCPU2_A_AIOM1 + JCPU2_B_AIOM1
+
+Processor 2 PCIe 4.0 x16 JCPU1_RSC_PWR1 Power connector for processor 1 RSC JCPU2_RSC_PWR1 Power connector for processor 2 RSC P1-DIMMA1~D2 P1-DIMME1~H2 P2-DIMMA1~D2 P2-DIMME1~H2
+
+Memory slots
+
+P0-SATA0~3 
+P2-SATA0~3 
+P2-SATA4~7 
+
+Internal SATA ports (To BPN-SAS3-LB16A-N10)
+
+Connector Description
+
+FAN1+FAN Power FAN2+FAN Power FAN3+FAN Power FAN4+FAN Power FAN5+FAN Power
+
+System cooling fan headers
+
+US1_NVME1 
+US1_NVME2 
+US2_NVME1 
+US3_NVME1 
+US4_NVME1 
+
+Internal NVME ports (To BPN-SAS3-LB16A-N10)
+
+US1_A_NIC1 + US1_B_NIC1 US1_A_NIC2 + US1_B_NIC2 US2_A_NIC1 + US2_B_NIC1 US2_A_NIC2 + US2_B_NIC2 US3_A_NIC1 + US3_B_NIC1 US3_A_NIC2 + US3_B_NIC2 US4_A_NIC1 + US4_B_NIC1 US4_A_NIC2 + US4_B_NIC2
+
+8 PCIe 4.0 x16 to RSC from PLX
+
+| US3_A_NIC1 + US3_B_NIC1 | | | | |
+| --- | --- | --- | --- | --- |
+| US3_A_NIC2 + US3_B_NIC2 | | | | |
+| US4_A_NIC1 + US4_B_NIC1 | | | | |
+| US4_A_NIC2 + US4_B_NIC2 | | | | |
+| US1_A_UBB1 + US1_B_UBB1 | | | | |
+| US1_A_UBB2 + US1_B_UBB2 | | | | |
+| US2_A_UBB1 + US2_B_UBB1 | | | | |
+| US2_A_UBB2 + US2_B_UBB2 | | | | |
+
+US1_A_UBB1 + US1_B_UBB1 US1_A_UBB2 + US1_B_UBB2 US2_A_UBB1 + US2_B_UBB1 US2_A_UBB2 + US2_B_UBB2 US3_A_UBB1 + US3_B_UBB1 US3_A_UBB2 + US3_B_UBB2 US4_A_UBB1 + US4_B_UBB1 US4_A_UBB2 + US4_B_UBB2
+
+Eight PCIe 4.0 x16 to GPU from PLX
+
+| US3_A_UBB1 + US3_B_UBB1 | | | | |
+| --- | --- | --- | --- | --- |
+| US3_A_UBB2 + US3_B_UBB2 | | | | |
+| US4_A_UBB1 + US4_B_UBB1 | | | | |
+| US4_A_UBB2 + US4_B_UBB2 | | | | |
+
+JPWR3 P12VSB PB MISC JPF1 Front control panel
+
+Note: Jumpers in the table not described are for manufacturing testing purposes only and are not covered in this manual.
+
+##### 1.9 Where to Get Replacement Components
+
+If you need replacement parts for your system, to ensure the highest level of professional service and technical support, purchase exclusively from our Supermicro Authorized Distributors/System Integrators/Resellers. A list can be found at: http://www.supermicro.com. Click the "Where to Buy" link.
+
+##### 1.10 Returning Merchandise for Service
+
+A receipt or copy of your invoice marked with the date of purchase is required before any 
+warranty service will be rendered. You can obtain service by calling your vendor for a Returned 
+Merchandise Authorization (RMA) number. When returning to the manufacturer, the RMA 
+number should be prominently displayed on the outside of the shipping carton, and mailed 
+prepaid or hand-carried. Shipping and handling charges will be applied for all orders that 
+must be mailed when service is complete. 
+For faster service, RMA authorizations may be requested online (http://www.supermicro.com/ 
+support/rma/). 
+Whenever possible, repack the chassis in the original Supermicro carton, using the original 
+packaging material. If these are no longer available, be sure to pack the chassis securely, 
+using packaging material to surround the chassis so that it does not shift within the carton 
+and become damaged during shipping. 
+This warranty only covers normal consumer use and does not cover damages incurred in 
+shipping or from failure due to the alteration, misuse, abuse or improper maintenance of 
+products. 
+During the warranty period, contact your distributor first for any product problems. 
+
+#### Chapter 2
+
+#### Server Installation
+
+##### 2.1 Overview
+
+This chapter provides advice and instructions for mounting your system in a server rack. If your system is not already fully integrated with processors, system memory etc., refer to Chapter 3 for details on installing those specific components. Caution: Electrostatic Discharge (ESD) can damage electronic components. To prevent such damage to PCBs (printed circuit boards), it is important to use a grounded wrist strap, handle all PCBs by their edges and keep them in anti-static bags when not in use.
+
+##### 2.2 Preparing for Setup
+
+The box in which the system was shipped should include the rackmount hardware needed to install it into the rack. Please read this section in its entirety before you begin the installation.
+
+Choosing a Setup Location
+
+• The system should be situated in a clean, dust-free area that is well ventilated. Avoid areas where heat, electrical noise and electromagnetic fields are generated. 
+• Leave enough clearance in front of the rack so that you can open the front door completely (approximately 25 inches) and approximately 30 inches of clearance in the back of the rack to allow sufficient space for airflow and access when servicing. 
+• This product should be installed only in a Restricted Access Location (dedicated equipment rooms, service closets, etc.). 
+• This product is not suitable for use with visual display workplace devices according to §2 of the German Ordinance for Work with Visual Display Units. 
+
+Rack Precautions
+
+• Ensure that the leveling jacks on the bottom of the rack are extended to the floor so that the full weight of the rack rests on them.
+
+• In single rack installations, stabilizers should be attached to the rack. In multiple rack in stallations, the racks should be coupled together. 
+• Always make sure the rack is stable before extending a server or other component from the rack. 
+• You should extend only one server or component at a time - extending two or more simul taneously may cause the rack to become unstable. 
+
+Server Precautions
+
+• Caution: The assembled system may weigh over 160 lbs. When moving it use a lift and multiple people. 
+• Review the electrical and general safety precautions in Appendix A. 
+• Determine the placement of each component in the rack before you install the rails. 
+• Install the heaviest server components at the bottom of the rack first and then work your way up. 
+• Use a regulating uninterruptible power supply (UPS) to protect the server from power surges and voltage spikes and to keep your system operating in case of a power failure. 
+• Allow any drives and power supply modules to cool before touching them. 
+• When not servicing, always keep the front door of the rack and all covers/panels on the servers closed to maintain proper cooling. 
+
+Rack Mounting Considerations
+
+Ambient Operating Temperature If installed in a closed or multi-unit rack assembly, the ambient operating temperature of the rack environment may be greater than the room's ambient temperature. Therefore, consideration should be given to installing the equipment in an environment compatible with the manufacturer’s maximum rated ambient temperature (TMRA).
+
+Airflow Equipment should be mounted into a rack so that the amount of airflow required for safe operation is not compromised.
+
+Mechanical Loading Equipment should be mounted into a rack so that a hazardous condition does not arise due to uneven mechanical loading.
+
+Circuit Overloading Consideration should be given to the connection of the equipment to the power supply circuitry and the effect that any possible overloading of circuits might have on overcurrent protection and power supply wiring. Appropriate consideration of equipment nameplate ratings should be used when addressing this concern.
+
+Reliable Ground A reliable ground must be maintained at all times. To ensure this, the rack itself should be grounded. Particular attention should be given to power supply connections other than the direct connections to the branch circuit (i.e. the use of power strips, etc.).
+
+To prevent bodily injury when mounting or servicing this unit in a rack, you must take special precautions to ensure that the system remains stable. The following guidelines are provided to ensure your safety:
+
+• This unit should be mounted at the bottom of the rack if it is the only unit in the rack. 
+• When mounting this unit in a partially filled rack, load the rack from the bottom to the top with the heaviest component at the bottom of the rack. 
+• If the rack is provided with stabilizing devices, install the stabilizers before mounting or servicing the unit in the rack. 
+• Slide rail mounted equipment is not to be used as a shelf or a work space. 
+
+##### 2.3 Rack Mounting
+
+This section provides information on installing a 4U chassis into a rack unit with the rails provided. There are a variety of rack units on the market, so the assembly procedure may differ slightly. Also refer to the installation instructions for your rack unit. Note: This rail will fit a rack between 26.5"and 36.4" deep.
+
+Identifying the Inner Rails
+
+The inner rails comes in pairs and are label left and right. Identify the left and right inner rails.
+
+Figure 2-1. Identifying the Left and Right Rail
+
+Left
+
+Right
+
+Inner Rails
+
+Installing the Inner Rails
+
+Installing the Inner Rail to the Chassis 
+1. Place the correct rail on the side of the chassis, aligning the hooks of the chassis 
+with the inner rail holes. Make sure the rail faces "outward" so that it will fit the rack's 
+mounting bracket. 
+2. Slide the rail toward the front of the chassis to hook the inner rail onto the side of the 
+chassis. 
+3. If desired, secure the rail with a flat head M4 x 4mm screw. 
+4. Repeat for the other rail. 
+
+Figure 2-2. Installing the Inner Rail
+
+2
+
+3
+
+1
+
+Slide
+
+Place
+
+Installing the Outer Rails onto the Rack
+
+Each end of the assembled outer rail includes a bracket with hooks and square, spring-loaded 
+pegs to fit into the square holes in your rack. 
+Installing the Outer Rail 
+1. Press upward on the locking tab at the rear end of the middle rail. 
+2. Push the middle rail back into the outer rail. 
+3. Hang the hooks on the front of the outer rail onto the square holes on the front of the rack. If desired, use screws to secure the outer rails to the rack. 
+4. Pull out the rear of the outer rail, adjusting the length until it just fits within the posts of the rack. 
+5. Hang the hooks of the rear section of the outer rail onto the square holes on the rear of the rack. Take care that the proper holes are used so the rails are level. If desired, use screws to secure the rear of the outer rail to the rear of the rack. 
+
+1
+
+4
+
+| | | |
+| --- | --- | --- |
+| 5. Hang the hooks of the rear section of the outer rail onto the square holes on the rear of the rack. Take care that the proper holes are used so the rails are level. If desired, use screws to secure the rear of the outer rail to the rear of the rack. 21D01 | L-min=676.00(26.61")(outer rail) | |
+| | | 3 |
+
+| | |
+| --- | --- |
+| L-min=676.00(26.61")(outer rail) 21D01 | 3 |
+| | |
+
+| L-min=676.00(26.61")(outer rail) | |
+| --- | --- |
+| 21D01 | 3 |
+
+2
+
+| | | L-min=676.00(26.61")(outer rail) |
+| --- | --- | --- |
+| | | |
+| | | |
+| Stability hazard. The rack stabilizing mechanism must be in place, or the rack must be | 21D01 Figure 2-3. Extending and Mounting the Outer Rails | 3 |
+| bolted to the floor before you slide the unit out for servicing. Failure to stabilize the rack can cause the rack to tip over. | | |
+
+| | |
+| --- | --- |
+| Stability hazard. The rack stabilizing mechanism must be in place, or the rack must be | Figure 2-3. Extending and Mounting the Outer Rails |
+
+Warning: Do not pick up the server with the front handles. They are designed to pull the system from a rack only.
+
+Installing the Server onto the Rack
+
+Once rails are attached to the chassis and the rack, you can install the server. 
+Installing the Chassis into a Rack 
+Caution: The assembled system may weigh over 160 lbs. Use a lift and multiple people to 
+move it. 
+1. Align the chassis rails with the front of the rack rails. 
+2. Slide the chassis rails into the rack rails, keeping the pressure even on both sides. You may have to depress the locking tabs while inserting. When the server has been pushed completely into the rack, the locking tabs should "click" into the locked position. 
+3. If screws are used, tightened the screws on the front and rear of the outer rails. 
+4. Tighten the thumbscrews that hold the front of the server to the rack. 
+
+Figure 2-4. Sliding the Server into the Rack Note: The figure is for illustrative purposes only. Some chassis components such as the GPU tray may be removed from the chassis enclosure before installing the system to the rack.
+
+Removing the Chassis from the Rack
+
+Caution! The system is heavy. It is dangerous for a single person to remove it from the rack. 
+Have sufficient personnel or use a lift to support the chassis. 
+1. Loosen the thumbscrews that hold the front of the server to the rack. 
+2. Pull the chassis forward out the front of the rack until it stops. 
+3. Press the release latches on each of the inner rails downward simultaneously and 
+continue to pull the chassis forward and out of the rack. 
+
+3
+
+Figure 2-5. Removing the Chassis From the Rack
+
+#### Chapter 3
+
+#### Maintenance and Component Installation
+
+This chapter provides instructions on installing and replacing main system components. To 
+prevent compatibility issues, only use components that match the specifications and/or part 
+numbers given. 
+Installation or replacement of most components require that power first be removed from the 
+system. Please follow the procedures given in each section. 
+
+##### 3.1 Removing Power
+
+Before performing some setup or maintenance tasks, use the following procedure to ensure 
+that power has been removed from the system. 
+Removing Power from the System 
+1. Use the operating system to power down the system. 
+2. Grasp the head of each power cord and gently pull it out of the back of the power 
+supply. 
+3. Disconnect the cords from the power strip or wall outlet. 
+
+##### 3.2 Accessing the System
+
+Located at the chassis front is a storage tray that houses ten 2.5" SAS3/SATA3/NVMe4 
+drives. Right below the storage tray is the AMD MI250 OAM GPU baseboard. The storage 
+tray can be removed to access the MI250 baseboard. To reach the mid-chassis fans, the 
+middle section of the top cover can be opened. Finally, the rear and middle cover can be 
+removed to access the expansion tray and the motherboard below the expansion tray. Before 
+removing any portion of the top cover, power down the system as described in Section 3.1. 
+Removing the Front Cover 
+1. Apply a slight force on the two locations at the front cover 
+2. Push the cover towards the front. Lift and remove. 
+
+Slide
+
+Slide
+
+Figure 3-1. Removing Front Cover
+
+1
+
+1
+
+Slide
+
+Slide
+
+Opening the Middle Cover 
+1. Slide the two buttons on the middle cover towards the center. 
+2. Lift the cover open. 
+
+Figure 3-2. Removing Middle Cover
+
+1
+
+1
+
+2
+
+Slide
+
+Removing the Rear and Middle Cover 
+1. Remove the five screws on the top cover at the rear of the chassis. Remove the four screws on the side of the top cover. 
+2. Slide the two buttons on the middle cover towards the center 
+3. Remove the rear and middle cover together. 
+
+Figure 3-3. Removing Rear Cover
+
+Slide
+
+Lift screw
+
+3
+
+##### 3.3 Motherboard Components
+
+Processor and Heatsink Installation
+
+Warning: When handling the processor package, avoid placing direct pressure on the label area of the fan.
+
+Important:
+
+• For the processor/heatsink installation you need to use a T20 screwdriver when opening/ closing the CPU socket. 
+• Always connect the power cord last, and always remove it before adding, removing or changing any hardware components. Make sure that you install the processor into the CPU socket before you install the CPU heatsink. 
+• If you buy a CPU separately, make sure that you use an AMD-certified multi-directional heatsink only. 
+• Make sure to install the motherboard into the chassis before you install the CPU heatsink. 
+• When receiving a motherboard without a processor pre-installed, make sure that the plastic CPU socket cap is in place and none of the socket pins are bent; otherwise, contact your retailer immediately. 
+• When installing the processor and heatsink, ensure a torque driver set to the correct force is used for each screw. 
+• Refer to the Supermicro website for updates on CPU support. 
+
+Installing the Processor and Heatsink 
+1. Unscrew the screws holding down force frame in the sequence of 3-2-1. The screws are 
+numbered on the force frame next to each screw hole. 
+
+Screw #1
+
+Screw #2
+
+Screw #3
+
+Force Frame
+
+2. The spring-loaded force frame will raise up after the last screw securing it (#1) is removed. Gently allow it to lift up to its stopping position.
+
+3. Lift the rail frame up by gripping the lift tabs near the front end of the rail frame. While 
+keeping a secure grip of the rail frame, lift it to a position so you can do the next step of 
+removing the external cap. 
+4. Note: The rail frame is spring loaded, so keep a secure grip on it as you lift it so it does 
+not snap up. 
+
+Rail Frame
+
+PnP Cover Cap
+
+5. Remove the external cap from the rail frame by pulling it upwards through the rail guides on the rail frame.
+
+External Cap
+
+PnP Cover Cap
+
+6. The CPU Package is shipped from the factory with the carrier frame pre-assembled. Grip the handle of the carrier frame/CPU package assembly from its shipping tray, and while gripping the handle, align the flanges of the carrier frame onto the rails of the rail frame so its pins will be at the bottom when the rail frame is lowered later. 7. Slide the carrier frame/CPU package downwards to the bottom of the rail frame. Ensure the flanges are secure on the rails as you lower it downwards.
+
+Carrier Frame/ CPU Package
+
+Note: You can only install the CPU inside the socket in one direction with the handle at the top. Make sure that it is properly inserted into the CPU socket before closing the rail frame plate. If it doesn't close properly, do not force it as it may damage your CPU. Instead, open the rail frame plate again, and double-check that the CPU is aligned properly. 8. Lift up the rail frame till it securely rests in upright position. Then remove the PnP cover cap from the CPU socket below. Grip the two lift tabs marked "Remove" at the middle of the cap and pull vertically upwards to remove the PnP cover cap.
+
+Warning! The exposed socket contacts are extremely vulnerable and can be damaged easily. Do not touch or drop objects onto the contacts and be careful removing the PnP cover cap and when placing the rail frame over the socket.
+
+Rail Frame
+
+PnP Cover Cap
+
+9. Gently lower the rail frame down onto the socket until the latches on the rail frame engage with the socket housing and it rests in place. DO NOT force it into place!
+
+10. Gently lower the force frame down onto the rail frame and hold it in place until it is seated in the socket housing. Note that the force frame is spring loaded and has to be held in place before it is secured. Important: Use a torque screwdriver, set it at 16.1 kgf-cm (14.0 lbf-in) with a Torx T20 screw head bit, to prevent damage to the CPU.
+
+11. Place and re-screw the screws in the reverse order to the way you removed them (holes 1-2-3 in order). When finished, the force frame will be secure over both the rail frame and CPU package.
+
+12. After the force frame is secured and the CPU package is in place, now you must install the heatsink to the frame. Lower the heatsink down till it rests securely over the four screw holes on CPU package on the socket frame.
+
+13. Using a diagonal pattern, tighten the four screws down on the heatsink in a clockwise fashion till it is secure. The heatsink will now be secured and you have finished installing the processor and heatsink onto the motherboard. Repeat this procedure for any remaining CPU sockets on the motherboard.
+
+1112 13 14 15 16 1
+
+### IN-LBF 14.0
+
+16.10 KGF-CM #1 Screw
+
+#3 Screw #4 Screw
+
+Direction of Airflow
+
+#2 Screw
+
+Un-installing the Processor and Heatsink 
+1. Remove the heatsink attached to the top of the CPU package by reversing the installation procedure. 
+2. Clean the thermal grease left by the heatsink on the CPU package lid to limit the risk of it contaminating the CPU package land pads or contacts in the socket housing. 
+3. Reverse the procedure for installing the force frame onto the socket, unscrewing the plate in the 3-2-1 screw order and lift the force frame to the vertical position. 
+4. Lift the rail frame using the lift tabs near the front end of the rail frame. Note that the rail frame is spring loaded, so be careful lifting it up into a vertical position. 
+5. Grip the handle of the carrier frame and pull upwards to extract it from the rail frame. Return the carrier frame/CPU package to its original shipping container. 
+6. Grip the handle on the external cap and return it to the rail frame sliding it downwards till it rests in the frame. 
+7. Gripping the rail frame, rotate it downwards till it rests above and locks over the socket housing in its horizontal position. 
+8. Push and rotate down the force frame till it is over the external cap and rail frame into a horizontal position. 
+9. While holding down the force frame, secure it back to the socket frame by securing screw 1 in place. Note that without a CPU package in place, it is not necessary to tighten down screws 2 and 3 at this time. 
+
+Memory Installation Note: Check the Supermicro website for recommended memory modules. Important: Exercise extreme care when installing or removing DIMM modules to prevent any possible damage.
+
+Memory Support 
+The H12DGQ-NT6 supports up to 8 TB of ECC DDR4 3200 MHz speed, RDIMM/LRDIMM/3DS/ 
+NVDIMM memory in 32 slots. Refer to the table below for additional memory information. 
+Processors and their Corresponding Memory Modules 
+CPU# Channel 1 Channel 2 Channel 3 Channel 4 Channel 5 Channel 6 Channel 7 Channel 8 
+8 DIMMS 
+CPU1 A2 B2 C2 D2 E2 F2 G2 H2 
+
+| CPU# | | | Channel 1 | | | | | Channel 2 | | | | | Channel 3 | | | | | Channel 4 | | | | | | | Channel 5 | | | | | Channel 6 | | | Channel 7 | | Channel 8 | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | | | | | | | | | | | | | | | | | | | | 8 DIMMS | | | | | | | | | | | | | | | | |
+| CPU1 | | | | | A2 | | | | | B2 | | | | | | C2 | | | | | | | D2 | | | | | | E2 | | F2 | | | G2 | | H2 | |
+| | | | | | | | | | | | | | | | | | | | | | 16 DIMMS | | | | | | | | | | | | | | | | |
+| CPU1 | | | | A1 | A2 | | | B1 | | B2 | | | C1 | | | C2 | | | D1 | | | | D2 | | | E1 | | | E2 | F1 | F2 | | G1 | G2 | H1 | H2 | |
+| | | | | | | | | | | | | | | | | | | | | | 16 DIMMS | | | | | | | | | | | | | | | | |
+| CPU1 | | | | | A2 | | | | | B2 | | | | | | C2 | | | | | | | D2 | | | | | | E2 | | F2 | | | G2 | | H2 | |
+| CPU2 | | | | | A2 | | | | | B2 | | | | | | C2 | | | | | | | D2 | | | | | | E2 | | F2 | | | G2 | | H2 | |
+| | | | | | | | | | | | | | | | | | | | | | 32 DIMMS | | | | | | | | | | | | | | | | |
+| CPU1 | | | | A1 | A2 | | | B1 | | B2 | | | C1 | | | C2 | | | D1 | | | | D2 | | | E1 | | | E2 | F1 | F2 | | G1 | G2 | H1 | H2 | |
+| CPU2 | | | | A1 | A2 | | | B1 | | B2 | | | C1 | | | C2 | | | D1 | | | | D2 | | | E1 | | | E2 | F1 | F2 | | G1 | G2 | H1 | H2 | |
+| | Populating RDIMM/RDIMM 3DS/LRDIMM/LRDIMM 3DS DDR4 Memory Modules with | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+
+AMD EPYC® 7002/7003 Processors
+
+Type
+
+DIMM Population Maximum DIMM 
+Capacity (GB) Maximum Frequency (MHz) 
+DIMM1 DIMM2 1 Channel 8 Channel 
+
+1R 32GB 256GB 3200 1R 1R 64GB 512GB 2933 2R or 2DR 64GB 512GB 3200 1R 2R or 2DR 96GB 768GB 2933 2R or 2DR 2R or 2DR 128GB 1TB 2933
+
+RDIMM
+
+4DR 128GB 1TB 3200 4DR 4DR 256GB 2TB 2933
+
+LRDIMM dual die package
+
+LRDIMM 3DS
+
+2S2R 128GB 1TB 3200 
+2S4R 256GB 2TB 3200 
+2S2R 2S2R 256GB 2TB 2933 
+2S2R 2S4R 384GB 3TB 2933 
+2S4R 2S4R 512GB 4TB 2933 
+2S2R 128GB 1TB 2933 
+2S2R 2S2R 256GB 2TB 2666 
+2S4R 256GB 2TB 2933 
+2S2R 2S4R 384GB 3TB 2666 
+2S4R 2S4R 512GB 4TB 2666 
+
+3DS RDIMM
+
+DIMM Module Population Sequence
+
+When installing memory modules, the DIMM slots should be populated in the following order: DIMMA2, DIMMB2, DIMMC2, DIMMD2, DIMME2, DIMMF2, DIMMG2, DIMMH2, then
+
+DIMMA1, DIMMB1, DIMMC1, DIMMD1, DIMME1, DIMMF1, DIMMG1, DIMMH1.
+
+• The blue slots must be populated first.
+
+• Always use DDR4 DIMM modules of the same type, size and speed.
+
+• Mixed DIMM speeds can be installed. However, all DIMMs will run at the speed of the
+
+slowest DIMM.
+
+• The motherboard will support odd-numbered modules (1 or 3 modules installed). However, to achieve the best memory performance, fully populate the motherboard with validated
+
+memory modules.
+
+Figure 3-4. DIMM Numbering
+
+Release Tabs
+
+Notches
+
+Press both ends straight down into the memory slot.
+
+DIMM Installation
+
+1. Insert the desired number of DIMMs into the memory slots, starting with DIMMA2, DIMMB2, DIMMC2, DIMMD2, DIMME2, DIMMF2, DIMMG2, DIMMH2, then DIMMA1, DIMMB1, DIMMC1, DIMMD1, DIMME1, DIMMF1, DIMMG1, DIMMH1. For best performance, please use the memory modules of the same type and speed. 
+2. Push the release tabs outwards on both ends of the DIMM slot to unlock it. 
+3. Align the key of the DIMM module with the receptive point on the memory slot. 
+4. Align the notches on both ends of the module against the receptive points on the ends of the slot. 
+5. Press both ends of the module straight down into the slot until the module snaps into place. 
+6. Press the release tabs to the lock positions to secure the DIMM module into the slot. 
+
+DIMM Removal
+
+Press both release tabs on the ends of the DIMM module to unlock it. Once the DIMM module is loosened, remove it from the memory slot.
+
+Warning: There is a danger of explosion if the onboard battery is installed upside down (which reverses its polarities). This battery must be replaced only with the same or an equivalent type recommended by the manufacturer (CR2032).
+
+OR
+
+Figure 3-5. Installing the Onboard Battery
+
+Motherboard Battery
+
+The motherboard uses non-volatile memory to retain system information when system power 
+is removed. This memory is powered by a lithium battery residing on the motherboard. 
+Replacing the Battery 
+Begin by removing power from the system as described in section 3.1. 
+1. Push aside the small clamp that covers the edge of the battery. When the battery is 
+released, lift it out of the holder. 
+2. To insert a new battery, slide one edge under the lip of the holder with the positive (+) 
+side facing up. Then push the other side down until the clamp snaps over it. 
+Note: Handle used batteries carefully. Do not damage the battery in any way; a damaged 
+battery may release hazardous materials into the environment. Do not discard a used battery 
+in the garbage or a public landfill. Please comply with the regulations set up by your local 
+hazardous waste management agency to dispose of your used battery properly. 
+
+##### 3.4 Chassis Components
+
+Storage Drives
+
+Up to ten 2.5" SAS3/SATA3/NVMe4 drives are supported by the chassis.The drives are mounted in drive carriers to simplify their installation and removal from the chassis. (Both procedures may be done without removing power from the system.)
+
+Drive Carrier Indicators
+
+Each drive carrier has two LED indicators: an activity indicator and a status indicator. In RAID configurations, the status indicator lights to indicate the status of the drive. In non-RAID configurations, the status indicator remains off. See the table below for details.
+
+Hard Drive Carrier LED Indicators LED Color State Status
+
+Blue Solid On SAS/NVMe drive installed Blue Blinking I/O activity
+
+Activity LED
+
+| | Hard Drive Carrier LED Indicators | |
+| --- | --- | --- |
+| LED Color Blue Blue Red Red Red Red Red Green | State Solid On Blinking Solid On Blinking at 1 Hz blinks and one stop On for five seconds, then off Blinking at 4 Hz Solid On Blinking at 1 Hz | Status SAS/NVMe drive installed I/O activity Failed drive for SAS/SATA/NVMe Rebuild drive for SAS/SATA/NVMe Hot spare for SAS/SATA/NVMe Power on SAS/SATA/NVMe Identity drive for SAS/SATA/NVMe Safe to remove NVMe device Attention state- do not remove NVMe device |
+
+Red
+
+Blinking with two blinks and one stop at 1 Hz
+
+Status LED
+
+Note: Enterprise level hard disk drives are recommended for use in Supermicro chassis and servers. For information on recommended drives, see the Supermicro website, http://www. supermicro.com/products/nfo/files/storage/SBB-HDDCompList.pdf.
+
+Figure 3-6. Removing a Drive Carrier
+
+1
+
+2
+
+2
+
+Removing/Installing Drives 
+Removing Drive Carriers from the Chassis 
+1. Press the release button on the drive carrier. This extends the drive carrier handle. 
+2. Use the handle to pull the drive and its carrier out of the chassis as shown below. 
+
+Caution: Except for short periods of time (swapping drives), do not operate the server with the drive carriers removed from the bays, regardless of how many drives are installed, for proper airflow.
+
+Figure 3-7. Removing a Drive from the Drive Carrier
+
+Installing a Drive 
+1. Install a new drive into the carrier with the printed circuit board side facing down so that 
+the mounting holes in the drive align with those in the carrier. 
+2. Secure the hard drive into the carrier with the screws. 
+
+Figure 3-8. Installing the Drive 3. Insert the drive and carrier into its bay, keeping the carrier oriented so that the release button is on the right. When the carrier reaches the rear of the bay, the release handle starts to retract. 4. Push the drive carrier handle until it clicks into the locked position.
+
+Removing a Drive or Dummy Drive 1. Remove the screws holding the drive or dummy drive to the drive carrier. 2. Remove the drive or dummy drive from the drive carrier.
+
+Hot-Swap for NVMe Drives
+
+Supermicro servers support NVMe surprise hot-swap. For even better data security, NVMe 
+orderly hot-swap is recommended. NVMe drives can be ejected and replaced remotely using 
+IPMI. 
+Ejecting a Drive 
+1. IPMI > System > Storage Monitoring > Physical View 
+2. Select Device, Group and Slot, and click Eject. After ejecting, the drive Status LED 
+indicator turns orange. 
+3. Remove the drive. 
+Note that Device and Group are categorized by the CPLD design architecture. The 
+AS -4124GQ-TMNI server has one Device and one Group. 
+Slot is the slot number on which the NVMe drives are mounted. 
+Replacing the Drive 
+1. Insert the replacement drive. 
+2. IPMI > System > Storage Monitoring > Physical View 
+3. Select Device, Group and slot and click Insert. The drive Status LED indicator flashes orange, then turns off. The Activity LED turns blue. 
+
+Figure 3-9. Storage Monitoring on the IPMI Dashboard
+
+Checking the Temperature of an NVMe Drive There are two ways to check using IPMI. Checking a Drive
+
+• IPMI > System > Storage Monitoring > Physical View - Shows the temperatures of all NVMe drives 
+• IPMI > System > Component Info > Sensor > Sensor Reading > U2_SSDA Temp – Shows the single highest temperature among all the NVMe drives. 
+
+Storage Tray
+
+The storage tray can be removed to access the MI250 baseboard or to convert the 4U system 
+into a 5U system. 
+Removing the Storage Tray 
+1. Remove all drives from the storage tray for easier handling. See the Storage Drive 
+instruction at the beginning of this section. 
+2. Remove the front cover as described in Section 3.2. 
+3. Rotate the latch at the two sides of the storage tray to unlock it from the chassis. 
+4. Use enough support to lift the storage tray out of the chassis. 
+
+Figure 3-10. Removing Storage Tray
+
+3
+
+3
+
+Figure 3-12. Removing GPU (screw locations shown)
+
+Replacing Individual AMD Instinct MI250 OAM
+
+The following is an outline of the steps to remove and install the MI250. Replacement or 
+installation of the MI250 modules and the universal baseboard is recommended to be done 
+by a qualified Supermicro service technician. 
+Removing/Installing MI250 
+1. Check for any failed GPU by going to the BMC dashboard and clicking on the GPU tab. 
+
+4 
+2. Remove the top cover as described in Section 3.1. 
+3. Remove the storage tray as described in the previous section. 
+4. Remove four screws from the failed GPU. 
+5. Using the handle at the top of the module, lift the GPU out of the chassis. 
+For installation reverse the above steps. 
+
+Figure 3-11. GPU Tab on the IPMI Dashboard
+
+Replacing Universal Baseboard
+
+The following is an outline of the steps to remove and install the universal baseboard. Due 
+to the optimized nature of the system, replacement or installation of the universal baseboard 
+is recommended to be done by a qualified Supermicro service technician. 
+Removing UBB 
+1. Remove power as described in Section 3.1 and remove the cover as described in 
+Section 3.2. 
+2. Remove cables connected to the UBB. 
+3. Remove the GPU and the storage tray as described on the previous two pages. 
+4. Remove screws on the PCB of the universal baseboard. 
+5. Lift the universal baseboard from the stiffener. 
+6. Remove screws from the stiffener and then remove the stiffener from the chassis floor. 
+For installation reverse the above steps. 
+
+Figure 3-13. Universal Baseboard and Stiffener
+
+PCB
+
+Stiffener
+
+5U System
+
+The 4U system can be modified by adding an extra 1U module. The 1U module is an optional 
+part that must be ordered with the 4U system. Modifications are recommended to be done by 
+a qualified Supermicro technician. A general description of the procedure is described below. 
+Converting the 4U System into a 5U System 
+1. Remove power as described in Section 3.1. 
+2. Remove the the front, middle, and back cover as described in Section 3.2. 
+3. Remove the storage tray, air shroud, and riser modules as described in their respective 
+sections. 
+4. Remove the 4U rear wall and install the 5U rear wall. 
+5. Remove three screws on each side of the chassis, near the rackmount handle. Then, 
+rotate the left and right rackmount handle. 
+6. Install a 1U dummy bracket at the front. 
+7. Install a 1U front base and secure with four screws. 
+8. Rotate the rackmount handles into the upright positions and reinstall three screws on 
+each side. 
+9. Install two side walls and secure with six screws on each side. Then, put on the 
+crossbar and fasten two screws. 
+10. Assemble a bracket above the fans and secure with two screws. 
+11. Optionally, install the AIOM brackets or the PCIe brackets. 
+12. Reinstall the storage tray, air shroud, and riser modules. 
+13. Reinstall the cover and power up the system. 
+
+Installing Expansion Cards in the 4U/5U System
+
+The system has eight PCIe 4.0 x16 slots for expansion cards. The procedure to remove or 
+install the expansion card is the same for the 4U and 5U system. 
+Note: Expansion cards are recommended to be serviced by Supermicro due to the optimized 
+density of the 4U/5U form factor. 
+Installing an Expansion Card in the 4U/5U Chassis 
+1. Power down the system as described in Section 3.1. 
+2. Remove the rear and middle cover as described in Section 3.2. 
+3. Lift the riser bracket by the handle. 
+4. Install expansion cards into the riser bracket. Connect cables. 
+5. Reinstall the riser bracket and the cover. Power up the system. 
+
+Figure 3-14. Removing the Expansion Bracket To Be Updated
+
+Installing Extra Expansion Cards in the 5U System
+
+The 5U system supports either two additional AIOM slots or two additional PCIe slots. 
+Installing AIOM Cards 
+1. Insert one AIOM card into an AIOM slot until the release lever on the left retracts. 
+2. Tighten the thumbscrew. 
+3. Repeat for a second AIOM card, if necessary. 
+
+Figure 3-15. Installing AIOM Cards
+
+Removing AIOM Cards 
+1. Loosen the thumbscrew. 
+2. Press the release lever on the left until it is extended. 
+3. Remove the AIOM card. 
+
+Thumbscrew
+
+Release Tab
+
+62 
+Installing/Removing PCIe Cards 
+1. Remove power from the system as described in Section 3.1. 
+2. Remove the rear and middle cover as described in Section 3.2. 
+3. Remove the PCIe shield and install an expansion card. Connect cables. 
+4. Reinstall the rear and middle cover and power up the system. 
+
+Figure 3-16. Installing PCIe Expansion Card
+
+Changing a Mid-Chassis Fan 
+1. Identify the failed fan using BMC. 
+2. Open the middle cover as described in Section 3.2. 
+3. Squeeze both tabs at the side of the fan module and pull the fan out of the chassis. 
+4. Replace the fan with a new one, making sure it is within specifications. 
+5. Push the fan into the housing until it is secure and running. 
+6. Close the middle cover. 
+
+Figure 3-17. CPU Fan Replacement
+
+System Fans
+
+• Make sure there are no objects to obstruct air flow in and out of the server. 
+• If you are using a front bezel, make sure the bezel filter is replaced periodically. 
+• Do not operate the server without drives or drive trays in the drive bays. 
+• Use only recommended server parts. 
+• Make sure no wires or foreign objects obstruct air flow through the chassis. Pull all excess cabling out of the airflow path or use shorter cables. 
+
+The control panel LEDs display system heat status. See “Control Panel” in Chapter 1 for details.
+
+Overheating There are several possible responses if the system overheats. Overheat Temperature Setting Some backplanes allow the overheat temperature to be set at 45, 50, or 55 by changing a jumper setting. For more information, consult the backplane user manual at www.supermicro. com. (Click Support, then the Manuals link.) Responses If the server overheats: 1. Use the LEDs to determine the nature of the overheating condition. 2. Confirm that the chassis covers are installed properly. 3. Make sure all fans are present and operating normally. 4. Check the routing of the cables. 5. Verify that the heatsinks are installed properly.
+
+Air Shroud
+
+Typically the air shrouds do not need to be installed. In the rare instance where the air 
+shroud needs to be replace follow the instructions below. The air shroud will cover half of the 
+motherboard and funnel air from the fans to the CPU heatsinks. 
+Installing or Replacing the Air Shroud 
+1. Remove power as described in Section 3.1. 
+2. Remove the rear section of the top cover as described in Section 3.2. 
+3. Ensure the CPU, CPU heatsinks, and configured DIMMs are installed. 
+4. Remove the old air shroud, if necessary. 
+5. Place the new air shroud between the fans and the crossbar. 
+6. Reinstall the top cover and power up the system. 
+
+Figure 3-18. Installing Air Shrouds
+
+Cross Bar
+
+Figure 3-19. Installing GPU Air Shrouds
+
+GPU Air Shroud
+
+Three GPU air shrouds funnel cooling air to the GPUs. The GPU air shroud kit contains a 
+sponge (not shown) that is installed onto the chassis floor to support the UBB. 
+Installing or Replacing the Air Shroud 
+1. Remove power as described in Section 3.1. 
+2. Remove the front top cover as described in Section 3.2. 
+3. Remove the storage tray. 
+4. Remove a screw from the air shroud and lift the air shroud up. 
+5. Replace with a new air shroud and reinstall the screw. 
+
+Power Supply
+
+The AS -4124GQ-TMNI features 3000 W Titanium Level (96%+) redundant power supply 
+modules. The power modules can be changed without powering down the system. New units 
+can be ordered directly from Supermicro or authorized distributors. 
+These power supplies are auto-switching capable. This feature enables them to automatically 
+sense the input voltage and operate at a 100-120 Vac or 180-240 Vac. An amber light will be 
+illuminated on the power supply when the power is off. An illuminated green light indicates 
+that the power supply is operating. 
+Replacing the Power Supply 
+1. Fully rotate the power supply locking handle downward. 
+2. Carefully and slowly pull the power supply from the rear structure. 
+Figure 3-20. Push Handle Upwards 
+3. Insert replacement power supply (with lock handle on fully downward position) into the 
+rear structure until the power supply locking handle engages with the rear structures 
+locking pin. 
+4. Fully push power supply locking handle upward until it is locked into the rear structure. 
+
+1
+
+#### Chapter 4
+
+#### Motherboard Connections
+
+This section describes the connections on the motherboard and provides pinout definitions. 
+Note that depending on how the system is configured, not all connections are required. 
+The LEDs on the motherboard are also described here. A motherboard layout indicating 
+component locations may be found in Chapter 1. 
+Please review the Safety Precautions in Chapter 3 before installing or removing components. 
+
+##### 4.1 Headers and Connectors
+
+TPM Header/Port 80 Connector 
+The JTPM1 header is used to connect a Trusted Platform Module (TPM), which is available from 
+a third-party vendor. A TPM is a security device that supports encryption and authentication in 
+hard drives. It enables the motherboard to deny access if the TPM associated with the hard 
+drive is not installed in the system. 
+Please go to the following link for more information on TPM: http://www.supermicro.com/ 
+manuals/other/TPM.pdf. 
+
+| | | | | | Pin Definitions | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | Pin# | | Definition | | | Pin# | | Definition | | | |
+| | 1 | | LCLK | | | 2 | | GND | | | |
+| | 3 | | LFRAME# | | | 4 | | | | | |
+| | 5 | | LRESET# | | | 6 | | NC | | | |
+| | 7 | | LAD3 | | | 8 | | LAD2 | | | |
+| | 9 | | 3.3V | | | 10 | | LAD1 | | | |
+| | 11 | | LAD0 | | | 12 | | GND | | | |
+| | 13 | | NC | | | 14 | | NC | | | |
+| | 15 | | 3.3V_STBY | | | 16 | | SERIRQ | | | |
+| | 17 | | GND | | | 18 | | NC | | | |
+| | 19 | | NC | | | 20 | | NC | | | |
+
+Trusted Platform Module Header
+
+SATA Ports 
+The H12DGQ-NT6 supports four SATA 3.0 ports through P0-SATA0~3, P2-SATA0~3, and 
+P2-SATA4~7 ports and backplane board BPN-SAS3-LB16A-N10 with a specific cable. 
+NVM Express Connections 
+Ten NVM Express ports via five SlimSAS x8 ports are located on the serverboard (from PLX). 
+These ports provide high-speed, low-latency PCIe 4.0 x4 connections directly from the PLX 
+to NVMe Solid State Drives (SSD). 
+
+Chapter 4: Motherboard Connections
+
+IPMB System Management Bus Header 
+A System Management Bus header for IPMI 2.0 is located at JIPMB1. Connect the appropriate 
+cable here to use the IPMB I 2C connection on your system. 
+IPMB Header 
+Pin Definitions 
+Pin# Definition 
+1 Data 
+2 Ground 
+3 Clock 
+4 No Connection 
+
+##### 4.2 Jumpers
+
+To modify the operation of the motherboard, jumpers are used to choose between optional settings. Jumpers create shorts between two pins to change the function associated with it. Pin 1 is identified with a square solder pad on the printed circuit board. See the motherboard layout page for jumper locations. Note: On a two-pin jumper, "Closed" means the jumper is on both pins and "Open" indicates the jumper is either on only one pin or has been completely removed.
+
+Connector Pins
+
+Jumper
+
+Setting
+
+3 2 1
+
+3 2 1
+
+CMOS Clear 
+JBT1 is used to clear CMOS, which will also clear any passwords. Instead of pins, this jumper 
+consists of contact pads to prevent accidentally clearing the contents of CMOS. 
+To Clear CMOS 
+1. First power down the system and unplug the power cord(s). 
+2. Remove the cover of the chassis to access the motherboard. 
+3. Remove the onboard battery from the motherboard. 
+4. Short the CMOS pads with a metal object such as a small screwdriver for at least four 
+seconds. 
+5. Remove the screwdriver (or shorting device). 
+6. Re-install the motherboard battery. 
+7. Replace the cover, reconnect the power cord(s) and power on the system. 
+Notes: Clearing CMOS will also clear all passwords. 
+Do not use the PW_ON connector to clear CMOS. 
+
+JBT1 contact pads
+
+Chapter 4: Motherboard Connections
+
+Watch Dog 
+JWD1 controls the Watch Dog function. Watch Dog is a monitor that can reboot the system 
+when a software application hangs. Jumping pins 1-2 will cause Watch Dog to reset the 
+system if an application hangs. Jumping pins 2-3 will generate a non-maskable interrupt 
+(NMI) signal for the application that hangs. Watch Dog must also be enabled in BIOS. The 
+default setting is Reset. 
+Note: When Watch Dog is enabled, the user needs to write their own application software 
+to disable it. 
+
+| | Jumper Setting | | Definition | |
+| --- | --- | --- | --- | --- |
+| | Pins 1-2 | | Reset (Default) | |
+| | Pins 2-3 | | NMI | |
+| | Open | | Disabled | |
+
+Watch Dog Jumper Settings
+
+##### 4.3 LED Indicators
+
+Front Power LED
+
+When this LED is lit, it means system is in power-on state, and the onboard power status is ok. Turn off the system and unplug the power cord before removing or installing components.
+
+| | LED Color | | | | Definition | |
+| --- | --- | --- | --- | --- | --- | --- |
+| | Off | | | | System Off (power cable not connected) | |
+| | Green | | | | System On, Power OK | |
+| BMC Heartbeat LED | | | | | | |
+
+Front Power LED Indicator
+
+BMC Heartbeat LED 
+A BMC Heartbeat LED is located at LEDM1 on the serverboard. When LEDM1 is blinking, 
+BMC functions normally. See the table below for more information. 
+
+BMC Heartbeat LED States Color State Definition Green Solid On BMC is not ready. Green Blinking BMC Normal Green Fast Blinking BMC: Initializing
+
+Unit Identified LED
+
+The front UID LED is located next to the UID switch. The UID indicators provide easy identification of a system unit that may be in need of service.
+
+UID LED Status
+
+| | LED State | | | | Status | |
+| --- | --- | --- | --- | --- | --- | --- |
+| | Solid On | | | | Local Unit Identified | |
+| | Blinking | | | | Remote Unit Identified | |
+
+Chapter 5: Software
+
+#### Chapter 5
+
+#### Software
+
+After the hardware has been installed, you should install the Operating System (OS), configure RAID settings and install the drivers. Necessary drivers and utilities may be found at ftp://ftp. supermicro.com/driver.
+
+##### 5.1 OS Installation
+
+You must first configure RAID settings (if using RAID) before you install the Windows OS and the software drivers. To configure RAID settings, please refer to the RAID Configuration User Guides posted on our website at www.supermicro.com/support/manuals.
+
+Installing the Windows OS for a RAID System
+
+1. Insert Microsoft's Windows Setup DVD in the DVD drive and the system will start booting up from the DVD. 
+2. Insert the USB stick containing Windows drivers to a USB port on the system. Note: for older legacy OS's, please use a method to slipstream the drivers. 
+3. Select the partition on the drive in which to install Windows. 
+4. Browse the USB folder for the proper driver files. 
+5. Choose the RAID driver indicated in the Windows OS Setup screen, then choose the hard drive in which you want to install it. 
+6. Once all devices are specified, continue with the installation. 
+7. After the Windows OS installation is completed, the system will automatically reboot. 
+
+Installing Windows to a Non-RAID System
+
+1. Insert Microsoft's Windows OS Setup DVD in the DVD-ROM drive and the system will start booting up from the DVD. 2. Continue with the installation. The Windows OS Setup screen will display. 3. From the Windows OS Setup screen, press the key. The OS Setup will automatically load all device files and then continue with the Windows installation. 4. After the installation has completed, the system will automatically reboot.
+
+##### 5.2 Driver Installation
+
+The Supermicro website contains drivers and utilities for your system at https://www. 
+supermicro.com/wdl/driver. Some of these must be installed, such as the chipset driver. 
+After accessing the FTP site, go into the CDR_Images directory and locate the ISO file for 
+your motherboard. Download this file to create a DVD of the drivers and utilities it contains. 
+(You may also use a utility to extract the ISO file if preferred.) 
+After creating a DVD with the ISO files, insert the disk into the DVD drive on your system 
+and the display shown in Figure 5-1 should appear. 
+Another option is to go to the Supermicro website at http://www.supermicro.com/products/. 
+Find the product page for your motherboard here, where you may download individual drivers 
+and utilities to your hard drive or a USB flash drive and install from there. 
+Note: To install the Windows OS, please refer to the instructions posted on our website at 
+http://www.supermicro.com/support/manuals/. 
+
+Figure 5-1. Driver & Tool Installation Screen Note: Click the icons showing a hand writing on paper to view the readme files for each item. Click the computer icons to the right of these items to install each item (from top to the bottom) one at a time. After installing each item, you must re-boot the system before moving on to the next item on the list. The bottom icon with a CD on it allows you to view the entire contents.
+
+Chapter 5: Software
+
+##### 5.3 SuperDoctor ® 5
+
+The Supermicro SuperDoctor 5 is a program that functions in a command-line or web-based interface for Windows and Linux operating systems. The program monitors such system health information as CPU temperature, system voltages, system power consumption, fan speed, and provides alerts via email or Simple Network Management Protocol (SNMP). SuperDoctor 5 comes in local and remote management versions and can be used with Nagios to maximize your system monitoring needs. With SuperDoctor 5 Management Server (SSM Server), you can remotely control power on/off and reset chassis intrusion for multiple systems with SuperDoctor 5 or IPMI. SuperDoctor 5 Management Server monitors HTTP, FTP, and SMTP services to optimize the efficiency of your operation.
+
+Figure 5-2. SuperDoctor 5 Interface Display Screen (Health Information)
+
+##### 5.4 BMC
+
+The motherboard provides remote access, monitoring and management through the baseboard management controller (BMC) and other management controllers distributed among different system modules. There are several BIOS settings that are related to BMC. For general documentation and information on BMC, visit our website at: www.supermicro.com/en/solutions/management-software/bmc-resources
+
+BMC ADMIN User Password
+
+For security, each system is assigned a unique default BMC password for the ADMIN user. 
+This can be found on a sticker on the chassis and a sticker on the motherboard. The sticker 
+also displays the BMC MAC address. For more information regarding BMC passwords, please 
+visit our website at http://www.supermicro.com/bmcpassword. 
+See Chapter 1 for label locations. 
+
+#### Chapter 6
+
+#### UEFI BIOS
+
+##### 6.1 Introduction
+
+This chapter describes the AMIBIOS™ setup utility for the H12DGQ-NT6 motherboard. The 
+BIOS is stored on a chip and can be easily upgraded using a flash program. 
+Note: Due to periodic changes to the BIOS, some settings may have been added 
+or deleted and might not yet be recorded in this manual. Please refer to the Manual 
+Download area of our website for any changes to the BIOS that may not be reflected 
+in this manual. 
+
+Starting the Setup Utility
+
+To enter the BIOS setup utility, press the key while the system is booting-up. (In 
+most cases, the key is used to invoke the BIOS setup screen. There are a few 
+cases when other keys are used, such as,, etc.) Each main BIOS menu option 
+is described in this manual. 
+The Main BIOS screen has two main frames. The left frame displays all the options that can 
+be configured. “Grayed-out” options cannot be configured. The right frame displays the key 
+legend. Above the key legend is an area reserved for a text message. When an option is 
+selected in the left frame, it is highlighted in white. Often a text message will accompany it. 
+(Note that BIOS has default text messages built in. We retain the option to include, omit, or 
+change any of these text messages.) Settings printed in Bold are the default values. 
+A "" indicates a submenu. Highlighting such an item and pressing the key will open 
+the list of settings within that submenu. 
+The BIOS setup utility uses a key-based navigation system called hot keys. Most of these 
+hot keys (,,,,,, keys, etc.) can be used at 
+any time during the setup navigation process. 
+
+##### 6.2 Main Setup
+
+When you first enter the AMI BIOS setup utility, you will see the Main setup screen. You can always return to the Main setup screen by selecting the Main tab on the top of the screen. The Main BIOS setup screen is shown below.
+
+System Date/System Time 
+Use this item to change the system date and time. Highlight System Date or System Time 
+using the arrow keys. Enter new values using the keyboard. Press the key or the arrow 
+keys to move between fields. The date must be entered in Day MM/DD/YYYY format. The 
+time is entered in HH:MM:SS format. 
+Note: The time is in the 24-hour format. For example, 5:30 P.M. appears as 17:30:00. 
+The date's default value is the BIOS build date after the RTC (Real Time Clock) reset. 
+Supermicro H12DGQ-NT6 
+BIOS Version 
+This feature displays the version of the BIOS ROM used in the system. 
+
+Build Date 
+This feature displays the date when the version of the BIOS ROM used in the system was built. 
+CPLD Version 
+This feature displays the version of the CPLD (Complex-Programmable Logical Device) used 
+in the system. 
+Memory Information 
+Total Memory 
+This feature displays the total size of memory available in the system. 
+
+##### 6.3 Advanced
+
+Warning: Take caution when changing the Advanced settings. An incorrect value, a very high DRAM frequency, or an incorrect DRAM timing setting may make the system unstable. When this occurs, revert to the default to the manufacture default settings.
+
+Boot Feature
+
+Quiet Boot 
+Use this feature to select the screen display between the POST messages and the OEM logo 
+upon bootup. Select Disabled to display the POST messages. Select Enabled to display the 
+OEM logo instead of the normal POST messages. The options are Disabled and Enabled. 
+Option ROM Messages 
+Use this feature to set the display mode for the Option ROM. Select Keep Current to display 
+the current AddOn ROM setting. Select Force BIOS to use the Option ROM display set by 
+the system BIOS. The options are Force BIOS and Keep Current. 
+
+Bootup NumLock State 
+Use this feature to set the Power on state for the key. The options are On and Off. 
+Wait For "F1" If Error 
+Use this feature to force the system to wait until the key is pressed if an error occurs. 
+The options are Disabled and Enabled. 
+INT19 (Interrupt 19) Trap Response 
+Interrupt 19 is the software interrupt that handles the boot disk function. When this item is 
+set to Immediate, the ROM BIOS of the host adaptors will "capture" Interrupt 19 at bootup 
+immediately and allow the drives that are attached to these host adaptors to function as 
+bootable disks. If this item is set to Postponed, the ROM BIOS of the host adaptors will not 
+capture Interrupt 19 immediately and allow the drives attached to these adaptors to function 
+as bootable devices at bootup. The options are Immediate and Postponed. 
+Re-try Boot 
+If this item is enabled, the BIOS will automatically reboot the system from a specified boot 
+device after its initial boot failure. The options are Disabled, Legacy Boot, and EFI Boot. 
+Power Configuration 
+Watch Dog Function 
+If enabled, the Watch Dog Timer will allow the system to reset or generate NMI based on 
+jumper settings when it is expired for more than 5 minutes. The options are Disabled and 
+Enabled. 
+Restore on AC Power Loss 
+Use this feature to set the power state after a power outage. Select Stay-Off for 
+the system power to remain off after a power loss. Select Power-On for the system 
+power to be turned on after a power loss. Select Last State to allow the system to 
+resume its last power state before a power loss. The options are Stay Off, Power On, 
+and Last State. 
+Power Button Function 
+This feature controls how the system shuts down when the power button is pressed. Select 4 
+Seconds Override for the user to power off the system after pressing and holding the power 
+button for 4 seconds or longer. Select Instant Off to instantly power off the system as soon 
+as the user presses the power button. The options are Instant Off and 4 Seconds Override. 
+Early Video Logo 
+The options are Disabled and Enabled. 
+
+Memory Corrected Error Enabling 
+Select Enabled for the BIOS to correct a memory error if it is correctable. The options are 
+Disabled and Enabled. 
+Hot Key Prompt Message 
+The options are Disabled and Enabled. 
+
+Hot Key Prompt Message Background Color The options are White and Black.
+
+Hard-Drive Password Check The options are Disabled and Enabled.
+
+Trusted Computing
+
+Configuration Security Device Support If this feature and the TPM jumper on the motherboard are both set to Enabled, onboard security devices will be enabled for TPM (Trusted Platform Module) support to enhance data integrity and network security. Please reboot the system for a change on this setting to take effect. The options are Disable and Enable.
+
+PSP Firmware Versions
+
+This section displays the Platform Security Processor (PSP) firmware versions. PSP Directory Level 1 (Fixed)
+
+• PSP Recovery BL Ver 
+• SMU FW Version 
+• ABL Version 
+
+PSP Directory Level 2 (Updateable)
+
+• PSP Bootloader Version 
+• SMU FW Version 
+• ABL Version 
+
+ACPI Settings
+
+PCI AER Support 
+The options are Disabled and Enabled. 
+HPET In SB 
+HPET Function Switch. The options are Disabled and Enabled. 
+NUMA Node Per Socket 
+This feature specifies the number of desired Non-Uniform Memory Access (NUMA) nodes per 
+socket. Setting this to zero will attempt to interleave the two sockets together. The options 
+are NPS0, NPS1, NPS2, NPS4 and Auto. 
+ACPI SRAT L3 Cache As NUMA Domain 
+Use this setting to enabe/disable ACPI SRAT L3 Cache As NUMA Domain. The options are 
+Disabled, Enabled and Auto. 
+
+Super IO Configuration
+
+The following Super IO information will display: Super IO Chip AST2600
+
+Serial Port 1 Configuration
+
+Serial Port 
+Select Enabled to enable the selected onboard serial port. The options are Disabled and 
+Enabled. 
+Device Settings 
+This item displays the status of a serial part specified by the user. 
+Change Settings 
+This feature specifies the base I/O port address and the Interrupt Request address of a 
+serial port specified by the user. Select Auto to allow the BIOS to automatically assign the 
+base I/O and IRQ address. The options are Auto, IO=3F8h; IRQ=4, IO=3F8h; IRQ=3, 4, 
+5, 6, 7, 9, 10, 11, 12, IO=2F8h; IRQ=3, 4, 5, 6, 7, 9, 10, 11, 12, IO=3E8h; IRQ=3, 4, 5, 6, 
+7, 9, 10, 11, 12, and IO=2E8h; IRQ=3, 4, 5, 6, 7, 9, 10, 11, 12. 
+
+Serial Port 2 Configuration
+
+Serial Port 
+Select Enabled to enable the selected onboard serial port. The options are Disabled and 
+Enabled. 
+Device Settings 
+This item displays the status of a serial part specified by the user. 
+Change Settings 
+This feature specifies the base I/O port address and the Interrupt Request address of a 
+serial port specified by the user. Select Auto to allow the BIOS to automatically assign the 
+base I/O and IRQ address. The options are Auto, IO=3F8h; IRQ=4, IO=3F8h; IRQ=3, 4, 
+5, 6, 7, 9, 10, 11, 12, IO=2F8h; IRQ=3, 4, 5, 6, 7, 9, 10, 11, 12, IO=3E8h; IRQ=3, 4, 5, 6, 
+7, 9, 10, 11, 12, and IO=2E8h; IRQ=3, 4, 5, 6, 7, 9, 10, 11, 12. 
+
+Serial Port Console Redirection
+
+COM1 
+Console Redirection 
+Select Enabled to enable console redirection support for a serial port specified by the user. 
+The options are Disabled and Enabled. 
+*If the item above is set to Enabled, the following items will become available for user's 
+configuration: 
+
+Console Redirection Settings
+
+Terminal Type 
+This feature allows the user to select the target terminal emulation type for Console 
+Redirection. Select VT100 to use the ASCII Character set. Select VT100+ to add color 
+and function key support. Select ANSI to use the Extended ASCII Character Set. Select 
+VT-UTF8 to use UTF8 encoding to map Unicode characters into one or more bytes. The 
+options are VT100, VT100Plus, VT-UTF8, and ANSI. 
+Bits per second 
+Use this feature to set the transmission speed for a serial port used in Console Redirection. 
+Make sure that the same speed is used in the host computer and the client computer. A 
+lower transmission speed may be required for long and busy lines. The options are 9600, 
+19200, 38400, 57600 and 115200 (bits per second). 
+Data Bits 
+Use this feature to set the data transmission size for Console Redirection. The options are 
+7 and 8. 
+Parity 
+A parity bit can be sent along with regular data bits to detect data transmission errors. Select 
+Even if the parity bit is set to 0, and the number of 1's in data bits is even. Select Odd if 
+the parity bit is set to 0, and the number of 1's in data bits is odd. Select None if you do 
+not want to send a parity bit with your data bits in transmission. Select Mark to add a mark 
+as a parity bit to be sent along with the data bits. Select Space to add a Space as a parity 
+bit to be sent with your data bits. The options are None, Even, Odd, Mark, and Space. 
+
+Stop Bits 
+A stop bit indicates the end of a serial data packet. Select 1 Stop Bit for standard serial 
+data communication. Select 2 Stop Bits if slower devices are used. The options are 1 and 2. 
+Flow Control 
+Use this feature to set the flow control for Console Redirection to prevent data loss caused 
+by buffer overflow. Send a "Stop" signal to stop sending data when the receiving buffer 
+is full. Send a "Start" signal to start sending data when the receiving buffer is empty. The 
+options are None and Hardware RTS/CTS. 
+VT-UTF8 Combo Key Support 
+Select Enabled to enable VT-UTF8 Combination Key support for ANSI/VT100 terminals. 
+The options are Disabled and Enabled. 
+Recorder Mode 
+Select Enabled to capture the data displayed on a terminal and send it as text messages 
+to a remote server. The options are Disabled and Enabled. 
+Resolution 100x31 
+Select Enabled for extended-terminal resolution support. The options are Disabled and 
+Enabled. 
+Legacy OS Redirection Resolution 
+For Legacy OS systems, use this setting to specify the number of Rows and Columns 
+supported for redirection. Options include 80x24 and 80x25. 
+Putty KeyPad 
+This feature selects the settings for Function Keys and KeyPad used for Putty, which 
+is a terminal emulator designed for the Windows OS. The options are VT100, LINUX, 
+XTERMR6, SC0, ESCN, and VT400. 
+Redirection After BIOS POST 
+For this setting, when the Bootloader is selected, then the Legacy Console Redirection is 
+disabled before booting to the legacy OS. If you select Always Enable, then the Legacy 
+Console Redirection is enabled for legacy OS systems. Default option for this system is 
+Always Enable. The options are Always Enable and BootLoader. 
+
+SOL 
+Console Redirection 
+Select Enabled to enable SOL console redirection support for a serial port specified by the 
+user. The options are Disabled and Enabled. 
+*If the item above is set to Enabled, the following items will become available for user's 
+configuration: 
+
+Console Redirection Settings
+
+Terminal Type 
+This feature allows the user to select the target terminal emulation type for Console 
+Redirection. Select VT100 to use the ASCII Character set. Select VT100+ to add color 
+and function key support. Select ANSI to use the Extended ASCII Character Set. Select 
+VT-UTF8 to use UTF8 encoding to map Unicode characters into one or more bytes. The 
+options are VT100, VT100Plus, VT-UTF8, and ANSI. 
+Bits per second 
+Use this feature to set the transmission speed for a serial port used in Console Redirection. 
+Make sure that the same speed is used in the host computer and the client computer. A 
+lower transmission speed may be required for long and busy lines. The options are 9600, 
+19200, 38400, 57600 and 115200 (bits per second). 
+Data Bits 
+Use this feature to set the data transmission size for Console Redirection. The options are 
+7 and 8. 
+Parity 
+A parity bit can be sent along with regular data bits to detect data transmission errors. Select 
+Even if the parity bit is set to 0, and the number of 1's in data bits is even. Select Odd if 
+the parity bit is set to 0, and the number of 1's in data bits is odd. Select None if you do 
+not want to send a parity bit with your data bits in transmission. Select Mark to add a mark 
+as a parity bit to be sent along with the data bits. Select Space to add a Space as a parity 
+bit to be sent with your data bits. The options are None, Even, Odd, Mark, and Space. 
+Stop Bits 
+A stop bit indicates the end of a serial data packet. Select 1 Stop Bit for standard serial 
+data communication. Select 2 Stop Bits if slower devices are used. The options are 1 and 2. 
+Flow Control 
+Use this feature to set the flow control for Console Redirection to prevent data loss caused 
+by buffer overflow. Send a "Stop" signal to stop sending data when the receiving buffer 
+
+is full. Send a "Start" signal to start sending data when the receiving buffer is empty. The 
+options are None and Hardware RTS/CTS. 
+VT-UTF8 Combo Key Support 
+Select Enabled to enable VT-UTF8 Combination Key support for ANSI/VT100 terminals. 
+The options are Disabled and Enabled. 
+Recorder Mode 
+Select Enabled to capture the data displayed on a terminal and send it as text messages 
+to a remote server. The options are Disabled and Enabled. 
+Resolution 100x31 
+Select Enabled for extended-terminal resolution support. The options are Disabled and 
+Enabled. 
+Legacy OS Redirection Resolution 
+For Legacy OS systems, use this setting to specify the number of Rows and Columns 
+supported for redirection. Options include 80x24 and 80x25. 
+Putty KeyPad 
+This feature selects the settings for Function Keys and KeyPad used for Putty, which 
+is a terminal emulator designed for the Windows OS. The options are VT100, LINUX, 
+XTERMR6, SC0, ESCN, and VT400. 
+Redirection After BIOS POST 
+For this setting, when the Bootloader is selected, then the Legacy Console Redirection is 
+disabled before booting to the legacy OS. If you select Always Enable, then the Legacy 
+Console Redirection is enabled for legacy OS systems. Default option for this system is 
+Always Enable. The options are Always Enable and BootLoader. 
+
+Legacy Console Redirection Settings
+
+Legacy Serial Redirection Port 
+For this setting, select a COM port to display redirection of Legacy OS and Legacy OPROM 
+messages. Option includes COM1. 
+Serial Port for Out-of-Band Management/Windows Emergency Management 
+Services (EMS) 
+Console Redirection 
+Select Enabled to enable EMS console redirection support for a serial port specified by the 
+user. The options are Enabled and Disabled. 
+*If the item above is set to Enabled, the following items will become available for 
+user's configuration: 
+
+Console Redirection Settings
+
+Out-of-Band Mgmt Port 
+The feature selects a serial port in a client server to be used by the Microsoft Windows 
+Emergency Management Services (EMS) to communicate with a remote host server. The 
+options are COM1 and SOL. 
+Terminal Type 
+Use this feature to select the target terminal emulation type for Console Redirection. 
+Select VT100 to use the ASCII character set. Select VT100+ to add color and function 
+key support. Select ANSI to use the extended ASCII character set. Select VT-UTF8 to use 
+UTF8 encoding to map Unicode characters into one or more bytes. The options are VT100, 
+VT100Plus, VT-UTF8, and ANSI. 
+Bits per second 
+This item sets the transmission speed for a serial port used in Console Redirection. Make 
+sure that the same speed is used in the host computer and the client computer. A lower 
+transmission speed may be required for long and busy lines. The options are 9600, 19200, 
+57600, and 115200 (bits per second). 
+Flow Control 
+Use this item to set the flow control for Console Redirection to prevent data loss caused 
+by buffer overflow. Send a "Stop" signal to stop sending data when the receiving buffer 
+is full. Send a "Start" signal to start sending data when the receiving buffer is empty. The 
+options are None, Hardware RTS/CTS, and Software Xon/Xoff. 
+
+Data Bits 
+Use this feature to set the data transmission size for Console Redirection. The options 
+are 7 and 8. 
+Parity 
+A parity bit can be sent along with regular data bits to detect data transmission errors. 
+Select Even if the parity bit is set to 0, and the number of 1's in data bits is even. Select 
+Odd if the parity bit is set to 0, and the number of 1's in data bits is odd. Select None 
+if you do not want to send a parity bit with your data bits in transmission. Select Mark 
+to add a mark as a parity bit to be sent along with the data bits. Select Space to add a 
+Space as a parity bit to be sent with your data bits. The options are None, Even, Odd, 
+Mark, and Space. 
+Stop Bits 
+A stop bit indicates the end of a serial data packet. Select 1 Stop Bit for standard serial data 
+communication. Select 2 Stop Bits if slower devices are used. The options are 1 and 2. 
+
+CPU Configuration
+
+SMT Control 
+Use this setting to specify Simultaneous Multithreading. Options include Disabled for 1T 
+single thread and Auto for 2T two-thread if your system is capable of it. 
+Core Performance Boost 
+This setting is used to configure for Core Performance Boost. Options include Disabled 
+and Auto. 
+Global C-state Control 
+This setting is used to configure for Global C-state Control. Options include Disabled, 
+Enabled and Auto. 
+Local APIC Mode 
+Use this setting to adjust local APIC mode. Options include Compatibility, xAPIC, x2APIC 
+and Auto. 
+CCD Control 
+Use this setting to disable CCDs in the CPU. Options include Auto, 2 CCDs, 3 CCDs, 4 
+CCDs and 6 CCDs. 
+Core Control 
+This sets the number of cores to be used by your system. Once this option has been used 
+to remove any cores, a power cycle is required in order for the future selections to take 
+
+effect. Options include Auto, ONE (1+0), TWO (1+0), THREE (3+0), FOUR (2+0), FIVE 
+(5+0), SIX (6+0), and SEVN (7+0). If unsure, leave this to Auto. 
+L1 Stream HW Prefetcher/L2 Stream HW Prefetcher 
+This setting is used to enable or disable the L1/L2 Stream Hardware Prefetcher. The options 
+are Disabled, Enabled and Auto. 
+SMEE 
+This setting Enables or Disables secure memory encryption. 
+SEV ASID Count 
+The Secure Encrypted Virtualization (SEV) Address Space ID Count (ASID) specifies the 
+maximum ASID value, which affects the maximum system physical address space. 16TB 
+of space is available for systems that support 253 ASIDs, while 8TB of space is available 
+for systems that support 509 ASIDs. The options include 253 ASIDs, 509 ASIDs, and Auto. 
+SEV-ES ASID Space Limit Control 
+This setting customize SEV-VS ASID space limit . The options include Auto and Manual. 
+SVM Mode 
+This setting Enables or Disables CPU Virtualization. 
+
+CPU1/CPU2 Information
+
+These sections are for informational purposes. They will display some details about the detected CPUs on the motherboard, such as:
+
+• CPU Version 
+• Number of Cores Running 
+• Processor Family 
+• Processor Model 
+• Microcode Patch Level 
+• L1 Instruction Cache (Size/Method) 
+• L1 Data Cache (Size/Method) 
+• L2 Data Cache (Size/Method) 
+• L3 Cache per Scoket (Size/Method) 
+
+NB Configuration
+
+Determinism Control 
+Use this setting to configure the Determinism Control. Options include Manual and Auto. 
+cTDP Control 
+Use this setting to configure the cTDP Control. Options include Manual and Auto. 
+IOMMU 
+Use this setting to enable/disable IOMMU. Options include Disabled, Enabled, and Auto. 
+Package Power Limit Control 
+Use this setting for Package Power Limit Control. Options include Manual and Auto. 
+APBDIS 
+Use this setting to set APBDIS. Options include 0, 1 and Auto. 
+DF Cstates 
+Use this setting to enable/disable DF Cstates. Options include Disabled, Enabled, and Auto. 
+Preferred IO 
+Use this setting for Preferred IO. Options include Manual and Auto. 
+
+Memory Configuration
+
+Memory Clock 
+This setting allows you to select different memory clock speed. The options include Auto 
+and speed settings from 2400MHz, 2666MHz, 2933MHz to 3200MHz. 
+Memory Interleaving 
+This setting controls fabric level memory interleaving. Note that the channel, die and socket 
+have requirements on memory populations and it will be ignored if the memory doesn't 
+support the selected option. The options are Disabled and Auto. 
+Memory Interleaving Size 
+This setting controls the memory interleaving size. This determines the starting address of 
+the interleave (bit 8, 9, 10 or 11). The options are 256 Bytes, 512 Bytes, 1 KB, 2 KB and 
+Auto. 
+Chipselect Interleaving 
+This setting controls interleave memory blocks across the DRAM chip for node 0. The 
+options are Disabled and Auto. 
+
+BankGroupSwap 
+This setting controls the Bank Group Swap. The options are Enabled, Disabled and Auto. 
+DRAM Scrub Time 
+This setting provides a value that is the number of hours to scrub memory. The options are 
+Disabled, 1 hour, 4 hours, 8 hours, 16 hours, 24 hours, 48 hours and Auto. 
+TSME 
+Use this setting to enable or disable TSME. The options are Disabled, Enabled and Auto. 
+DDR Power Down Enable 
+Use this setting to enable or disable DDR power down mode. The options are Disabled, 
+Enabled and Auto. 
+
+CPU1 Memory Configuration
+
+These sections are for informational purposes. They will display some details about the detected memory according to each CPU on the motherboard, such as:
+
+• Detected Size (per slot, in MB) 
+• Current Speed (MT/s) 
+
+CPU2 Memory Configuration
+
+These sections are for informational purposes. They will display some details about the detected memory according to each CPU on the motherboard, such as:
+
+• Detected Size (per slot, in MB) 
+• Current Speed (MT/s) 
+
+PCIe/PCI/PnP Configuration
+
+This menu provides PCIe/PCI/PnP configuration settings and information. 
+PCI Bus Driver Version 
+PCI Devices Common Settings 
+Above 4G Decoding 
+This setting Disables or Enables 64-bit capable devices ability to be decoded in above 4G 
+address space (only if the system supports 64-bit PCI decoding). 
+SR-IOV Support 
+If the system has SR-IOV capable PCIe devices, this setting will Disable or Enable the Single 
+Root IO Virtualization Support for the system. 
+BME DMA Mitigation 
+Re-enable Bus Master Attribute disabled during PCI enumeration for PCI Bridges after SMM 
+Locked. The options are Disabled and Enabled. 
+PCIe ARI Support 
+Use this setting to Disable, Enable or Auto control the Alternative Routing-ID Interpretation. 
+PCIe ARI Enumeration 
+Use this setting to Disable, Enable or Auto control the ARI Forwarding Enable for each 
+downstream port. 
+PCIe Ten Bit Tag Support 
+Use this setting to Auto control, Disable, or Enable the PCIe ten bit tags for supported devices. 
+PCIe Spread Spectrum 
+Use this setting to Disable or Enable PCIe Spread Spectrum for your system. 
+Relaxed Ordering 
+Select Enabled to allow certain PCIe transactions to violate the strict ordering rules of PCIe so 
+that a transaction can be completed before other transactions that have already been queued 
+in order to enhance PCIe performance. The options are Disabled and Enabled. 
+No Snoop 
+Use this setting to disable or enable PCI Express Device No Snoop option. The options are 
+Disabled and Enabled. 
+
+VGA Priority 
+Use this setting to select between onboard or offboard VGA support. The options are 
+Onboard and Offboard. 
+NVMe Firmware Source 
+Use this setting to select between the AMI Native firmware support or the device vendor 
+defined firmware support. The options are Vendor Defined Firmware and AMI Native 
+Support. 
+M.2 (AHCI) Firmware Source 
+Use this setting to select between the AMI Native firmware support or the device vendor 
+defined firmware support. The options are Vendor Defined Firmware and AMI Native Support. 
+PCI Devices Option Rom Setting 
+Onboard NVME 1 OPROM 
+Use this feature to select which firmware to be loaded for the add-on card in this slot. The 
+options include Disabled, Legacy and EFI. 
+Onboard NVME 2 OPROM 
+Use this feature to select which firmware to be loaded for the add-on card in this 
+slot. The options include Disabled, Legacy and EFI. 
+CPU1 RSC-GR-66G5S Slot 1 PCI-E X16 OPROM 
+Use this feature to select which firmware type to be loaded for the add-on card in this slot. 
+The options include Disabled, Legacy and EFI. 
+CPU1 RSC-GR-66G5S Slot 2 PCI-E X16 OPROM 
+Use this feature to select which firmware type to be loaded for the add-on card in this slot. 
+The options include Disabled, Legacy and EFI. 
+CPU1 RSC-G-66G5S Slot 1 PCI-E X16 OPROM 
+Use this feature to select which firmware type to be loaded for the add-on card in this slot. 
+The options include Disabled, Legacy and EFI. . 
+CPU1 RSC-G-66G5S Slot 2 PCI-E X16 OPROM 
+Use this feature to select which firmware type to be loaded for the add-on card in this slot. 
+The options include Disabled, Legacy and EFI. 
+CPU2 RSC-GR-66G5S Slot 1 PCI-E X16 OPROM 
+Use this feature to select which firmware type to be loaded for the add-on card in this slot. 
+The options include Disabled, Legacy and EFI. 
+
+CPU2 RSC-GR-66G5S Slot 2 PCI-E X16 OPROM 
+Use this feature to select which firmware type to be loaded for the add-on card in this slot. 
+The options include Disabled, Legacy and EFI. 
+CPU2 RSC-G-66G5S Slot 1 PCI-E X16 OPROM 
+Use this feature to select which firmware type to be loaded for the add-on card in this slot. 
+The options include Disabled, Legacy and EFI. 
+CPU2 RSC-G-66G5S Slot 2 PCI-E X16 OPROM 
+Use this feature to select which firmware type to be loaded for the add-on card in this slot. 
+The options include Disabled, Legacy and EFI. 
+Video 
+Use this setting to control the execution of UEFI and Legacy Video OpROM. The options 
+include Do not launch, UEFI and Legacy. 
+Onboard LAN 1 OPROM 
+Use this feature to select which firmware function to be loaded for LAN Port 1 used for system 
+boot. The options include Disabled, Legacy, and EFI. 
+Onboard LAN 2 OPROM 
+Use this feature to select which firmware function to be loaded for LAN Port 2 used for system 
+boot. The options include Disabled, Legacy, and EFI. 
+
+USB Configuration
+
+USB Configuration 
+USB Module Version 
+USB Controllers 
+USB Devices 
+Legacy USB Support 
+Select Enabled to support onboard legacy USB devices. Select Auto to disable legacy support 
+if there are no legacy USB devices present. Select Disable to have all USB devices available 
+for EFI applications only. The options include Enabled, Disabled and Auto. 
+XHCI Hand-off 
+This is a work-around solution for operating systems that do not support XHCI (Extensible 
+Host Controller Interface) hand-off. The XHCI ownership change should be claimed by the 
+XHCI driver. The options include Enabled and Disabled. 
+
+USB Mass Storage Driver Support 
+Use this setting to enable or disable USB Mass Storage Driver Support. The options include 
+Disabled and Enabled. 
+Port 60/64 Emulation 
+Select Enabled for I/O port 60h/64h emulation support, which in turn, will provide complete 
+legacy USB keyboard support for the operating systems that do not support legacy USB 
+devices. The options include Disabled and Enabled. 
+
+Network Stack Configuration
+
+Network Stack 
+This setting allows you to enable or disable the UEFI Network Stack. The options are Disabled 
+and Enabled. 
+IPv4 PXE Support 
+This setting allows you to enable or disable IPv4 PXE boot support. If disabled, IPv4 PXE 
+boot support will not be available. The options are Disabled and Enabled. 
+IPv4 HTTP Support 
+This setting allows you to enable or disable IPv4 HTTP boot support. If disabled, IPv4 HTTP 
+boot support will not be available. The options are Disabled and Enabled. 
+IPv6 PXE Support 
+This setting allows you to enable or disable IPv6 PXE boot support. If disabled, IPv6 PXE 
+boot support will not be available. The options are Disabled and Enabled. 
+IPv6 HTTP Support 
+This setting allows you to enable or disable IPv6 HTTP boot support. If disabled, IPv6 HTTP 
+boot support will not be available. The options are Disabled and Enabled. 
+PXE Boot Wait Time 
+This setting allows you to set in a number field the wait time to press the key to abort 
+the PXE boot. The default value is 0. 
+Media Detect Count 
+This setting allows you set in a number field the number of times presence of media will be 
+checked. The default value is 1. 
+
+SATA Configuration
+
+This section displays the detected SATA devices installed on the system. 
+SATA Enable 
+This setting enables or disables the on chip SATA controller. The options are Disabled, 
+Enabled, and Auto. 
+SATA Hotplug 
+This setting enables or disables the on chip SATA hot plug feature. The options are Disabled, 
+and Enabled. 
+
+SATA Information
+
+This section displays information on the detected SATA devices: • SATA0 ~ SATA3
+
+HTTP Boot Configuration
+
+HTTP Boot Policy 
+The options include Apply to all LANs, Apply to each LAN, and Boot Priority #1 instantly. 
+HTTP Boot Checks Hostname 
+Use this feature to enable or disable HTTPS Boot to check if the hostname of TLS certificates 
+matches the hostname provided by the remote server. The options include Enabled and 
+Disabled (Warning: Security Risk!). 
+Priority of HTTP Boot 
+Instance of Priority 1: 
+Enter a value to set the rank target port. The default value is 1 
+Select IPv4 or IPv6 
+Use this feature to select the targeted LAN port to boot from. The options are IPv4 and IPv6. 
+Boot Description 
+Highlight the feature and press the key to create a description of no more than 75 
+characters. 
+Boot URI 
+Highlight the feature and press enter to create a boot URI of no more than 128 characters. 
+
+TLS Authenticate Configuration
+
+This submenu allows you to configure Transport Layer Security (TLS) settings.
+
+Server CA Configuration
+
+This feature allows the user to configure the client certificate that is to be used by the server.
+
+Enroll Certification This feature allows the user to enroll the certificate in the system.
+
+Enroll Certification Using File 
+This feature allows the user to enroll the security certificate in the system by using a file. 
+Certification GUID 
+This feature displays the GUID for this system. 
+
+Commit Changes and Exit Select this feature to keep the changes you have made and exit from the system.
+
+Discard Changes and Exit Select this feature to discard the changes you have made and exit from the system.
+
+Delete Certification If this feature is set to Enable, the certificate enrolled in the system will be deleted. The options are Enable and Disable.
+
+Client Certification Configuration Enroll Certification This feature allows the user to enroll the certificate in the system.
+
+Enroll Certification Using File This feature allows the user to enroll the security certificate in the system by using a file.
+
+Certification GUID This feature displays the GUID for this system.
+
+Commit Changes and Exit Select this feature to keep the changes you have made and exit from the system.
+
+Discard Changes and Exit Select this feature to discard the changes you have made and exit from the system.
+
+Delete Certification If this feature is set to Enable, the certificate enrolled in the system will be deleted. The options are Enable and Disable.
+
+RAM Disk Configuration
+
+This feature allows the user to configure the settings for the RAM disks installed in the system. 
+Disk Memory Type 
+This feature specifies the type of memory that is available for you to create a RAM disk. The 
+options are Boot Service Data and Reserved. 
+
+Create a raw
+
+This feature allows you to create a raw RAM disk from all available memory modules in the system. When you select this submenu and press the key, the following items will display:
+
+• Size (Hex): Use this feature to set the size of the raw RAM disk. The default setting is 1. 
+• Create & Exit: Select this feature when you want to exit from this submenu after you've created a raw RAM disk. 
+• Discard & Exit: Select this feature when you want to abandon the changes you've made and to exit from the submenu. 
+
+Create from file
+
+This feature allows you to create a RAM disk from a file specified by the user. Select this 
+submenu and press the key, the following items will display: 
+Created RAM disk list: 
+Remove selected RAW disk(s). 
+Use this feature to delete the RAM disk(s) specified by the user. 
+
+##### 6.4 IPMI
+
+Use this feature to configure IPMI settings.
+
+System Event Log
+
+SEL Components 
+Select Enabled for all system event logging at bootup. The options include Disabled and 
+Enabled. 
+Erasing Settings 
+Erase SEL 
+Select Yes, On next reset to erase all system event logs upon next system reboot. Select 
+Yes, On every reset to erase all system event logs upon each system reboot. Select No to 
+keep all system event logs after each system reboot. The options include No, Yes, On next 
+reset, and Yes, On every reset. 
+
+When SEL is Full 
+This feature allows the user to decide what the BIOS should do when the system event log 
+is full. Select Erase Immediately to erase all events in the log when the system event log is 
+full. The options include Do Nothing and Erase Immediately. 
+Custom EFI Logging Options 
+Log EFI Status Codes 
+Select EFI (Extensible Firmware Interface) Status Codes to log EFI status codes. Select Error 
+Codes to log EFI error codes. Select Progress Code to log the EFI progress code. Select 
+both to log both EFI error codes and progress codes. The options include Disabled, Both, 
+Error code, and Progress code. 
+
+BMC Network Configuration
+
+Update IPMI LAN Configuration 
+Select Yes for the BIOS to implement all IP/MAC address changes at the next system boot. 
+The options include No and Yes. 
+*If the item above is set to Yes, the following item will become available for user's 
+configuration: 
+Configuration Address Source 
+This feature allows the user to select the source of the IP address for this computer. If Static 
+is selected, you will need to know the IP address of this computer and enter it to the system 
+manually in the field. If DHCP is selected, the BIOS will search for a DHCP (Dynamic Host 
+Configuration Protocol) server in the network that is attached to and request the next available 
+IP address for this computer. The options include Static and DHCP. 
+VLAN 
+This item configures the virtual LAN settings. The options include Disabled and Enabled. 
+IPv6 Support 
+Use this feature to enable IPv6 support. The options include Enabled and Disabled. 
+
+##### 6.5 Event Logs
+
+Use this feature to configure Event Log settings. Note: After you've made a change on a setting below, please be sure to reboot the system for the change to take effect.
+
+Change SMBIOS Event Log Settings
+
+Enabling/Disabling Options 
+SMBIOS Event Log 
+Select Enabled to enable SMBIOS (System Management BIOS) Event Logging during system 
+boot. The options are Disabled and Enabled. 
+
+Erasing Settings 
+Erase Event Log 
+Select No to keep the event log without erasing it upon next system bootup. Select Yes, Next 
+Reset to erase the event log upon next system reboot. The options are No, Yes, Next reset, 
+and Yes, Every reset. 
+When Log is Full 
+Select Erase Immediately to immediately erase all errors in the SMBIOS event log when the 
+event log is full. Select Do Nothing for the system to do nothing when the SMBIOS event log 
+is full. The options are Do Nothing and Erase Immediately. 
+SMBIOS Event Log Standard Settings 
+Log System Boot Event 
+Select Enabled to log system boot events. The options are Enabled and Disabled. 
+MECI (Multiple Event Count Increment) 
+Enter the increment value for the multiple event counter. Enter a number between 1 to 255. 
+The default setting is 1. 
+METW (Multiple Event Count Time Window) 
+This feature is used to determine how long (in minutes) should the multiple event counter wait 
+before generating a new event log. Enter a number between 0 to 99. The default setting is 60. 
+
+##### 6.6 Security Settings
+
+This menu allows the user to configure the following security settings for the system.
+
+Administrator Password 
+Use this feature to set the administrator password which is required to enter the BIOS setup 
+utility. The length of the password should be from 3 characters to 20 characters long. 
+Password Check 
+Select Setup for the system to check for a password at Setup. Select Always for the system 
+to check for a password at system boot and upon entering the BIOS Setup utility. The options 
+are Setup and Always. 
+
+Secure Boot
+
+When you select this submenu and press the key, the following items will display:
+
+• System Mode 
+• Vendor Keys 
+
+• Sucre Boot
+
+Secure Boot 
+Select Enabled to use Secure Boot settings. The options are Disabled and Enabled. 
+Secure Boot Mode 
+Use this feature to select the desired secure boot mode for the system. The options are 
+Standard and Custom. 
+CSM Support 
+If this feature is set to Enabled, legacy devices will be supported by the system. The options 
+are Disabled and Enabled. 
+
+(If the Secure Boot Mode is selected to be Custom, the configuration become available. )
+
+Exit Deployed Mode Key Management
+
+Factory Key Provision The options are Disabled and Enabled.
+
+Restore Factory Keys 
+Select Yes to restore manufacturer default keys used to ensure system security. The 
+options are Yes and No. 
+
+Reset To Setup Mode Select Yes to reset the system to the Setup Mode. The options are Yes and No.
+
+Export Secure Boot Variables 
+This feature is used to copy the NVRAM content of Secure Boot variables to a storage 
+device. 
+
+Enroll Efi Image 
+Select this feature and press the key to specify an EFI (Extensible Firmware 
+Interface) image for the system to use when it operates in the Secure Boot mode. 
+Device Guard Ready 
+
+Remove 'UEFI CA' from DB Select Yes to remove UEFI CA from the database. The options are Yes and No.
+
+Restore DB defaults 
+Select Yes to restore database variables to the manufacturer default settings. The op 
+tions are Yes and No. 
+Secure Boot Variable/Size/Keys/Key Source 
+
+Platform Key (PK) This feature allows the user to enter and configure a set of values to be used as platform firmware keys for the system. The sizes, keys numbers, and key sources of the platform keys will be indicated as well. Select Update to update the platform key.
+
+Key Exchange Keys 
+This feature allows the user to enter and configure a set of values to be used as Key 
+Exchange-Keys for the system. The sizes, keys numbers, and key sources of the Key 
+Exchange-Keys will be indicated as well. Select Update to update your "Key Exchange 
+Keys". Select Append to append your "Key Exchange Keys". 
+Authorized Signatures 
+This feature allows the user to enter and configure a set of values to be used as Autho 
+rized Signatures for the system. These values also indicate the sizes, keys numbers, 
+and the sources of the authorized signatures. Select Update to update your "Authorized 
+Signatures". Select Append to append your "Authorized Signatures". The settings are 
+Update, and Append. 
+
+Forbidden Signatures This feature allows the user to enter and configure a set of values to be used as For bidden Signatures for the system. These values also indicate sizes, keys numbers, and key sources of the forbidden signatures. Select Update to update your "Forbidden
+
+Signatures". Select Append to append your "Forbidden Signatures". The settings are Update, and Append.
+
+Authorized TimeStamps 
+This feature allows the user to set and save the timestamps for the authorized signatures 
+which will indicate the time when these signatures are entered into the system. Select 
+Update to update your "Authorized TimeStamps". Select Append to append your "Au 
+thorized TimeStamps". The settings are Update, and Append. 
+
+Os Recovery Signatures This feature allows the user to set and save the authorized signatures used for OS recov ery. Select Update to update your "OS Recovery Signatures". Select Append to append your "OS Recovery Signatures". The settings are Update, and Append.
+
+##### 6.7 Boot Settings
+
+Use this feature to configure Boot Settings:
+
+Boot Mode Select 
+Use this feature to select the type of devices from which the system will boot. The options 
+are Legacy, UEFI (Unified Extensible Firmware Interface), and Dual. 
+FIXED BOOT ORDER Priorities 
+This feature prioritizes the order of a bootable device from which the system will boot. Press 
+the key on each item sequentially to select devices. 
+When the item above -"Boot Mode Select" is set to Dual (default), the following items will be 
+displayed for user's configuration: 
+Boot Option #1 - Boot Option #17 
+When the item above -"Boot Mode Select" is set to Legacy, the following items will be 
+displayed for configuration: 
+• Boot Option #1 - Boot Option #9 
+
+When the item above -"Boot Mode Select" is set to UEFI, the following items will be displayed for configuration:
+
+• Boot Option #1 - Boot Option #9 
+
+Delete Boot Option
+
+Use this feature to select a boot device to delete from the boot priority list. Delete Boot Option Use this feature to remove an EFI boot option from the boot priority list.
+
+Delete Driver Option
+
+Use this feature to select a boot device to delete from the boot priority list.
+
+UEFI Application Boot Priorities
+
+Use this feature to specify the boot device Priority sequence from available UEFI application.
+
+##### 6.8 Save & Exit
+
+Select the Save & Exit menu from the BIOS setup screen to configure the settings below.
+
+Save Options
+
+Discard Changes and Exit 
+Select this option to exit from the BIOS setup utility without making any permanent changes 
+to the system configuration and reboot the computer. 
+Save Changes and Reset 
+When you have completed the system configuration changes, select this option to leave the 
+BIOS setup utility and reboot the computer for the new system configuration parameters to 
+become effective. 
+Save Changes 
+When you have completed the system configuration changes, select this option to save all 
+changes made. This will not reset (reboot) the system. 
+
+Discard Changes 
+Select this option and press the key to discard all the changes you've made and 
+return to the AMI BIOS setup utility. 
+
+Default Options
+
+Restore Optimized Defaults 
+To set this feature, select Restore Defaults from the Exit menu and press the key 
+to load manufacturer default settings which are intended for maximum system performance 
+but not for maximum stability. 
+Save as User Defaults 
+To set this feature, select Save as User Defaults from the Exit menu and press the 
+key. This enables the user to save all changes to the BIOS setup for future use. 
+Restore User Defaults 
+To set this feature, select Restore User Defaults from the Exit menu and press the 
+key. Use this feature to retrieve user-defined default settings that were saved previously. 
+Boot Override 
+This feature allows the user to override the Boot priorities sequence in the Boot menu, and 
+immediately boot the system with a device specified by the user instead of the one specified 
+in the boot list. This is a one-time override. 
+UEFI: Built-in EFI Shell 
+Launch EFI Shell from filesystem device 
+Attempts to launch EFI Shell application (Shell.efi) from one of the available filesystem 
+devices. 
+
+#### Appendix A
+
+#### Standardized Warning Statements for AC Systems
+
+##### About Standardized Warning Statements
+
+The following statements are industry standard warnings, provided to warn the user of 
+situations which have the potential for bodily injury. Should you have questions or experience 
+difficulty, contact Supermicro's Technical Support department for assistance. Only certified 
+technicians should attempt to install or configure components. 
+Read this appendix in its entirety before installing or configuring components in the Supermicro 
+chassis. 
+These warnings may also be found on our website at http://www.supermicro.com/about/ 
+policies/safety_information.cfm. 
+
+Warning Definition
+
+警告の定義 
+この警告サインは危険を意味します。 
+人身事故につながる可能性がありますので、いずれの機器でも動作させる前に、 
+電気回路に含まれる危険性に注意して、標準的な事故防止策に精通して下さい。 
+此警告符号代表危险。 
+您正处于可能受到严重伤害的工作环境中。在您使用设备开始工作之前，必须充分意识到触电 
+的危险，并熟练掌握防止事故发生的标准工作程序。请根据每项警告结尾的声明号码找到此设 
+备的安全性警告说明的翻译文本。 
+此警告符號代表危險。 
+您正處於可能身體可能會受損傷的工作環境中。在您使用任何設備之前，請注意觸電的危險， 
+並且要熟悉預防事故發生的標準工作程序。請依照每一注意事項後的號碼找到相關的翻譯說明 
+內容。 
+
+Warning! This warning symbol means danger. You are in a situation that could cause bodily injury. Before you work on any equipment, be aware of the hazards involved with electrical circuitry and be familiar with standard practices for preventing accidents.
+
+Warnung 
+WICHTIGE SICHERHEITSHINWEISE 
+Dieses Warnsymbol bedeutet Gefahr. Sie befinden sich in einer Situation, die zu Verletzungen 
+führen kann. Machen Sie sich vor der Arbeit mit Geräten mit den Gefahren elektrischer 
+Schaltungen und den üblichen Verfahren zur Vorbeugung vor Unfällen vertraut. Suchen 
+Sie mit der am Ende jeder Warnung angegebenen Anweisungsnummer nach der jeweiligen 
+Übersetzung in den übersetzten Sicherheitshinweisen, die zusammen mit diesem Gerät 
+ausgeliefert wurden. 
+BEWAHREN SIE DIESE HINWEISE GUT AUF. 
+INSTRUCCIONES IMPORTANTES DE SEGURIDAD 
+Este símbolo de aviso indica peligro. Existe riesgo para su integridad física. Antes de 
+manipular cualquier equipo, considere los riesgos de la corriente eléctrica y familiarícese 
+con los procedimientos estándar de prevención de accidentes. Al final de cada advertencia 
+encontrará el número que le ayudará a encontrar el texto traducido en el apartado de 
+traducciones que acompaña a este dispositivo. 
+GUARDE ESTAS INSTRUCCIONES. 
+IMPORTANTES INFORMATIONS DE SÉCURITÉ 
+Ce symbole d'avertissement indique un danger. Vous vous trouvez dans une situation pouvant 
+entraîner des blessures ou des dommages corporels. Avant de travailler sur un équipement, 
+soyez conscient des dangers liés aux circuits électriques et familiarisez-vous avec les 
+procédures couramment utilisées pour éviter les accidents. Pour prendre connaissance 
+des traductions des avertissements figurant dans les consignes de sécurité traduites qui 
+accompagnent cet appareil, référez-vous au numéro de l'instruction situé à la fin de chaque 
+avertissement. 
+CONSERVEZ CES INFORMATIONS. 
+
+תקנון הצהרות אזהרה הצהרות הבאות הן אזהרות על פי תקני התעשייה, על מנת להזהיר את המשתמש מפני חבלה פיזית אפשרית. במידה ויש שאלות או היתקלות בבעיה כלשהי, יש ליצור קשר עם מחלקת תמיכה טכנית של סופרמיקרו. טכנאים מוסמכים בלבד רשאים להתקין או להגדיר את הרכיבים. יש לקרוא את הנספח במלואו לפני התקנת או הגדרת הרכיבים במארזי סופרמיקרו.
+
+안전을 위한 주의사항 
+경고! 
+이 경고 기호는 위험이 있음을 알려 줍니다. 작업자의 신체에 부상을 야기 할 수 있는 
+상태에 있게 됩니다. 모든 장비에 대한 작업을 수행하기 전에 전기회로와 관련된 
+위험요소들을 확인하시고 사전에 사고를 방지할 수 있도록 표준 작업절차를 준수해 주시기 
+바랍니다. 
+해당 번역문을 찾기 위해 각 경고의 마지막 부분에 제공된 경고문 번호를 참조하십시오 
+BELANGRIJKE VEILIGHEIDSINSTRUCTIES 
+Dit waarschuwings symbool betekent gevaar. U verkeert in een situatie die lichamelijk letsel 
+kan veroorzaken. Voordat u aan enige apparatuur gaat werken, dient u zich bewust te zijn 
+van de bij een elektrische installatie betrokken risico's en dient u op de hoogte te zijn van de 
+standaard procedures om ongelukken te voorkomen. Gebruik de nummers aan het eind van 
+elke waarschuwing om deze te herleiden naar de desbetreffende locatie. 
+BEWAAR DEZE INSTRUCTIES 
+
+Installation Instructions
+
+Warning! Read the installation instructions before connecting the system to the power source.
+
+設置手順書 システムを電源に接続する前に、設置手順書をお読み下さい。
+
+警告 将此系统连接电源前,请先阅读安装说明。
+
+警告 將系統與電源連接前，請先閱讀安裝說明。
+
+##### ً ا ك ٌ ف حالة و ٌ يك أى تتسبب ف اصابة جسذ ةٌ هذا الزهز ع ٌ خطز !تحذ ز .
+
+قبل أى تعول عىل أي هعذات،يك عىل علن بالوخاطز ال اٌجوة عي الذوائز ٍ الكهزبائ ة ٍ ويك عىل درا ةٌ بالووارسات الىقائ ة ٌ لو ع وقىع أي حىادث استخذم رقن الب اٍ ٌ ى الو ص ً ىص ف ه ٌ ا ةٌ كل تحذ ز للعثىر تزجوتها
+
+Warnung Vor dem Anschließen des Systems an die Stromquelle die Installationsanweisungen lesen.
+
+¡Advertencia! Lea las instrucciones de instalación antes de conectar el sistema a la red de alimentación.
+
+Attention Avant de brancher le système sur la source d'alimentation, consulter les directives d'installation.
+
+Circuit Breaker
+
+시스템을 전원에 연결하기 전에 설치 안내를 읽어주십시오.
+
+Waarschuwing Raadpleeg de installatie-instructies voordat u het systeem op de voedingsbron aansluit.
+
+サーキット・ブレーカー この製品は、短絡（過電流）保護装置がある建物での設置を前提としています。 保護装置の定格が250 V、20 Aを超えないことを確認下さい。
+
+警告 
+此产品的短路(过载电流)保护由建筑物的供电系统提供,确保短路保护设备的额定电流不大于 
+250V,20A。 
+警告 
+此產品的短路(過載電流)保護由建築物的供電系統提供,確保短路保護設備的額定電流不大於 
+250V,20A。 
+
+Warning! This product relies on the building's installation for short-circuit (overcurrent) protection. Ensure that the protective device is rated not greater than: 250 V, 20 A.
+
+יש לקרוא את הוראות התקנה לפני חיבור המערכת למקור מתח.
+
+##### اقر إرشادات الرتكيب قبل توصيل النظام إىل مصدر للطاقة
+
+Warnung 
+Dieses Produkt ist darauf angewiesen, dass im Gebäude ein Kurzschluss- bzw. 
+Überstromschutz installiert ist. Stellen Sie sicher, dass der Nennwert der Schutzvorrichtung 
+nicht mehr als: 250 V, 20 A beträgt. 
+
+¡Advertencia! Este equipo utiliza el sistema de protección contra cortocircuitos (o sobrecorrientes) del edificio. Asegúrese de que el dispositivo de protección no sea superior a: 250 V, 20 A.
+
+Attention 
+Pour ce qui est de la protection contre les courts-circuits (surtension), ce produit dépend de 
+l'installation électrique du local. Vérifiez que le courant nominal du dispositif de protection 
+n'est pas supérieur à :250 V, 20 A. 
+
+경고! 이 제품은 전원의 단락(과전류)방지에 대해서 전적으로 건물의 관련 설비에 의존합니다. 보호장치의 정격이 반드시 250V(볼트), 20A(암페어)를 초과하지 않도록 해야 합니다.
+
+Waarschuwing Dit product is afhankelijk van de kortsluitbeveiliging (overspanning) van uw electrische installatie. Controleer of het beveiligde aparaat niet groter gedimensioneerd is dan 250V, 20A.
+
+מוצר זה מסתמך על הגנה המותקנת במבנים למניעת קצר חשמלי. יש לוודא כי המכשיר המגן מפני הקצר החשמלי הוא לא יותר מ-A20 ,VDC250 هذا املنتج يعتمد عىل معداث الحاميت مه الدوائرالقصرية التي تم تثبيتها يف املبنى تأكد من أن تقييم الجهاز الوقايئ ليس أكرث من : V250 ,A20
+
+Power Disconnection Warning
+
+電源切断の警告 
+システムコンポーネントの取り付けまたは取り外しのために、シャーシー内部にアクセスするには、 
+システムの電源はすべてのソースから切断され、電源コードは電源モジュールから取り外す必要が 
+あります。 
+
+警告 在你打开机箱并安装或移除内部器件前,必须将系统完全断电,并移除电源线。
+
+警告 
+在您打開機殼安裝或移除內部元件前，必須將系統完全斷電，並移除電源線。 
+Warnung 
+Das System muss von allen Quellen der Energie und vom Netzanschlusskabel getrennt sein, 
+das von den Spg.Versorgungsteilmodulen entfernt wird, bevor es auf den Chassisinnenraum 
+zurückgreift, um Systemsbestandteile anzubringen oder zu entfernen. 
+¡Advertencia! 
+El sistema debe ser disconnected de todas las fuentes de energía y del cable eléctrico quitado 
+de los módulos de fuente de alimentación antes de tener acceso el interior del chasis para 
+instalar o para quitar componentes de sistema. 
+Attention 
+Le système doit être débranché de toutes les sources de puissance ainsi que de son cordon 
+d'alimentation secteur avant d'accéder à l'intérieur du chassis pour installer ou enlever des 
+composants de systéme. 
+
+Warning! The system must be disconnected from all sources of power and the power cord removed from the power supply module(s) before accessing the chassis interior to install or remove system components (except for hot-swap components).
+
+경고! 시스템에 부품들을 장착하거나 제거하기 위해서는 섀시 내부에 접근하기 전에 반드시 전원 공급장치로부터 연결되어있는 모든 전원과 전기코드를 분리해주어야 합니다.
+
+Waarschuwing 
+Voordat u toegang neemt tot het binnenwerk van de behuizing voor het installeren of 
+verwijderen van systeem onderdelen, dient u alle spanningsbronnen en alle stroomkabels 
+aangesloten op de voeding(en) van de behuizing te verwijderen 
+
+Equipment Installation
+
+Warning! Only authorized personnel and qualified service persons should be allowed to install, replace, or service this equipment.
+
+機器の設置 
+トレーニングを受け認定された人だけがこの装置の設置、交換、またはサービスを許可されていま 
+す。 
+
+警告 只有经过培训且具有资格的人员才能进行此设备的安装、更换和维修。
+
+警告 
+只有經過受訓且具資格人員才可安裝、更換與維修此設備。 
+Warnung 
+Nur autorisiertes Personal und qualifizierte Servicetechniker dürfen dieses Gerät installieren, 
+austauschen oder warten.. 
+¡Advertencia! 
+Sólo el personal autorizado y el personal de servicio calificado deben poder instalar, 
+reemplazar o dar servicio a este equipo. 
+
+##### يجب فصم اننظاو من جميع مصادر انطاقت وإزانت سهك انكهرباء من وحدة امداد انطاقت قبم انىصىل إىن امنناطق انداخهيت نههيكم نتثبيج أو إزانت مكىناث الجهاز
+
+אזהרה מפני ניתוק חשמלי !אזהרה יש לנתק את המערכת מכל מקורות החשמל ויש להסיר את כבל החשמלי מהספק .לפני גישה לחלק הפנימי של המארז לצורך התקנת או הסרת רכיבים
+
+アクセス制限区域 
+このユニットは、アクセス制限区域に設置されることを想定しています。 
+アクセス制限区域は、特別なツール、鍵と錠前、その他のセキュリティの手段を用いてのみ出入り 
+が可能です。 
+
+Restricted Area
+
+경고! 
+승인된 직원과 자격을 갖춘 서비스 담당자만이 이 장비를 설치, 교체 또는 서비스할 수 
+있습니다. 
+Waarschuwing 
+Alleen geautoriseerd personeel en gekwalificeerd onderhoudspersoneel mag deze apparatuur 
+installeren, vervangen of onderhouden.. 
+警告 
+此部件应安装在限制进出的场所，限制进出的场所指只能通过使用特殊工具、锁和钥匙或其它 
+安全手段进出的场所。 
+警告 
+此裝置僅限安裝於進出管制區域，進出管制區域係指僅能以特殊工具、鎖頭及鑰匙或其他安全 
+方式才能進入的區域。 
+Attention 
+Seul le personnel autorisé et le personnel de maintenance qualifié doivent être autorisés à 
+installer, remplacer ou entretenir cet équipement.. 
+
+Warning! This unit is intended for installation in restricted access areas. A restricted access area can be accessed only through the use of a special tool, lock and key, or other means of security. (This warning does not apply to workstations).
+
+אזהרה!
+
+##### .יש לאפשר רק צוות מורשה ואנשי שירות מוסמכים להתקין, להחליף או לטפל בציוד זה .ينبغي السامح فقط للموظفني املعتمدين وأفراد الخدمة املؤهلني برتكيب هذا الجهاز أو استبداله أو صيانته
+
+Warnung 
+Diese Einheit ist zur Installation in Bereichen mit beschränktem Zutritt vorgesehen. Der Zutritt 
+zu derartigen Bereichen ist nur mit einem Spezialwerkzeug, Schloss und Schlüssel oder einer 
+sonstigen Sicherheitsvorkehrung möglich. 
+¡Advertencia! 
+Esta unidad ha sido diseñada para instalación en áreas de acceso restringido. Sólo puede 
+obtenerse acceso a una de estas áreas mediante la utilización de una herramienta especial, 
+cerradura con llave u otro medio de seguridad. 
+Attention 
+Cet appareil doit être installée dans des zones d'accès réservés. L'accès à une zone d'accès 
+réservé n'est possible qu'en utilisant un outil spécial, un mécanisme de verrouillage et une 
+clé, ou tout autre moyen de sécurité. 
+
+경고! 이 장치는 접근이 제한된 구역에 설치하도록 되어있습니다. 특수도구, 잠금 장치 및 키, 또는 기타 보안 수단을 통해서만 접근 제한 구역에 들어갈 수 있습니다.
+
+Waarschuwing 
+Dit apparaat is bedoeld voor installatie in gebieden met een beperkte toegang. Toegang tot 
+dergelijke gebieden kunnen alleen verkregen worden door gebruik te maken van speciaal 
+gereedschap, slot en sleutel of andere veiligheidsmaatregelen. 
+
+אזור עם גישה מוגבלת אזהרה! יש להתקין את היחידה באזורים שיש בהם הגבלת גישה. הגישה ניתנת בעזרת 'כלי אבטחה בלבד (מפתח, מנעול וכד.)
+
+ُها ف مناطق محظورة تم . تخصيص هذه انىحذة نترك ب َ،مكن انىصىل إن منطقت محظورة فقط من خالل استخذاو أداة خاصت ُ أو أ وس هت أخري نالألمما قفم ومفتاح
+
+Battery Handling
+
+WARNUNG Es besteht Explosionsgefahr, wenn die Batterie durch einen falschen Typ ersetzt wird. Ersetzen Sie die Batterie nur durch den gleichen oder vom Hersteller empfohlenen Batterietyp. Entsorgen Sie die benutzten Batterien nach den Anweisungen des Herstellers.
+
+ATTENTION 
+Il existe un risque d'explosion si la batterie est remplacée par un type incorrect. Ne la 
+remplacer que par une pile de type semblable ou équivalent, recommandée par le fabricant. 
+Jeter les piles usagées conformément aux instructions du fabricant. 
+
+ADVERTENCIA Existe riesgo de explosión si la batería se reemplaza por un tipo incorrecto. Reemplazar la batería exclusivamente con el mismo tipo o el equivalente recomendado por el fabricante. Desechar las baterías gastadas según las instrucciones del fabricante.
+
+電池の取り扱い 
+バッテリーを間違ったタイプに交換すると爆発の危険があります。 交換する電池はメーカーが推 
+奨する型、または同等のものを使用下さい。 使用済電池は製造元の指示に従って処分して下さ 
+い。 
+警告 
+如果更换的电池类型不正确，则存在爆炸危险。请只使用同类电池或制造商推荐的功能相当的 
+电池更换原有电池。请按制造商的说明处理废旧电池。 
+警告 
+如果更換的電池類型不正確，則有爆炸危險。請使用製造商建議之相同或功能相當的電池更換 
+原有電池。請按照製造商的說明指示處理廢棄舊電池。 
+
+CAUTION: There is risk of explosion if the battery is replaced by an incorrect type. Replace the battery only with the same or equivalent type recommended by the manu facturer. Dispose of used batteries according to the manufacturer's instructions
+
+אזהרה! קיימת סכנת פיצוץ אם הסוללה תוחלף בסוג שגוי. יש להחליף את הסוללה בסוג התואם מחברת יצרן מומלצת. סילוק הסוללות המשומשות יש לבצע לפי הוראות היצרן.
+
+경고! 
+배터리를 잘못된 종류로 교체하면 폭발의 위험이 있습니다. 기존 배터리와 동일하거나 제조 
+사에서 권장하는 동등한 종류의 배터리로만 교체해야 합니다. 제조사의 안내에 따라 사용된 
+배터리를 처리하여 주십시오. 
+
+WAARSCHUWING Er bestaat explosiegevaar als de batterij wordt vervangen door een verkeerd type. Vervang de batterij slechts met hetzelfde of een equivalent type die door de fabrikant aanbevolen wordt. Gebruikte batterijen dienen overeenkomstig fabrieksvoorschriften afgevoerd te worden.
+
+Redundant Power Supplies
+
+Warning! This unit might have more than one power supply connection. All connec tions must be removed to de-energize the unit.
+
+冗長電源装置 このユニットは複数の電源装置が接続されている場合があります。 ユニットの電源を切るためには、すべての接続を取り外さなければなりません。
+
+警告 此部件连接的电源可能不止一个，必须将所有电源断开才能停止给该部件供电。
+
+警告 此裝置連接的電源可能不只一個，必須切斷所有電源才能停止對該裝置的供電。
+
+Warnung Dieses Gerät kann mehr als eine Stromzufuhr haben. Um sicherzustellen, dass der Einheit kein trom zugeführt wird, müssen alle Verbindungen entfernt werden.
+
+##### .هناك خطر االنفجار إذا تم استبدال البطارية بنوع غري صحيح اسحبذال البطارية فقط بنفس النىع أو ما يعادلها مام أوصث به الرشمة املصنعة جخلص من البطاريات املسحعملة وفقا لحعليامت الرشمة الصانعة
+
+경고! 
+이 장치에는 한 개 이상의 전원 공급 단자가 연결되어 있을 수 있습니다. 이 장치에 전원을 
+차단하기 위해서는 모든 연결 단자를 제거해야만 합니다. 
+Waarschuwing 
+Deze eenheid kan meer dan één stroomtoevoeraansluiting bevatten. Alle aansluitingen dienen 
+verwijderd te worden om het apparaat stroomloos te maken. 
+
+¡Advertencia! Puede que esta unidad tenga más de una conexión para fuentes de alimentación. Para cortar por completo el suministro de energía, deben desconectarse todas las conexiones.
+
+Attention Cette unité peut avoir plus d'une connexion d'alimentation. Pour supprimer toute tension et tout courant électrique de l'unité, toutes les connexions d'alimentation doivent être débranchées.
+
+אם קיים יותר מספק אחד אזהרה! ליחדה יש יותר מחיבור אחד של ספק. יש להסיר את כל החיבורים על מנת לרוקן את היחידה.
+
+قد يكون لهذا الجهاز عدة اتصاالت بوحدات امداد الطاقة . يجب إزالة كافة االتصاالت لعسل الوحدة عن الكهرباء
+
+Backplane Voltage
+
+バックプレーンの電圧 
+システムの稼働中は危険な電圧または電力が、バックプレーン上にかかっています。 
+修理する際には注意ください。 
+
+警告 当系统正在进行时，背板上有很危险的电压或能量，进行维修时务必小心。
+
+警告 當系統正在進行時，背板上有危險的電壓或能量，進行維修時務必小心。
+
+Warnung 
+Wenn das System in Betrieb ist, treten auf der Rückwandplatine gefährliche Spannungen 
+oder Energien auf. Vorsicht bei der Wartung. 
+¡Advertencia! 
+Cuando el sistema está en funcionamiento, el voltaje del plano trasero es peligroso. Tenga 
+cuidado cuando lo revise. 
+Attention 
+Lorsque le système est en fonctionnement, des tensions électriques circulent sur le fond de 
+panier. Prendre des précautions lors de la maintenance. 
+
+Warning! Hazardous voltage or energy is present on the backplane when the system is operating. Use caution when servicing.
+
+מתח בפנל האחורי אזהרה! קיימת סכנת מתח בפנל האחורי בזמן תפעול המערכת. יש להיזהר במהלך העבודה.
+
+Comply with Local and National Electrical Codes 地方および国の電気規格に準拠 機器の取り付けはその地方および国の電気規格に準拠する必要があります。
+
+Warnung Die Installation der Geräte muss den Sicherheitsstandards entsprechen.
+
+¡Advertencia! La instalacion del equipo debe cumplir con las normas de electricidad locales y nacionales.
+
+경고! 
+시스템이 동작 중일 때 후면판 (Backplane)에는 위험한 전압이나 에너지가 발생 합니다. 
+서비스 작업 시 주의하십시오. 
+Waarschuwing 
+Een gevaarlijke spanning of energie is aanwezig op de backplane wanneer het systeem in 
+gebruik is. Voorzichtigheid is geboden tijdens het onderhoud. 
+
+Attention L'équipement doit être installé conformément aux normes électriques nationales et locales.
+
+警告 
+设备安装必须符合本地与本国电气法规。 
+警告 
+設備安裝必須符合本地與本國電氣法規。 
+
+Warning! Installation of the equipment must comply with local and national electrical codes.
+
+##### هناك خطز مه التيار الكهزبايئ أوالطاقة املىجىدة عىل اللىحة عندما يكىن النظام يعمل كه حذرا عند خدمة هذا الجهاس
+
+Product Disposal
+
+경고! 현 지역 및 국가의 전기 규정에 따라 장비를 설치해야 합니다.
+
+Waarschuwing 
+Bij installatie van de apparatuur moet worden voldaan aan de lokale en nationale 
+elektriciteitsvoorschriften. 
+
+製品の廃棄 この製品を廃棄処分する場合、国の関係する全ての法律・条例に従い処理する必要があります。
+
+警告 本产品的废弃处理应根据所有国家的法律和规章进行。
+
+警告 本產品的廢棄處理應根據所有國家的法律和規章進行。
+
+Warnung 
+Die Entsorgung dieses Produkts sollte gemäß allen Bestimmungen und Gesetzen des Landes 
+erfolgen. 
+
+Warning! Ultimate disposal of this product should be handled according to all national laws and regulations.
+
+¡Advertencia! 
+Al deshacerse por completo de este producto debe seguir todas las leyes y reglamentos 
+nacionales. 
+
+תיאום חוקי החשמל הארצי אזהרה! התקנת הציוד חייבת להיות תואמת לחוקי החשמל המקומיים והארציים.
+
+##### تركيب املعدات الكهربائية يجب أن ميتثل للقىاويه املحلية والىطىية املتعلقة بالكهرباء
+
+Waarschuwing 
+De uiteindelijke verwijdering van dit product dient te geschieden in overeenstemming met alle 
+nationale wetten en reglementen. 
+
+경고! 이 제품은 해당 국가의 관련 법규 및 규정에 따라 폐기되어야 합니다.
+
+Attention La mise au rebut ou le recyclage de ce produit sont généralement soumis à des lois et/ou directives de respect de l'environnement. Renseignez-vous auprès de l'organisme compétent.
+
+Fan Warning
+
+Warning! Hazardous moving parts. Keep away from moving fan blades. The fans might still be turning when you remove the fan assembly from the chassis. Keep fingers, screwdrivers, and other objects away from the openings in the fan assembly's housing.
+
+WARNING ファンの警告
+
+警告！回転部品に注意。運転中は回転部(羽根)に触れないでください。 シャーシから冷却ファン装 置を取り外した際、ファンがまだ回転している可能性があります。 ファンの開口部に、指、ドライバ ー、およびその他のものを近づけないで下さい。
+
+警告! 警告！危险的可移动性零件。请务必与转动的风扇叶片保持距离。 当您从机架移除风扇装置， 风扇可能仍在转动。小心不要将手指、螺丝起子和其他物品太靠近风扇
+
+警告 
+危險的可移動性零件。請務必與轉動的風扇葉片保持距離。 當您從機架移除風扇裝置，風扇可 
+能仍在轉動。小心不要將手指、螺絲起子和其他物品太靠近風扇。 
+
+סילוק המוצר אזהרה! סילוק סופי של מוצר זה חייב להיות בהתאם להנחיות וחוקי המדינה.
+
+##### التخلص النهايئ من هذا املنتج ينبغي التعامل معه وفقا لجميع القىانني واللىائح الىطنية عند
+
+Warnung 
+Gefährlich Bewegende Teile. Von den bewegenden Lüfterblätter fern halten. Die Lüfter drehen 
+sich u. U. noch, wenn die Lüfterbaugruppe aus dem Chassis genommen wird. Halten Sie 
+Finger, Schraubendreher und andere Gegenstände von den Öffnungen des Lüftergehäuses 
+entfernt. 
+
+¡Advertencia! Riesgo de piezas móviles. Mantener alejado de las aspas del ventilador. Los ventiladores podran dar vuelta cuando usted quite ell montaje del ventilador del chasis. Mandtenga los dedos, los destornilladores y todos los objetos lejos de las aberturas del ventilador
+
+Attention 
+Pieces mobiles dangereuses. Se tenir a l’ecart des lames du ventilateur Il est possible que les 
+ventilateurs soient toujours en rotation lorsque vous retirerez le bloc ventilateur du châssis. 
+Prenez garde à ce que doigts, tournevis et autres objets soient éloignés du logement du 
+bloc ventilateur. 
+
+경고!
+
+움직이는 위험한 부품. 회전하는 송풍 날개에 접근하지 마세요. 섀시로부터 팬 조립품을 제거할 때 팬은 여전히 회전하고 있을 수 있습니다. 팬 조림품 외관의 열려있는 부분들로부터 손가락 및 스크류드라이버, 다른 물체들이 가까이 하지 않도록 배치해 주십시오.
+
+Waarschuwing 
+Gevaarlijk bewegende onderdelen. Houd voldoende afstand tot de bewegende ventilatorbladen. 
+Het is mogelijk dat de ventilator nog draait tijdens het verwijderen van het ventilatorsamenstel 
+uit het chassis. Houd uw vingers, schroevendraaiers en eventuele andere voorwerpen uit de 
+buurt van de openingen in de ventilatorbehuizing. 
+אזהרה! 
+חלקים נעים מסוכנים. התרחק מלהבי המאוורר בפעולהכאשר מסירים את חלקי 
+המאוורר מהמארז, יתכן והמאווררים עדיין עובדים. יש להרחיק למרחק בטוח את 
+האצבעות וכלי עבודה שונים מהפתחים בתוך המאוורר 
+
+تحذیر! أجزاء متحركة خطرة. ابتعد عن شفرات املروحة املتحركة.من املمكن أن املراوح ال تزال تدورعند إزالة كتلة املروحة من الھیكل یجب إبقاء األصابع .ومفكات الرباغي وغیرھا من األشیاء بعیدا عن الفتحات يف كتلة املروحة
+
+Power Cable and AC Adapter
+
+Warnung 
+Nutzen Sie beim Installieren des Produkts ausschließlich die von uns zur Verfügung gestellten 
+Verbindungskabeln, Stromkabeln und/oder Adapater, die Ihre örtlichen Sicherheitsstandards 
+einhalten. Der Gebrauch von anderen Kabeln und Adapter können Fehlfunktionen oder 
+Feuer verursachen. Die Richtlinien untersagen das Nutzen von UL oder CAS zertifizierten 
+Kabeln (mit UL/CSA gekennzeichnet), an Geräten oder Produkten die nicht mit Supermicro 
+gekennzeichnet sind. 
+電源コードとACアダプター 
+製品を設置する場合、提供または指定および購入された接続ケーブル、電源コードとACアダプター 
+を 該当する地域の条例や安全基準に適合するコードサイズやプラグと共に使用下さい。 他のケー 
+ブルやアダプタを使用すると故障や火災の原因になることがあります。 
+電気用品安全法は、ULまたはCSA認定のケーブル(UL/CSAマークがコードに表記)を Supermicro 
+が指定する製品以外に使用することを禁止しています。 
+警告 
+安装此产品时,请使用本身提供的或指定的或采购的连接线,电源线和电源适配器，包含遵照当 
+地法规和安全要求的合规的电源线尺寸和插头.使用其它线材或适配器可能会引起故障或火灾。 
+除了Supermicro所指定的产品,电气用品和材料安全法律规定禁止 
+使用未经UL或CSA认证的线材。(线材上会显示UL/CSA符号)。 
+警告 
+安裝此產品時,請使用本身提供的或指定的或採購的連接線,電源線和電源適配器，包含遵照當 
+地法規和安全要求的合規的電源線尺寸和插頭.使用其它線材或適配器可能會引起故障或火災。 
+除了Supermicro所指定的產品,電氣用品和材料安全法律規定禁止 
+使用未經UL或CSA認證的線材。 (線材上會顯示UL/CSA符號)。 
+
+Warning! When installing the product, use the provided or designated connection cables, power cables and AC adaptors. Using any other cables and adaptors could cause a malfunction or a fire. Electrical Appliance and Material Safety Law prohibits the use of UL or CSA -certified cables (that have UL/CSA shown on the cord) for any other electrical devices than products designated by Supermicro only.
+
+Attention 
+Lors de l'installation du produit, utilisez les cables de connection fournis ou désigné ou 
+achetez des cables, cables de puissance et adaptateurs respectant les normes locales et 
+les conditions de securite y compris les tailles de cables et les prises electriques appropries. 
+L'utilisation d'autres cables et adaptateurs peut provoquer un dysfonctionnement ou un 
+incendie. Appareils électroménagers et la Loi sur la Sécurité Matériel interdit l'utilisation de 
+câbles certifies- UL ou CSA (qui ont UL ou CSA indiqué sur le code) pour tous les autres 
+appareils électriques sauf les produits désignés par Supermicro seulement. 
+AC ימאתמו םיילמשח םילבכ 
+!הרהזא 
+ךרוצל ומאתוה וא ושכרנ רשא AC םימאתמו םיקפס ,םילבכב שמתשהל שי ,רצומה תא םיניקתמ רשאכ 
+לכב שומיש . עקתהו לבכה לש הנוכנ הדימ ללוכ ,תוימוקמה תוחיטבה תושירדל ומאתוה רשאו ,הנקתהה 
+למשחה ירישכמב שומישה יקוחל םאתהב .ילמשח רצק וא הלקתל םורגל לולע ,רחא גוסמ םאתמ וא לבכ 
+לש דוק םהילע עיפומ רשאכ) CSA-ב וא UL -ב םיכמסומה םילבכב שמתשהל רוסיא םייק ,תוחיטבה יקוחו 
+.דבלב Supermicro י"ע םאתוה רשא רצומב קר אלא ,רחא ילמשח רצומ לכ רובע CSA/UL( 
+
+تالباكلا ءارشب مق وأ ةددحملا وأ ةرفوتملا تاليصوتلا مادختساب مق ،جتنملا بيكرت دنع كلذ يف امب ةيلحملا ةمالسلا تابلطتمو نيناوقب مازتلالا عم ددرتملا رايتلا تالوحمو ةيئابرهكلا .قيرح وأ لطع يف ببستي دق ىرخأ تالوحمو تالباك يأ مادختسا .ميلسلا سباقلاو لصوملا مجح CSA وأ UL لبق نم ةدمتعملا تالباكلا مادختسا تادعملاو ةيئابرهكلا ةزهجألل ةمالسلا نوناق رظحي .Supermicro لبق نم ةددحملاو ةينعملا تاجتنملا ريغ ىرخأ تادعم يأ عم (CSA/UL (ةمالع لمحت يتلاو
+
+¡Advertencia! 
+Cuando instale el producto, utilice la conexión provista o designada o procure cables, Cables 
+de alimentación y adaptadores de CA que cumplan con los códigos locales y los requisitos 
+de seguridad, incluyendo el tamaño adecuado del cable y el enchufe. El uso de otros cables 
+y adaptadores podría causar un mal funcionamiento o un incendio. La Ley de Seguridad de 
+Aparatos Eléctricos y de Materiales prohíbe El uso de cables certificados por UL o CSA (que 
+tienen el certificado UL / CSA en el código) para cualquier otros dispositivos eléctricos que 
+los productos designados únicamente por Supermicro. 
+
+전원 케이블 및 AC 어댑터 
+경고! 제품을 설치할 때 현지 코드 및 적절한 굵기의 코드와 플러그를 포함한 안전 요구 
+사항을 준수하여 제공되거나 지정된 연결 혹은 구매 케이블, 전원 케이블 및 AC 어댑터를 
+사용하십시오. 
+다른 케이블이나 어댑터를 사용하면 오작동이나 화재가 발생할 수 있습니다. 전기 용품 
+안전법은 UL 또는 CSA 인증 케이블 (코드에 UL / CSA가 표시된 케이블)을 Supermicro 
+가 지정한 제품 이외의 전기 장치에 사용하는 것을 금지합니다. 
+Stroomkabel en AC-Adapter 
+Waarschuwing! Bij het aansluiten van het Product uitsluitend gebruik maken van de geleverde 
+Kabels of een andere geschikte aan te schaffen Aansluitmethode, deze moet altijd voldoen 
+aan de lokale voorschriften en veiligheidsnormen, inclusief de juiste kabeldikte en stekker. 
+Het gebruik van niet geschikte Kabels en/of Adapters kan een storing of brand veroorzaken. 
+Wetgeving voor Elektrische apparatuur en Materiaalveiligheid verbied het gebruik van UL of 
+CSA -gecertificeerde Kabels (met UL/CSA in de code) voor elke andere toepassing dan de 
+door Supermicro hiervoor beoogde Producten. 
+
+#### Appendix B
+
+#### System Specifications
+
+Processors
+
+Dual AMD EPYC 7002/7003 processor in SP3 sockets (Note: AMD EPYC 7003 series processor support requires BIOS version 2.0 or newer.)
+
+BIOS
+
+256 Mb SPI AMI BIOS® SM Flash UEFI BIOS
+
+Memory
+
+Up to 8 TB 3DS ECC DDR4-3200 SDRAM memory in 32 slots
+
+Storage Drives
+
+Ten front hot-swap NVMe 2.5" drive bays
+
+PCI Expansion Slots
+
+Eight PCIe 4.0 x16 LP (via PLX switch for IB) or Eight PCIe 4.0 x16 LP (via PLX switch for IB) + Two PCIe 4.0 x16 LP from CPUs on the extra 1U add-on module or Eight PCIe 4.0 x16 LP (via PLX switch for IB) + Two AIOM from CPUs on the extra 1U add-on module
+
+Input/Output
+
+One VGA header One COM header Two USB 3.0 ports One dedicated BMC LAN
+
+Motherboard
+
+H12DGQ-NT6 (LxW) 14.29 x 17.32 in (362.96 x 439.92 mm)
+
+Chassis
+
+CSE-458GTS-R000NDP (WxHxD) 17.6 x 6.9 x 35.4 in (446 x 174 x 900 mm)
+
+Weight
+
+Net weight: 166.0 lbs (75.3 kg) Gross weight: 225.0 lbs (102.1 kg)
+
+System Cooling
+
+Five internal counter-rotating fans, two CPU heatsinks, one CPU air shroud, three GPU air shrouds
+
+Security
+
+Trusted Platform Module (TPM) support
+
+Power Supply
+
+PWS-3K02G-2R; 80Plus Titanium level Total Output Power: 2880W with 200 - 207Vac input 3000W with 207.1 - 240Vac input 3000W with 240Vdc inputInput: 200-207 Vac / 16 - 15.7A / 50-60 Hz 207.1-240 Vac / 16 - 14.5A / 50-60 Hz
+
+Operating Environment
+
+Operating Temperature: 10º to 35º C (50º to 95º F) Non-operating Temperature: -40º to 60º C (-40º to 140º F) Operating Relative Humidity: 8% to 90% (non-condensing) Non-operating Relative Humidity: 5% to 95% (non-condensing)
+
+Appendix B: System Specifications
+
+Regulatory Compliance
+
+FCC, ICES, CE, VCCI, RCM, UKCA, NRTL, CB
+
+Applied Directives, Standards
+
+EMC/EMI: 2014/30/EU (EMC Directive) 
+Electromagnetic Compatibility Regulations 2016 
+FCC Part 15 Subpart B 
+ICES-003 
+VCCI-CISPR 32 
+AS/NZS CISPR 32 
+BS/EN55032 
+BS/EN55035 
+BS/EN 61000-3-2 
+BS/EN 61000-3-3 
+BS/EN 61000-4-2 
+BS/EN 61000-4-3 
+BS/EN 61000-4-4 
+BS/EN 61000-4-5 
+BS/EN 61000-4-6 
+BS/EN 61000-4-8 
+BS/EN 61000-4-11 
+
+| BS/EN 61000-3-2 | |
+| --- | --- |
+| BS/EN 61000-3-3 | |
+| BS/EN 61000-4-2 | |
+| BS/EN 61000-4-3 | |
+| BS/EN 61000-4-4 | |
+| BS/EN 61000-4-5 | |
+| BS/EN 61000-4-6 | |
+| BS/EN 61000-4-8 | |
+| BS/EN 61000-4-11 | |
+
+Green Environment: Delegated Directive (EU) 2015/863 Directive 2011/65/EU (RoHS) REACH Regulation EC 1907/2006 WEEE Directive 2012/19/EU California Proposition 65
+
+Product Safety: 2014/35/EU (LVD Directive) Electrical Equipment (Safety) Regulations 2016 UL/CSA 62368-1 (USA and Canada) BS/IEC/EN 62368-1
+
+Perchlorate Warning
+
+California Best Management Practices Regulations for Perchlorate Materials: This Perchlorate warning applies only to products containing CR (Manganese Dioxide) Lithium coin cells. “Perchlorate Material-special handling may apply. See www.dtsc.ca.gov/ hazardouswaste/perchlorate”
+

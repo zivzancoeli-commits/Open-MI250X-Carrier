@@ -1,0 +1,20 @@
+(kicad_sch (version 20250114) (generator "fullsend_research_v1")
+	(generator_version "9.0")
+	(uuid "804c9feb-d423-44a1-a2e8-2579ec1ca316")
+	(paper "A3")
+	(title_block
+		(title "DO NOT FABRICATE")
+		(date "2026-08-17")
+		(rev "FullSendResearch_v1")
+		(comment 1 "DO NOT FABRICATE. DO NOT ENERGIZE MI250X.")
+		(comment 2 "Documentation sheet - no invented nets")
+		(comment 3 "Pin names: OAM Pin map rev 1.0.xlsx — OCP generic, NOT AMD overlay")
+		(comment 4 "r2.0 maps UNUSABLE. P3V3=2 Conn0. Full-send cart is NOT a fab decision.")
+	)
+
+	(text "GATE LIST — all must be closed before fabrication or applying power to an MI250X.\n\nFull-send shopping (host+desk+2x OAM in one cart) is a BUYING decision.\nIt is NOT a fab decision and NOT permission to energize OAMs.\n\n1. 48V source identified AND harnessed to P48V pads (not Dell D3000E-S1 12V CRPS).\n   Candidate brick: MEAN WELL RCP-2000-48 (Positronic PCIM34W13M400A1; sense pins 14/15).\n   SuperMicro shipping UBB uses CBL-PWEX-1280 54V MicroFit 2x5 — UBB cable, not mezz.\n2. Molex 218910-1115 voltage rating vs P48V still OPEN:\n   Farnell sheet 30 V AC(RMS)/DC max vs OCP 44–59.5 V vs Molex marketing \"supports 48V\"\n   vs SuperMicro AS-4124GQ-TNMI 54 V UBB. Do not invent a 12 V-to-OAM hack.\n3. Connector gender/stack: hermaphroditic 2189101115 mates with itself, 5 mm stack — geometry OK;\n   still confirm PIN A3 orientation on a plot before tape-out.\n4. Cooling exists (OEM air HS that mates the OAM bolster). SuperMicro public PNs found:\n   MCP-310-45802-0B (air shroud), MCP-240-45801-0N (stiffener), MCP-240-45809-0N (tray)\n   are chassis parts, NOT a die-mating heatsink. No HPE spare HS PN retrieved.\n   Do not clamp a custom cold plate on bare die.\n5. AMD overlay unknowns (TEST*, dual-GCD PE mapping onto v1.0 PCIE_TX/RX pads,\n   SMBus map, which S1–S7 are xGMI, P12V2 need on this 48 V module).\n6. Dual NH-U14S DX-3647 vs X11DPH-T socket pitch: Unknown.\n7. PCIe path: Gen3 host; commercial CEM↔SlimSAS cards exist but are SFF-9402 storage\n   pinouts, not OAM host PE. Dual-GCD may be two endpoints per OAM (AMD docs).\n8. HOST_PWRGD sequencing vs P48V/P12V1/P3V3 in-spec — 10k PD on baseboard (OCP);\n   implement only from OCP + AMD overlay. Never drive PVREF from the carrier.\n\nUntil then this KiCad tree is a mapping artifact, not a board you send to PCBWay.\n"
+		(at 20.32 20.32 0)
+		(effects (font (size 1.5 1.5)) (justify left top))
+		(uuid "e3de0e54-526d-4ac2-9328-d6bc5b43deac")
+	)
+)

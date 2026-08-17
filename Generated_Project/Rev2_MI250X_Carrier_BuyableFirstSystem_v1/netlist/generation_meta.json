@@ -1,0 +1,38 @@
+{
+  "pinmap_csv": "22_Pinmap_Research/extracted/OAM_v1.0_OCP_Generic_Pin_Map.csv",
+  "named_pads": 1376,
+  "unmapped_signal_names": [
+    "DO_NOT_USE",
+    "RFU",
+    "TEST0",
+    "TEST1",
+    "TEST10",
+    "TEST11",
+    "TEST12",
+    "TEST13",
+    "TEST14",
+    "TEST2",
+    "TEST3",
+    "TEST4",
+    "TEST5",
+    "TEST6",
+    "TEST7",
+    "TEST8",
+    "TEST9",
+    "TEST_MODE#"
+  ],
+  "shared_rails": [
+    "GND",
+    "P12V1",
+    "P12V2",
+    "P3V3",
+    "P48V"
+  ],
+  "do_not_fabricate": true,
+  "layers": 4,
+  "oam_seats": 2,
+  "connectors_per_seat": 2,
+  "molex_mpn": "218910-1115",
+  "molex_mates_with": "2189101115 (hermaphroditic, self-mating)",
+  "p3v3_count_conn0": 2
+}

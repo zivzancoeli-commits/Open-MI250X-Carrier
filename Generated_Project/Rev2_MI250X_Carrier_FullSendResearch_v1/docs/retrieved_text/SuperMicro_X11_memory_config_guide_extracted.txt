@@ -1,0 +1,1946 @@
+### MEMORY CONFIGURATION FOR
+
+### X11 UP/DP/MP MOTHERBOARDS
+
+BASED ON
+
+### INTEL® XEON SCALABLE-SP PROCESSORS OR
+
+### 2ND GENERATION INTEL® XEON SCALABLE SP PROCESSORS
+
+### USER’S GUIDE
+
+Revision 1.1a
+
+The information in this user’s manual has been carefully reviewed and is believed to be accurate. The vendor assumes no responsibility for any inaccuracies that may be contained in this document, and makes no commitment to update or to keep current the information in this manual, or to notify any person or organization of the updates. Please Note: For the most up-to-date version of this manual, please see our website at www.supermicro.com.
+
+Super Micro Computer, Inc. ("Supermicro") reserves the right to make changes to the product described in this manual at any time and without notice. This product, including software and documentation, is the property of Supermicro and/ or its licensors, and is supplied only under a license. Any use or reproduction of this product is not allowed, except as expressly permitted by the terms of said license.
+
+IN NO EVENT WILL Super Micro Computer, Inc. BE LIABLE FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, SPECULATIVE OR CONSEQUENTIAL DAMAGES ARISING FROM THE USE OR INABILITY TO USE THIS PRODUCT OR DOCUMENTATION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN PARTICULAR, SUPER MICRO COMPUTER, INC. SHALL NOT HAVE LIABILITY FOR ANY HARDWARE, SOFTWARE, OR DATA STORED OR USED WITH THE PRODUCT, INCLUDING THE COSTS OF REPAIRING, REPLACING, INTEGRATING, INSTALLING OR RECOVERING SUCH HARDWARE, SOFTWARE, OR DATA.
+
+Any disputes arising between manufacturer and customer shall be governed by the laws of Santa Clara County in the State of California, USA. The State of California, County of Santa Clara shall be the exclusive venue for the resolution of any such disputes. Supermicro's total liability for all claims will not exceed the price paid for the hardware product.
+
+FCC Statement: This equipment has been tested and found to comply with the limits for a Class A digital device pursuant to Part 15 of the FCC Rules. These limits are designed to provide reasonable protection against harmful interference when the equipment is operated in industrial environment. This equipment generates, uses, and can radiate radio frequency energy and, if not installed and used in accordance with the manufacturer’s instruction manual, may cause harmful interference with radio communications. Operation of this equipment in a residential area is likely to cause harmful interference, in which case you will be required to correct the interference at your own expense.
+
+California Best Management Practices Regulations for Perchlorate Materials: This Perchlorate warning applies only to products containing CR (Manganese Dioxide) Lithium coin cells. “Perchlorate Material-special handling may apply. See www.dtsc.ca.gov/hazardouswaste/perchlorate”.
+
+The products sold by Supermicro are not intended for and will not be used in life support systems, medical equipment, 
+nuclear facilities or systems, aircraft, aircraft devices, aircraft/emergency communication devices or other critical 
+systems whose failure to perform be reasonably expected to result in signifi cant injury or loss of life or catastrophic 
+property damage. Accordingly, Supermicro disclaims any and all liability, and should buyer use or sell such products 
+for use in such ultra-hazardous applications, it does so entirely at its own risk. Furthermore, buyer agrees to fully 
+indemnify, defend and hold Supermicro harmless for and against any and all claims, demands, actions, litigation, and 
+proceedings of any kind arising out of or related to such ultra-hazardous use or sale. 
+Manual Revision 1.1a 
+Release Date: February 7, 2020 
+Unless you request and receive written permission from Super Micro Computer, Inc., you may not copy any part of this 
+document. Information in this document is subject to change without notice. Other products and companies referred 
+to herein are trademarks or registered trademarks of their respective companies or mark holders. 
+Copyright © 2020 by Super Micro Computer, Inc. 
+All rights reserved. 
+Printed in the United States of America 
+
+WARNING: This product can expose you to chemicals including lead, known to the State of California to cause cancer and birth defects or other reproductive harm. For more information, go to www.P65Warnings.ca.gov.
+
+!
+
+## Memory Support for the X11 UP/DP/MP Motherboards
+
+This document provides the user with an easy-to-use guide for proper memory confi guration 
+and installation for the X11 UP/DP/MP (Socket P/Socket P0) motherboards utilizing 3DS 
+LRDIMM/LRDIMM/3DS RDIMM/RDIMM DDR4 (288-pin) ECC memory with speeds of 
+2933*/2666/2400/2133 memory modules (*Notes below). 
+To ensure proper memory installation, please carefully follow the information and instructions 
+provided in this user's guide. 
+Notes: 1. 2933 MHz memory is supported by the 2nd Gen Intel Xeon Scalable-SP. 2. 
+16Gb-based memory modules are supported by 2nd Gen Intel Xeon Scalable-SP pro 
+cessors only. 3. Using unbalanced memory topology such as populating two DIMMs in 
+one channel while populating one DIMM in another channel on the same motherboard 
+will result in reduced memory performance. 4. Only 2nd Gen Intel Xeon Scalable-SP 
+(82xx/62xx/52xx/4215 series) processors support DCPMM memory. 
+
+#### 1 ESD Precautions
+
+Electrostatic Discharge (ESD) can damage electronic com ponents including memory modules. To avoid damaging your DIMM modules, it is important to handle it very carefully. The following measures are generally suffi cient to protect your equipment from ESD.
+
+##### Precautions
+
+• Use a grounded wrist strap designed to prevent static discharge. 
+• Handle the memory module by its edges only. 
+• Put the memory modules into the antistatic bags when not in use. 
+• Check the Supermicro website for recommended memory modules 
+
+#### 2 Introduction to Intel® Optane DC Persistent Memory
+
+The 2nd Gen Intel 82xx/62xx/52xx/4215 series processors support new DCPMM (Optane™ DC Persistent Memory Modules) technology. DCPMM offers data persistence with higher capacity than the existing memory modules and provides hyper-speed storage capability for high performance computing platforms with fl exible confi guration options.
+
+#### 3 Memory Support
+
+The X11 UP/DP/MP motherboard supports 3DS LRDIMM (3DS Load Reduced DIMM)/ LRDIMM (Load Reduced DIMM)/3DS RDIMM (3DS Registered DIMM)/RDIMM (Registered DIMM), DDR4 (288-pin) ECC 2133/2400/2666/2933* MHz memory modules (*Note below). Refer to the following tables for detailed information on memory support for the X11 UP/DP/ MP motherboards.
+
+Note 1. 2933 MHz memory is supported by the 2nd Gen Intel Xeon Scalable-SP pro cessors only. 2. 16Gb-based memory modules are supported by 2nd Gen Intel Xeon Scalable-SP processors only. 3. Using unbalanced memory topology such as populat ing two DIMMs in one channel while populating one DIMM in another channel on the same motherboard will result in reduced memory performance.
+
+#### 3.1 DDR4 Memory Support for the Intel Xeon Scalable-SP
+
+#### Processors
+
+DDR4 Memory Support
+
+DIMM Capacity (GB)
+
+Speed (MT/s); Voltage (V); Slots Per Channel (SPC) and DIMMs Per Channel (DPC) 1 Slot Per Channel 2 Slots Per Channel DRAM Density 1DPC (1-DIMM Per Channel)
+
+Type
+
+Ranks Per DIMM & Data Width
+
+1DPC (1-DIMM Per Channel)
+
+| | | | | | | | | | 4Gb* | | | | 8Gb | | | 1.2 V | | 1.2 V | | | 1.2 V | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | RDIMM | | | | | SRx4 | | 4GB | | | | 8GB | | | 2666 | | 2666 | | | 2666 | | | |
+| | | RDIMM | | | | | SRx8 | | 8GB | | | | 16GB | | | 2666 | | 2666 | | | 2666 | | | |
+| | | RDIMM | | | | | DRx8 | | 8GB | | | | 16GB | | | 2666 | | 2666 | | | 2666 | | | |
+| | | RDIMM | | | | | DRx4 | | 16GB | | | | 32GB | | | 2666 | | 2666 | | | 2666 | | | |
+| | RDIMM 3Ds | | | | | | QRX4 | | N/A | | | 2H-64GB | | | | 2666 | | 2666 | | | 2666 | | | |
+| | RDIMM 3Ds | | | | | | 8RX4 | | N/A | | | 4H-128GB | | | | 2666 | | 2666 | | | 2666 | | | |
+| | | LRDIMM | | | | | QRx4 | | 32GB | | | | 64GB | | | 2666 | | 2666 | | | 2666 | | | |
+| | LRDIMM 3Ds | | | | | | QRX4 | | N/A | | | 2H-64GB | | | | 2666 | | 2666 | | | 2666 | | | |
+| | LRDIMM 3Ds | | | | | | 8Rx4 | | N/A | | | 4H-128GB | | | | 2666 | | 2666 | | | 2666 | | | |
+
+2DPC (2-DIMM Per Channel)
+
+#### 3.2 DDR4 Memory Support for the 2nd Gen Intel Xeon
+
+#### Scalable-SP Processors
+
+DDR4 Memory Support
+
+| | | | | | | | | | | | | DIMM Capacity (GB) | | | | | | | | | | | nel (DPC) | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | | | | | | Ranks | | | | | | | | | | | | | | | | | | | | | | | |
+| | | | | | | Per DIMM | | | | | | | | | | | | 1 Slot Per Channel | | | | | | | 2 Slots Per Channel | | | | | |
+| | | Type | | | | | | & | | | | | | | | | | | | | | | | | | | | | | |
+| | | | | | | | | | | | | DRAM Density | | | | | | 1DPC (1-DIMM | | | | | 1DPC (1-DIMM | | | | 2DPC (2-DIMM | | | |
+| | | | | | | Data Width | | | | | | | | | | | | Per Channel) | | | | | Per Channel) | | | | Per Channel) | | | |
+| | | | | | | | | | | 4Gb* | | | 8Gb | | | | 16Gb | | 1.2 V | | | | | 1.2 V | | | | 1.2 V | | |
+| | RDIMM | | | | | | SRx4 | | | 4GB | | | 8GB | | | | 16GB | | 2933 | | | | | 2933 | | | | 2933 | | |
+| | RDIMM | | | | | | SRx8 | | | 8GB | | | 16GB | | | | 32GB | | 2933 | | | | | 2933 | | | | 2933 | | |
+| | RDIMM | | | | | | DRx8 | | | 8GB | | | 16GB | | | | 32GB | | 2933 | | | | | 2933 | | | | 2933 | | |
+| | RDIMM | | | | | | DRx4 | | | 16GB | | | 32GB | | | | 64GB | | 2933 | | | | | 2933 | | | | 2933 | | |
+| RDIMM 3Ds | | | | | | | QRX4 | | | N/A | | 2H-64GB | | | | 2H-128GB | | | 2933 | | | | | 2933 | | | | 2933 | | |
+| RDIMM 3Ds | | | | | | | 8RX4 | | | N/A | | 4H-128GB | | | | 4H-256GB | | | 2933 | | | | | 2933 | | | | 2933 | | |
+| | LRDIMM | | | | | | QRx4 | | | 32GB | | | 64GB | | | | 128GB | | 2933 | | | | | 2933 | | | | 2933 | | |
+| LRDIMM 3Ds | | | | | | | QRX4 | | | N/A | | 2H-64GB | | | | 2H-128GB | | | 2933 | | | | | 2933 | | | | 2933 | | |
+| LRDIMM 3Ds | | | | | | | 8Rx4 | | | N/A | | 4H-128GB | | | | 4H-256GB | | | 2933 | | | | | 2933 | | | | 2933 | | |
+
+Speed (MT/s); Voltage (V); Slots Per Channel (SPC) and DIMMs Per Chan
+
+#### 4-1 Memory Installation Sequence
+
+Memory modules for the X11 UP/DP/MP motherboards are populated using the "Fill First" method. The blue memory slot of each channel is considered the "fi rst DIMM module" of the channel, and the black slot, the second module of the channel. When installing memory modules, be sure to populate the blue memory slots fi rst and then populate the black slots. To maximize memory capacity, please populate all DIMM slots on the motherboard, including all blue slots and black slots.
+
+#### 4-2 General Memory Population Requirements
+
+1. Be sure to use the memory modules of the same type and speed on the motherboard. Mixing of memory modules of different types and speeds is not allowed. 2. Using unbalanced memory topology such as populating two DIMMs in one channel while populating one DIMM in another channel on the same motherboard will result in reduced memory performance. 3. Populating memory slots with a pair of DIMM modules of the same type and size will result in interleaved memory, which will improve memory performance.
+
+5 DIMM Population Guidelines for Optimal Performance For optimal memory performance, follow the instructions listed in the tables below when populating memory modules.
+
+##### 5.1 Key Parameters for DIMM Confi guration
+
+##### 5.2 DIMM Mixing Guidelines
+
+Key Parameters for DIMM Confi gurations Parameters Possible Values Number of Channels 1, 2, 3, 4, 5, or 6 Number of DIMMs per Channel 1DPC (1 DIMM Per Channel) or 2DPC (2 DIMMs Per Channel) DIMM Type RDIMM (w/ECC), 3DS RDIMM, LRDIMM, 3DS LRDIMM DIMM Construction
+
+non-3DS RDIMM Raw Cards: A/B (2Rx4), C (1Rx4), D (1Rx8), E (2Rx8) 3DS RDIMM Raw Cards: A/B (4Rx4) non-3DS LRDIMM Raw Cards: D/E (4Rx4) 3DS LRDIMM Raw Cards: A/B (8Rx4)
+
+General DIMM Mixing Guidelines DIMM Mixing Rules
+
+• All DIMMs must be all DDR4 DIMMs. 
+• x4 and x8 DIMMs can be mixed in the same channel. 
+• Mixing of LRDIMMs and RDIMMs is not allowed in the same channel, across different channels, and across different sockets. 
+• Mixing of non-3DS and 3DS LRDIMM is not allowed in the same channel, across different channels, and across different sockets. 
+
+Mixing of DIMM Types within a Channel DIMM Types RDIMM LRDIMM 3DS LRDIMM RDIMM Allowed Not Allowed Not Allowed LRDIMM Not Allowed Allowed Not Allowed 3DS LRDIMM Not Allowed Not Allowed Allowed
+
+5.3 Memory Population Tables for the X11UP Motherboards For your system memory to work properly, please follow the memory population tables below to install your memory modules on the X11UP motherboard. These memory population tables were created based on the general memory population guidelines provided by Intel to support Supermicro's X11UP motherboards.
+
+5.3.1 Memory Population for the X11UP Motherboards with 6 DIMM Slots 
+Onboard 
+Notes: 1. Unbalanced memory confi guration decreases memory performance and is 
+not recommended for Supermicro motherboards. 2. The following memory popula 
+tion table supports Supermicro's X11UP motherboards with 6 DIMM memory slots 
+onboard, such as X11SPW-TF/CTF, X11SPM-F/TF/TPF, and X11SPG-TF. 
+
+Memory Population Table for the X11UP Motherboards (w/6 Slots) based on the Intel Xeon Scalable-SP and the 2nd Gen Intel Xeon Scalable-SP Platforms
+
+Memory Population Tables for the X11UP Motherboard w/6 DIMM Slots Onboard Memory Population Sequence
+
+1 DIMM DIMMA1 2 DIMMs DIMMA1/DIMMD1 3 DIMMs DIMMC1/DIMMB1/DIMMA1 4 DIMMs DIMMB1/DIMMA1/DIMMD1/DIMME1 5 DIMMs (Unbalanced: not recommended) DIMMC1/ DIMMB1/DIMMA1/DIMMD1/DIMME1 6 DIMMs DIMMC1/DIMMB1/DIMMA1/DIMMD1/DIMME1/DIMMF1
+
+Note: Please refer to the drawing above for the locations of DIMM modules.
+
+5.3.2 Memory Population for the X11UP Motherboards with 8 DIMM Slots Onboard
+
+Notes: 1. Unbalanced memory confi guration decreases memory performance and is not recommended for Supermicro motherboards. 2. The following memory population table supports Supermicro's X11UP motherboards with 8 DIMM memory slots onboard, such as X11SPi-TF, X11SPL-F, and X11SPH-NCTF/NCTPF.
+
+Memory Population Table for the X11UP Motherboards (w/8 Slots) based on the Intel Xeon Scalable-SP and the 2nd Gen Intel Xeon Scalable-SP Processors
+
+Memory Population Table for the X11UP Motherboard w/8 DIMM Slots Onboard
+
+Memory Population Sequence
+
+1 DIMM DIMMA1 
+2 DIMMs DIMMA1/DIMMD1 
+3 DIMMs DIMMC1/DIMMB1/DIMMA1 
+4 DIMMs DIMMB1/DIMMA1/DIMMD1/DIMME1 
+5 DIMMs 
+(Unbalanced: not recommended) DIMMC1/ DIMMB1/DIMMA1/DIMMD1/DIMME1 
+6 DIMM DIMMC1/DIMMB1/DIMMA1/DIMMD1/DIMME1/DIMMF1 
+7 DIMMs 
+(Unbalanced: not recommended) DIMMC1/DIMMB1/DIMMA1/DIMMA2/DIMMD1/DIMME1/DIMMF1 
+8 DIMMs DIMMC1/DIMMB1/DIMMA1/DIMMA2/DIMMD2/DIMMD1/DIMME1/DIMMF1 
+
+Note: Please refer to the drawing above for the locations of DIMM modules.
+
+##### 5.4 Memory Population Tables for the X11DP Motherboards
+
+For your system memory to work properly, please follow the memory population tables below to install your memory modules on the X11DP motherboard. These memory population tables were created based on the general memory population guidelines provided by Intel to support Supermicro's X11DP motherboards.
+
+5.4.1 Memory Population for the X11DP Motherboards with 8 DIMM Slots 
+Onboard 
+Notes: 1. Unbalanced memory confi guration decreases memory performance and is 
+not recommended for Supermicro motherboards. 2. The following memory population 
+table supports Supermicro's X11DP motherboards with 8 DIMM memory slots onboard, 
+such as X11DPL-i, and X11DPT-L. 
+5.4.1.A. Memory Population Table for the X11DP Motherboards (w/8 Slots) based 
+on the Intel Xeon Scalable-SP and 2nd Gen Intel Xeon Scalable-SP Processors 
+
+Memory Population Table for the X11DP Motherboard w/8 DIMM Slots Onboard When 1 CPU is used: Memory Population Sequence 1 CPU & 1 DIMM CPU1: P1-DIMMA1 1 CPU & 2 DIMMs CPU1: P1-DIMMA1/P1-DIMMD1 1 CPU & 3 DIMMs (Unbalanced: not recommended) CPU1: P1-DIMMB1/P1-DIMMA1/P1-DIMMD1 1 CPU & 4 DIMMs CPU1: P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1 When 2 CPUs are used: Memory Population Sequence 2 CPUs & 2 DIMMs CPU1: P1-DIMMA1 CPU2: P2-DIMMA1 2 CPUs & 4 DIMMs CPU1: P1-DIMMA1/P1-DIMMD1 CPU2: P2-DIMMA1/P2-DIMMD1 2 CPUs & 6 DIMMs CPU1: P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1 CPU2: P2-DIMMA1/P2-DIMMD1 2 CPUs & 8 DIMMs CPU1: P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1 CPU2: P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1
+
+CPU2
+
+P 1 -D I M M A 1P
+
+1 -D
+
+IM
+
+M
+
+E
+
+1
+
+P
+
+1 -D
+
+IM
+
+M
+
+D
+
+1 P 1 -D I M M B 1
+
+P
+
+2 -D
+
+IM
+
+M
+
+B
+
+1
+
+P
+
+2 -D
+
+IM
+
+M
+
+A
+
+1 P 2 -D I M M D 1
+
+CPU1
+
+Pin 1
+
+Pin 1
+
+5.4.1.B. Memory Rank Sparing Tables for the X11DP Motherboards (w/8 Slots)
+
+Dual Rank Memory Rank Sparing (16GB DIMM) Memory Population Total RAM Detected
+
+One Rank Confi guration Two Rank Confi guration A1 8GB 8GB A1+B1 16GB 16GB A1+B1+C1 24GB 24GB A1+B1+C1+D1 32GB 32GB
+
+Quad Rank Memory Rank Sparing (64GB DIMM) Memory Population Total RAM Detected
+
+One Rank Confi guration Two Rank Confi guration A1 48GB 32GB A1+B1 96GB 64GB A1+B1+C1 144GB 96GB A1+B1+C1+D1 192GB 128GB
+
+5.4.1.C. DCPMM Population Table for the X11DP Motherboards (w/8 Slots) based on the 2nd Gen Intel Xeon Scalable-SP Processors
+
+Note: Only 2nd Gen Intel Xeon Scalable-SP (82xx/62xx/52xx/4215 series) processors support DCPMM memory.
+
+| | | | | | | | Symmetric Population within 1 CPU socket | | | | | | | | | | | | | | | | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | Modes | | | | | P1-DIMME1 | | | | | P1-DIMMD1 | | | | | P1-DIMMA1 | | | | P1-DIMMB1 | | | | | | Channel Confi g. | | | |
+| | | AD | | | | | DCPMM | | | | DRAM1 | | | | | | DRAM1 | | | | DCPMM | | | | | | 1-1 | | |
+| | MM | | | | | | DCPMM | | | | DRAM1 | | | | | | DRAM1 | | | | DCPMM | | | | | | 1-1 | | |
+| | AD + MM | | | | | | DCPMM | | | | DRAM3 | | | | | | DRAM3 | | | | DCPMM | | | | | | 1-1 | | |
+
+Legend (for the table above)
+
+DDR4 Type Capacity DRAM1 RDIMM 3DS RDIMM LRDIMM 3DS LRDIMM
+
+Refer to Validation Matrix (DDR4 DIMMs validated with DCPMM) below.
+
+DRAM2 RDIMM - -DRAM3 RDIMM 3DS RDIMM LRDIMM -
+
+Note: DDR4 single rank x8 is not available for DCPMM Memory Mode or App-Direct Mode.
+
+Legend (for the fi rst table above)
+
+Capacity DCPMM Any Capacity (Uniformly for all channels for a given confi guration)
+
+• Mode defi nitions: AD=App Direct Mode, MM=Memory Mode, AD+MM=Mixed Mode • For MM, general DDR4+DCPMM ratio is between 1:4 and 1:16. Excessive capacity for DCPMM can be used for AD. • For each individual population, rearrangements between channels are allowed as long as the resulting population is
+
+compliant with the X11 memory population rules for the 2nd Gen Intel Xeon Scalable-SP processors. • For each individual population, please use the same DDR4 DIMM in all slots.
+
+• For each individual population, sockets are normally symmetric with exceptions for 1 DCPMM per socket and 1 DCPMM
+
+per node case. Currently, DCPMM modules operate at 2666 MHz. • No mixing of DCPMM and NVMDIMMs within the same platform is allowed.
+
+• This DCPMM population guide targets a balanced DCPMM-to-DRAM-cache ratio in MM and MM + AD modes.
+
+Validation Matrix (DDR4 DIMMs Validated w/DCPMM)
+
+DIMM Type
+
+Ranks Per DIMM & Data Width (Stack)
+
+DIMM Capacity (GB) DRAM Density 4Gb 8Gb
+
+RDIMM
+
+1Rx4 8GB 16GB 2Rx8 8GB 16GB 2Rx4 16GB 32GB LRDIMM 4Rx4 N/A 64GB LRDIMM 3DS 8Rx4 (4H) N/A 128GB
+
+5.4.2. Memory Population for the X11DP Motherboards with 12 DIMM Slots Onboard
+
+Notes: 1. Unbalanced memory confi guration decreases memory performance and is not recommended for Supermicro motherboards. 2. The following memory popula tion table supports Supermicro's X11DP motherboards with 12 DIMM memory slots onboard, such as X11DDW-L/NT, X11DPFR-S(N), X11DGQ, X11DPFF-SN(R) and X11DSN-TS.
+
+5.4.2.A. Memory Population Table for the X11DP Motherboards (w/12 Slots) based on the Intel Xeon Scalable-SP and 2nd Gen Intel Xeon Scalable-SP Processors
+
+Memory Population Tables for X11DP Motherboards w/12 DIMM Slots
+
+When 1 CPU is used: Memory Population Sequence 1 CPU & 1 DIMM CPU1: P1-DIMMA1 1 CPU & 2 DIMMs CPU1: P1-DIMMA1/P1-DIMMD1 1 CPU & 3 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1 1 CPU & 4 DIMMs CPU1: P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1 1 CPU & 5 DIMMs (Unbalanced: not recomended) CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1 1 CPU & 6 DIMM CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 When 2 CPUs are used: Memory Population Sequence 2 CPUs & 2 DIMMs CPU1: P1-DIMMA1 CPU2: P2-DIMMA1 2 CPUs & 4 DIMMs CPU1: P1-DIMMA1/P1-DIMMD1 CPU2: P2-DIMMA1/P2-DIMMD1 2 CPUs & 6 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1 CPU2: P2-DIMMC1/P2-DIMMB1/P2-DIMMA1 2 CPUs & 8 DIMMs CPU1: P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1 CPU2: P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1 2 CPUs & 10 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1- DIMMA1/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 CPU2: P 2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1 2 CPUs & 12 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 CPU2: P2-DIMMC1/P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1/P2-DIMMF1
+
+5.4.2.B. Memory Rank Sparing Tables for the X11DP Motherboards (w/12 Slots)
+
+| Memory Population A1+B1+C1+D1+E1 A1+B1+C1+D1+E1+F1 | Dual Rank Memory Rank Sparing (16GB DIMM) Total RAM Detected One Rank Confi guration Two Rank Confi guration A1 8GB 8GB A1+B1 16GB 16GB A1+B1+C1 24GB 24GB A1+B1+C1+D1 32GB 32GB 40GB 40GB 49GB 49GB |
+| --- | --- |
+| | |
+
+Quad Rank Memory Rank Sparing (64GB DIMM) Memory Population Total RAM Detected One Rank Confi guration Two Rank Confi guration A1 48GB 32GB A1+B1 96GB 64GB A1+B1+C1 144GB 96GB
+
+A1+B1+C1+D1 192GB 128GB A1+B1+C1+D1+E1 240GB 160GB A1+B1+C1+D1+E1+F1 288GB 192GB
+
+P 1 -D I M M C 1Pin 1
+
+P 2 -D I M M C 1Pin 1
+
+CPU2 CPU1
+
+5.4.2.C. DCPMM Population Table for the X11DP Motherboards (w/12 Slots) based on the 2nd Gen Intel Xeon Scalable-SP Processors
+
+Note: Only 2nd Gen Intel Xeon Scalable-SP (82xx/62xx/52xx/4215 series) processors support DCPMM memory.
+
+Symmetric Population within 1 CPU Socket
+
+| | Modes | | P1-DIMMF1 | | | | | P1-DIMME1 | | | | P1-DIMMD1 | | | | | P1-DIMMA1 | | P1-DIMMB1 | | | | | P1-DIMMC1 | | | Channel Confi g. | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | AD | | | DCPMM | | | | DRAM1 | | | | DRAM1 | | | | | | DRAM1 | DRAM1 | | | | | DCPMM | | | | | 1-1-1 | |
+| | MM | | | DCPMM | | | | DRAM1 | | | | DRAM1 | | | | | | DRAM1 | DRAM1 | | | | | DCPMM | | | | | 1-1-1 | |
+| | AD + MM | | | DCPMM | | | | DRAM3 | | | | DRAM3 | | | | | | DRAM3 | DRAM3 | | | | | DCPMM | | | | | 1-1-1 | |
+
+Legend (for the table above)
+
+DDR4 Type Capacity DRAM1 RDIMM 3DS RDIMM LRDIMM 3DS LRDIMM
+
+Refer to Validation Matrix (DDR4 DIMMs validated with DCPMM) below.
+
+DRAM2 RDIMM - -DRAM3 RDIMM 3DS RDIMM LRDIMM -
+
+Note: DDR4 single rank x8 is not available for DCPMM Memory Mode or App-Direct Mode.
+
+Legend (for the fi rst table above)
+
+Capacity DCPMM Any Capacity (Uniformly for all channels for a given confi guration)
+
+• Mode defi nitions: AD=App Direct Mode, MM=Memory Mode, AD+MM=Mixed Mode • For MM, general DDR4+DCPMM ratio is between 1:4 and 1:16. Excessive capacity for DCPMM can be used for AD. • For each individual population, rearrangements between channels are allowed as long as the resulting population is
+
+compliant with the X11 memory population rules for the 2nd Gen Intel Xeon Scalable-SP processors. • For each individual population, please use the same DDR4 DIMM in all slots.
+
+• For each individual population, sockets are normally symmetric with exceptions for 1 DCPMM per socket and 1 DCPMM
+
+per node case. Currently, DCPMM modules operate at 2666 MHz. • No mixing of DCPMM and NVMDIMMs within the same platform is allowed.
+
+• This DCPMM population guide targets a balanced DCPMM-to-DRAM-cache ratio in MM and MM + AD modes.
+
+Validation Matrix (DDR4 DIMMs Validated w/DCPMM)
+
+DIMM Type
+
+Ranks Per DIMM & Data Width (Stack)
+
+DIMM Capacity (GB) DRAM Density 4Gb 8Gb
+
+RDIMM
+
+1Rx4 8GB 16GB 2Rx8 8GB 16GB 2Rx4 16GB 32GB LRDIMM 4Rx4 N/A 64GB LRDIMM 3DS 8Rx4 (4H) N/A 128GB
+
+5.4.3 Memory Population for the X11DP Motherboards with 16 DIMM Slots Onboard
+
+Notes: 1. Unbalanced memory confi guration decreases memory performance and is not recommended for Supermicro motherboards. 2. The following memory popula tion table supports Supermicro's X11DP motherboards with 16 DIMM memory slots onboard, such as X11DPi-N(T), X11DPT-PS, X11DPU-X(LL), X11DPH-i/T(q), X11DPG QT, X11DAi-N, X11DPX-T, X11DPG-SN, X11DAC, and X11DSC.
+
+5.4.3.A. Memory Population Table for the X11DP Motherboards (w/16 Slots) based on the Intel Xeon Scalable-SP and 2nd Gen Intel Xeon Scalable-SP Processors Memory Population Table for the X11DP Motherboard w/16 DIMM Slots Onboard
+
+When 1 CPU is used: Memory Population Sequence 
+1 CPU & 1 DIMM CPU1: P1-DIMMA1 
+1 CPU & 2 DIMMs CPU1: P1-DIMMA1/P1-DIMMD1 
+1 CPU & 3 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1 
+1 CPU & 4 DIMMs CPU1: P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1 
+1 CPU & 5 DIMMs 
+(Unbalanced: not recommended) CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1 
+1 CPU & 6 DIMM CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 
+1 CPU & 7 DIMMs 
+(Unbalanced: not recommended) CPU1:P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMA2/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 
+1 CPU & 8 DIMMs 
+(Unbalanced: not recommended) CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMA2/P1-DIMMD2/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 
+When 2 CPUs are used: Memory Population Sequence 
+2 CPUs & 2 DIMMs CPU1: P1-DIMMA1 
+CPU2: P2-DIMMA1 
+2 CPUs & 4 DIMMs CPU1: P1-DIMMA1/P1-DIMMD1 
+CPU2: P2-DIMMA1/P2-DIMMD1 
+2 CPUs & 6 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1 
+CPU2: P2-DIMMC1/P2-DIMMB1/P2-DIMMA1 
+2 CPUs & 8 DIMMs CPU1: P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1 
+CPU2: P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1 
+2 CPUs & 10 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 
+CPU2: P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1 
+2 CPUs & 12 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 
+CPU2: P2-DIMMC1/P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1/P2-DIMMF1 
+
+##### 2 CPUs & 14 DIMMs (Unbalanced: not recommended)
+
+CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMA2/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 CPU2: P2-DIMMC1/P2-DIMMB1/P2-DIMMA1/P2-DIMMA2/P2-DIMMD1/P2-DIMME1/P2-DIMMF1
+
+##### 2 CPUs & 16 DIMMs (Unbalanced: not recommended)
+
+CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMA2/P1-DIMMD2/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 CPU2: P2-DIMMC1/P2-DIMMB1/P2-DIMMA1/P2-DIMMA2/P2-DIMMD2/P2-DIMMD1/P2-DIMME1/P2-DIMMF1
+
+5.4.3.B. Memory Rank Sparing Tables for the X11DP Motherboards (w/16 Slots)
+
+| A1+A2+B1+C1+D1+D2+E1+F1 | Memory Population A1+B1+C1+D1 A1+B1+C1+D1+E1 A1+B1+C1+D1+E1+F1 | Dual Rank Memory Rank Sparing (16GB DIMM) Total RAM Detected One Rank Confi guration Two Rank Confi guration A1 8GB 8GB A1+B1 16GB 16GB A1+B1+C1 24GB 24GB 32GB 32GB 40GB 40GB 49GB 49GB 80GB 64GB |
+| --- | --- | --- |
+| | | |
+
+Quad Rank Memory Rank Sparing (64GB DIMM)
+
+Memory Population Total RAM Detected
+
+One Rank Confi guration Two Rank Confi guration
+
+A1 48GB 32GB
+
+A1+B1 96GB 64GB
+
+A1+B1+C1 144GB 96GB
+
+A1+B1+C1+D1 192GB 128GB
+
+A1+B1+C1+D1+E1 240GB 160GB
+
+A1+B1+C1+D1+E1+F1 288GB 192GB
+
+A1+A2+B1+C1+D1+D2+E1+F1 416GB 320GB
+
+CPU2
+
+Pin 1
+
+Pin 1
+
+CPU1
+
+5.4.3.C. DCPMM Population Table for the X11DP Motherboards (w/16 Slots) based on the 2nd Gen Intel Xeon Scalable-SP Processors
+
+Note: Only 2nd Gen Intel Xeon Scalable-SP (82xx/62xx/52xx/4215 series) processors support DCPMM memory.
+
+| | | | support DCPMM memory. | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | | | | | | | | | | | | | | Symmetric Population within 1 CPU Socket | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | Modes | | | P1-DIMMF1 | | | | | P1-DIMME1 | | | | | | P1-DIMMD1 | | | P1-DIMMD2 | | | | P1-DIMMA2 | | | | P1-DIMMA1 | | | P1-DIMMB1 | | | | | | P1-DIMMC1 | | | Channel Confi g. | | | |
+| | AD | | | | DRAM1 | | | | | DRAM1 | | | | | DRAM1 | | | DCPMM | | | | | DCPMM | | | DRAM1 | | | | | DRAM1 | | | | DRAM1 | | | | 2-1-1 | | |
+| | MM | | | | DRAM2 | | | | | DRAM2 | | | | | DRAM2 | | | DCPMM | | | | | DCPMM | | | DRAM2 | | | | | DRAM2 | | | | DRAM2 | | | | 2-1-1 | | |
+| AD + MM | | | | | DRAM3 | | | | | DRAM3 | | | | | DRAM3 | | | DCPMM | | | | | DCPMM | | | DRAM3 | | | | | DRAM3 | | | | DRAM3 | | | | 2-1-1 | | |
+| | AD | | | | DCPMM | | | | | DRAM1 | | | | | DRAM1 | | | | - | | | | | - | | DRAM1 | | | | | DRAM1 | | | | DCPMM | | | | 1-1-1 | | |
+| | MM | | | | DCPMM | | | | | DRAM1 | | | | | DRAM1 | | | | - | | | | | - | | DRAM1 | | | | | DRAM1 | | | | DCPMM | | | | 1-1-1 | | |
+| AD + MM | | | | | DCPMM | | | | | DRAM3 | | | | | DRAM3 | | | | - | | | | | - | | DRAM3 | | | | | DRAM3 | | | | DCPMM | | | | 1-1-1 | | |
+| | | | | | | | | | | | | | | | Asymmetric Population within 1 CPU Socket | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| Modes | | | | P1-DIMMF1 | | | | | P1-DIMME1 | | | | | P1-DIMMD1 | | | P1-DIMMD2 | | | | P1-DIMMA2 | | | | | P1-DIMMA1 | | | | P1-DIMMB1 | | | | | P1-DIMMC1 | | | | Channel Confi g. | | |
+| | AD | | | DRAM1 | | | | | DRAM1 | | | | | | DRAM1 | | | - | | | | DCPMM | | | | DRAM1 | | | | | DRAM1 | | | | | DRAM1 | | | | 2-1-1 | |
+| | AD* | | | DRAM1 | | | | | DRAM1 | | | | | | DRAM1 | | | - | | | | DCPMM | | | | DRAM1 | | | | | DRAM1 | | | | | DRAM1 | | | | 2-1-1 | |
+| | | | | | | | | | | | | | | | | | | | | | Legend | | | | | | | | | | | | | | | | | | | | |
+
+(for the two tables above)
+
+DDR4 Type Capacity DRAM1 RDIMM 3DS RDIMM LRDIMM 3DS LRDIMM
+
+Refer to Validation Matrix (DDR4 DIMMs validated with DCPMM) below.
+
+DRAM2 RDIMM - - -DRAM3 RDIMM 3DS RDIMM LRDIMM -
+
+Note: DDR4 single rank x8 is not available for DCPMM Memory Mode or App-Direct Mode.
+
+Legend (for the fi rst two tables above)
+
+Capacity DCPMM Any Capacity (Uniformly for all channels for a given confi guration)
+
+• * 2nd socket has no DCPMM DIMM • Mode defi nitions: AD=App Direct Mode, MM=Memory Mode, AD+MM=Mixed Mode • For MM, general DDR4+DCPMM ratio is between 1:4 and 1:16. Excessive capacity for DCPMM can be used for AD. • For each individual population, rearrangements between channels are allowed as long as the resulting population is
+
+compliant with the X11 memory population rules for the 2nd Gen Intel Xeon Scalable-SP processors. • For each individual population, please use the same DDR4 DIMM in all slots.
+
+• For each individual population, sockets are normally symmetric with exceptions for 1 DCPMM per socket and 1 DCPMM
+
+per node case. Currently, DCPMM modules operate at 2666 MHz. • No mixing of DCPMM and NVMDIMMs within the same platform is allowed.
+
+• This DCPMM population guide targets a balanced DCPMM-to-DRAM-cache ratio in MM and MM + AD modes.
+
+Validation Matrix (DDR4 DIMMs Validated w/DCPMM)
+
+DIMM Type
+
+Ranks Per DIMM & Data Width (Stack)
+
+DIMM Capacity (GB) DRAM Density 4Gb 8Gb
+
+RDIMM
+
+1Rx4 8GB 16GB 2Rx8 8GB 16GB 2Rx4 16GB 32GB LRDIMM 4Rx4 N/A 64GB LRDIMM 3DS 8Rx4 (4H) N/A 128GB
+
+5.4.4 Memory Population for the X11DP Motherboards with 24 DIMM Slots Onboard
+
+Notes: 1. Unbalanced memory confi guration decreases memory performance and is not recommended for Supermicro motherboards. 2. The memory table below supports the X11DP motherboards with 24 DIMM memory slots, such as X11DPU(-V), X11DPT B, X11DPU-Z+, X11DSC+, X11PDT-BH, X11DSF, X11DPG-OT-CPU, X11DPS-R.
+
+5.4.4.A. Memory Population Table for the X11DP Motherboards (w/24 Slots) based on the Intel Xeon Scalable-SP and 2nd Gen Intel Xeon Scalable-SP Processors
+
+Memory Population Table for the X11DP Motherboard w/24 DIMM Slots Onboard
+
+When 1 CPU is used: Memory Population Sequence 1 CPU & 1 DIMM CPU1: P1-DIMMA1 1 CPU & 2 DIMMs CPU1: P1-DIMMA1/P1-DIMMD1 1 CPU & 3 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1 1 CPU & 4 DIMMs CPU1: P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1 1 CPU & 5 DIMMs (Unbalanced: not recommended) CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1 1 CPU & 6 DIMM CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 1 CPU & 7 DIMMs (Unbalanced: not recommended) CPU1: P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 1 CPU & 8 DIMMs CPU1: P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/P1-DIMMD2/P1-DIMMD1/P1-DIMME2/P1-DIMME1 1 CPU & 9 DIMMs (Unbalanced: not recommended)
+
+CPU1: P1-DIMMC1/P1-DIMMC2/P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/ P1-DIMMD1/P1-DIMME1/P1-DIMMF1
+
+##### 1 CPU & 10 DIMMs (Unbalanced: not recommended)
+
+CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/ P1-DIMMD2/P1-DIMMD1/P1-DIMME2/P1-DIMME1/P1-DIMMF1
+
+##### 1 CPU & 11 DIMMs (Unbalanced: not recommended)
+
+CPU1: P1-DIMMC1/P1-DIMMC2/P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/ P1-DIMMD2/P1-DIMMD1/P1-DIMME2/P1-DIMME1/P1-DIMMF1 1 CPU & 12 DIMMs CPU1: P1-DIMMC1/P1-DIMMC2/P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/ P1-DIMMD2/P1-DIMMD1/P1-DIMME2/P1-DIMME1/P1-DIMMF2/P1-DIMMF1 When 2 CPUs are used: Memory Population Sequence 2 CPUs & 2 DIMMs CPU1: P1-DIMMA1 CPU2: P2-DIMMA1 2 CPUs & 4 DIMMs CPU1: P1-DIMMA1/P1-DIMMD1 CPU2: P2-DIMMA1/P2-DIMMD1 2 CPUs & 6 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1 CPU2: P2-DIMMC1/P2-DIMMB1/P2-DIMMA1 2 CPUs & 8 DIMMs CPU1: P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1 CPU2: P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1 2 CPUs & 10 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 CPU2: P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1 2 CPUs & 12 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 CPU2: P2-DIMMC1/P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1/P2-DIMMF1 2 CPUs & 14 DIMMs CPU1: P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/P1-DIMMD2/P1-DIMMD1/P1-DIMME2/P1-DIMME1 CPU2: P2-DIMMC1/P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1/P2-DIMMF1 2 CPUs & 16 DIMMs CPU1: P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/P1-DIMMD2/P1-DIMMD1/P1-DIMME2/P1-DIMME1 CPU2: P2-DIMMB1/P2-DIMMB2/P2-DIMMA1/P2-DIMMA2/P2-DIMMD2/P2-DIMMD1/P2-DIMME2/P2-DIMME1
+
+##### 2 CPUs & 18 DIMMs
+
+CPU1: P1-DIMMC1/P1-DIMMC2/P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/P1-DIMMD2/P1-DIMMD1/P1-DIMME2/P1-DIMME1/P1-DIMMF2/P1-DIMMF1 CPU2: P2-DIMMC1/P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1/P2-DIMMF1
+
+##### 2 CPUs & 20 DIMMs
+
+CPU1: P1-DIMMC1/P1-DIMMC2/P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/P1-DIMMD2/P1-DIMMD1/P1-DIMME2/P1-DIMME1/P1-DIMMF2/P1-DIMMF1 CPU2: P2-DIMMB1/P2-DIMMB2/P2-DIMMA1/P2-DIMMA2/P2-DIMMD2/P2-DIMMD1/P2-DIMME2/P2-DIMME1
+
+##### 2 CPUs & 22 DIMMs (Unbalanced: not recommended)
+
+CPU1: P1-DIMMC1/P1-DIMMC2/P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/ P1-DIMMD2/P1-DIMMD1/P1-DIMME2/P1-DIMME1/P1-DIMMF1 CPU2: P2-DIMMC1/P2-DIMMC2/P2-DIMMB1/P2-DIMMB2/P2-DIMMA1/P2-DIMMA2/ P2-DIMMD2/P2-DIMMD1/P2-DIMME2/P2-DIMME1/P2-DIMMF1
+
+##### 2 CPUs & 24 DIMMs
+
+CPU1: P1-DIMMC1/P1-DIMMC2/P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/ P1-DIMMD2/P1-DIMMD1/P1-DIMME2/P1-DIMME1/P1-DIMMF2/P1-DIMMF1 CPU2: P2-DIMMC1/P2-DIMMC2/P2-DIMMB1/P2-DIMMB2/P2-DIMMA1/P2-DIMMA2/ P2-DIMMD2/P2-DIMMD1/P2-DIMME2/P2-DIMME1/P2-DIMMF2/P2-DIMMF1
+
+5.4.4.B. Memory Rank Sparing Tables for the X11DP Motherboards (w/24Slots)
+
+Quad Rank Memory Rank Sparing (64GB DIMM)
+
+Memory Population Total RAM Detected
+
+One Rank Confi guration Two Rank Confi guration
+
+A1 48GB 32GB
+
+A1+B1 96GB 64GB
+
+A1+B1+C1 144GB 96GB
+
+A1+B1+C1+D1 192GB 128GB
+
+A1+B1+C1+D1+E1 240GB 160GB
+
+A1+B1+C1+D1+E1+F1 288GB 192GB
+
+A1+A2 112GB 96GB
+
+A1+A2+B1+B2 224GB 192GB
+
+A1+A2+B1+B2+C1+C2 336GB 288GB
+
+A1+A2+B1+B2+C1+C2+D1+D2 448GB 384GB
+
+A1+A2+B1+B2+C1+C2+D1+D2+E1+E2 560GB 480GB
+
+A1+A2+B1+B2+C1+C2+D1+D2+E1+E2+F1+F2 672GB 576GB
+
+Dual Rank Memory Rank Sparing (16GB DIMM)
+
+Memory Population Total RAM Detected
+
+One Rank Confi guration Two Rank Confi guration
+
+A1 8GB 8GB
+
+A1+B1 16GB 16GB
+
+A1+B1+C1 24GB 24GB
+
+A1+B1+C1+D1 32GB 32GB
+
+A1+B1+C1+D1+E1 40GB 40GB
+
+A1+B1+C1+D1+E1+F1 49GB 49GB
+
+A1+A2 24GB 16GB
+
+A1+A2+B1+B2 48GB 32GB
+
+A1+A2+B1+B2+C1+C2 72GB 48GB
+
+A1+A2+B1+B2+C1+C2+D1+D2 96GB 64GB
+
+A1+A2+B1+B2+C1+C2+D1+D2+E1+E2 120GB 80GB
+
+A1+A2+B1+B2+C1+C2+D1+D2+E1+E2+F1+F2 144GB 96GB
+
+CPU1
+
+P
+
+1 -D
+
+IM
+
+M
+
+A
+
+2P 
+1 
+- 
+D I 
+M 
+M 
+E 
+2 
+
+P
+
+1 -D
+
+IM
+
+M
+
+E
+
+1
+
+P
+
+1 -D
+
+IM
+
+M
+
+D
+
+1
+
+P
+
+1 -D
+
+IM
+
+M
+
+F 
+1 P 
+1 
+- 
+D I 
+M 
+M 
+B 
+1 
+
+P
+
+1 -D
+
+IM
+
+M
+
+B
+
+2
+
+P
+
+1 -D
+
+IM
+
+M
+
+C
+
+2
+
+Pin 1
+
+CPU2
+
+P
+
+2 -D
+
+IM
+
+M
+
+A
+
+2P 
+2 
+- 
+D I 
+M 
+M 
+E 
+2 
+
+P
+
+2 -D
+
+IM
+
+M
+
+E
+
+1
+
+P
+
+2 -D
+
+IM
+
+M
+
+D
+
+1
+
+P
+
+2 -D
+
+IM
+
+M
+
+F
+
+1 P 2 -D I M M B 1
+
+P
+
+2 -D
+
+IM
+
+M
+
+B
+
+2
+
+P
+
+2 -D
+
+IM
+
+M
+
+C
+
+2
+
+Pin 1
+
+5.4.4.C. DCPMM Population Table for the X11DP Motherboards (w/24 Slots) based on the 2nd Gen Intel Xeon Scalable-SP Processors
+
+Note: Only 2nd Gen Intel Xeon Scalable-SP (82xx/62xx/52xx/4215 series) processors support DCPMM memory.
+
+| | | | | | | | | | | | | Symmetric Population within 1 CPU Socket | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Modes | | | P1-DIMMF1 | P1-DIMMF2 | | | P1-DIMME1 | | | | P1-DIMME2 | | | P1-DIMMD1 | | | P1-DIMMD2 | | | | | P1-DIMMA2 | | | P1-DIMMA1 | | | | P1-DIMMB2 | | | P1-DIMMB1 | | | | P1-DIMMC2 | | P1-DIMMC1 | | | Channel | | | |
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | Confi g. | | | |
+| AD | | | DRAM1 | DCPMM | | | DRAM1 | | | | DCPMM | | | DRAM1 | | | DCPMM | | | | | DCPMM | | | DRAM1 | | | | DCPMM | | | DRAM1 | | | | DCPMM | | DRAM1 | | | 2-2-2 | | | |
+| MM | | | DRAM1 | DCPMM | | | DRAM1 | | | | DCPMM | | | DRAM1 | | | DCPMM | | | | | DCPMM | | | DRAM1 | | | | DCPMM | | | DRAM1 | | | | DCPMM | | DRAM1 | | | 2-2-2 | | | |
+| AD + MM | | | DRAM3 | DCPMM | | | DRAM3 | | | | DCPMM | | | DRAM3 | | | DCPMM | | | | | DCPMM | | | DRAM3 | | | | DCPMM | | | DRAM3 | | | | DCPMM | | DRAM3 | | | 2-2-2 | | | |
+| AD | | | DRAM1 | - | | | DRAM1 | | | | - | | | DRAM1 | | | DCPMM | | | | | DCPMM | | | DRAM1 | | | | - | | | DRAM1 | | | | - | | DRAM1 | | | 2-1-1 | | | |
+| MM | | | DRAM2 | - | | | DRAM2 | | | | - | | | DRAM2 | | | DCPMM | | | | | DCPMM | | | DRAM2 | | | | - | | | DRAM2 | | | | - | | DRAM2 | | | 2-1-1 | | | |
+| AD + MM | | | DRAM3 | - | | | DRAM3 | | | | - | | | DRAM3 | | | DCPMM | | | | | DCPMM | | | DRAM3 | | | | - | | | DRAM3 | | | | - | | DRAM3 | | | 2-1-1 | | | |
+| AD | | | DRAM1 | - | | | DRAM1 | | | | DCPMM | | | DRAM1 | | | DCPMM | | | | | DCPMM | | | DRAM1 | | | | DCPMM | | | DRAM1 | | | | - | | DRAM1 | | | 2-2-1 | | | |
+| MM | | | DRAM1 | - | | | DRAM1 | | | | DCPMM | | | DRAM1 | | | DCPMM | | | | | DCPMM | | | DRAM1 | | | | DCPMM | | | DRAM1 | | | | - | | DRAM1 | | | 2-2-1 | | | |
+| AD + MM | | | DRAM3 | - | | | DRAM3 | | | | DCPMM | | | DRAM3 | | | DCPMM | | | | | DCPMM | | | DRAM3 | | | | DCPMM | | | DRAM3 | | | | - | | DRAM3 | | | 2-2-1 | | | |
+| AD | | | DCPMM | - | | | DRAM1 | | | | - | | | DRAM1 | | | - | | | | | - | | | DRAM1 | | | | - | | | DRAM1 | | | | - | | DCPMM | | | 1-1-1 | | | |
+| MM | | | DCPMM | - | | | DRAM1 | | | | - | | | DRAM1 | | | - | | | | | - | | | DRAM1 | | | | - | | | DRAM1 | | | | - | | DCPMM | | | 1-1-1 | | | |
+| AD + MM | | | DCPMM | - | | | DRAM3 | | | | - | | | DRAM3 | | | - | | | | | - | | | DRAM3 | | | | - | | | DRAM3 | | | | - | | DCPMM | | | 1-1-1 | | | |
+| AD | | | DCPMM | - | | | DRAM1 | | | | DRAM1 | | | DRAM1 | | | DRAM1 | | | | | DRAM1 | | | DRAM1 | | | | DRAM1 | | | DRAM1 | | | | - | | DCPMM | | | 2-2-1 | | | |
+
+Asymmetric Population within 1 CPU Socket
+
+Modes P1-DIMMF1 P1-DIMMF2 P1-DIMME1 P1-DIMME2 P1-DIMMD1 P1-DIMMD2 P1-DIMMA2 P1-DIMMA1 P1-DIMMB2 P1-DIMMB1 P1-DIMMC2 P1-DIMMC1 Channel Confi g. AD DRAM1 - DRAM1 - DRAM1 - DCPMM DRAM1 - DRAM1 - DRAM1 2/1-1-1 AD* DRAM1 - DRAM1 - DRAM1 - DCPMM DRAM1 - DRAM1 - DRAM1 2/1-1-1
+
+Legend (for the two tables above)
+
+DDR4 Type Capacity DRAM1 RDIMM 3DS RDIMM LRDIMM 3DS LRDIMM
+
+Refer to Validation Matrix (DDR4 DIMMs validated with DCPMM) below.
+
+DRAM2 RDIMM - -DRAM3 RDIMM 3DS RDIMM LRDIMM -
+
+Note: DDR4 single rank x8 is not available for DCPMM Memory Mode or App-Direct Mode.
+
+Legend (for the fi rst two tables above)
+
+Capacity DCPMM Any Capacity (Uniformly for all channels for a given confi guration)
+
+• * 2nd socket has no DCPMM DIMM • Mode defi nitions: AD=App Direct Mode, MM=Memory Mode, AD+MM=Mixed Mode • For MM, general DDR4+DCPMM ratio is between 1:4 and 1:16. Excessive capacity for DCPMM can be used for AD. • For each individual population, rearrangements between channels are allowed as long as the resulting population is
+
+compliant with the X11 memory population rules for the 2nd Gen Intel Xeon Scalable-SP processors. • For each individual population, please use the same DDR4 DIMM in all slots.
+
+• For each individual population, sockets are normally symmetric with exceptions for 1 DCPMM per socket and 1 DCPMM
+
+per node case. Currently, DCPMM modules operate at 2666 MHz. • No mixing of DCPMM and NVMDIMMs within the same platform is allowed.
+
+• This DCPMM population guide targets a balanced DCPMM-to-DRAM-cache ratio in MM and MM + AD modes.
+
+Validation Matrix (DDR4 DIMMs Validated w/DCPMM)
+
+DIMM Type
+
+Ranks Per DIMM & Data Width (Stack)
+
+DIMM Capacity (GB) DRAM Density 4Gb 8Gb
+
+RDIMM
+
+1Rx4 8GB 16GB 2Rx8 8GB 16GB 2Rx4 16GB 32GB LRDIMM 4Rx4 N/A 64GB LRDIMM 3DS 8Rx4 (4H) N/A 128GB
+
+##### 5.5 Memory Population Tables for the X11MP Motherboards based on the Intel Xeon Scalable-SP and 2nd Gen Intel Xeon
+
+##### Scalable-SP Processors
+
+For your system memory to work properly, please follow the memory population tables below to install your memory modules on the X11MP (4-way/8-way) motherboards based on the
+
+Intel Xeon Scalable-SP platform. All memory population tables included in this user guide were created based on the general memory population guidelines provided by Intel to support
+
+Supermicro's X11 MP motherboards.
+
+5.5.1 Memory Population for the 4-way Motherboard w/Half Memory Confi guration Support based on the Intel Xeon Scalable-SP and 2nd Gen Intel Xeon Scalable-SP Processors
+
+Notes: 1: Unbalanced memory confi guration decreases memory performance and is not recommended for Supermicro motherboards. 2: The following memory population table supports Supermicro's X11MP 4-way motherboards, such as X11QPH+.
+
+Memory Population Table for the 4-way Motherboard w/Half Memory Confi guration Support (X11QPH+ w/4 CPUs & 24 DIMMs Installed)
+
+4 CPUs & 24 DIMMs 
+(6 DIMMs per CPU) Memory Population Sequence 
+CPU1 + 6 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 
+CPU2 + 6 DIMMs CPU2: P2-DIMMC1/P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1/P2-DIMMF1 
+CPU3 + 6 DIMMs CPU3: P3-DIMMC1/P3-DIMMB1/P3-DIMMA1/P3-DIMMD1/P3-DIMME1/P3-DIMMF1 
+CPU4 + 6 DIMMs CPU4: P4-DIMMC1/P4-DIMMB1/P4-DIMMA1/P4-DIMMD1/P4-DIMME1/P4-DIMMF1 
+
+Note: The drawing above shows DIMM module population for each CPU installed on the motherboard. Please install your processors starting with CPU Socket 1.
+
+Pin 1
+
+Memory Population Table for the 4-Way X11MP Motherboards (w/Half Memory Confi guration Support) (X11QPH+ with 24 DIMM Slots Installed)
+
+5.5.2 Memory Population for the 4-way Motherboard w/Full Memory Confi guration Support based on the Intel Xeon Scalable-SP and 2nd Gen Intel Xeon Scalable-SP Processors
+
+Notes: 1. Unbalanced memory confi guration decreases memory performance and is not recommended for Supermicro motherboards. 2. The following memory population table supports Supermicro's X11MP 4-way motherboards, such as X11QPH+.
+
+Memory Population Table for the 4-way Motherboard w/Full Memory Confi guration Support (X11QPH+ w/4 CPUs & 48 DIMMs Installed)
+
+##### 4 CPUs & 48 DIMMs (12 DIMMs per CPU board) Memory Population Sequence
+
+CPU1 + 12 DIMMs
+
+CPU1: P1-DIMMC1/P1-DIMMC2/P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/ P1-DIMMD2/P1-DIMMD1/P1-DIMME2/P1-DIMME1/P1-DIMMF2/P1-DIMMF1
+
+CPU2 + 12 DIMMs
+
+CPU2: P2-DIMMC1/P2-DIMMC2/P2-DIMMB1/P2-DIMMB2/P2-DIMMA1/P2-DIMMA2/ P2-DIMMD2/P2-DIMMD1/P2-DIMME2/P2-DIMME1/P2-DIMMF2/P2-DIMMF1
+
+CPU3 + 12 DIMMs
+
+CPU3: P3-DIMMC1/P3-DIMMC2/P3-DIMMB1/P3-DIMMB2/P3-DIMMA1/P3-DIMMA2/ P3-DIMMD2/P3-DIMMD1/P3-DIMME2/P3-DIMME1/P3-DIMMF2/P3-DIMMF1
+
+CPU4 + 12 DIMMs
+
+CPU4: P4-DIMMC1/P4-DIMMC2/P4-DIMMB1/P4-DIMMB2/P4-DIMMA1/P4-DIMMA2/ P4-DIMMD2/P4-DIMMD1/P4-DIMME2/P4-DIMME1/P4-DIMMF2/P4-DIMMF1
+
+Note: The drawing above shows DIMM module population for each CPU installed on the motherboard. Please install your processors starting with CPU Socket 1.
+
+D
+
+IM
+
+M
+
+A 2D I M M E 2
+
+D
+
+IM
+
+M
+
+E
+
+1
+
+D
+
+IM
+
+M
+
+D
+
+1
+
+D
+
+IM
+
+M
+
+F 
+1 D I 
+M 
+M 
+B 
+1 
+
+D
+
+IM
+
+M
+
+B
+
+2
+
+D
+
+IM
+
+M
+
+C
+
+2
+
+Pin 1
+
+Memory Population Table for the 4-Way X11MP Motherboards (w/Full Memory Confi guration Support) (X11QPH+ with 48 DIMM Slots Installed)
+
+5.5.3 Memory Population for the 8-way Motherboard w/Half CPU & Half Memory Confi guration Support based on the Intel Xeon Scalable-SP and 2nd Gen Intel Xeon Scalable-SP Processors
+
+Notes: 1. Unbalanced memory confi guration decreases memory performance and is not recommended for Supermicro motherboards. 2. The following memory population table supports Supermicro's X11MP 8-way motherboards, such as X11OPi+.
+
+Note: The drawing above shows DIMM module population for each CPU Board in stalled in your system. Please install your processors starting with CPU Board #1.
+
+Memory Population Table for the 8-way Motherboard w/Half CPU & Half Memory Confi guration Support (X11OPi+ w/4 CPUs & 24 DIMMs Installed)
+
+4 CPUs & 24 DIMMs (6 DIMMs per CPU board) Memory Population Sequence CPU Board 1 + 6 DIMMs CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 CPU Board 2 + 6 DIMMs CPU2: P2-DIMMC1/P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1/P2-DIMMF1 CPU Board 3 + 6 DIMMs CPU3: P3-DIMMC1/P3-DIMMB1/P3-DIMMA1/P3-DIMMD1/P3-DIMME1/P3-DIMMF1 CPU Board 4 + 6 DIMMs CPU4: P4-DIMMC1/P4-DIMMB1/P4-DIMMA1/P4-DIMMD1/P4-DIMME1/P4-DIMMF1
+
+Pin 1
+
+Memory Population Table for the 8-Way X11MP Motherboards (w/Half CPU & Half Memory Confi guration Support) (X11OPi+ w/4 CPU Boards & 24 DIMM Slots Installed)
+
+5.5.4 Memory Population for the 8-way Motherboard w/Half CPU & Full Memory Confi guration Support based on the Intel Xeon Scalable-SP and 2nd Gen Intel Xeon Scalable-SP Processors
+
+Notes: 1. Unbalanced memory confi guration decreases memory performance and is not recommended for Supermicro motherboards. 2. The following memory population table supports Supermicro's X11MP 8-way motherboards, such as X11OPi+.
+
+Memory Population Table for the 8-way Motherboard w/Half CPU & Full Memory Confi guration Support (X11OPi+ w/4 CPU Boards & 48 DIMMs Installed) 4 CPU boards & 48 DIMMs (12 DIMMs per CPU board) Memory Population Sequence
+
+CPU Board 1 + 12 DIMMs
+
+CPU1: P1-DIMMC1/P1-DIMMC2/P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/ P1-DIMMD2/P1-DIMMD1/P1-DIMME2/P1-DIMME1/P1-DIMMF2/P1-DIMMF1
+
+CPU Board 2 + 12 DIMMs
+
+CPU2: P2-DIMMC1/P2-DIMMC2/P2-DIMMB1/P2-DIMMB2/P2-DIMMA1/P2-DIMMA2/ P2-DIMMD2/P2-DIMMD1/P2-DIMME2/P2-DIMME1/P2-DIMMF2/P2-DIMMF1
+
+CPU Board 3 + 12 DIMMs
+
+CPU3: P3-DIMMC1/P3-DIMMC2/P3-DIMMB1/P3-DIMMB2/P3-DIMMA1/P3-DIMMA2/ P3-DIMMD2/P3-DIMMD1/P3-DIMME2/P3-DIMME1/P3-DIMMF2/P3-DIMMF1
+
+CPU Board 4 + 12 DIMMs
+
+CPU4: P4-DIMMC1/P4-DIMMC2/P4-DIMMB1/P4-DIMMB2/P4-DIMMA1/P4-DIMMA2/ P4-DIMMD2/P4-DIMMD1/P4-DIMME2/P4-DIMME1/P4-DIMMF2/P4-DIMMF1
+
+Note: The drawing above shows DIMM module population for each CPU Board in stalled in your system. Please install your processors starting with CPU Board #1.
+
+D
+
+IM
+
+M
+
+A 2D I M M E 2
+
+D
+
+IM
+
+M
+
+E
+
+1
+
+D
+
+IM
+
+M
+
+D
+
+1
+
+D
+
+IM
+
+M
+
+F 
+1 D I 
+M 
+M 
+B 
+1 
+
+D
+
+IM
+
+M
+
+B
+
+2
+
+D
+
+IM
+
+M
+
+C
+
+2
+
+Pin 1
+
+Memory Population Table for the 8-Way X11MP Motherboards (w/Half CPU & Full Memory Confi guration Support) (X11OPi+ w/4 CPU Boards & 48 DIMM Slots Installed)
+
+| 5.5.5 Memory Population for the 8-way Motherboard w/Full CPU &Half Memory Confi guration Support based on the Intel Xeon Scalable-SP and 2nd Gen Intel Xeon Scalable-SP Processors Memory Population Table for the 8-Way X11MP Motherboards (w/Full CPU & Half Memory Confi guration Support) (X11OPi+ w/8 CPU Boards & 48 DIMMs Installed) Memory Population Table for the 8-way Motherboard w/Full CPU & Half Memory Confi guration Support (X11OPi+ | Notes: 1. Unbalanced memory confi guration decreases memory performance and is not recommended for Supermicro motherboards. 2. The following memory population table supports Supermicro's X11MP 8-way motherboards, such as X11OPi+. | | | w/8 CPU Boards & 48 DIMMs Installed) | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 8 CPU boards & 48 DIMMs (6 DIMMs per CPU board) | | | | | | Memory Population Sequence | | | |
+| CPU Board 1 + 6 DIMMs | | | CPU1: P1-DIMMC1/P1-DIMMB1/P1-DIMMA1/P1-DIMMD1/P1-DIMME1/P1-DIMMF1 | | | | | | |
+| CPU Board 2 + 6 DIMMs | | | CPU2: P2-DIMMC1/P2-DIMMB1/P2-DIMMA1/P2-DIMMD1/P2-DIMME1/P2-DIMMF1 | | | | | | |
+| CPU Board 3 + 6 DIMMs | | | CPU3: P3-DIMMC1/P3-DIMMB1/P3-DIMMA1/P3-DIMMD1/P3-DIMME1/P3-DIMMF1 | | | | | | |
+| CPU Board 4 + 6 DIMMs | | | CPU4: P4-DIMMC1/P4-DIMMB1/P4-DIMMA1/P4-DIMMD1/P4-DIMME1/P4-DIMMF1 | | | | | | |
+| CPU Board 5 + 6 DIMMs | | | CPU5: P5-DIMMC1/P5-DIMMB1/P5-DIMMA1/P5-DIMMD1/P5-DIMME1/P5-DIMMF1 | | | | | | |
+| CPU Board 6 + 6 DIMMs | | | CPU6: P6-DIMMC1/P6-DIMMB1/P6-DIMMA1/P6-DIMMD1/P6-DIMME1/P6-DIMMF1 | | | | | | |
+| CPU Board 7 + 6 DIMMs | | | CPU7: P7-DIMMC1/P7-DIMMB1/P7-DIMMA1/P7-DIMMD1/P7-DIMME1/P7-DIMMF1 | | | | | | |
+| CPU Board 8 + 6 DIMMs | | | CPU8: P4-DIMMC1/P8-DIMMB1/P8-DIMMA1/P8-DIMMD1/P8-DIMME1/P8-DIMMF1 | | | | | | |
+| | Note: The drawing above shows DIMM module population for each CPU Board in stalled in your system. Please install your processors starting with CPU Board #1. | 1 F M IM D | 1 E M IM D D I M M F 2 | 1 D M IM D 2D I M M E 2 | D I M M D 2 | Pin 1 A M IM D | D I M M A 1 2 B M IM D | D I M M B 1 2 C M IM D | D I M M C 1 |
+
+Note: The drawing above shows DIMM module population for each CPU Board in stalled in your system. Please install your processors starting with CPU Board #1.
+
+DCPMM Population Table for the 8-way Motherboard w/Full CPU & Full Memory Confi guration Support (X11OPi+ w/8 CPU Boards & 96 DIMMs Installed)
+
+##### 8 CPU boards & 96 DIMMs (12 DIMMs per CPU board) Memory Population Sequence
+
+CPU Board 1 + 12 DIMMs
+
+CPU1: P1-DIMMC1/P1-DIMMC2/P1-DIMMB1/P1-DIMMB2/P1-DIMMA1/P1-DIMMA2/ P1-DIMMD2/P1-DIMMD1/P1-DIMME2/P1-DIMME1/P1-DIMMF2/P1-DIMMF1
+
+CPU Board 2 + 12 DIMMs
+
+CPU2: P2-DIMMC1/P2-DIMMC2/P2-DIMMB1/P2-DIMMB2/P2-DIMMA1/P2-DIMMA2/ P2-DIMMD2/P2-DIMMD1/P2-DIMME2/P2-DIMME1/P2-DIMMF2/P2-DIMMF1
+
+CPU Board 3 + 12 DIMMs
+
+CPU3: P3-DIMMC1/P3-DIMMC2/P3-DIMMB1/P3-DIMMB2/P3-DIMMA1/P3-DIMMA2/ P3-DIMMD2/P3-DIMMD1/P3-DIMME2/P3-DIMME1/P3-DIMMF2/P3-DIMMF1
+
+CPU Board 4 + 12 DIMMs
+
+CPU4: P4-DIMMC1/P4-DIMMC2/P4-DIMMB1/P4-DIMMB2/P4-DIMMA1/P4-DIMMA2/ P4-DIMMD2/P4-DIMMD1/P4-DIMME2/P4-DIMME1/P4-DIMMF2/P4-DIMMF1
+
+CPU Board 5 + 12 DIMMs
+
+CPU5: P5-DIMMC1/P5-DIMMC2/P5-DIMMB1/P5-DIMMB2/P5-DIMMA1/P5-DIMMA2/ P5-DIMMD2/P5-DIMMD1/P5-DIMME2/P5-DIMME1/P5-DIMMF2/P5-DIMMF1
+
+CPU Board 6 + 12 DIMMs
+
+CPU6: P6-DIMMC1/P6-DIMMC2/P6-DIMMB1/P6-DIMMB2/P6-DIMMA1/P6-DIMMA2/ P6-DIMMD2/P6-DIMMD1/P6-DIMME2/P6-DIMME1/P6-DIMMF2/P6-DIMMF1
+
+CPU Board 7 + 12 DIMMs
+
+CPU7: P7-DIMMC1/P7-DIMMC2/P7-DIMMB1/P7-DIMMB2/P7-DIMMA1/P7-DIMMA2/ P7-DIMMD2/P7-DIMMD1/P7-DIMME2/P7-DIMME1/P7-DIMMF2/P7-DIMMF1
+
+CPU Board 8 + 12 DIMMs
+
+CPU8: P8-DIMMC1/P8-DIMMC2/P8-DIMMB1/P8-DIMMB2/P8-DIMMA1/P8-DIMMA2/ P8-DIMMD2/P8-DIMMD1/P8-DIMME2/P8-DIMME1/P8-DIMMF2/P8-DIMMF1
+
+5.5.6 Memory Population for the 8-way Motherboard w/Full CPU &Memory Confi guration Support based on the Intel Xeon Scalable-SP and 2nd Gen Intel Xeon Scalable-SP Processors
+
+Notes: 1. Unbalanced memory confi guration decreases memory performance and is not recommended for Supermicro motherboards. To maximize memory capacity and performance, please populate DIMM modules to 2. The following memory population table supports Supermicro's X11MP 8-way motherboards, such as X11OPi+.
+
+D
+
+IM
+
+M
+
+A 2D I M M E 2
+
+D
+
+IM
+
+M
+
+E
+
+1
+
+D
+
+IM
+
+M
+
+D
+
+1
+
+D
+
+IM
+
+M
+
+F 
+1 D I 
+M 
+M 
+B 
+1 
+
+D
+
+IM
+
+M
+
+B
+
+2
+
+D
+
+IM
+
+M
+
+C
+
+2
+
+Pin 1
+
+Memory Population Table for the 8-Way X11MP Motherboards (w/Full CPU & Full Memory Confi guration Support) (X11OPi+ w/8 CPU Boards & 96 DIMM Slots Installed)
+
+##### 5.6 DCPMM Population Tables for the X11MP Motherboards based on the 2nd Gen Intel Xeon Scalable-SP Processors
+
+For your system memory to work properly, please follow the memory population tables below to install your memory modules on the X11MP (4-way/8-way) motherboards based on the 2nd
+
+Gen Intel Xeon Scalable-SP processors. All memory population tables included in this user guide were created based on the general memory population guidelines provided by Intel to
+
+support Supermicro's X11 MP motherboards.
+
+5.6.1 DCPMM Population for the X11 4-way Motherboards with 48-DIMM
+
+Support based on the 2nd Gen Intel Xeon Scalable-SP Processors
+
+Notes: 1: Unbalanced memory confi guration decreases memory performance and is not recommended for Supermicro motherboards. 2: The following memory population table supports Supermicro's X11MP 4-way motherboards, such as X11QPH+. 3.Only
+
+2nd Gen Intel Xeon Scalable-SP (82xx/62xx/52xx/4215 series) processors support
+
+DCPMM memory.
+
+DCPMM Population Table for the 4-Way X11MP Motherboards w/48 DIMM Support
+
+| | | (X11QPH+ with 48 DIMM Slots Installed) | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | | | | | | | | | | | | Symmetric Population | | | | | | | | | | | | | | | | | | | |
+| 2-2-2 | | | | | | | | | | | | (For Channel Confi guration: 2-2-2) | | | | | | | | | | | | | | | | | | | | |
+| Modes | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | CPU1 | | P1-DIMMF1 | | P1-DIMMF2 | | | P1-DIMME1 | P1-DIMME2 | | | P1-DIMMD1 | | | P1-DIMMD2 | | P1-DIMMA2 | | P1-DIMMA1 | | | P1-DIMMB2 | | | | P1-DIMMB1 | | P1-DIMMC2 | | P1-DIMMC1 | | |
+| | AD | | DRAM1 | | DCPMM | | | DRAM1 | DCPMM | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | | | DCPMM | | | DRAM1 | | DCPMM | | DRAM1 | | |
+| | MM | | DRAM1 | | DCPMM | | | DRAM1 | DCPMM | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | | | DCPMM | | | DRAM1 | | DCPMM | | DRAM1 | | |
+| AD + MM | | | DRAM3 | | DCPMM | | | DRAM3 | DCPMM | | | DRAM3 | | | DCPMM | | DCPMM | | DRAM3 | | | | DCPMM | | | DRAM3 | | DCPMM | | DRAM3 | | |
+| | CPU2 | | P2-DIMMF1 | | P2-DIMMF2 | | | P2-DIMME1 | P2-DIMME2 | | | P2-DIMMD1 | | | P2-DIMMD2 | | P2-DIMMA2 | | P2-DIMMA1 | | | P2-DIMMB2 | | | | P2-DIMMB1 | | P2-DIMMC2 | | P2-DIMMC1 | | |
+| | AD | | DRAM1 | | DCPMM | | | DRAM1 | DCPMM | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | | | DCPMM | | | DRAM1 | | DCPMM | | DRAM1 | | |
+| | MM | | DRAM1 | | DCPMM | | | DRAM1 | DCPMM | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | | | DCPMM | | | DRAM1 | | DCPMM | | DRAM1 | | |
+| AD + MM | | | DRAM3 | | DCPMM | | | DRAM3 | DCPMM | | | DRAM3 | | | DCPMM | | DCPMM | | DRAM3 | | | | DCPMM | | | DRAM3 | | DCPMM | | DRAM3 | | |
+| | CPU3 | | P3-DIMMF1 | | P3-DIMMF2 | | | P3-DIMME1 | P3-DIMME2 | | | P3-DIMMD1 | | | P3-DIMMD2 | | P3-DIMMA2 | | P3-DIMMA1 | | | P3-DIMMB2 | | | | P3-DIMMB1 | | P3-DIMMC2 | | P3-DIMMC1 | | |
+| | AD | | DRAM1 | | DCPMM | | | DRAM1 | DCPMM | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | | | DCPMM | | | DRAM1 | | DCPMM | | DRAM1 | | |
+| | MM | | DRAM1 | | DCPMM | | | DRAM1 | DCPMM | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | | | DCPMM | | | DRAM1 | | DCPMM | | DRAM1 | | |
+| AD + MM | | | DRAM3 | | DCPMM | | | DRAM3 | DCPMM | | | DRAM3 | | | DCPMM | | DCPMM | | DRAM3 | | | | DCPMM | | | DRAM3 | | DCPMM | | DRAM3 | | |
+| | CPU4 | | P4-DIMMF1 | | P4-DIMMF2 | | | P4-DIMME1 | P4-DIMME2 | | | P4-DIMMD1 | | | P4-DIMMD2 | | P4-DIMMA2 | | P4-DIMMA1 | | | P4-DIMMB2 | | | | P4-DIMMB1 | | P4-DIMMC2 | | P4-DIMMC1 | | |
+| | AD | | DRAM1 | | DCPMM | | | DRAM1 | DCPMM | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | | | DCPMM | | | DRAM1 | | DCPMM | | DRAM1 | | |
+| | MM | | DRAM1 | | DCPMM | | | DRAM1 | DCPMM | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | | | DCPMM | | | DRAM1 | | DCPMM | | DRAM1 | | |
+| AD + MM | | | DRAM3 | | DCPMM | | | DRAM3 | DCPMM | | | DRAM3 | | | DCPMM | | DCPMM | | DRAM3 | | | | DCPMM | | | DRAM3 | | DCPMM | | DRAM3 | | |
+| | | | | | | | 1 | | 1 | 1 | | | | | | | | | D I | | | D I | | | D I | | | | | | | |
+| | | | | | | | F | | E | D | | | | | | | | | M | | | M | | | M | | | | | | | |
+| | | | | | | | M | | M | M | | | | | | | | | M | | | M | | | M | | | | | | | |
+| | | | | | | | IM | | IM | IM | | | | | | | | | | | | B | | | C | | | | | | | |
+| | | | | | | | | | | | | | | | | | | | A | | | B | | | | | | | | | | |
+| | | | | | | | D | | D | D | | | | | | | | | 1 | | | 1 | | | 1 | | | | | | | |
+
+Pin 1
+
+2
+
+2
+
+B
+
+C
+
+M
+
+M
+
+M
+
+A 2D I M M E 2
+
+IM
+
+IM
+
+IM
+
+D
+
+D
+
+D
+
+Note: The drawing above shows DIMM module population for each CPU installed on the motherboard. Please install your processors starting with CPU Socket 1.
+
+Symmetric Population 
+2-1-1 (For Channel Confi guration: 2-1-1) 
+Modes 
+CPU1 P1-DIMMF1 P1-DIMMF2 P1-DIMME1 P1-DIMME2 P1-DIMMD1 P1-DIMMD2 P1-DIMMA2 P1-DIMMA1 P1-DIMMB2 P1-DIMMB1 P1-DIMMC2 P1-DIMMC1 
+AD DRAM1 - DRAM1 - DRAM1 DCPMM DCPMM DRAM1 - DRAM1 - DRAM1 
+MM DRAM2 - DRAM2 - DRAM2 DCPMM DCPMM DRAM2 - DRAM2 - DRAM2 
+AD + MM DRAM3 - DRAM3 - DRAM3 DCPMM DCPMM DRAM3 - DRAM3 - DRAM3 
+CPU2 P2-DIMMF1 P2-DIMMF2 P2-DIMME1 P2-DIMME2 P2-DIMMD1 P2-DIMMD2 P2-DIMMA2 P2-DIMMA1 P2-DIMMB2 P2-DIMMB1 P2-DIMMC2 P2-DIMMC1 
+AD DRAM1 - DRAM1 - DRAM1 DCPMM DCPMM DRAM1 - DRAM1 - DRAM1 
+MM DRAM2 - DRAM2 - DRAM2 DCPMM DCPMM DRAM2 - DRAM2 - DRAM2 
+AD + MM DRAM3 - DRAM3 - DRAM3 DCPMM DCPMM DRAM3 - DRAM3 - DRAM3 
+CPU3 P3-DIMMF1 P3-DIMMF2 P3-DIMME1 P3-DIMME2 P3-DIMMD1 P3-DIMMD2 P3-DIMMA2 P3-DIMMA1 P3-DIMMB2 P3-DIMMB1 P3-DIMMC2 P3-DIMMC1 
+AD DRAM1 - DRAM1 - DRAM1 DCPMM DCPMM DRAM1 - DRAM1 - DRAM1 
+MM DRAM2 - DRAM2 - DRAM2 DCPMM DCPMM DRAM2 - DRAM2 - DRAM2 
+AD + MM DRAM3 - DRAM3 - DRAM3 DCPMM DCPMM DRAM3 - DRAM3 - DRAM3 
+CPU4 P4-DIMMF1 P4-DIMMF2 P4-DIMME1 P4-DIMME2 P4-DIMMD1 P4-DIMMD2 P4-DIMMA2 P4-DIMMA1 P4-DIMMB2 P4-DIMMB1 P4-DIMMC2 P4-DIMMC1 
+AD DRAM1 - DRAM1 - DRAM1 DCPMM DCPMM DRAM1 - DRAM1 - DRAM1 
+MM DRAM2 - DRAM2 - DRAM2 DCPMM DCPMM DRAM2 - DRAM2 - DRAM2 
+AD + MM DRAM3 - DRAM3 - DRAM3 DCPMM DCPMM DRAM3 - DRAM3 - DRAM3 
+Symmetric Population 
+2-2-1 (For Channel Confi guration: 2-2-1) 
+Modes 
+CPU1 P1-DIMMF1 P1-DIMMF2 P1-DIMME1 P1-DIMME2 P1-DIMMD1 P1-DIMMD2 P1-DIMMA2 P1-DIMMA1 P1-DIMMB2 P1-DIMMB1 P1-DIMMC2 P1-DIMMC1 
+AD DRAM1 - DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 - DRAM1 
+MM DRAM1 - DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 - DRAM1 
+AD + MM DRAM3 - DRAM3 DCPMM DRAM3 DCPMM DCPMM DRAM3 DCPMM DRAM3 - DRAM3 
+AD DCPMM - DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 - DCPMM 2-2-1 
+CPU2 P2-DIMMF1 P2-DIMMF2 P2-DIMME1 P2-DIMME2 P2-DIMMD1 P2-DIMMD2 P2-DIMMA2 P2-DIMMA1 P2-DIMMB2 P2-DIMMB1 P2-DIMMC2 P2-DIMMC1 
+AD DRAM1 - DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 - DRAM1 
+MM DRAM1 - DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 - DRAM1 
+AD + MM DRAM3 - DRAM3 DCPMM DRAM3 DCPMM DCPMM DRAM3 DCPMM DRAM3 - DRAM3 
+AD DCPMM - DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 - DCPMM 2-2-1 
+CPU3 P3-DIMMF1 P3-DIMMF2 P3-DIMME1 P3-DIMME2 P3-DIMMD1 P3-DIMMD2 P3-DIMMA2 P3-DIMMA1 P3-DIMMB2 P3-DIMMB1 P3-DIMMC2 P3-DIMMC1 
+AD DRAM1 - DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 - DRAM1 
+MM DRAM1 - DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 - DRAM1 
+AD + MM DRAM3 - DRAM3 DCPMM DRAM3 DCPMM DCPMM DRAM3 DCPMM DRAM3 - DRAM3 
+AD DCPMM - DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 - DCPMM 2-2-1 
+CPU4 P4-DIMMF1 P4-DIMMF2 P4-DIMME1 P4-DIMME2 P4-DIMMD1 P4-DIMMD2 P4-DIMMA2 P4-DIMMA1 P4-DIMMB2 P4-DIMMB1 P4-DIMMC2 P4-DIMMC1 
+AD DRAM1 - DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 - DRAM1 
+MM DRAM1 - DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 - DRAM1 
+AD + MM DRAM3 - DRAM3 DCPMM DRAM3 DCPMM DCPMM DRAM3 DCPMM DRAM3 - DRAM3 
+AD DCPMM - DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 DRAM1 - DCPMM 2-2-1 
+
+D
+
+IM
+
+M
+
+A 2D I M M E 2
+
+D
+
+IM
+
+M
+
+E
+
+1
+
+D
+
+IM
+
+M
+
+D
+
+1
+
+D
+
+IM
+
+M
+
+F 
+1 D I 
+M 
+M 
+B 
+1 
+
+D
+
+IM
+
+M
+
+B
+
+2
+
+D
+
+IM
+
+M
+
+C
+
+2
+
+Pin 1
+
+Note: The drawing above shows DIMM module population for each CPU installed on the motherboard. Please install your processors starting with CPU Socket 1.
+
+| | | | | | | | | | | | | | | | | | | | | Symmetric Population | | | | | | | | | | | | | | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | 1-1-1 | | | | | | | | | | | | | | | | | | (For Channel Confi guration: 1-1-1) | | | | | | | | | | | | | | | | | | | | | |
+| | Modes | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | CPU1 | | | | | P1-DIMMF1 | | | P1-DIMMF2 | | | P1-DIMME1 | | | | P1-DIMME2 | | P1-DIMMD1 | | | | | | P1-DIMMD2 | | | P1-DIMMA2 | | P1-DIMMA1 | | | P1-DIMMB2 | | P1-DIMMB1 | | P1-DIMMC2 | | P1-DIMMC1 | | |
+| | | AD | | | | DCPMM | | | | - | | DRAM1 | | | | - | | | DRAM1 | | | | | | - | | - | | DRAM1 | | | | - | DRAM1 | | | - | DCPMM | | |
+| | | MM | | | | DCPMM | | | | - | | DRAM1 | | | | - | | | DRAM1 | | | | | | - | | - | | DRAM1 | | | | - | DRAM1 | | | - | DCPMM | | |
+| | AD + MM | | | | | DCPMM | | | | - | | DRAM3 | | | | - | | | DRAM3 | | | | | | - | | - | | DRAM3 | | | | - | DRAM3 | | | - | DCPMM | | |
+| | CPU2 | | | | | P2-DIMMF1 | | | P2-DIMMF2 | | | P2-DIMME1 | | | | P2-DIMME2 | | P2-DIMMD1 | | | | | | P2-DIMMD2 | | | P2-DIMMA2 | | P2-DIMMA1 | | | P2-DIMMB2 | | P2-DIMMB1 | | P2-DIMMC2 | | P2-DIMMC1 | | |
+| | | AD | | | | DCPMM | | | | - | | DRAM1 | | | | - | | | DRAM1 | | | | | | - | | - | | DRAM1 | | | | - | DRAM1 | | | - | DCPMM | | |
+| | | MM | | | | DCPMM | | | | - | | DRAM1 | | | | - | | | DRAM1 | | | | | | - | | - | | DRAM1 | | | | - | DRAM1 | | | - | DCPMM | | |
+| | AD + MM | | | | | DCPMM | | | | - | | DRAM3 | | | | - | | | DRAM3 | | | | | | - | | - | | DRAM3 | | | | - | DRAM3 | | | - | DCPMM | | |
+| | CPU3 | | | | | P3-DIMMF1 | | | P3-DIMMF2 | | | P3-DIMME1 | | | | P3-DIMME2 | | P3-DIMMD1 | | | | | | P3-DIMMD2 | | | P3-DIMMA2 | | P3-DIMMA1 | | | P3-DIMMB2 | | P3-DIMMB1 | | P3-DIMMC2 | | P3-DIMMC1 | | |
+| | | AD | | | | DCPMM | | | | - | | DRAM1 | | | | - | | | DRAM1 | | | | | | - | | - | | DRAM1 | | | | - | DRAM1 | | | - | DCPMM | | |
+| | | MM | | | | DCPMM | | | | - | | DRAM1 | | | | - | | | DRAM1 | | | | | | - | | - | | DRAM1 | | | | - | DRAM1 | | | - | DCPMM | | |
+| | AD + MM | | | | | DCPMM | | | | - | | DRAM3 | | | | - | | | DRAM3 | | | | | | - | | - | | DRAM3 | | | | - | DRAM3 | | | - | DCPMM | | |
+| | CPU4 | | | | | P4-DIMMF1 | | | P4-DIMMF2 | | | P4-DIMME1 | | | | P4-DIMME2 | | P4-DIMMD1 | | | | | | P4-DIMMD2 | | | P4-DIMMA2 | | P4-DIMMA1 | | | P4-DIMMB2 | | P4-DIMMB1 | | P4-DIMMC2 | | P4-DIMMC1 | | |
+| | | AD | | | | DCPMM | | | | - | | DRAM1 | | | | - | | | DRAM1 | | | | | | - | | - | | DRAM1 | | | | - | DRAM1 | | | - | DCPMM | | |
+| | | MM | | | | DCPMM | | | | - | | DRAM1 | | | | - | | | DRAM1 | | | | | | - | | - | | DRAM1 | | | | - | DRAM1 | | | - | DCPMM | | |
+| | AD + MM | | | | | DCPMM | | | | - | | DRAM3 | | | | - | | | DRAM3 | | | | | | - | | - | | DRAM3 | | | | - | DRAM3 | | | - | DCPMM | | |
+| | | | | | | | | | | | | | | | | | | | | Asymmetric Population | | | | | | | | | | | | | | | | | | | | |
+| | 2/1- | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | 1-1 | | | | | | | | | | | | | | | | | (For Channel Confi guration: 2/1-1-1) | | | | | | | | | | | | | | | | | | | | | | |
+| | Modes | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | CPU1 | | | | P1-DIMMF1 | | | P1-DIMMF2 | | | P1-DIMME1 | | | | P1-DIMME2 | | P1-DIMMD1 | | | | | P1-DIMMD2 | | | | P1-DIMMA2 | | P1-DIMMA1 | | | | P1-DIMMB2 | | P1-DIMMB1 | | P1-DIMMC2 | | P1-DIMMC1 | | |
+| | | AD | | | DRAM1 | | | | - | | DRAM1 | | | | | - | DRAM1 | | | | | | | - | | DCPMM | | DRAM1 | | | | - | | DRAM1 | | | - | DRAM1 | | |
+| | CPU2 | | | | P2-DIMMF1 | | | P2-DIMMF2 | | | P2-DIMME1 | | | | P2-DIMME2 | | P2-DIMMD1 | | | | | P2-DIMMD2 | | | | P2-DIMMA2 | | P2-DIMMA1 | | | | P2-DIMMB2 | | P2-DIMMB1 | | P2-DIMMC2 | | P2-DIMMC1 | | |
+| | | AD | | | DRAM1 | | | | - | | DRAM1 | | | | | - | DRAM1 | | | | | | | - | | DCPMM | | DRAM1 | | | | - | | DRAM1 | | | - | DRAM1 | | |
+| | CPU3 | | | | P3-DIMMF1 | | | P3-DIMMF2 | | | P3-DIMME1 | | | | P3-DIMME2 | | P3-DIMMD1 | | | | | P3-DIMMD2 | | | | P3-DIMMA2 | | P3-DIMMA1 | | | | P3-DIMMB2 | | P3-DIMMB1 | | P3-DIMMC2 | | P3-DIMMC1 | | |
+| | | AD | | | DRAM1 | | | | - | | DRAM1 | | | | | - | DRAM1 | | | | | | | - | | DCPMM | | DRAM1 | | | | - | | DRAM1 | | | - | DRAM1 | | |
+| | CPU4 | | | | P4-DIMMF1 | | | P4-DIMMF2 | | | P4-DIMME1 | | | | P4-DIMME2 | | P4-DIMMD1 | | | | | P4-DIMMD2 | | | | P4-DIMMA2 | | P4-DIMMA1 | | | | P4-DIMMB2 | | P4-DIMMB1 | | P4-DIMMC2 | | P4-DIMMC1 | | |
+| | | AD | | | DRAM1 | | | | - | | DRAM1 | | | | | - | DRAM1 | | | | | | | - | | DCPMM | | DRAM1 | | | | - | | DRAM1 | | | - | DRAM1 | | |
+| | | | | | | | | | | | | | | | | | | Legend (for the fi ve tables above) | | | | | | | | | | | | | | | | | | | | | | |
+| | | | | | | | | | | | | | | | | | | DDR4 Type | | | | | | | | | | | | | | | Capacity | | | | | | | |
+| | | | | | | | | | | DRAM1 | | | | | RDIMM | | 3DS RDIMM | | | | | | | LRDIMM | | | 3DS LRDIMM | | | | | | | | | | | | | |
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | Refer to Validation Matrix | | | | | | | | | |
+| | | | | | | | | | | DRAM2 | | | | | RDIMM | | | | | - | | | | | | | | - | | (DDR4 DIMMs validated with | | | | | | | | | | |
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | DCPMM) on the next page. | | | | | | | | | | |
+| | | | | | | | | | | DRAM3 | | | | | RDIMM | | 3DS RDIMM | | | | | | | LRDIMM | | | | - | | | | | | | | | | | | |
+
+Note: DDR4 single rank x8 is not available for DCPMM Memory Mode or App-Direct Mode.
+
+Legend (for the fi rst fi ve tables above)
+
+Capacity DCPMM Any Capacity (Uniformly for all channels for a given confi guration)
+
+• Mode defi nitions: AD=App Direct Mode, MM=Memory Mode, AD+MM=Mixed Mode • For MM, general DDR4+DCPMM ratio is between 1:4 and 1:16. Excessive capacity for DCPMM can be used for AD. • For each individual population, rearrangements between channels are allowed as long as the resulting population is
+
+compliant with the X11 memory population rules for the 2nd Gen Intel Xeon Scalable-SP processors. • For each individual population, please use the same DDR4 DIMM in all slots.
+
+• For each individual population, sockets are normally symmetric with exceptions for 1 DCPMM per socket and 1 DCPMM
+
+per node case. • No mixing of DCPMM and NVMDIMMs within the same platform is allowed.
+
+• This DCPMM population guide targets a balanced DCPMM-to-DRAM-cache ratio in MM and MM + AD modes.
+
+Validation Matrix (DDR4 DIMMs Validated w/DCPMM)
+
+DIMM Type
+
+Ranks Per DIMM & Data Width (Stack)
+
+DIMM Capacity (GB) DRAM Density 4Gb 8Gb
+
+RDIMM
+
+1Rx4 8GB 16GB 2Rx8 8GB 16GB 2Rx4 16GB 32GB LRDIMM 4Rx4 N/A 64GB LRDIMM 3DS 8Rx4 (4H) N/A 128GB
+
+Note: Only 2nd Gen Intel Xeon Scalable-SP (82xx/62xx/52xx/4215 series) processors support DCPMM memory.
+
+5.6.2 DCPMM Population for the X11 8-way Motherboards with 96-DIMM
+
+Support based on the 2nd Gen Intel Xeon Scalable-SP Processors
+
+Notes: 1: Unbalanced memory confi guration decreases memory performance and is not recommended for Supermicro motherboards. 2: The following memory population table supports Supermicro's X11MP 8-way motherboards, such as X11OPi-CPU. 3.Only
+
+2nd Gen Intel Xeon Scalable-SP (82xx/62xx/52xx/4215 series) processors support
+
+DCPMM memory.
+
+DCPMM Population Table for the 8-Way X11MP Motherboards w/96 DIMM Support (X11OPi-CPU with 96 DIMM Slots Installed)
+
+Note: The drawing above shows DIMM module population for each CPU Board in stalled in your system. Please install your processors starting with CPU Board #1.
+
+D
+
+IM
+
+M
+
+A 2D I M M E 2
+
+D
+
+IM
+
+M
+
+E
+
+1
+
+D
+
+IM
+
+M
+
+D
+
+1
+
+D
+
+IM
+
+M
+
+F 
+1 D I 
+M 
+M 
+B 
+1 
+
+D
+
+IM
+
+M
+
+B
+
+2
+
+D
+
+IM
+
+M
+
+C
+
+2
+
+Pin 1
+
+Symmetric Population
+
+2-2-2 (For Channel Confi guration: 2-2-2) Modes
+
+CPU1 P1-DIMMF1 P1-DIMMF2 P1-DIMME1 P1-DIMME2 P1-DIMMD1 P1-DIMMD2 P1-DIMMA2 P1-DIMMA1 P1-DIMMB2 P1-DIMMB1 P1-DIMMC2 P1-DIMMC1 AD DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1 MM DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1 AD + MM DRAM3 DCPMM DRAM3 DCPMM DRAM3 DCPMM DCPMM DRAM3 DCPMM DRAM3 DCPMM DRAM3 CPU2 P2-DIMMF1 P2-DIMMF2 P2-DIMME1 P2-DIMME2 P2-DIMMD1 P2-DIMMD2 P2-DIMMA2 P2-DIMMA1 P2-DIMMB2 P2-DIMMB1 P2-DIMMC2 P2-DIMMC1
+
+AD DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+MM DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+AD + MM DRAM3 DCPMM DRAM3 DCPMM DRAM3 DCPMM DCPMM DRAM3 DCPMM DRAM3 DCPMM DRAM3
+
+CPU3 P3-DIMMF1 P3-DIMMF2 P3-DIMME1 P3-DIMME2 P3-DIMMD1 P3-DIMMD2 P3-DIMMA2 P3-DIMMA1 P3-DIMMB2 P3-DIMMB1 P3-DIMMC2 P3-DIMMC1
+
+AD DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+MM DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+AD + MM DRAM3 DCPMM DRAM3 DCPMM DRAM3 DCPMM DCPMM DRAM3 DCPMM DRAM3 DCPMM DRAM3
+
+CPU4 P4-DIMMF1 P4-DIMMF2 P4-DIMME1 P4-DIMME2 P4-DIMMD1 P4-DIMMD2 P4-DIMMA2 P4-DIMMA1 P4-DIMMB2 P4-DIMMB1 P4-DIMMC2 P4-DIMMC1
+
+AD DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+MM DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+AD + MM DRAM3 DCPMM DRAM3 DCPMM DRAM3 DCPMM DCPMM DRAM3 DCPMM DRAM3 DCPMM DRAM3 CPU5 P5-DIMMF1 P5-DIMMF2 P5-DIMME1 P5-DIMME2 P5-DIMMD1 P5-DIMMD2 P5-DIMMA2 P5-DIMMA1 P5-DIMMB2 P5-DIMMB1 P5-DIMMC2 P5-DIMMC1
+
+AD DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+MM DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+AD + MM DRAM3 DCPMM DRAM3 DCPMM DRAM3 DCPMM DCPMM DRAM3 DCPMM DRAM3 DCPMM DRAM3 CPU6 P6-DIMMF1 P6-DIMMF2 P6-DIMME1 P6-DIMME2 P6-DIMMD1 P6-DIMMD2 P6-DIMMA2 P6-DIMMA1 P6-DIMMB2 P6-DIMMB1 P6-DIMMC2 P6-DIMMC1
+
+AD DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+MM DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+AD + MM DRAM3 DCPMM DRAM3 DCPMM DRAM3 DCPMM DCPMM DRAM3 DCPMM DRAM3 DCPMM DRAM3 CPU7 P7-DIMMF1 P7-DIMMF2 P7-DIMME1 P7-DIMME2 P7-DIMMD1 P7-DIMMD2 P7-DIMMA2 P7-DIMMA1 P7-DIMMB2 P7-DIMMB1 P7-DIMMC2 P7-DIMMC1
+
+AD DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+MM DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+AD + MM DRAM3 DCPMM DRAM3 DCPMM DRAM3 DCPMM DCPMM DRAM3 DCPMM DRAM3 DCPMM DRAM3 CPU8 P8-DIMMF1 P8-DIMMF2 P8-DIMME1 P8-DIMME2 P8-DIMMD1 P8-DIMMD2 P8-DIMMA2 P8-DIMMA1 P8-DIMMB2 P8-DIMMB1 P8-DIMMC2 P8-DIMMC1
+
+AD DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+MM DRAM1 DCPMM DRAM1 DCPMM DRAM1 DCPMM DCPMM DRAM1 DCPMM DRAM1 DCPMM DRAM1
+
+AD + MM DRAM3 DCPMM DRAM3 DCPMM DRAM3 DCPMM DCPMM DRAM3 DCPMM DRAM3 DCPMM DRAM3
+
+| | | | | | | | | | | | | | | Symmetric Population | | | | | | | | | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2-1-1 | | | | | | | | | | | | | (For Channel Confi guration: 2-1-1) | | | | | | | | | | | | | | | | |
+| Modes | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | CPU1 | | | P1-DIMMF1 | P1-DIMMF2 | | P1-DIMME1 | | | P1-DIMME2 | | | P1-DIMMD1 | | | P1-DIMMD2 | | P1-DIMMA2 | | | P1-DIMMA1 | | | | P1-DIMMB2 | P1-DIMMB1 | P1-DIMMC2 | P1-DIMMC1 | |
+| | AD | | | DRAM1 | | - | DRAM1 | | | | - | | DRAM1 | | | DCPMM | | DCPMM | | | DRAM1 | | | | - | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM2 | | - | DRAM2 | | | | - | | DRAM2 | | | DCPMM | | DCPMM | | | DRAM2 | | | | - | DRAM2 | - | DRAM2 | |
+| AD + MM | | | | DRAM3 | | - | DRAM3 | | | | - | | DRAM3 | | | DCPMM | | DCPMM | | | DRAM3 | | | | - | DRAM3 | - | DRAM3 | |
+| | CPU2 | | | P2-DIMMF1 | P2-DIMMF2 | | P2-DIMME1 | | | P2-DIMME2 | | | P2-DIMMD1 | | | P2-DIMMD2 | | P2-DIMMA2 | | | P2-DIMMA1 | | | | P2-DIMMB2 | P2-DIMMB1 | P2-DIMMC2 | P2-DIMMC1 | |
+| | AD | | | DRAM1 | | - | DRAM1 | | | | - | | DRAM1 | | | DCPMM | | DCPMM | | | DRAM1 | | | | - | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM2 | | - | DRAM2 | | | | - | | DRAM2 | | | DCPMM | | DCPMM | | | DRAM2 | | | | - | DRAM2 | - | DRAM2 | |
+| AD + MM | | | | DRAM3 | | - | DRAM3 | | | | - | | DRAM3 | | | DCPMM | | DCPMM | | | DRAM3 | | | | - | DRAM3 | - | DRAM3 | |
+| | CPU3 | | | P3-DIMMF1 | P3-DIMMF2 | | P3-DIMME1 | | | P3-DIMME2 | | | P3-DIMMD1 | | | P3-DIMMD2 | | P3-DIMMA2 | | | P3-DIMMA1 | | | | P3-DIMMB2 | P3-DIMMB1 | P3-DIMMC2 | P3-DIMMC1 | |
+| | AD | | | DRAM1 | | - | DRAM1 | | | | - | | DRAM1 | | | DCPMM | | DCPMM | | | DRAM1 | | | | - | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM2 | | - | DRAM2 | | | | - | | DRAM2 | | | DCPMM | | DCPMM | | | DRAM2 | | | | - | DRAM2 | - | DRAM2 | |
+| AD + MM | | | | DRAM3 | | - | DRAM3 | | | | - | | DRAM3 | | | DCPMM | | DCPMM | | | DRAM3 | | | | - | DRAM3 | - | DRAM3 | |
+| | CPU4 | | | P4-DIMMF1 | P4-DIMMF2 | | P4-DIMME1 | | | P4-DIMME2 | | | P4-DIMMD1 | | | P4-DIMMD2 | | P4-DIMMA2 | | | P4-DIMMA1 | | | | P4-DIMMB2 | P4-DIMMB1 | P4-DIMMC2 | P4-DIMMC1 | |
+| | AD | | | DRAM1 | | - | DRAM1 | | | | - | | DRAM1 | | | DCPMM | | DCPMM | | | DRAM1 | | | | - | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM2 | | - | DRAM2 | | | | - | | DRAM2 | | | DCPMM | | DCPMM | | | DRAM2 | | | | - | DRAM2 | - | DRAM2 | |
+| AD + MM | | | | DRAM3 | | - | DRAM3 | | | | - | | DRAM3 | | | DCPMM | | DCPMM | | | DRAM3 | | | | - | DRAM3 | - | DRAM3 | |
+| | CPU5 | | | P5-DIMMF1 | P5-DIMMF2 | | P5-DIMME1 | | | P5-DIMME2 | | | P5-DIMMD1 | | | P5-DIMMD2 | | P5-DIMMA2 | | | P5-DIMMA1 | | | | P5-DIMMB2 | P5-DIMMB1 | P5-DIMMC2 | P5-DIMMC1 | |
+| | AD | | | DRAM1 | | - | DRAM1 | | | | - | | DRAM1 | | | DCPMM | | DCPMM | | | DRAM1 | | | | - | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM2 | | - | DRAM2 | | | | - | | DRAM2 | | | DCPMM | | DCPMM | | | DRAM2 | | | | - | DRAM2 | - | DRAM2 | |
+| AD + MM | | | | DRAM3 | | - | DRAM3 | | | | - | | DRAM3 | | | DCPMM | | DCPMM | | | DRAM3 | | | | - | DRAM3 | - | DRAM3 | |
+| | CPU6 | | | P6-DIMMF1 | P6-DIMMF2 | | P6-DIMME1 | | | P6-DIMME2 | | | P6-DIMMD1 | | | P6-DIMMD2 | | P6-DIMMA2 | | | P6-DIMMA1 | | | | P6-DIMMB2 | P6-DIMMB1 | P6-DIMMC2 | P6-DIMMC1 | |
+| | AD | | | DRAM1 | | - | DRAM1 | | | | - | | DRAM1 | | | DCPMM | | DCPMM | | | DRAM1 | | | | - | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM2 | | - | DRAM2 | | | | - | | DRAM2 | | | DCPMM | | DCPMM | | | DRAM2 | | | | - | DRAM2 | - | DRAM2 | |
+| AD + MM | | | | DRAM3 | | - | DRAM3 | | | | - | | DRAM3 | | | DCPMM | | DCPMM | | | DRAM3 | | | | - | DRAM3 | - | DRAM3 | |
+| | CPU7 | | | P7-DIMMF1 | P7-DIMMF2 | | P7-DIMME1 | | | P7-DIMME2 | | | P7-DIMMD1 | | | P7-DIMMD2 | | P7-DIMMA2 | | | P7-DIMMA1 | | | | P7-DIMMB2 | P7-DIMMB1 | P7-DIMMC2 | P7-DIMMC1 | |
+| | AD | | | DRAM1 | | - | DRAM1 | | | | - | | DRAM1 | | | DCPMM | | DCPMM | | | DRAM1 | | | | - | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM2 | | - | DRAM2 | | | | - | | DRAM2 | | | DCPMM | | DCPMM | | | DRAM2 | | | | - | DRAM2 | - | DRAM2 | |
+| AD + MM | | | | DRAM3 | | - | DRAM3 | | | | - | | DRAM3 | | | DCPMM | | DCPMM | | | DRAM3 | | | | - | DRAM3 | - | DRAM3 | |
+| | CPU8 | | | P8-DIMMF1 | P8-DIMMF2 | | P8-DIMME1 | | | P8-DIMME2 | | | P8-DIMMD1 | | | P8-DIMMD2 | | P8-DIMMA2 | | | P8-DIMMA1 | | | | P8-DIMMB2 | P8-DIMMB1 | P8-DIMMC2 | P8-DIMMC1 | |
+| | AD | | | DRAM1 | | - | DRAM1 | | | | - | | DRAM1 | | | DCPMM | | DCPMM | | | DRAM1 | | | | - | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM2 | | - | DRAM2 | | | | - | | DRAM2 | | | DCPMM | | DCPMM | | | DRAM2 | | | | - | DRAM2 | - | DRAM2 | |
+| AD + MM | | | | DRAM3 | | - | DRAM3 | | | | - | | DRAM3 | | | DCPMM | | DCPMM | | | DRAM3 | | | | - | DRAM3 | - | DRAM3 | |
+| | | | | | | 1 | | | 1 | | 1 | | | | | | | | | | D I | | | D I | | D I | | | |
+| | | | | | | F | | | E | | D | | | | | | | | | | M | | | M | | M | | | |
+| | | | | | | M | | | M | | M | | | | | | | | | | M | | | M | | M | | | |
+| | | | | | | IM | | | IM | | IM | | | | | | | | | | | | | | | | | | |
+| | | | | | | | | | | | | | | | | | | | | | A | | | B | | C | | | |
+| | | | | | | D | | | D | | D | | | | | | | | | | 1 | | | 1 | | 1 | | | |
+
+Pin 1
+
+2
+
+2
+
+B
+
+C
+
+M
+
+M
+
+M
+
+A 2D I M M E 2
+
+IM
+
+IM
+
+IM
+
+D
+
+D
+
+D
+
+Note: The drawing above shows DIMM module population for each CPU Board in stalled in your system. Please install your processors starting with CPU Board #1.
+
+Symmetric Population 2-2-1 (For Channel Confi guration: 2-2-1)
+
+| 2-2-1 | | | | | | | | | | | | (For Channel Confi guration: 2-2-1) | | | | | | | | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Modes | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| CPU1 | | | | P1-DIMMF1 | P1-DIMMF2 | P1-DIMME1 | P1-DIMME2 | | | | P1-DIMMD1 | | | P1-DIMMD2 | | P1-DIMMA2 | P1-DIMMA1 | | | P1-DIMMB2 | | | P1-DIMMB1 | P1-DIMMC2 | P1-DIMMC1 | |
+| | AD | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| AD + MM | | | | DRAM3 | - | DRAM3 | DCPMM | | | | DRAM3 | | | DCPMM | | DCPMM | | DRAM3 | | DCPMM | | | DRAM3 | - | DRAM3 | |
+| | AD | | | DCPMM | - | DRAM1 | DRAM1 | | | | DRAM1 | | | DRAM1 | | DRAM1 | | DRAM1 | | DRAM1 | | | DRAM1 | - | DCPMM | 2-2-1 |
+| CPU2 | | | | P2-DIMMF1 | P2-DIMMF2 | P2-DIMME1 | P2-DIMME2 | | | | P2-DIMMD1 | | | P2-DIMMD2 | | P2-DIMMA2 | P2-DIMMA1 | | | P2-DIMMB2 | | | P2-DIMMB1 | P2-DIMMC2 | P2-DIMMC1 | |
+| | AD | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| AD + MM | | | | DRAM3 | - | DRAM3 | DCPMM | | | | DRAM3 | | | DCPMM | | DCPMM | | DRAM3 | | DCPMM | | | DRAM3 | - | DRAM3 | |
+| | AD | | | DCPMM | - | DRAM1 | DRAM1 | | | | DRAM1 | | | DRAM1 | | DRAM1 | | DRAM1 | | DRAM1 | | | DRAM1 | - | DCPMM | 2-2-1 |
+| CPU3 | | | | P3-DIMMF1 | P3-DIMMF2 | P3-DIMME1 | P3-DIMME2 | | | | P3-DIMMD1 | | | P3-DIMMD2 | | P3-DIMMA2 | P3-DIMMA1 | | | P3-DIMMB2 | | | P3-DIMMB1 | P3-DIMMC2 | P3-DIMMC1 | |
+| | AD | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| AD + MM | | | | DRAM3 | - | DRAM3 | DCPMM | | | | DRAM3 | | | DCPMM | | DCPMM | | DRAM3 | | DCPMM | | | DRAM3 | - | DRAM3 | |
+| | AD | | | DCPMM | - | DRAM1 | DRAM1 | | | | DRAM1 | | | DRAM1 | | DRAM1 | | DRAM1 | | DRAM1 | | | DRAM1 | - | DCPMM | 2-2-1 |
+| CPU4 | | | | P4-DIMMF1 | P4-DIMMF2 | P4-DIMME1 | P4-DIMME2 | | | | P4-DIMMD1 | | | P4-DIMMD2 | | P4-DIMMA2 | P4-DIMMA1 | | | P4-DIMMB2 | | | P4-DIMMB1 | P4-DIMMC2 | P4-DIMMC1 | |
+| | AD | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| AD + MM | | | | DRAM3 | - | DRAM3 | DCPMM | | | | DRAM3 | | | DCPMM | | DCPMM | | DRAM3 | | DCPMM | | | DRAM3 | - | DRAM3 | |
+| | AD | | | DCPMM | - | DRAM1 | DRAM1 | | | | DRAM1 | | | DRAM1 | | DRAM1 | | DRAM1 | | DRAM1 | | | DRAM1 | - | DCPMM | 2-2-1 |
+| CPU5 | | | | P5-DIMMF1 | P5-DIMMF2 | P5-DIMME1 | P5-DIMME2 | | | | P5-DIMMD1 | | | P5-DIMMD2 | | P5-DIMMA2 | P5-DIMMA1 | | | P5-DIMMB2 | | | P5-DIMMB1 | P5-DIMMC2 | P5-DIMMC1 | |
+| | AD | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| AD + MM | | | | DRAM3 | - | DRAM3 | DCPMM | | | | DRAM3 | | | DCPMM | | DCPMM | | DRAM3 | | DCPMM | | | DRAM3 | - | DRAM3 | |
+| | AD | | | DCPMM | - | DRAM1 | DRAM1 | | | | DRAM1 | | | DRAM1 | | DRAM1 | | DRAM1 | | DRAM1 | | | DRAM1 | - | DCPMM | 2-2-1 |
+| CPU6 | | | | P6-DIMMF1 | P6-DIMMF2 | P6-DIMME1 | P6-DIMME2 | | | | P6-DIMMD1 | | | P6-DIMMD2 | | P6-DIMMA2 | P6-DIMMA1 | | | P6-DIMMB2 | | | P6-DIMMB1 | P6-DIMMC2 | P6-DIMMC1 | |
+| | AD | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| AD + MM | | | | DRAM3 | - | DRAM3 | DCPMM | | | | DRAM3 | | | DCPMM | | DCPMM | | DRAM3 | | DCPMM | | | DRAM3 | - | DRAM3 | |
+| | AD | | | DCPMM | - | DRAM1 | DRAM1 | | | | DRAM1 | | | DRAM1 | | DRAM1 | | DRAM1 | | DRAM1 | | | DRAM1 | - | DCPMM | 2-2-1 |
+| CPU7 | | | | P7-DIMMF1 | P7-DIMMF2 | P7-DIMME1 | P7-DIMME2 | | | | P7-DIMMD1 | | | P7-DIMMD2 | | P7-DIMMA2 | P7-DIMMA1 | | | P7-DIMMB2 | | | P7-DIMMB1 | P7-DIMMC2 | P7-DIMMC1 | |
+| | AD | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| AD + MM | | | | DRAM3 | - | DRAM3 | DCPMM | | | | DRAM3 | | | DCPMM | | DCPMM | | DRAM3 | | DCPMM | | | DRAM3 | - | DRAM3 | |
+| | AD | | | DCPMM | - | DRAM1 | DRAM1 | | | | DRAM1 | | | DRAM1 | | DRAM1 | | DRAM1 | | DRAM1 | | | DRAM1 | - | DCPMM | 2-2-1 |
+| CPU8 | | | | P8-DIMMF1 | P8-DIMMF2 | P8-DIMME1 | P8-DIMME2 | | | | P8-DIMMD1 | | | P8-DIMMD2 | | P8-DIMMA2 | P8-DIMMA1 | | | P8-DIMMB2 | | | P8-DIMMB1 | P8-DIMMC2 | P8-DIMMC1 | |
+| | AD | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| | MM | | | DRAM1 | - | DRAM1 | DCPMM | | | | DRAM1 | | | DCPMM | | DCPMM | | DRAM1 | | DCPMM | | | DRAM1 | - | DRAM1 | |
+| AD + MM | | | | DRAM3 | - | DRAM3 | DCPMM | | | | DRAM3 | | | DCPMM | | DCPMM | | DRAM3 | | DCPMM | | | DRAM3 | - | DRAM3 | |
+| | AD | | | DCPMM | - | DRAM1 | DRAM1 | | | | DRAM1 | | | DRAM1 | | DRAM1 | | DRAM1 | | DRAM1 | | | DRAM1 | - | DCPMM | 2-2-1 |
+| | | | | | | | 1 | 1 | | | 1 | | | | | | | D I | | D I | D I | | | | | |
+| | | | | | | | F | E | | | D | | | | | | | M | | M | M | | | | | |
+| | | | | | | | M | M | | | M | | | | | | | M | | M | M | | | | | |
+| | | | | | | | IM | IM | | | IM | | | | | | | A | | B | C | | | | | |
+| | | | | | | | D | D | | | D | | | | | | | 1 | | 1 | 1 | | | | | |
+
+Pin 1
+
+2
+
+2
+
+B
+
+C
+
+M
+
+M
+
+M
+
+A 2D I M M E 2
+
+IM
+
+IM
+
+IM
+
+D
+
+D
+
+D
+
+Note: The drawing above shows DIMM module population for each CPU Board in stalled in your system. Please install your processors starting with CPU Board #1.
+
+| | | | | | | | | | | | | | | | | Symmetric Population | | | | | | | | | | | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | 1-1-1 | | | | | | | | | | | | | | (For Channel Confi guration: 1-1-1) | | | | | | | | | | | | | | | | | | |
+| | Modes | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | CPU1 | | | | P1-DIMMF1 | | | P1-DIMMF2 | | P1-DIMME1 | | | P1-DIMME2 | | P1-DIMMD1 | | | | P1-DIMMD2 | | P1-DIMMA2 | | | P1-DIMMA1 | | P1-DIMMB2 | | P1-DIMMB1 | | P1-DIMMC2 | | P1-DIMMC1 | |
+| | AD | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| | MM | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| AD + MM | | | | | DCPMM | | | - | | DRAM3 | | | - | | DRAM3 | | | | - | | | - | | DRAM3 | | | - | DRAM3 | | - | | DCPMM | |
+| | CPU2 | | | | P2-DIMMF1 | | | P2-DIMMF2 | | P2-DIMME1 | | | P2-DIMME2 | | P2-DIMMD1 | | | | P2-DIMMD2 | | P2-DIMMA2 | | | P2-DIMMA1 | | P2-DIMMB2 | | P2-DIMMB1 | | P2-DIMMC2 | | P2-DIMMC1 | |
+| | AD | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| | MM | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| AD + MM | | | | | DCPMM | | | - | | DRAM3 | | | - | | DRAM3 | | | | - | | | - | | DRAM3 | | | - | DRAM3 | | - | | DCPMM | |
+| | CPU3 | | | | P3-DIMMF1 | | | P3-DIMMF2 | | P3-DIMME1 | | | P3-DIMME2 | | P3-DIMMD1 | | | | P3-DIMMD2 | | P3-DIMMA2 | | | P3-DIMMA1 | | P3-DIMMB2 | | P3-DIMMB1 | | P3-DIMMC2 | | P3-DIMMC1 | |
+| | AD | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| | MM | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| AD + MM | | | | | DCPMM | | | - | | DRAM3 | | | - | | DRAM3 | | | | - | | | - | | DRAM3 | | | - | DRAM3 | | - | | DCPMM | |
+| | CPU4 | | | | P4-DIMMF1 | | | P4-DIMMF2 | | P4-DIMME1 | | | P4-DIMME2 | | P4-DIMMD1 | | | | P4-DIMMD2 | | P4-DIMMA2 | | | P4-DIMMA1 | | P4-DIMMB2 | | P4-DIMMB1 | | P4-DIMMC2 | | P4-DIMMC1 | |
+| | AD | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| | MM | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| AD + MM | | | | | DCPMM | | | - | | DRAM3 | | | - | | DRAM3 | | | | - | | | - | | DRAM3 | | | - | DRAM3 | | - | | DCPMM | |
+| | CPU5 | | | | P5-DIMMF1 | | | P5-DIMMF2 | | P5-DIMME1 | | | P5-DIMME2 | | P5-DIMMD1 | | | | P5-DIMMD2 | | P5-DIMMA2 | | | P5-DIMMA1 | | P5-DIMMB2 | | P5-DIMMB1 | | P5-DIMMC2 | | P5-DIMMC1 | |
+| | AD | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| | MM | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| AD + MM | | | | | DCPMM | | | - | | DRAM3 | | | - | | DRAM3 | | | | - | | | - | | DRAM3 | | | - | DRAM3 | | - | | DCPMM | |
+| | CPU6 | | | | P6-DIMMF1 | | | P6-DIMMF2 | | P6-DIMME1 | | | P6-DIMME2 | | P6-DIMMD1 | | | | P6-DIMMD2 | | P6-DIMMA2 | | | P6-DIMMA1 | | P6-DIMMB2 | | P6-DIMMB1 | | P6-DIMMC2 | | P6-DIMMC1 | |
+| | AD | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| | MM | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| AD + MM | | | | | DCPMM | | | - | | DRAM3 | | | - | | DRAM3 | | | | - | | | - | | DRAM3 | | | - | DRAM3 | | - | | DCPMM | |
+| | CPU7 | | | | P7-DIMMF1 | | | P7-DIMMF2 | | P7-DIMME1 | | | P7-DIMME2 | | P7-DIMMD1 | | | | P7-DIMMD2 | | P7-DIMMA2 | | | P7-DIMMA1 | | P7-DIMMB2 | | P7-DIMMB1 | | P7-DIMMC2 | | P7-DIMMC1 | |
+| | AD | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| | MM | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| AD + MM | | | | | DCPMM | | | - | | DRAM3 | | | - | | DRAM3 | | | | - | | | - | | DRAM3 | | | - | DRAM3 | | - | | DCPMM | |
+| | CPU8 | | | | P8-DIMMF1 | | | P8-DIMMF2 | | P8-DIMME1 | | | P8-DIMME2 | | P8-DIMMD1 | | | | P8-DIMMD2 | | P8-DIMMA2 | | | P8-DIMMA1 | | P8-DIMMB2 | | P8-DIMMB1 | | P8-DIMMC2 | | P8-DIMMC1 | |
+| | AD | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| | MM | | | | DCPMM | | | - | | DRAM1 | | | - | | DRAM1 | | | | - | | | - | | DRAM1 | | | - | DRAM1 | | - | | DCPMM | |
+| AD + MM | | | | | DCPMM | | | - | | DRAM3 | | | - | | DRAM3 | | | | - | | | - | | DRAM3 | | | - | DRAM3 | | - | | DCPMM | |
+| | | | | | | | | | | | | | | | | Asymmetric Population | | | | | | | | | | | | | | | | | |
+| | 2/1- | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | 1-1 | | | | | | | | | | | | | | (For Channel Confi guration: 2/1-1-1) | | | | | | | | | | | | | | | | | | |
+| Modes | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| CPU1 | | | | P1-DIMMF1 | | | P1-DIMMF2 | | P1-DIMME1 | | | P1-DIMME2 | | P1-DIMMD1 | | | | P1-DIMMD2 | | P1-DIMMA2 | | | P1-DIMMA1 | | | P1-DIMMB2 | | P1-DIMMB1 | | P1-DIMMC2 | | P1-DIMMC1 | |
+| | AD | | | DRAM1 | | | | - | DRAM1 | | | | - | DRAM1 | | | | | - | DCPMM | | | DRAM1 | | | - | | DRAM1 | | - | | DRAM1 | |
+| CPU2 | | | | P2-DIMMF1 | | | P2-DIMMF2 | | P2-DIMME1 | | | P2-DIMME2 | | P2-DIMMD1 | | | | P2-DIMMD2 | | P2-DIMMA2 | | | P2-DIMMA1 | | | P2-DIMMB2 | | P2-DIMMB1 | | P2-DIMMC2 | | P2-DIMMC1 | |
+| | AD | | | DRAM1 | | | | - | DRAM1 | | | | - | DRAM1 | | | | | - | DCPMM | | | DRAM1 | | | - | | DRAM1 | | - | | DRAM1 | |
+| CPU3 | | | | P3-DIMMF1 | | | P3-DIMMF2 | | P3-DIMME1 | | | P3-DIMME2 | | P3-DIMMD1 | | | | P3-DIMMD2 | | P3-DIMMA2 | | | P3-DIMMA1 | | | P3-DIMMB2 | | P3-DIMMB1 | | P3-DIMMC2 | | P3-DIMMC1 | |
+| | AD | | | DRAM1 | | | | - | DRAM1 | | | | - | DRAM1 | | | | | - | DCPMM | | | DRAM1 | | | - | | DRAM1 | | - | | DRAM1 | |
+| CPU4 | | | | P4-DIMMF1 | | | P4-DIMMF2 | | P4-DIMME1 | | | P4-DIMME2 | | P4-DIMMD1 | | | | P4-DIMMD2 | | P4-DIMMA2 | | | P4-DIMMA1 | | | P4-DIMMB2 | | P4-DIMMB1 | | P4-DIMMC2 | | P4-DIMMC1 | |
+| | AD | | | DRAM1 | | | | - | DRAM1 | | | | - | DRAM1 | | | | | - | DCPMM | | | DRAM1 | | | - | | DRAM1 | | - | | DRAM1 | |
+| CPU5 | | | | P5-DIMMF1 | | | P5-DIMMF2 | | P5-DIMME1 | | | P5-DIMME2 | | P5-DIMMD1 | | | | P5-DIMMD2 | | P5-DIMMA2 | | | P5-DIMMA1 | | | P5-DIMMB2 | | P5-DIMMB1 | | P5-DIMMC2 | | P5-DIMMC1 | |
+| | AD | | | DRAM1 | | | | - | DRAM1 | | | | - | DRAM1 | | | | | - | DCPMM | | | DRAM1 | | | - | | DRAM1 | | - | | DRAM1 | |
+| CPU6 | | | | P6-DIMMF1 | | | P6-DIMMF2 | | P6-DIMME1 | | | P6-DIMME2 | | P6-DIMMD1 | | | | P6-DIMMD2 | | P6-DIMMA2 | | | P6-DIMMA1 | | | P6-DIMMB2 | | P6-DIMMB1 | | P6-DIMMC2 | | P6-DIMMC1 | |
+| | AD | | | DRAM1 | | | | - | DRAM1 | | | | - | DRAM1 | | | | | - | DCPMM | | | DRAM1 | | | - | | DRAM1 | | - | | DRAM1 | |
+| CPU7 | | | | P7-DIMMF1 | | | P7-DIMMF2 | | P7-DIMME1 | | | P7-DIMME2 | | P7-DIMMD1 | | | | P7-DIMMD2 | | P7-DIMMA2 | | | P7-DIMMA1 | | | P7-DIMMB2 | | P7-DIMMB1 | | P7-DIMMC2 | | P7-DIMMC1 | |
+| | AD | | | DRAM1 | | | | - | DRAM1 | | | | - | DRAM1 | | | | | - | DCPMM | | | DRAM1 | | | - | | DRAM1 | | - | | DRAM1 | |
+| CPU8 | | | | P8-DIMMF1 | | | P8-DIMMF2 | | P8-DIMME1 | | | P8-DIMME2 | | P8-DIMMD1 | | | | P8-DIMMD2 | | P8-DIMMA2 | | | P8-DIMMA1 | | | P8DIMMB2 | | P8-DIMMB1 | | P8-DIMMC2 | | P8-DIMMC1 | |
+| | AD | | | DRAM1 | | | | - | DRAM1 | | | | - | DRAM1 | | | | | - | DCPMM | | | DRAM1 | | | - | | DRAM1 | | - | | DRAM1 | |
+
+Note: The drawing above shows DIMM module population for each CPU Board in stalled in your system. Please install your processors starting with CPU Board #1.
+
+Legend (for the fi ve tables above) DDR4 Type Capacity DRAM1 RDIMM 3DS RDIMM LRDIMM 3DS LRDIMM
+
+Refer to Validation Matrix (DDR4 DIMMs validated with DCPMM) below.
+
+DRAM2 RDIMM - -DRAM3 RDIMM 3DS RDIMM LRDIMM -
+
+Note: DDR4 single rank x8 is not available for DCPMM Memory Mode or App-Direct
+
+Mode.
+
+Legend (for the fi rst fi ve tables above) Capacity DCPMM Any Capacity (Uniformly for all channels for a given confi guration)
+
+• Mode defi nitions: AD=App Direct Mode, MM=Memory Mode, AD+MM=Mixed Mode • For MM, general DDR4+DCPMM ratio is between 1:4 and 1:16. Excessive capacity for DCPMM can be used for AD.
+
+• For each individual population, rearrangements between channels are allowed as long as the resulting population is compliant with the X11 memory population rules for the 2nd Gen Intel Xeon Scalable-SP processors.
+
+• For each individual population, please use the same DDR4 DIMM in all slots.
+
+• For each individual population, sockets are normally symmetric with exceptions for 1 DCPMM per socket and 1 DCPMM
+
+per node case.
+
+• No mixing of DCPMM and NVMDIMMs within the same platform is allowed.
+
+• This DCPMM population guide targets a balanced DCPMM-to-DRAM-cache ratio in MM and MM + AD modes.
+
+D
+
+IM
+
+M
+
+A 2D I M M E 2
+
+D
+
+IM
+
+M
+
+E
+
+1
+
+D
+
+IM
+
+M
+
+D
+
+1
+
+D
+
+IM
+
+M
+
+F 
+1 D I 
+M 
+M 
+B 
+1 
+
+D
+
+IM
+
+M
+
+B
+
+2
+
+D
+
+IM
+
+M
+
+C
+
+2
+
+Pin 1
+
+Validation Matrix (DDR4 DIMMs Validated w/DCPMM)
+
+DIMM Type
+
+Ranks Per DIMM & Data Width (Stack)
+
+DIMM Capacity (GB) DRAM Density 4Gb 8Gb
+
+RDIMM
+
+1Rx4 8GB 16GB 2Rx8 8GB 16GB 2Rx4 16GB 32GB
+
+LRDIMM 4Rx4 N/A 64GB LRDIMM 3DS 8Rx4 (4H) N/A 128GB
+
+Note: Only 2nd Gen Intel Xeon Scalable-SP (82xx/62xx/52xx/4215 series) processors
+
+support DCPMM memory.
+
+#### 6 DIMM Installation
+
+1. Follow the instructions given in the memory population guidelines listed in the previous sections to install memory modules on your motherboard. For the system to work properly, please use memory modules of the same type and speed on the motherboard. (See the Note below.) 
+2. Push the release tabs outwards on both ends of the DIMM slot to unlock it. 
+3. Align the key of the DIMM module with the receptive point on the memory slot. 
+4. Align the notches on both ends of the module against the receptive points on the ends of the slot. 
+5. Use two thumbs together to press the DIMM module straight down into the slot until the module snaps into place. 
+6. Press the release tabs to the lock positions to secure the DIMM module into the slot. 
+
+Release Tabs
+
+Notches
+
+Insert the DIMM module into the memory slot.
+
+L I C E N S E B I O S MAC CODE BAR CODE X11DAi-N REV:1.01
+
+##### DIMM Module Removal
+
+Press the release tabs on both ends of the DIMM socket to release the DIMM module from the socket as shown in the drawing on the right.
+
+Warning! 1. Please do not use excessive force when pressing the release tabs on the ends of the DIMM socket to avoid causing any damage to the DIMM module or the DIMM socket. 2. Please handle DIMM modules with care. Carefully follow all the instructions given in Section 1 of this user guide to avoid ESD-related damages done to your components or system. 3. All graphics including the layout drawing above are for reference only. Your system components may look or may not look the same as graphics shown in this user guide.
+
