@@ -59,3 +59,12 @@ Shopping list: `20_System_BOM/SHOPPING.md`. Pin map authority: `22_Pinmap_Resear
 ## Exhaustive public-source hunt (copied tree, 2026-08-17)
 
 Research only — **not fab-ready**. Findings: `Generated_Project/Rev2_MI250X_Carrier_ExhaustiveSourceHunt_v1/FINDINGS.md`.
+
+## Wait on Molex 60 V / skip-pin; host + desk + SendCutSend OK (2026-08-17)
+
+Standing rules: repo-root `AGENTS.md`.
+
+Copied tree: `Generated_Project/Rev2_MI250X_Carrier_WaitMolexBuyHostDesk_v1/`.
+
+- **Wait:** Brian Park / 2189101115 60 V skip-pin. No PCBWay. No energize. Do not invent pins.
+- **OK to buy:** host, desk, SendCutSend chassis sheet (`cad/dxf/`).

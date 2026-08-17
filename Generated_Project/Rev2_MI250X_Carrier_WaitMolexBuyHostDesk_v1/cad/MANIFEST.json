@@ -1,0 +1,340 @@
+{
+  "generator": "generate_sendcutsend_dxf.py",
+  "vendor": "https://sendcutsend.com/",
+  "upload": "https://sendcutsend.com/  (DXF, 1:1 mm)",
+  "material_page": "https://sendcutsend.com/materials/mild-steel/",
+  "hardware_page": "https://sendcutsend.com/services/hardware/",
+  "max_part_in": [
+    36,
+    46
+  ],
+  "tolerance_in": 0.005,
+  "pem_note": "Metric PEM nuts in SCS catalog: M3, M4, M5, M6 \u2014 not M3.5. Optional: add M4 nuts on the 4.5 mm holes in the app (holes auto-resize).",
+  "forbidden": [
+    "PCBWay / any PCB fab of in-repo KiCad",
+    "Energize OAMs",
+    "OAM M3.5 pattern on these DXFs"
+  ],
+  "parts": [
+    {
+      "file": "01_host_tray_x11dph_t.dxf",
+      "outer_mm": [
+        360.2,
+        334.8
+      ],
+      "units": "mm",
+      "orientation_notch_mm": 6.0,
+      "flange_hole_d_mm": 4.5,
+      "flange_holes_xy_mm": [
+        [
+          15.0,
+          15.0
+        ],
+        [
+          345.2,
+          15.0
+        ],
+        [
+          345.2,
+          319.8
+        ],
+        [
+          15.0,
+          319.8
+        ],
+        [
+          180.1,
+          15.0
+        ],
+        [
+          180.1,
+          319.8
+        ],
+        [
+          15.0,
+          167.4
+        ],
+        [
+          345.2,
+          167.4
+        ]
+      ],
+      "qty": 1,
+      "material": "SendCutSend A1008 mild steel 0.059 in (1.50 mm) \u2014 nearest 16 ga",
+      "verified_payload_mm": [
+        330.2,
+        304.8
+      ],
+      "verified_source": "SuperMicro X11DPH-T 13 in x 12 in (330.2 mm x 304.8 mm)",
+      "do_not": "No motherboard standoff holes. ATX Figure 3 millimetres not extracted; SuperMicro extra E-ATX holes Unknown. Drill after the board is in hand."
+    },
+    {
+      "file": "02_desk_tray_matx_class.dxf",
+      "outer_mm": [
+        280.0,
+        280.0
+      ],
+      "units": "mm",
+      "orientation_notch_mm": 6.0,
+      "flange_hole_d_mm": 4.5,
+      "flange_holes_xy_mm": [
+        [
+          15.0,
+          15.0
+        ],
+        [
+          265.0,
+          15.0
+        ],
+        [
+          265.0,
+          265.0
+        ],
+        [
+          15.0,
+          265.0
+        ]
+      ],
+      "qty": 1,
+      "material": "SendCutSend A1008 mild steel 0.059 in (1.50 mm)",
+      "inferred_payload_mm": [
+        244.0,
+        244.0
+      ],
+      "inferred_source": "Typical microATX; ASUS PRIME B550M-A AC was an example combo, not a locked unique board.",
+      "do_not": "No mATX standoff holes. Drill after the desk board is in hand."
+    },
+    {
+      "file": "03_compute_tray_2oam.dxf",
+      "outer_mm": [
+        286.0,
+        246.0
+      ],
+      "units": "mm",
+      "orientation_notch_mm": 6.0,
+      "flange_hole_d_mm": 4.5,
+      "flange_holes_xy_mm": [
+        [
+          15.0,
+          15.0
+        ],
+        [
+          271.0,
+          15.0
+        ],
+        [
+          271.0,
+          231.0
+        ],
+        [
+          15.0,
+          231.0
+        ]
+      ],
+      "qty": 1,
+      "material": "SendCutSend A1008 mild steel 0.059 in (1.50 mm)",
+      "verified_koz_2gpu_mm": [
+        206.0,
+        166.0
+      ],
+      "verified_source": "Two 103 x 166 mm OCP v1.5 KOZs tiled on module width",
+      "planning_carrier_mm": [
+        246.0,
+        206.0
+      ],
+      "do_not": "No OAM M3.5 NPTH, no Molex land pattern, no 8-GPU 412x332 hole grid. SendCutSend has no M3.5 PEM."
+    },
+    {
+      "file": "04_divider_12v_48v.dxf",
+      "outer_mm": [
+        500.0,
+        450.0
+      ],
+      "units": "mm",
+      "orientation_notch_mm": 6.0,
+      "flange_hole_d_mm": 4.5,
+      "flange_holes_xy_mm": [
+        [
+          15.0,
+          15.0
+        ],
+        [
+          485.0,
+          15.0
+        ],
+        [
+          485.0,
+          435.0
+        ],
+        [
+          15.0,
+          435.0
+        ],
+        [
+          250.0,
+          15.0
+        ],
+        [
+          250.0,
+          435.0
+        ],
+        [
+          15.0,
+          225.0
+        ],
+        [
+          485.0,
+          225.0
+        ]
+      ],
+      "qty": 1,
+      "material": "SendCutSend A1008 mild steel 0.059 in (1.50 mm)",
+      "note": "Trim to welded-tube inside after height is known (GPU HS height Unknown; U14S is 165 mm).",
+      "do_not": "Do not put P48V and ATX 12 V on the same side of this wall."
+    },
+    {
+      "file": "05_skin_compute_front.dxf",
+      "outer_mm": [
+        520.0,
+        500.0
+      ],
+      "units": "mm",
+      "orientation_notch_mm": 6.0,
+      "flange_hole_d_mm": 4.5,
+      "flange_holes_xy_mm": [
+        [
+          15.0,
+          15.0
+        ],
+        [
+          505.0,
+          15.0
+        ],
+        [
+          505.0,
+          485.0
+        ],
+        [
+          15.0,
+          485.0
+        ],
+        [
+          260.0,
+          15.0
+        ],
+        [
+          260.0,
+          485.0
+        ],
+        [
+          15.0,
+          250.0
+        ],
+        [
+          505.0,
+          250.0
+        ]
+      ],
+      "qty": 1,
+      "material": "SendCutSend A1008 mild steel 0.059 in (1.50 mm)",
+      "note": "Compute intake face. Cut-list A>=500, F TBD. No fan holes.",
+      "do_not": "No GPU ducts, no ATX I/O aperture, no OAM holes."
+    },
+    {
+      "file": "06_skin_compute_top.dxf",
+      "outer_mm": [
+        520.0,
+        470.0
+      ],
+      "units": "mm",
+      "orientation_notch_mm": 6.0,
+      "flange_hole_d_mm": 4.5,
+      "flange_holes_xy_mm": [
+        [
+          15.0,
+          15.0
+        ],
+        [
+          505.0,
+          15.0
+        ],
+        [
+          505.0,
+          455.0
+        ],
+        [
+          15.0,
+          455.0
+        ],
+        [
+          260.0,
+          15.0
+        ],
+        [
+          260.0,
+          455.0
+        ],
+        [
+          15.0,
+          235.0
+        ],
+        [
+          505.0,
+          235.0
+        ]
+      ],
+      "qty": 1,
+      "material": "SendCutSend A1008 mild steel 0.059 in (1.50 mm)",
+      "note": "Compute top/bottom candidate. Cut-list A>=500 x B>=450. Removable; not a cold plate.",
+      "do_not": "No GPU ducts, no ATX I/O aperture, no OAM holes."
+    },
+    {
+      "file": "07_skin_host_rear.dxf",
+      "outer_mm": [
+        420.0,
+        500.0
+      ],
+      "units": "mm",
+      "orientation_notch_mm": 6.0,
+      "flange_hole_d_mm": 4.5,
+      "flange_holes_xy_mm": [
+        [
+          15.0,
+          15.0
+        ],
+        [
+          405.0,
+          15.0
+        ],
+        [
+          405.0,
+          485.0
+        ],
+        [
+          15.0,
+          485.0
+        ],
+        [
+          210.0,
+          15.0
+        ],
+        [
+          210.0,
+          485.0
+        ],
+        [
+          15.0,
+          250.0
+        ],
+        [
+          405.0,
+          250.0
+        ]
+      ],
+      "qty": 1,
+      "material": "SendCutSend A1008 mild steel 0.059 in (1.50 mm)",
+      "note": "Host rear. Cut I/O after tracing the X11DPH-T shield (server I/O, not ATX 158.75 x 44.45 mm).",
+      "do_not": "No GPU ducts, no ATX I/O aperture, no OAM holes."
+    }
+  ]
+}
