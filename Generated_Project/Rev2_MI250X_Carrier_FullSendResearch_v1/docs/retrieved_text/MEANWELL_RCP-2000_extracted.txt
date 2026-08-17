@@ -1,0 +1,610 @@
+‧ ‧ ‧ ‧ ‧ ‧
+
+■ 
+
+■    
+
+  ℃  ”  
+
+‧ 
+ 
+‧ 
+‧ 
+‧ 
+‧ 
+‧ 
+‧” 
+‧  
+
+ ‧  ‧ ‧
+
+■  ■ 
+
+      
+
+※http://www.meanwell.com/ ※http://www.meanwell.com/
+
+
+
+   
+
+ 
+
+   
+
+  
+
+
+
+UL62368-1 BS EN/EN62368-1 TPTC004 IEC62368-1
+
+Bauar Sicherheit egelma ge t gepruft
+
+od be www. ID 2000000000 tuv.com wac g o s
+
+User’s Manual
+
+ https://www.meanwell.com/serviceGTIN.aspx ■ 
+
+Click Me
+
+## 2000W Rack Mountable Front End Rectifier RCP-200 0 s erie s
+
+#### SPECIFICATION
+
+| MODEL | | | | | | | | RCP-2000-12 | | | | | | RCP-2000-24 | | | | RCP-2000-48 | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | DC VOLTAGE | | | | | | | 12V | | | | | | 24V | | | | 48V | | |
+| | RATED CURRENT | | | | | | | 100A | | | | | | 80A | | | | 42A | | |
+| | CURRENT RANGE | | | | | | | 0 ~ 100A | | | | | | 0 ~ 80A | | | | 0 ~ 42A | | |
+| | RATED POWER | | | | | | | 1200W | | | | | | 1920W | | | | 2016W | | |
+| | RIPPLE & NOISE (max.) Note.2 | | | | | | | 150mVp-p | | | | | | 200mVp-p | | | | 300mVp-p | | |
+| OUTPUT | VOLTAGE ADJ. RANGE | | | | | | | 10.5 ~ 14V | | | | | | 21 ~ 28V | | | | 42 ~ 56V | | |
+| | VOLTAGE TOLERANCE | | | | | | Note.4 | ±2.0% | | | | | | ±1.0% | | | | ±1.0% | | |
+| | LINE REGULATION | | | | | | | ±1.0% | | | | | | ±0.5% | | | | ±0.5% | | |
+| | LOAD REGULATION | | | | | | | ±1.0% | | | | | | ±0.5% | | | | ±0.5% | | |
+| | SETUP, RISE TIME | | | | | | | 1500ms, 60ms/230VAC at full load | | | | | | | | | | | | |
+| | HOLD UP TIME (Typ.) | | | | | | | 16ms/230VAC at 75% load | | | | | 10ms/230VAC at full load | | | | | | | |
+| | VOLTAGE RANGE | | | | | | Note.5,6 | 90 ~ 264VAC | | | 250 ~ 320VDC | | | | | | | | | |
+| | FREQUENCY RANGE | | | | | | | 47 ~ 63Hz | | | | | | | | | | | | |
+| | POWER FACTOR (Typ.) | | | | | | | 0.98/230VAC at full load | | | | | | | | | | | | |
+| INPUT | EFFICIENCY (Typ.) | | | | | | | 86% | | | | | | 90.5% | | | | 92% | | |
+| | AC CURRENT (Typ.) | | | | | | | 13A/115VAC | | | 7A/230VAC | | | 16A/115VAC | | | 10A/230VAC | 16A/115VAC | | 10A/230VAC |
+| | INRUSH CURRENT (Typ.) | | | | | | | COLD START 50A | | | | | | | | | | | | |
+| | LEAKAGE CURRENT | | | | | | | <1.1mA / 230VAC | | | | | | | | | | | | |
+| | | | | | | | | 105 ~ 125% rated output power | | | | | | | | | | | | |
+| | OVERLOAD | | | | | | | Protection type : Constant current limiting, unit will shut down o/p voltage after 5 sec. re-power on to recover | | | | | | | | | | | | |
+| PROTECTION | | | | | | | | 14.7 ~ 17.5V | | | | | | 29.5 ~ 35V | | | | 57.6 ~ 67.2V | | |
+| | OVER VOLTAGE | | | | | | | | | | | | | | | | | | | |
+| | | | | | | | | Protection type : Shut down o/p voltage, re-power on to recover | | | | | | | | | | | | |
+| | OVER TEMPERATURE | | | | | | | Shut down o/p voltage, recovers automatically after temperature goes down | | | | | | | | | | | | |
+| | AUXILIARY POWER | | | | | | | 5V @ 0.3A, 12V @ 0.8A | | | | | | | | | | | | |
+
+Please refer to the Function Manual
+
+REMOTE ON-OFF CONTROL
+
+Compensate voltage drop on the load wiring up to 0.5V
+
+REMOTE SENSE
+
+OUTPUT VOLTAGE PROGRAMMABLE Adjustment of output voltage is allowable to 90 ~ 110% of nominal output voltage. Please refer to the Function Manual.
+
+FUNCTION
+
+The isolated TTL signal out, Please refer to the Installation Manual
+
+DC OK SIGNAL
+
+The isolated TTL signal out, Please refer to the Installation Manual
+
+AC OK SIGNAL
+
+Logic " High" for over temperature warning, Please refer to the Installation Manual, isolated signal The isolated TTL signal out, Please refer to the Installation Manual
+
+OVER TEMP WARNING FAN FAIL SIGNAL
+
+-35 ~ +70℃ (Refer to "Derating Curve") 20 ~ 90% RH non-condensing -40 ~ +85℃, 10 ~ 95% RH non-condensing ±0.03%/℃ (0 ~ 50℃)
+
+WORKING TEMP. 
+WORKING HUMIDITY 
+STORAGE TEMP., HUMIDITY 
+TEMP. COEFFICIENT 
+VIBRATION 
+
+ENVIRONMENT
+
+10 ~ 500Hz, 2G 10min./1cycle, 60min. each along X, Y, Z axes
+
+UL62368-1, CSA C22.2 No. 62368-1, TUV BS EN/EN62368-1, EAC TP TC 004 approved I/P-O/P:3KVAC I/P-FG:2KVAC O/P-FG:0.7KVDC
+
+SAFETY STANDARDS WITHSTAND VOLTAGE
+
+ISOLATION RESISTANCE
+
+I/P-O/P, I/P-FG, O/P-FG:100M Ohms / 500VDC / 25℃/ 70% RH
+
+Parameter
+
+Standard
+
+Test Level / Note
+
+EMC EMISSION
+
+BS EN/EN55032 (CISPR32) BS EN/EN55032 (CISPR32) BS EN/EN61000-3-2 BS EN/EN61000-3-3
+
+Class B 
+Class A 
+----- 
+----- 
+Conducted 
+Radiated 
+Harmonic Current 
+Voltage Flicker 
+BS EN/EN55035, BS EN/EN61000-6-2 
+
+Standard
+
+SAFETY & EMC (Note 7)
+
+Test Level / Note 
+Level 3, 8KV air ; Level 2, 4KV contact 
+Level 3 
+Level 3 
+
+EMC IMMUNITY
+
+Parameter 
+ESD 
+Radiated 
+EFT / Burst 
+Surge 
+Conducted 
+Magnetic Field 
+Voltage Dips and Interruptions 
+
+Level 4, 4KV/Line-Earth ; Level 3, 2KV/Line-Line
+
+BS EN/EN61000-4-2 
+BS EN/EN61000-4-3 
+BS EN/EN61000-4-4 
+BS EN/EN61000-4-5 
+BS EN/EN61000-4-6 
+BS EN/EN61000-4-8 
+BS EN/EN61000-4-11 
+
+Level 3 
+Level 4 
+>95% dip 0.5 periods, 30% dip 25 periods, 
+>95% interruptions 250 periods 
+
+444.9K hrs min. Telcordia SR-332 (Bellcore) ; 37.4K hrs min. MIL-HDBK-217F (25℃) 295*127*41mm (L*W*H)
+
+MTBF DIMENSION PACKING
+
+OTHERS
+
+2Kg; 6pcs/13Kg/1.04CUFT NOTE ℃      . Please contact MEANWELL for 320~370VDC application.     https://www.meanwell.com//Upload/PDF/EMI_statement_en.pdf) ℃℃ ※： https://www.meanwell.com/serviceDisclaimer.aspx
+
+### Block Diagram
+
+##### PFC fosc : 110KHz PWM fosc : 90KHz
+
++S
+
+RECTIFIERS POWER
+
++V
+
+ORING FET
+
+EMI
+
+INRUSH
+
+ACTIVE CURRENT
+
+RECTIFIERS & FILTERSWITCHING
+
+I/P
+
+FILTER & PFC
+
+LIMITING
+
+-V -S
+
+O.V.P.
+
+ORING FET CONTROL
+
+DETECTION
+
+PWM
+
+PV
+
+PFC CONTROL
+
+CIRCUIT
+
+CONTROL
+
+DA/DB
+
+TRANSCEIVERS
+
+AC-OKMCUDETECTION CIRCUIT
+
+MCU
+
+DATA ISOLATION
+
+FAN FAIL
+
+DC-OK T-Alarm SDA/SCL REMOTE ON-OFF
+
+O.T.P.
+
+PM BUS
+
+FAN
+
+AUX
+
+RECTIFIERS
+
+12V/0.8A AUX POWER
+
+POWER
+
+&
+
+FILTER
+
+5V/0.3A
+
+### Derating Loads vs Input Voltage
+
+### Static Characteristics
+
+100
+
+90
+
+75 
+80 
+70 
+
+12V
+
+| INPUT | MODEL 12V | 24V | 48V |
+| --- | --- | --- | --- |
+| 180~264VAC | 1200W 100A | 1920W 80A | 2016W 42A |
+| 115VAC | 1140W 95A | 1536W 64A | 1612.8W 33.6A |
+| 100VAC | 1080W 90A | 1440W 60A | 1512W 31.5A |
+| 90VAC | 960W 80A | 1248W 52A | 1310.4W 27.3A |
+
+)
+
+(%
+
+24V,48V
+
+D
+
+A
+
+65 
+50 
+40 
+
+L O
+
+90 100 115 180
+
+264
+
+##### INPUT VOLTAGE (VAC) 60Hz
+
+### Efficiency vs Load (48V Model)
+
+### Derating Curve
+
+93
+
+92
+
+100
+
+91
+
+80
+
+90 )
+
+(%
+
+230VAC Input only
+
+89
+
+Y
+
+C
+
+N
+
+60 
+50 
+88 
+
+IE )
+
+(%
+
+IC
+
+87
+
+40
+
+F F
+
+D
+
+A
+
+86
+
+E
+
+L O
+
+20
+
+85
+
+84
+
+(HORIZONTAL)
+
+-35 -25 -10 0 15 30 50 60 70
+
+10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+
+##### AMBIENT TEMPERATURE (℃)
+
+##### LOAD ◎ The curve above is measured at 230VAC.
+
+60
+
+70
+
+80
+
+O
+
+U
+
+T P
+
+U
+
+T
+
+V
+
+O
+
+L T A
+
+G
+
+E (% )
+
+90
+
+100
+
+110
+
+Vout
+
+0 0.5 1.5 3
+
+##### EXTERNAL VOLTAGE (DC)
+
+4.5 5 V
+
+### Function Manual
+
+##### 1.1 Remote Sense
+
+##### 1. Voltage Drop Compensation
+
+##### ※ The Remote Sense compensates voltage drop on the load wiring up to 0.5V
+
+-V +V
+
+RCP-2000
+
++S -S
+
+LOAD
+
+-V
+
++V14 
+15 
+
+Sense lines should be twisted in pairs
+
++V -V +S -S
+
+RCP-2000
+
+14
+
+15
+
+PIN14 +S
+
+PIN14 +S
+
+PIN15 -S
+
+PIN15 -S
+
+RCP-2000
+
+11
+
+15
+
+14
+
+0~5V -V Signal 9
+
+LOAD
+
+##### 1.2 Local Sense
+
+##### ※ The +S,-S have to be connected to the +V(signal),-V(signal), respectively, as the following diagram, in order to get the correct output voltage if Remote
+
+##### Sense is not used.
+
+##### ※ In addition to the adjustment via the built-in potentiometer, the output voltage can be trimmed to 90~110% of the nominal voltage by applying
+
+##### EXTERNAL VOLTAGE.
+
+##### 2. Output Voltage Programming (or, PV / remote voltage programming / remote adjust / margin programming / dynamic voltage trim)
+
+PIN9 -V(signal)
+
+PIN11 PV
+
+◎ +S & +V, -S & -V also need to be connected on CN501
+
+##### 3. Remote ON-OFF Control
+
+switch
+
+PIN29 +5V-AUX
+
+PIN17 Remote ON-OFF
+
+##### The power supply can be turned ON/OFF together or separately by using the "Remote ON/OFF" function.
+
+##### 4.PMBus Communication Interface
+
+##### ※ RCP-2000 supports PMBus Rev. 1.1 with maximum 100KHz bus speed, allowing information reading, status monitoring and output trimming. For details, please refer to the Installation Manual.
+
+Between Remote ON-OFF and +5V-AUX Switch Short Switch Open
+
+Power Supply Status 
+ON 
+OFF 
+
+### 2000W Rack Mountable Front End Rectifier RCP-2 000 s e rie s
+
+Mechanical Specification (Unit: mm , tolerance ±0.5mm) Case No. 974A
+
+41 
+7.112.5 
+24 
+
+2 6 . 2
+
+5max.
+
+3 . 6
+
+6 
+1 
+CN501 
+
+O K
+
+6 2 . 4
+
+| | | 295 | | |
+| --- | --- | --- | --- | --- |
+| | | | | |
+| 5max. | SVR1 | (TOP View) | | 6.4 |
+| | | | 5 . 2 5 . 4 1 0 1 | 5 13 2 |
+
+D C
+
+Air flow direction
+
+※ LED Status Indicators & Corresponding Signal at Function Pins
+
+| Function | | LED | Description | * Signal | Power Supply |
+| --- | --- | --- | --- | --- | --- |
+| AC-OK | | GREEN | When input voltage≧87V | 0 ~ 0.5V | ON |
+| AC-NG | | RED | When input voltage ≦75V | 4.5 ~ 5.5V | OFF |
+| DC-OK | | GREEN | When output voltage≧80%±5% of Vo rated. | 0 ~ 0.5V | ON |
+| DC-NG | | RED | When output voltage≦80%±5% of Vo rated. | 4.5 ~ 5.5V | ON |
+| T-OK | | GREEN | When the internal temperature (TSW1 & TSW2 short) is within safe limit | 0 ~ 0.5V | ON |
+| T-ALARM | | RED | When the internal temperature (TSW1 or TSW2 open) exceeds the limit of temperature alarm | 4.5 ~ 5.5V | OFF |
+
+*Signal between function pin and "GND-AUX".
+
+※ Input / Output Connector Pin No. Assignment(CN501) : Positronic PCIM34W13M400A1
+
+33
+
+1 3 5 7 9 11 29
+
+29
+
+14 18 19
+
+17 21 22
+
+20 24 25
+
+23 27 28
+
+26 30 31
+
+11 15 16
+
+Mating Housing Positronic PCIM34W13F400A1 
+12 
+13 
+32 34 
+
+2 4 6 8 10 13 31
+
+| Pin No. | Function | Description |
+| --- | --- | --- |
+| 1,2,3,4 | +V | Positive output terminal. |
+| 5,6,7,8 | -V | Negative output terminal. |
+| 9 | -V(Signal) | Negative output voltage signal. For local sense only ; it cannot be connected directly to the load. |
+| 10 | +V(Signal) | Positive output voltage signal. For local sense only ; it cannot be connected directly to the load. |
+| 11 | PV | Connection for output voltage programming. (Note.1) |
+| 12,13 | DA,DB | Differential digital signal for parallel control. (Note.1) |
+| 14 | +S | Positive sensing for remote sense. |
+| 15 | -S | Negative sensing for remote sense. |
+| 16,18,19, 20,21 | A0,A1,A2, A3,A4 | PMBus interface address lines. (Note.1) |
+| 17 | Remote ON-OFF | The unit can turn the output on and off by electrical signal or dry contact between Remote ON-OFF and +5V-AUX. (Note.2) Short (4.5 ~ 5.5V) : Power ON ; Open (0 ~ 0.5V) : Power OFF ; The maximum input voltage is 5.5V. |
+| 22 | NC | Retain for future use. |
+| 23 | SDA | Serial Data used in the PMBus interface. (Note.2) |
+| 24 | SCL | Serial Clock used in the PMBus interface. (Note.2) |
+| 25 | AC-OK | Low (0 ~ 0.5V) : When the input voltage is ≧87Vrms. High (4.5 ~ 5.5V) : When the input voltage in ≦75Vrms . The maximum sourcing current is 10mA and only for output. (Note.2) |
+| 26 | DC-OK | High (4.5 ~ 5.5V) : When the Vout ≦80%±5%. Low (0 ~ 0.5V) : When Vout ≧80%±5%. The maximum sourcing current is 10mA and only for output. (Note.2) |
+| 27 | T-ALARM | High (4.5 ~ 5.5V) : When the internal temperature (TSW1 or TSW2 open) exceeds the limit of temperature alarm. Low (0 ~ 0.5V) : When the internal temperature (TSW1 or TSW2 short) under the limit temperature. The maximum sourcing current is 10mA and only for output(Note.2) |
+| 28 | FAN-FAIL | High (4.5 ~ 5.5V) : When the internal fan fail. Low (0 ~ 0.5V) : When the internal fan is normal. The maximum sourcing current is 10mA and only for output(Note.2) |
+| 29 | +5V-AUX | Auxiliary voltage output, 4.5~5.5V, referenced to GND-AUX (pin 31). The maximum load current is 0.3A. This output has the built-in "Oring diodes" and is not controlled by the remote ON/OFF control. |
+| This output has the built-in "Oring diodes" and is not controlled by the remote ON/OFF control.30 | +12V-AUX | Auxiliary voltage output, 10.8~13.2V, referenced to GND-AUX (pin 31). The maximum load current is 0.8A. |
+| 31 | GND-AUX | Auxiliary voltage output GND. The signal return is isolated from the output terminals (+V & -V). |
+| 32 | FG | AC Ground connection. |
+| 33 | AC/L | AC Line connection. |
+| 34 | AC/N | AC Neutral connection. |
+
+Note1: Non-isolated signal, referenced to -V(signal). 
+Note2: Isolated signal, referenced to GND-AUX. 
+

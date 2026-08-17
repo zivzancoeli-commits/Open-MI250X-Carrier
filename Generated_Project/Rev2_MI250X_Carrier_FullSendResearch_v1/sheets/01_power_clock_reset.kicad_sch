@@ -1,0 +1,136 @@
+(kicad_sch (version 20250114) (generator "fullsend_research_v1")
+	(generator_version "9.0")
+	(uuid "bb9002b6-f774-4414-951c-f1f5cae94a71")
+	(paper "A3")
+	(title_block
+		(title "Power / clock / reset stub")
+		(date "2026-08-17")
+		(rev "FullSendResearch_v1")
+		(comment 1 "DO NOT FABRICATE. DO NOT ENERGIZE MI250X.")
+		(comment 2 "Documentation sheet - no invented nets")
+		(comment 3 "Pin names: OAM Pin map rev 1.0.xlsx — OCP generic, NOT AMD overlay")
+		(comment 4 "r2.0 maps UNUSABLE. P3V3=2 Conn0. Full-send cart is NOT a fab decision.")
+	)
+
+	(text "PURPOSE: Named power / clock / reset stubs from OAM v1.0 pin map + pin list.\n\nSHARED RAILS (OCP names, both OAMs):\n- P48V  Conn0 16 pads  44–59.5 V  up to 700 W class (pin list). MI250X 500/560 W (AMD datasheet).\n- P12V1 Conn0 5 pads   12 V infrastructure up to 50 W. Required.\n- P12V2 Conn0 27 pads  12 V main for 12V-based OAM up to 300 W. Required for P12V-based OAM.\n        OCP v1.5 § power: \"Only five P12V power pins are mandatory when the supply power is 48V\n        (16 pins), and the rest of the P12V pins can be NC.\" That is generic OCP, not AMD MI250X.\n        Whether this specific 48 V MI250X needs P12V2 live remains AMD-unknown. Do NOT short P12V1\n        to P12V2. Do NOT pour P12V onto the P48V plane.\n- P3V3  Conn0 C1,C2    3.3 V up to 5 W. Required. 2 pins — matches v1.5 Table 4; r2.0 has 6.\n- GND   Conn0 334 pads\n- PVREF Conn0 G1,G2    MODULE OUTPUT 1.5–3.3 V, max 0.5 A. NEVER drive from carrier. Per-OAM nets.\n\nCLOCK / RESET (Conn0 unless noted):\n- PE_REFCLKP/N  F45/F46   100 MHz PCIe refclk INPUT to module. Stub only — no clock-gen IC invented.\n- PERST#        D1        CEM-compliant PCIe reset, 3.3 V input.\n- WARMRST#      D2        Vref. Pin list: NC for standard PCIe.\n- HOST_PWRGD    H1        3.3 V input. OCP v1.5: Power Enable when P48V, P12V1/P12V2, P3V3\n                          are in spec. 10k PD on the baseboard. Not sequenced in this stub.\n- MODULE_PWRGD  H2        3.3 V output. Ready for PERST# deassert.\n- PWRBRK#       C3        3.3 V input, CEM power brake.\n- PRSNT0#       J4        Module present, 1k to GND on module. Weak PU on baseboard.\n- PRSNT1#       Conn1 C63\n\nP48V/GND inner planes exist because those nets are named on the v1.0 map. They do NOT\nauthorize energizing: Farnell 2189101115 still lists 30 V max; shipping SuperMicro UBB\nuses 54 V on CBL-PWEX-1280 (UBB cable, not the mezz). Unresolved.\n\nDO NOT: invent VRMs, mix Dell D3000E-S1 12 V CRPS into P48V, drive PVREF, or attach a\nguessed clock chip. Never mix P48V with 12 V/3.3 V as one rail.\n"
+		(at 20.32 20.32 0)
+		(effects (font (size 1.5 1.5)) (justify left top))
+		(uuid "c76aad8d-5980-4a86-b39b-0ab158200b2f")
+	)
+
+
+	(label "P48V"
+		(at 30.48 160 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "77fc173e-bfe2-4113-b976-91cc06ccfce3")
+	)
+
+	(label "P12V1"
+		(at 55.879999999999995 160 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "b249a92c-f777-4035-9aef-16ed101e56b7")
+	)
+
+	(label "P12V2"
+		(at 81.28 160 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "5ec62748-be2e-43e4-b2e9-3a5f310ec301")
+	)
+
+	(label "P3V3"
+		(at 106.68 160 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "c75e65a1-1805-4db8-a598-110645a6253c")
+	)
+
+	(label "GND"
+		(at 132.08 160 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "cf7b9725-da22-4e1b-bfd7-85ddb0cb7894")
+	)
+
+	(hierarchical_label "OAM0_PE_REFCLKP"
+		(shape bidirectional)
+		(at 30.48 190 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "4048f8a9-d3fe-4fc9-ae31-27402bc8f3fb")
+	)
+
+	(hierarchical_label "OAM0_PE_REFCLKN"
+		(shape bidirectional)
+		(at 30.48 195.08 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "efccf28d-aba5-42dc-ab3d-7a0b63842b8c")
+	)
+
+	(hierarchical_label "OAM0_PERST#"
+		(shape bidirectional)
+		(at 30.48 200.16000000000003 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "d675915e-aced-4bf7-bb18-2f740c8bb054")
+	)
+
+	(hierarchical_label "OAM0_HOST_PWRGD"
+		(shape bidirectional)
+		(at 30.48 205.24000000000004 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "e05d376f-7b3a-40e3-a1ad-2f0e08a07706")
+	)
+
+	(hierarchical_label "OAM0_MODULE_PWRGD"
+		(shape bidirectional)
+		(at 30.48 210.32000000000005 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "efefcd7d-844c-41a3-a354-d8bfefb4f91c")
+	)
+
+	(hierarchical_label "OAM0_PVREF"
+		(shape bidirectional)
+		(at 30.48 215.40000000000006 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "1fdb6815-f82f-42e8-bbf9-e2135537391e")
+	)
+
+	(hierarchical_label "OAM1_PE_REFCLKP"
+		(shape bidirectional)
+		(at 30.48 220.48000000000008 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "2f559d0e-7455-44ac-93bd-dc383c258199")
+	)
+
+	(hierarchical_label "OAM1_PE_REFCLKN"
+		(shape bidirectional)
+		(at 30.48 225.5600000000001 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "e64bc402-47ca-4e80-9b19-c65fe3bb3549")
+	)
+
+	(hierarchical_label "OAM1_PERST#"
+		(shape bidirectional)
+		(at 30.48 230.6400000000001 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "a0f24767-d603-4894-a621-833fff2e4e20")
+	)
+
+	(hierarchical_label "OAM1_HOST_PWRGD"
+		(shape bidirectional)
+		(at 30.48 235.7200000000001 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "9be2ed44-6055-41fb-afa9-45f151a2cca1")
+	)
+
+	(hierarchical_label "OAM1_MODULE_PWRGD"
+		(shape bidirectional)
+		(at 30.48 240.80000000000013 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "da67a842-5ee5-4791-81b8-623901b10be2")
+	)
+
+	(hierarchical_label "OAM1_PVREF"
+		(shape bidirectional)
+		(at 30.48 245.88000000000014 0)
+		(effects (font (size 1.27 1.27)) (justify left))
+		(uuid "f5f4a4ad-fb6a-48d1-9f27-07d7c8f68449")
+	)
+
+)

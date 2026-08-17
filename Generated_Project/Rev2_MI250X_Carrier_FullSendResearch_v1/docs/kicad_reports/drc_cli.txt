@@ -1,0 +1,3 @@
+Found 12 violations
+Found 499 unconnected items
+Saved DRC Report to /workspace/Generated_Project/Rev2_MI250X_Carrier_FullSendResearch_v1/docs/kicad_reports/drc.json

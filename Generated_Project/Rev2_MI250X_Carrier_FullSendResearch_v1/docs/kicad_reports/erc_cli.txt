@@ -1,0 +1,2 @@
+Found 378 violations
+Saved ERC Report to /workspace/Generated_Project/Rev2_MI250X_Carrier_FullSendResearch_v1/docs/kicad_reports/erc.json
