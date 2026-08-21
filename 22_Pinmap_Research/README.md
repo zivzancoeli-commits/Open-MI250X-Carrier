@@ -3,6 +3,7 @@
 This folder is **research only**. It does not modify production KiCad.
 
 - `REPORT.md` — structured findings (Verified / Inferred / Unknown).
+- `OAM Pin map rev 1.0.xlsx` — OCP v1.0 pad map retrieved 2026-08-21 from Wayback (`if_` of the 20220421131015 files.opencompute.org snapshot). Same SHA-256 as `downloads/OAM_Pin_map_rev_1.0.xlsx`.
 - `downloads/` — files actually retrieved this run.
 - `extracted/` — CSV extracted from the v1.0 OCP spreadsheets. Do not treat CSV as a new invention; it is a machine dump of the xlsx.
 

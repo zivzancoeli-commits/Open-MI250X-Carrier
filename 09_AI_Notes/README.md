@@ -15,6 +15,7 @@ This folder exists to turn source documents into engineering knowledge. It shoul
 - [13_Reference_Docs/Memory_HBM](../13_Reference_Docs/Memory_HBM/) should feed memory, power, or thermal questions after readable sources are available.
 - [08_Research_Papers/01_Architecture](../08_Research_Papers/01_Architecture/) should feed topology and bandwidth notes.
 - [02_AMD_Docs](../02_AMD_Docs/) points to upstream sources that need review before conclusions are accepted.
+- [11_OCP_v1x_Public_Sources.md](11_OCP_v1x_Public_Sources.md) records the 2026-08-21 public OAM v1.x file retrieval (Verified / Unknown).
 
 ## Known Information
 - The folder is organized by topic: architecture, clocking, cooling, management, PCIe, power, ideas, questions, and unknowns.
